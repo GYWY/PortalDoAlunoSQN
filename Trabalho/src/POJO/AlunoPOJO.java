@@ -1,5 +1,5 @@
 package POJO;
 
-public class Aluno {
+public class AlunoPOJO {
     
 }
