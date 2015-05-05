@@ -2,7 +2,7 @@ package POJO;
 
 import java.util.Objects;
 
-public class Disciplina {
+public class DisciplinaPOJO {
     //Atributos
     public String nome;
     public String ementa;
