@@ -9,7 +9,7 @@ public class DisciplinaPOJO {
     public Integer cargaHoraria;
 
     //Construtor
-    public Disciplina(String nome, String ementa, Integer cargaHoraria) {
+    public DisciplinaPOJO(String nome, String ementa, Integer cargaHoraria) {
         this.nome = nome;
         this.ementa = ementa;
         this.cargaHoraria = cargaHoraria;
