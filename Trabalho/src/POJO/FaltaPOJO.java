@@ -2,7 +2,7 @@ package POJO;
 
 import java.util.Objects;
 
-public class Falta {
+public class FaltaPOJO {
     //Atributos
     public Integer faltas;
 
