@@ -1,5 +1,5 @@
 package POJO;
 
-public class Turma {
+public class TurmaPOJO {
     
 }
