@@ -7,7 +7,7 @@ public class FaltaPOJO {
     public Integer faltas;
 
     //Construtor
-    public Falta(Integer faltas) {
+    public FaltaPOJO(Integer faltas) {
         this.faltas = faltas;
     }
 
