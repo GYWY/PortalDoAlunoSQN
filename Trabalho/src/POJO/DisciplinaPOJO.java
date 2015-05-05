@@ -34,15 +34,5 @@ public class DisciplinaPOJO {
     public void setCargaHoraria(Integer cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
     }
- 
-    @Override
-    public boolean equals(Object obj) {
-        if(this == obj)
-            return true;
-        if(!(obj instanceof Disciplina))
-            return false;
-        Disciplina disciplina = (Disciplina)obj;
-        return (this.nome == disciplina.getNome());
-    }
 
 }
