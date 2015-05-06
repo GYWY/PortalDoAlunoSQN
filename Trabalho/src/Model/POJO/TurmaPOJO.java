@@ -1,5 +1,7 @@
 package Model.POJO;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class TurmaPOJO {
@@ -9,13 +11,19 @@ public class TurmaPOJO {
     private String local;
     private String horario;
     private Integer vaga;
+    private ProfessorPOJO professor;
+    private DisciplinaPOJO disciplina;
+    private List<AlunoPOJO> listaAluno;
 
-    public TurmaPOJO(Long ano, Integer periodo, String local, String horario, Integer vaga) {
+    
+    public TurmaPOJO(Long ano, Integer periodo, String local, String horario, Integer vaga, ProfessorPOJO professor, DisciplinaPOJO disciplina) {
         this.ano = ano;
         this.periodo = periodo;
         this.local = local;
         this.horario = horario;
         this.vaga = vaga;
+        this.professor=professor;
+        this.disciplina=disciplina;
     }
 
     public Long getAno() {
