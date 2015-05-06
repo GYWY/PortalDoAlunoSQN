@@ -7,14 +7,19 @@ public class DisciplinaPOJO {
     private String nome;
     private String ementa;
     private Integer cargaHoraria;
+    private ProfessorPOJO[] professor;
+    private TurmaPOJO[] turma;
 
     //Construtor
-    public DisciplinaPOJO(String nome, String ementa, Integer cargaHoraria) {
+    public DisciplinaPOJO(String nome, String ementa, Integer cargaHoraria, ProfessorPOJO[] professor, TurmaPOJO[] turma) {
         this.nome = nome;
         this.ementa = ementa;
         this.cargaHoraria = cargaHoraria;
+        this.professor = professor;
+        this.turma = turma;
     }
 
+    
     //Getters e Setters
     public String getNome() {
         return nome;
