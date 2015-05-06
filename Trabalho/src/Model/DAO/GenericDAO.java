@@ -1,5 +1,3 @@
-
-
 package Model.DAO;
 
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package POJO;
+package Model.POJO;
 
 import java.util.Objects;
 
