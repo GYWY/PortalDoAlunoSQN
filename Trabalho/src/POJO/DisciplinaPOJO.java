@@ -35,4 +35,25 @@ public class DisciplinaPOJO {
         this.cargaHoraria = cargaHoraria;
     }
 
+    //toString
+    @Override
+    public String toString() {
+        return ("Disciplina: " + nome +"\nCarga Horária: " + cargaHoraria + "\nEmenta: " + ementa);
+    }
+    
+    //Equals e HashCode
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj)
+            return true;
+        if(!(obj instanceof DisciplinaPOJO))
+            return false;
+        DisciplinaPOJO disciplina = (DisciplinaPOJO)obj;
+        return (this.nome == disciplina.getNome());
+    }
+    @Override
+    public int hashCode() {
+        return nome.hashCode();
+    }
+    
 }

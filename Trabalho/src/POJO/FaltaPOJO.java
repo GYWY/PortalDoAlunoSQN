@@ -1,7 +1,5 @@
 package POJO;
 
-import java.util.Objects;
-
 public class FaltaPOJO {
     //Atributos
     public Integer faltas;
@@ -19,4 +17,9 @@ public class FaltaPOJO {
         this.faltas = faltas;
     }
        
+    //toString
+    @Override
+    public String toString() {
+        return ("Número total de faltas: " + faltas);
+    }
 }
