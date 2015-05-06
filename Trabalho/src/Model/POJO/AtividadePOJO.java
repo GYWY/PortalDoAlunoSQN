@@ -1,4 +1,4 @@
-package POJO;
+package Model.POJO;
 
 public class AtividadePOJO {
     private String nome;//verificar com equals se repete
