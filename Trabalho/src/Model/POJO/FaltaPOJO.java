@@ -2,7 +2,7 @@ package Model.POJO;
 
 public class FaltaPOJO {
     //Atributos
-    public Integer faltas;
+    private Integer faltas;
 
     //Construtor
     public FaltaPOJO(Integer faltas) {

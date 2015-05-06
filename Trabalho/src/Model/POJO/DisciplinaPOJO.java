@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class DisciplinaPOJO {
     //Atributos
-    public String nome;
-    public String ementa;
-    public Integer cargaHoraria;
+    private String nome;
+    private String ementa;
+    private Integer cargaHoraria;
 
     //Construtor
     public DisciplinaPOJO(String nome, String ementa, Integer cargaHoraria) {
