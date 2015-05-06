@@ -1,15 +1,23 @@
 package Model.POJO;
 
+import java.util.Objects;
+
 public class AtividadePOJO {
+    //atributos
     private String nome;//verificar com equals se repete
     private String tipo;
     private String data;
-    private Integer valor;
-
-    public AtividadePOJO() {
+    private Float valor;
+    private AlunoPOJO aluno; 
+    private LancamentoNotaPOJO nota;
+    
+    //construtor
+    public AtividadePOJO(String tipo, AlunoPOJO aluno) {
+        this.tipo = tipo; 
+        this.aluno = aluno;
     }
 
-
+    //gets e setters
     public String getNome() {
         return nome;
     }
@@ -34,13 +42,12 @@ public class AtividadePOJO {
         this.data = data;
     }
 
-    public Integer getValor() {
+    public Float getValor() {
         return valor;
     }
 
-    public void setValor(Integer valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
-    
  
 }
