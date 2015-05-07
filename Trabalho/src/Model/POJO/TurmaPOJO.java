@@ -1,7 +1,6 @@
 package Model.POJO;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class TurmaPOJO {
@@ -11,10 +10,14 @@ public class TurmaPOJO {
     private String local;
     private String horario;
     private Integer vaga;
-    private ProfessorPOJO professor;
+    private ArrayList<ProfessorPOJO> listaProfessores;
     private DisciplinaPOJO disciplina;
-    private List<AlunoPOJO> listaAluno;
+    private ArrayList<AlunoPOJO> listaAlunos;
 
+    public TurmaPOJO(){
+        listaAlunos = new ArrayList<AlunoPOJO>(); 
+        listaProfessores = new ArrayList<ProfessorPOJO>();
+    }
     
     public TurmaPOJO(Long ano, Integer periodo, String local, String horario, Integer vaga, ProfessorPOJO professor, DisciplinaPOJO disciplina) {
         this.ano = ano;
@@ -22,7 +25,6 @@ public class TurmaPOJO {
         this.local = local;
         this.horario = horario;
         this.vaga = vaga;
-        this.professor=professor;
         this.disciplina=disciplina;
     }
 
@@ -65,6 +67,32 @@ public class TurmaPOJO {
     public void setVaga(Integer vaga) {
         this.vaga = vaga;
     }
+
+    public ArrayList<ProfessorPOJO> getListaProfessores() {
+        return listaProfessores;
+    }
+
+    public void setListaProfessores(ArrayList<ProfessorPOJO> listaProfessores) {
+        this.listaProfessores = listaProfessores;
+    }
+
+    public DisciplinaPOJO getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(DisciplinaPOJO disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    public ArrayList<AlunoPOJO> getListaAlunos() {
+        return listaAlunos;
+    }
+
+    public void setListaAlunos(ArrayList<AlunoPOJO> listaAlunos) {
+        this.listaAlunos = listaAlunos;
+    }
+    
+    
 
     @Override
     public int hashCode() {
