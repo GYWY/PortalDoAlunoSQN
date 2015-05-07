@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 
-public class GenericDAOImpl<T, ID extends Serializable> implements GenericDAO<T, ID> {
+public class AlunoDAOImpl<T, ID extends Serializable> implements GenericDAO<T, ID> {
 
     @Override
     public void salvar(T objeto) {

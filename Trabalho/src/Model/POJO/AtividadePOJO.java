@@ -9,7 +9,7 @@ public class AtividadePOJO {
     private String data;
     private Float valor;
     private AlunoPOJO aluno; 
-    private LancamentoNotaPOJO nota;
+    private NotaPOJO nota;
     
     //construtor
     public AtividadePOJO(String tipo, AlunoPOJO aluno) {

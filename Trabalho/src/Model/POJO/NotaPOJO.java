@@ -1,9 +1,9 @@
 package Model.POJO;
 
-public class LancamentoNotaPOJO {
+public class NotaPOJO {
     private Double nota;
 
-    public LancamentoNotaPOJO(Double nota) {
+    public NotaPOJO(Double nota) {
         this.nota = nota;
     }
 
