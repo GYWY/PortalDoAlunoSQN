@@ -28,7 +28,8 @@ public class CadastroAluno {
         AlunoPOJO aluno = new AlunoPOJO(null,null);
         Scanner leitor = new Scanner(System.in);
         AlunoDAOImpl alunoDao = new AlunoDAOImpl();
-              
+        
+        coletarDados(aluno,leitor);              
         alunoDao.adicionarAluno(aluno);
     }
 }
