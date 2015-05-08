@@ -8,6 +8,7 @@ package View.Cadastro;
 
 import Model.DAO.AlunoDAOImpl;
 import Model.POJO.AlunoPOJO;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -24,12 +25,12 @@ public class CadastroAluno {
         aluno.setCpf(leitor.nextLine());
     }   
     
-    public void cadastrarAluno(){
+    public void cadastrarAluno() throws IOException{
         AlunoPOJO aluno = new AlunoPOJO(null,null);
         Scanner leitor = new Scanner(System.in);
         AlunoDAOImpl alunoDao = new AlunoDAOImpl();
         
-        coletarDados(aluno,leitor);              
+        this.coletarDados(aluno,leitor);              
         alunoDao.adicionarAluno(aluno);
     }
 }
