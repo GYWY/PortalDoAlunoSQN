@@ -37,7 +37,9 @@ public class AtividadeDAOImpl<T, ID extends Serializable> implements GenericDAO<
 
     @Override
     public List<T> listar() {
-        for(int i = 0; i<atividades.size(); i++)
+        for(int i = 0; i<atividades.size(); i++){
+            
+        }
             //printa atividades
     }
 
