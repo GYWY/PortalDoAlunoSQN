@@ -18,11 +18,5 @@ public class CadastroDisciplina {
         System.out.println("Digite a carga horária da matéria:  ");
         disciplina.setCargaHoraria(leitor.nextInt());
         
-        System.out.println("Digite o professor da discipina:  ");
-        disciplina.setProfessor(leitor.nextLine());
-        
-        System.out.println("Digite a turma:  ");
-        disciplina.setTurma(leitor.nextLine());
-    
     }
 }

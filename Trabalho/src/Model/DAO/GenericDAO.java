@@ -9,5 +9,5 @@ public interface GenericDAO<T,ID extends Serializable> {
     void remover(T objeto);
     List<T> listar();
     T buscarPorId(ID id);
-    
+
 }
