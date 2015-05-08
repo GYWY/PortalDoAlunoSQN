@@ -19,7 +19,15 @@ import java.util.Scanner;
 
 public class AlunoDAOImpl<T, ID extends Serializable> implements GenericDAO<T, ID> {
     ArrayList<AlunoPOJO> listaDeAlunos = new ArrayList<>();
-    
+    private static AlunoDAOImpl instancia = null;
+
+    public static synchronized AlunoDAOImpl getInstancia() {
+        if(instancia == null){
+            instancia = new AlunoDAOImpl();
+        }
+        return instancia;
+    }
+        
     public void AlunoDAOImpl() throws FileNotFoundException, IOException{
         this.carregarAlunos();
     }
