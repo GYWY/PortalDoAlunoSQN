@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class TurmaPOJO {
     
+    private Integer idTurma;
     private Long ano;
     private Integer periodo;
     private String local;
@@ -19,7 +20,8 @@ public class TurmaPOJO {
         listaProfessores = new ArrayList<ProfessorPOJO>();
     }
     
-    public TurmaPOJO(Long ano, Integer periodo, String local, String horario, Integer vaga, ProfessorPOJO professor, DisciplinaPOJO disciplina) {
+    public TurmaPOJO(Integer idTurma, Long ano, Integer periodo, String local, String horario, Integer vaga, ProfessorPOJO professor, DisciplinaPOJO disciplina) {
+        this.idTurma=idTurma;
         this.ano = ano;
         this.periodo = periodo;
         this.local = local;
@@ -91,7 +93,14 @@ public class TurmaPOJO {
     public void setListaAlunos(ArrayList<AlunoPOJO> listaAlunos) {
         this.listaAlunos = listaAlunos;
     }
-    
+
+    public Integer getIdTurma() {
+        return idTurma;
+    }
+
+    public void setIdTurma(Integer idTurma) {
+        this.idTurma = idTurma;
+    }
     
 
     @Override
