@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class DisciplinaPOJO {
     //Atributos
+    private Integer Id;
     private String nome;
     private String ementa;
     private Integer cargaHoraria;
@@ -13,13 +14,21 @@ public class DisciplinaPOJO {
 
     //Construtor
     public DisciplinaPOJO() {
-        listaProfessores = new ArrayList<ProfessorPOJO>();
-        listaTurmas = new ArrayList<TurmaPOJO>();
+        listaProfessores = new ArrayList<>();
+        listaTurmas = new ArrayList<>();
     }
     public DisciplinaPOJO(String nome, String ementa, Integer cargaHoraria, ProfessorPOJO professor, TurmaPOJO turma) {
         this.nome = nome;
         this.ementa = ementa;
         this.cargaHoraria = cargaHoraria;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer Id) {
+        this.Id = Id;
     }
     
     //Getters e Setters
