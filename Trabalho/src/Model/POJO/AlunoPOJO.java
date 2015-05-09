@@ -9,6 +9,9 @@ public class AlunoPOJO extends PessoaPOJO {
     private ArrayList<TurmaPOJO> listaTurmasMatriculadas;
     private ArrayList<AtividadePOJO> listaAtividadesRealizadas;
     
+    public AlunoPOJO(String nome, String cpf) {
+        super(nome,cpf);
+    }
     public AlunoPOJO(String nome, String cpf, Integer id){
         super(nome,cpf);
         this.id = id;
