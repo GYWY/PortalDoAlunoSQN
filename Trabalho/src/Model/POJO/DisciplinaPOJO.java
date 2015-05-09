@@ -68,7 +68,7 @@ public class DisciplinaPOJO {
         if(!(obj instanceof DisciplinaPOJO))
             return false;
         DisciplinaPOJO disciplina = (DisciplinaPOJO)obj;
-        return (this.nome == disciplina.getNome());
+        return this.nome.equals(disciplina.getNome());
     }
     @Override
     public int hashCode() {
