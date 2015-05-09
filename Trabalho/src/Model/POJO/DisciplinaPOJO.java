@@ -1,5 +1,6 @@
 package Model.POJO;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class DisciplinaPOJO {
@@ -7,18 +8,19 @@ public class DisciplinaPOJO {
     private String nome;
     private String ementa;
     private Integer cargaHoraria;
-    private ProfessorPOJO[] professor;
-    private TurmaPOJO[] turma;
+    private ArrayList<ProfessorPOJO> listaProfessores;
+    private ArrayList<TurmaPOJO> listaTurmas;
 
     //Construtor
-    public DisciplinaPOJO(String nome, String ementa, Integer cargaHoraria, ProfessorPOJO[] professor, TurmaPOJO[] turma) {
+    public DisciplinaPOJO() {
+        listaProfessores = new ArrayList<ProfessorPOJO>();
+        listaTurmas = new ArrayList<TurmaPOJO>();
+    }
+    public DisciplinaPOJO(String nome, String ementa, Integer cargaHoraria, ProfessorPOJO professor, TurmaPOJO turma) {
         this.nome = nome;
         this.ementa = ementa;
         this.cargaHoraria = cargaHoraria;
-        this.professor = professor;
-        this.turma = turma;
     }
-
     
     //Getters e Setters
     public String getNome() {
@@ -39,7 +41,19 @@ public class DisciplinaPOJO {
     public void setCargaHoraria(Integer cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
     }
-
+    public ArrayList<ProfessorPOJO> getListaProfessores() {
+        return listaProfessores;
+    }
+    public void setListaProfessores(ArrayList<ProfessorPOJO> listaProfessores) {
+        this.listaProfessores = listaProfessores;
+    }
+    public ArrayList<TurmaPOJO> getListaTurmas() {
+        return listaTurmas;
+    }
+    public void setListaTurmas(ArrayList<TurmaPOJO> listaTurmas) {
+        this.listaTurmas = listaTurmas;
+    }
+    
     //toString
     @Override
     public String toString() {
