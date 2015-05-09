@@ -9,7 +9,7 @@ public class ProfessorPOJO extends PessoaPOJO {
     public ProfessorPOJO(String nome, String cpf,String departamento) {
         super(nome, cpf);
         this.departamento = departamento;     
-        listaTurmasMinistradas = new ArrayList<TurmaPOJO>();
+        listaTurmasMinistradas = new ArrayList<>();
     }
 
     public String getDepartamento() {
@@ -19,4 +19,14 @@ public class ProfessorPOJO extends PessoaPOJO {
     public void setDepartamento(String departamento){
         this.departamento = departamento;
     }
+
+    public ArrayList<TurmaPOJO> getListaTurmasMinistradas() {
+        return listaTurmasMinistradas;
+    }
+
+    public void setListaTurmasMinistradas(ArrayList<TurmaPOJO> listaTurmasMinistradas) {
+        this.listaTurmasMinistradas = listaTurmasMinistradas;
+    }
+    
+    
 }
