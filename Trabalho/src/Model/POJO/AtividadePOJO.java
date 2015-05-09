@@ -6,6 +6,7 @@ public class AtividadePOJO {
     private String tipo;
     private String data;
     private Float valor;
+    private Integer id;
     private AlunoPOJO aluno; 
     private NotaPOJO nota;
     private TurmaPOJO turma;
@@ -20,6 +21,14 @@ public class AtividadePOJO {
 
     public TurmaPOJO getTurma() {
         return turma;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setAluno(AlunoPOJO aluno) {
