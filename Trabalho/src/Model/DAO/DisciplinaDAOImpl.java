@@ -12,6 +12,7 @@ import java.util.List;
 
 
 public class DisciplinaDAOImpl<T, ID extends Serializable> implements GenericDAO<T, ID> {
+    
     private ArrayList<DisciplinaPOJO> disciplinas = null;
     private static DisciplinaDAOImpl instancia;
     
@@ -20,6 +21,7 @@ public class DisciplinaDAOImpl<T, ID extends Serializable> implements GenericDAO
             instancia = new DisciplinaDAOImpl();
         return instancia;
     } 
+    
     @Override
     public void salvar(T objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -37,9 +39,11 @@ public class DisciplinaDAOImpl<T, ID extends Serializable> implements GenericDAO
 
     @Override
     public T buscarPorId(ID id) {
-       for(int i = 0;i <disciplinas.size();i++)
-           if(disciplinas.get(i).getNome() == id)
-               return (T) disciplinas.get(i);
+        for (DisciplinaPOJO disciplina : disciplinas) {
+            if (disciplina.getNome() == id) {
+                return (T) disciplina;
+            }
+        }
        return null;
     }
     
