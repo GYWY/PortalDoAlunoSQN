@@ -23,8 +23,8 @@ public class PessoaPOJO {
             PessoaPOJO pessoa = (PessoaPOJO) objeto;
             return this.cpf.equals(pessoa.getCpf());
         }
-    }   
-
+    }
+    
     @Override
     public int hashCode() {
         return cpf.hashCode();
