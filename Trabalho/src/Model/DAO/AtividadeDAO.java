@@ -2,24 +2,57 @@
 
 package Model.DAO;
 
+import Model.POJO.AtividadePOJO;
 import java.util.ArrayList;
 
 
 public class AtividadeDAO implements GenericoDAO{
+    
+    ArrayList<AtividadePOJO> listaDeAtividades = new ArrayList<>();
+    private static AtividadeDAO instancia = null;
+    
+    public static synchronized AtividadeDAO getInstancia() {
+        if(instancia == null){
+            instancia = new AtividadeDAO();
+        }
+        return instancia;
+    }
 
     @Override
     public void inserir(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        AtividadePOJO atividade = (AtividadePOJO) objeto;
+         int contador = listaDeAtividades.size();
+         contador++;
+         atividade.setId(contador);
+         listaDeAtividades.add(atividade);
+        
     }
 
     @Override
     public Object buscar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   
+        if(objeto instanceof String){
+            String tipo = (String) objeto;
+            for(AtividadePOJO atividade : listaDeAtividades){
+                if(atividade.getTipo().contains(tipo))
+                    return atividade;
+            }            
+        }
+        
+        return null;      
+    
     }
 
     @Override
-    public void alterar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean alterar(Object objeto, Object busca) {
+        AtividadePOJO atividade = (AtividadePOJO) buscar(objeto);
+        AtividadePOJO altera = (AtividadePOJO) objeto;
+        if(atividade != null){
+            int indice = listaDeAtividades.indexOf(atividade);
+            listaDeAtividades.add(indice, altera);
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -29,7 +62,7 @@ public class AtividadeDAO implements GenericoDAO{
 
     @Override
     public ArrayList<Object> listar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (ArrayList<Object>)(Object)listaDeAtividades;
     }
 
     @Override
