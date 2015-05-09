@@ -44,7 +44,7 @@ public class AtividadeDAO implements GenericoDAO{
     }
 
     @Override
-    public boolean alterar(Object objeto, Object busca) {
+       public boolean alterar(Object objeto, Object busca) {
         AtividadePOJO atividade = (AtividadePOJO) buscar(objeto);
         AtividadePOJO altera = (AtividadePOJO) objeto;
         if(atividade != null){
