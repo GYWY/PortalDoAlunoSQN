@@ -21,7 +21,7 @@ public class PessoaPOJO {
         }
         else{
             PessoaPOJO pessoa = (PessoaPOJO) objeto;
-            return this.nome.equals(pessoa.getCpf());
+            return this.cpf.equals(pessoa.getCpf());
         }
     }   
 
