@@ -3,8 +3,10 @@ package View.Cadastro;
 
 import Model.DAO.DisciplinaDAOImpl;
 import Model.DAO.GenericDAO;
+import Model.DAO.ProfessorDAOImpl;
 import Model.DAO.TurmaDAOImpl;
 import Model.POJO.DisciplinaPOJO;
+import Model.POJO.ProfessorPOJO;
 import Model.POJO.TurmaPOJO;
 import java.util.Scanner;
 
@@ -26,7 +28,8 @@ public class CadastroTurma {
         turma.setVaga(leitor.nextInt());
         System.out.println("Digite a DISCIPLINA da turma: ");
         turma.setDisciplina( (DisciplinaPOJO) DisciplinaDAOImpl.getInstancia().buscarPorId(leitor.nextLine()));
-        System.out.println("Digite  da turma: ");
+        System.out.println("Digite o PROFESSORES: ");
+        
     }   
     
     public void cadastrarAluno(){

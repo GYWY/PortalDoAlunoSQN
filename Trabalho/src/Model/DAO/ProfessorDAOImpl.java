@@ -19,7 +19,16 @@ import java.util.Scanner;
 
 public class ProfessorDAOImpl<T, ID extends Serializable> implements GenericDAO<T, ID> {
     
-    ArrayList<ProfessorPOJO> listaDeProfessores = new ArrayList<>();
+    ArrayList<ProfessorPOJO> listaDeProfessores;
+    private static ProfessorDAOImpl instancia = null;
+    
+      
+    public static synchronized ProfessorDAOImpl getInstancia(){
+        if(instancia == null)
+            instancia = new ProfessorDAOImpl();
+        return instancia;
+    }  
+    
     
     public void ProfessorDAOImpl() throws FileNotFoundException, IOException{
         this.carregarProfessores();
@@ -99,6 +108,11 @@ public class ProfessorDAOImpl<T, ID extends Serializable> implements GenericDAO<
 
     @Override
     public T buscarPorId(ID id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (ProfessorPOJO listaDeProfessor : listaDeProfessores) {
+            if (listaDeProfessor.getNome() == id) {
+                return (T) listaDeProfessor;
+            }
+        }
+       return null;
     }
 }
