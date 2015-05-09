@@ -10,7 +10,7 @@ public interface GenericoDAO {
     Object buscar(Object objeto);
     void alterar(Object objeto);
     boolean remover(Object objeto);
-    ArrayList<Object> listar(Object objeto);
+    ArrayList<Object> listar(Object objeto, Object busca);
     void salvarArquivo();
     void carregarArquivo();
 }
