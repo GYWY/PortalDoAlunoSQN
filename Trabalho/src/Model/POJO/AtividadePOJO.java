@@ -78,5 +78,9 @@ public class AtividadePOJO {
     public void setValor(Float valor) {
         this.valor = valor;
     }
+
+    public void setId(int contador) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
  
 }

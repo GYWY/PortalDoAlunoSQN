@@ -17,7 +17,7 @@ public class NotaDAO implements GenericoDAO{
     }
 
     @Override
-    public void alterar(Object objeto) {
+    public boolean alterar(Object objeto, Object busca) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
