@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class AlunoDAO implements GenericoDAO{
 
-    ArrayList<AlunoPOJO> listaDeAlunos = new ArrayList<>();
+    private ArrayList<AlunoPOJO> listaDeAlunos = new ArrayList<>();
     private static AlunoDAO instancia = null;
     
     public static synchronized AlunoDAO getInstancia() {
