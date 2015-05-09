@@ -102,36 +102,24 @@ public class TurmaPOJO {
         this.idTurma = idTurma;
     }
     
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.ano);
-        hash = 59 * hash + Objects.hashCode(this.periodo);
-        hash = 59 * hash + Objects.hashCode(this.local);
-        hash = 59 * hash + Objects.hashCode(this.horario);
-        hash = 59 * hash + Objects.hashCode(this.vaga);
-        return hash;
-    }
-
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
+        if(this == obj)
+            return true;
+        if(!(obj instanceof TurmaPOJO))
             return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final TurmaPOJO other = (TurmaPOJO) obj;
-        if (!Objects.equals(this.horario, other.horario)) {
-            return false;
-        }
-        return true;
+        TurmaPOJO turma = (TurmaPOJO)obj;
+        return this.horario.equals(turma.getHorario());
+    }
+    
+     @Override
+    public int hashCode() {
+        return horario.hashCode();
     }
 
     @Override
     public String toString() {
-        return "TurmaPOJO{" + "ano=" + ano + ", periodo=" + periodo + ", local=" + local + ", horario=" + horario + ", vaga=" + vaga + '}';
+        return ("Turma ID: " + idTurma + "\nAno: " + ano + "\nPeríodo: " + periodo + "\nLocal: " + local + "\nHorário: " + horario + "\nVagas: " + vaga);
     }
     
       
