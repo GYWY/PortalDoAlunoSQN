@@ -1,7 +1,5 @@
 package Model.POJO;
 
-import java.util.Objects;
-
 public class AtividadePOJO {
     //atributos
     private String nome;
@@ -11,6 +9,30 @@ public class AtividadePOJO {
     private AlunoPOJO aluno; 
     private NotaPOJO nota;
     private TurmaPOJO turma;
+
+    public AlunoPOJO getAluno() {
+        return aluno;
+    }
+
+    public NotaPOJO getNota() {
+        return nota;
+    }
+
+    public TurmaPOJO getTurma() {
+        return turma;
+    }
+
+    public void setAluno(AlunoPOJO aluno) {
+        this.aluno = aluno;
+    }
+
+    public void setNota(NotaPOJO nota) {
+        this.nota = nota;
+    }
+
+    public void setTurma(TurmaPOJO turma) {
+        this.turma = turma;
+    }
     
     //construtor
 

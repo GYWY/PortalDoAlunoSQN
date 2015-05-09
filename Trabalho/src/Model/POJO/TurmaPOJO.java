@@ -1,7 +1,6 @@
 package Model.POJO;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class TurmaPOJO {
     
@@ -14,10 +13,12 @@ public class TurmaPOJO {
     private ArrayList<ProfessorPOJO> listaProfessores;
     private DisciplinaPOJO disciplina;
     private ArrayList<AlunoPOJO> listaAlunos;
+    private ArrayList<AtividadePOJO> listaDeAtividade;
 
     public TurmaPOJO(){
-        listaAlunos = new ArrayList<AlunoPOJO>(); 
-        listaProfessores = new ArrayList<ProfessorPOJO>();
+        this.listaAlunos = new ArrayList<AlunoPOJO>(); 
+        this.listaProfessores = new ArrayList<ProfessorPOJO>();
+        this.listaDeAtividade = new ArrayList<AtividadePOJO>();
     }
     
     public TurmaPOJO(Integer idTurma, Long ano, Integer periodo, String local, String horario, Integer vaga, ProfessorPOJO professor, DisciplinaPOJO disciplina) {
@@ -120,7 +121,5 @@ public class TurmaPOJO {
     @Override
     public String toString() {
         return ("Turma ID: " + idTurma + "\nAno: " + ano + "\nPeríodo: " + periodo + "\nLocal: " + local + "\nHorário: " + horario + "\nVagas: " + vaga);
-    }
-    
-      
+    } 
 }

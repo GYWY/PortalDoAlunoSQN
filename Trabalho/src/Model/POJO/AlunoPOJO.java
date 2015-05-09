@@ -12,8 +12,8 @@ public class AlunoPOJO extends PessoaPOJO {
         super(nome,cpf);
         this.falta = falta;
         this.notaFinal = notaFinal;
-        listaTurmasMatriculadas = new ArrayList<TurmaPOJO>();
-        listaAtividadesRealizadas = new ArrayList<AtividadePOJO>();
+        this.listaTurmasMatriculadas = new ArrayList<TurmaPOJO>();
+        this.listaAtividadesRealizadas = new ArrayList<AtividadePOJO>();
     }
 
     public ArrayList<TurmaPOJO> getListaTurmasMatriculadas() {
