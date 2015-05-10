@@ -61,10 +61,11 @@ public class AtividadeDAO implements GenericoDAO{
     }
 
     @Override
-    public ArrayList<Object> listar(Object objeto) {
+    public ArrayList<Object> listar() {
         return (ArrayList<Object>)(Object)listaDeAtividades;
     }
-
+    
+    
     @Override
     public void salvarArquivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
