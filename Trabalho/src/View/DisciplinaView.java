@@ -21,7 +21,7 @@ public class DisciplinaView {
         System.out.println("\n EMENTA: ");
         novaDisciplina.setEmenta(leitor.nextLine());
         System.out.println("\n CARGA HORÁRIA: ");
-        novaDisciplina.setCargaHoraria(leitor.nextInt());
+        novaDisciplina.setCargaHoraria(Integer.parseInt(leitor.nextLine()));
         disciplinaDao.inserir(novaDisciplina);
     }
     

@@ -25,7 +25,7 @@ public class AtividadeView {
         System.out.println("digite a data no formato dd/mm/aa: ");
         novaAtividade.setData(leitor.nextLine());
         System.out.println("Digite o valor: ");
-        novaAtividade.setValor(leitor.nextDouble());
+        novaAtividade.setValor(Double.parseDouble(leitor.nextLine()));
         atividadeDao.inserir(novaAtividade);
         
     }

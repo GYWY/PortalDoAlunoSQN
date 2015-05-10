@@ -3,8 +3,8 @@ package View;
 import java.util.Scanner;
 
 public class Main {
-    
-    private void imprimirMenu(){
+
+    private void imprimirMenu() {
         System.out.println("BEM VINDO AO PORTAL DO ALUNO! \n ESCOLHA A OPÇÃO QUE LHE FOR ULTIL.");
         System.out.println("1- CADASTRAR ALUNO");
         System.out.println("2- CADASTRAR PROFESSOR");
@@ -12,10 +12,8 @@ public class Main {
         System.out.println("4- CADASTRAR ATIVIDADE");
         System.out.println("5- CADASTRAR TURMA");
     }
-    
-    
-    
-    public static void Main(String[] args){
+
+    public static void main(String[] args) {
         int escolha;
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
@@ -25,33 +23,38 @@ public class Main {
         AtividadeView atividade = new AtividadeView();
         TurmaView turma = new TurmaView();
         
-        main.imprimirMenu();
         escolha = leitor.nextInt();
-        
-        
-        
-        switch (escolha){
-            case 1:{
-                aluno.cadastrar();
-                break;
-            }
+        while(escolha != 0){
+            main.imprimirMenu();
+            escolha = leitor.nextInt();
             
-            case 2:{
-                professor.cadastrar();
-                break;
-            }
-            
-            case 3:{
-                disciplina.cadastrar();
-                break;
-            }
-            case 4:{
-                atividade.cadastrarAtividade();
-                break;
-            }
-            case 5:{
-                turma.cadastrar();
-                break;
+            switch (escolha) {
+                case 1: {
+                    aluno.cadastrarAluno();
+                    break;
+                }
+
+                case 2: {
+                    professor.cadastrar();
+                    break;
+                }
+
+                case 3: {
+                    disciplina.cadastrar();
+                    break;
+                }
+                case 4: {
+                    atividade.cadastrarAtividade();
+                    break;
+                }
+                case 5: {
+                    turma.cadastrar();
+                    break;
+                }
+                case 6: {
+                    aluno.cadastrarFalta();
+                    break;
+                }
             }
         }
     }

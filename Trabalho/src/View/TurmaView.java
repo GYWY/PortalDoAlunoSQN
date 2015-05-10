@@ -15,22 +15,23 @@ public class TurmaView {
     void cadastrar(){
         Scanner leitor = new Scanner(System.in);
         novaTurma = new TurmaPOJO();
-        System.out.println("\n **************** CADASTRO ALUNO ***************");
+        System.out.println("\n **************** CADASTRO TURMA ***************");
         System.out.println("\n ANO: ");
-        novaTurma.setAno(leitor.nextLong());
+        novaTurma.setAno(Long.parseLong(leitor.nextLine()));
         System.out.println("\n PERíODO: ");
-        novaTurma.setPeriodo(leitor.nextInt());
+        novaTurma.setPeriodo(Integer.parseInt(leitor.nextLine()));
         System.out.println("\n LOCAL: ");
         novaTurma.setLocal(leitor.nextLine());
         System.out.println("\n HORÁRIO: ");
         novaTurma.setHorario(leitor.nextLine());
         System.out.println("\n VAGA: ");
-        novaTurma.setVaga(leitor.nextInt());
+        novaTurma.setVaga(Integer.parseInt(leitor.nextLine()));
         turmaDao.inserir(novaTurma);
+        System.out.println("ID da Turma: " + novaTurma.getIdTurma());
     }
     
     public void listarAluno(){
-        System.out.println("\n **************** ALUNOS ****************");
+        System.out.println("\n **************** TURMAS ****************");
         for (Iterator<Object> it = this.turmaDao.listar().iterator(); it.hasNext();) {
             Object turma = it.next();
             System.out.println(turma);

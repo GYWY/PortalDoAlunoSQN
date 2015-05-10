@@ -34,7 +34,7 @@ public class AlunoView {
         System.out.println("NOME DO ALUNO: ");
         novoAluno = (AlunoPOJO) alunoDao.buscar(leitor.nextLine());
         System.out.println("\nTURMA: ");
-        falta.setTurma((TurmaPOJO) turmaDao.buscar(leitor.nextLine()));
+        falta.setTurma((TurmaPOJO) turmaDao.buscar(leitor.nextInt()));
         System.out.println("\nNÚMERO DE FALTAS: ");
         falta.setFaltas(leitor.nextInt());
         alunoDao.inserir(novoAluno);
