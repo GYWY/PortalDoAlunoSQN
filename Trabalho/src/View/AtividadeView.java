@@ -3,6 +3,8 @@ package View;
 
 import Model.DAO.AtividadeDAO;
 import Model.POJO.AtividadePOJO;
+import Model.DAO.AlunoDAO;
+import Model.POJO.NotaPOJO;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -19,7 +21,7 @@ public class AtividadeView {
         novaAtividade = new AtividadePOJO();
         System.out.println("\n **************** CADASTRO DE ATIVIDADES ***************");
         System.out.println("digite o nome do aluno: ");
-        novaAtividade.setNome(leitor.nextLine());
+        AlunoDAO.getInstancia().buscar(leitor.nextLine());
         System.out.println("digite o tipo da atividade: ");
         novaAtividade.setTipo(leitor.nextLine());
         System.out.println("digite a data no formato dd/mm/aa: ");
@@ -28,6 +30,19 @@ public class AtividadeView {
         novaAtividade.setValor(Double.parseDouble(leitor.nextLine()));
         atividadeDao.inserir(novaAtividade);
         
+    }
+    
+    public void cadastrarNota() {
+        Scanner leitor = new Scanner(System.in);
+        NotaPOJO nota = new NotaPOJO();
+        novaAtividade = new AtividadePOJO();
+        System.out.println("NOME DO ALUNO: ");
+        novaAtividade = (AtividadePOJO) atividadeDao.buscar(leitor.nextLine());
+        System.out.println("\nCÓDIGO DA ATIVIDADE: ");
+        nota.setAtividade((AtividadePOJO) AtividadeDAO.getInstancia().buscar(Integer.parseInt(leitor.nextLine())));
+        System.out.println("\nNOTA: ");
+        nota.setNota(Double.parseDouble(leitor.nextLine()));
+        atividadeDao.inserir(novaAtividade);
     }
     
     public void buscarAtividade() {

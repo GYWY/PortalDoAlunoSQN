@@ -29,12 +29,11 @@ public class AlunoView {
     public void cadastrarFalta() {
         Scanner leitor = new Scanner(System.in);
         FaltaPOJO falta = new FaltaPOJO();
-        TurmaDAO turmaDao = new TurmaDAO();
         novoAluno = new AlunoPOJO();
         System.out.println("NOME DO ALUNO: ");
         novoAluno = (AlunoPOJO) alunoDao.buscar(leitor.nextLine());
         System.out.println("\nTURMA: ");
-        falta.setTurma((TurmaPOJO) turmaDao.buscar(leitor.nextInt()));
+        falta.setTurma((TurmaPOJO) TurmaDAO.getInstancia().buscar(Integer.parseInt(leitor.nextLine())));
         System.out.println("\nNÚMERO DE FALTAS: ");
         falta.setFaltas(leitor.nextInt());
         alunoDao.inserir(novoAluno);
