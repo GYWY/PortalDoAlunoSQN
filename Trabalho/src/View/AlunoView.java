@@ -25,7 +25,7 @@ public class AlunoView {
     
     public void listarAluno(){
         System.out.println("\n **************** ALUNOS ****************");
-        for (Iterator<Object> it = this.alunoDao.listar().iterator(); it.hasNext();) {
+        for (Iterator<Object> it = this.alunoDao.listar(lista).iterator(); it.hasNext();) {
             Object aluno = it.next();
             System.out.println(aluno);
         }             
@@ -42,6 +42,11 @@ public class AlunoView {
         else if(novoAluno == (AlunoPOJO) alunoDao.buscar(pesquisa)) {
             System.out.println(novoAluno);
         }
+    }
+ 
+    public static void main(String[] args) {
+        AlunoView asd = new AlunoView();
+        asd.cadastrar();
     }
     
 }

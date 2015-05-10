@@ -42,6 +42,19 @@ public class AtividadePOJO {
     public void setTurma(TurmaPOJO turma) {
         this.turma = turma;
     }
+    
+    //construtor
+
+    /*
+    public AtividadePOJO(String nome, String tipo, String data, Float valor, AlunoPOJO aluno, NotaPOJO nota) {
+        this.nome = nome;
+        this.tipo = tipo;
+        this.data = data;
+        this.valor = valor;
+        this.aluno = aluno;
+        this.nota = nota;
+    }
+   */
 
     //gets e setters
     public String getNome() {
@@ -77,12 +90,7 @@ public class AtividadePOJO {
     }
 
     public void setId(int contador) {
-        this.id = id;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    @Override
-    public String toString() {
-        return ("Nome do aluno: " + nome + "\nTipo da atividade: " + tipo + "\nData: " + data + "\nValor: " + valor + "\nId: " + id);
-    }
-    
+ 
 }
