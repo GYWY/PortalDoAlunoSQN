@@ -49,10 +49,6 @@ public class AtividadeView {
         this.lista = (ArrayList<AtividadePOJO>) this.atividadeDao.listar().iterator();
         for (int i = 0;i<this.lista.size();i++) {
             System.out.println(this.lista.get(i));
-        System.out.println("\n **************** ATIVIDADE ****************");
-        for (Iterator<Object> it = this.atividadeDao.listar().iterator(); it.hasNext();) {
-            Object atividadeL = it.next();
-            System.out.println(atividadeL);
         }
     }
     
