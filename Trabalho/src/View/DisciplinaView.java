@@ -14,14 +14,14 @@ public class DisciplinaView {
     private DisciplinaPOJO novaDisciplina;
     
     public void cadastrar() {
+        novaDisciplina = new DisciplinaPOJO();
         System.out.println("\n **************** CADASTRO DISCIPLINA ***************");
         System.out.println("\n DISCIPLINA: ");
-        String nomeDisciplina = leitor.nextLine();
+        novaDisciplina.setNome(leitor.nextLine());
         System.out.println("\n EMENTA: ");
-        String ementa = leitor.nextLine();
+        novaDisciplina.setEmenta(leitor.nextLine());
         System.out.println("\n CARGA HORÁRIA: ");
-        Integer cargaHoraria = leitor.nextInt();
-        novaDisciplina = new DisciplinaPOJO(nomeDisciplina,ementa,cargaHoraria);
+        novaDisciplina.setCargaHoraria(leitor.nextInt());
         this.disciplinaDao.inserir(novaDisciplina);
     }
     
@@ -48,8 +48,6 @@ public class DisciplinaView {
     public static void main(String[] args) {
         DisciplinaView asd = new DisciplinaView();
         asd.cadastrar();
-        asd.cadastrar();
-        asd.listarDisciplina();
     }
     
 }
