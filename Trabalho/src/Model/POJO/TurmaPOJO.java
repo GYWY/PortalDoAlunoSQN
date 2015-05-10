@@ -15,22 +15,6 @@ public class TurmaPOJO {
     private ArrayList<AlunoPOJO> listaAlunos;
     private ArrayList<AtividadePOJO> listaDeAtividade;
 
-    public TurmaPOJO(){
-        this.listaAlunos = new ArrayList<AlunoPOJO>(); 
-        this.listaProfessores = new ArrayList<ProfessorPOJO>();
-        this.listaDeAtividade = new ArrayList<AtividadePOJO>();
-    }
-    
-    public TurmaPOJO(Integer idTurma, Long ano, Integer periodo, String local, String horario, Integer vaga, ProfessorPOJO professor, DisciplinaPOJO disciplina) {
-        this.idTurma=idTurma;
-        this.ano = ano;
-        this.periodo = periodo;
-        this.local = local;
-        this.horario = horario;
-        this.vaga = vaga;
-        this.disciplina=disciplina;
-    }
-
     public Long getAno() {
         return ano;
     }
