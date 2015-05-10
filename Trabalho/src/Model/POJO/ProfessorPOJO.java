@@ -7,7 +7,12 @@ public class ProfessorPOJO extends PessoaPOJO {
     private String departamento;
     private ArrayList<TurmaPOJO> listaTurmasMinistradas;
     private ArrayList<DisciplinaPOJO> listaDisciplinas;
-
+    
+    public ProfessorPOJO(){
+        this.listaTurmasMinistradas = new ArrayList<>();
+        this.listaDisciplinas = new ArrayList<>();
+    }
+    
     public Integer getIdProfessor() {
         return idProfessor;
     }
@@ -38,5 +43,17 @@ public class ProfessorPOJO extends PessoaPOJO {
 
     public void setListaTurmasMinistradas(ArrayList<TurmaPOJO> listaTurmasMinistradas) {
         this.listaTurmasMinistradas = listaTurmasMinistradas;
+    }
+    
+    public void adicionarDisciplina(Object disciplina){
+        if(disciplina instanceof String){
+            DisciplinaPOJO novaDisciplina = new DisciplinaPOJO();
+            
+            novaDisciplina.setNome((String) disciplina);
+            this.listaDisciplinas.add((DisciplinaPOJO) novaDisciplina);
+        }
+        else{
+            this.listaDisciplinas.add((DisciplinaPOJO) disciplina);
+        }    
     }
 }

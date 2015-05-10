@@ -1,6 +1,7 @@
 
 package View;
 
+import Model.DAO.DisciplinaDAO;
 import Model.DAO.ProfessorDAO;
 import Model.POJO.ProfessorPOJO;
 import java.util.ArrayList;
@@ -8,6 +9,27 @@ import java.util.Scanner;
 
 public class ProfessorView{
     ProfessorDAO professorDao = new ProfessorDAO();
+    
+    private void tratarDisciplinaInexistente(String nomeDaDisciplina, DisciplinaDAO disciplinaDAO){
+        
+        while(disciplinaDAO.buscar(nomeDaDisciplina) == null){
+                System.out.println("A disciplina não está cadastrada. Digite novamente");
+        }
+    }
+    
+    private void cadastrarDisciplinasElegiveis(ProfessorPOJO professor){
+        Scanner leitor = new Scanner(System.in);
+        String nomeDaDisciplina;
+        System.out.println("Digite o nome da disciplina ou 0 caso contrário:  ");
+        DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+        
+        do{
+            nomeDaDisciplina = leitor.nextLine();
+            
+            this.tratarDisciplinaInexistente(nomeDaDisciplina, disciplinaDAO);
+            professor.adicionarDisciplina(nomeDaDisciplina);
+        }while(nomeDaDisciplina.equals("0"));
+    }
     
     private void lerDados(ProfessorPOJO professor){
         Scanner leitor = new Scanner(System.in);

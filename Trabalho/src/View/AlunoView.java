@@ -1,7 +1,10 @@
 package View;
 
 import Model.DAO.AlunoDAO;
+import Model.DAO.TurmaDAO;
 import Model.POJO.AlunoPOJO;
+import Model.POJO.FaltaPOJO;
+import Model.POJO.TurmaPOJO;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -12,7 +15,7 @@ public class AlunoView {
     private AlunoDAO alunoDao = new AlunoDAO();
     private AlunoPOJO novoAluno;
     
-    void cadastrar(){
+    public void cadastrarAluno(){
         Scanner leitor = new Scanner(System.in);
         novoAluno = new AlunoPOJO();
         System.out.println("\n **************** CADASTRO ALUNO ***************");
@@ -20,6 +23,20 @@ public class AlunoView {
         novoAluno.setNome(leitor.nextLine());
         System.out.println("\n CPF: ");
         novoAluno.setCpf(leitor.nextLine());
+        alunoDao.inserir(novoAluno);
+    }
+    
+    public void cadastrarFalta() {
+        Scanner leitor = new Scanner(System.in);
+        FaltaPOJO falta = new FaltaPOJO();
+        TurmaDAO turmaDao = new TurmaDAO();
+        novoAluno = new AlunoPOJO();
+        System.out.println("NOME DO ALUNO: ");
+        novoAluno = (AlunoPOJO) alunoDao.buscar(leitor.nextLine());
+        System.out.println("\nTURMA: ");
+        falta.setTurma((TurmaPOJO) turmaDao.buscar(leitor.nextLine()));
+        System.out.println("\nNÚMERO DE FALTAS: ");
+        falta.setFaltas(leitor.nextInt());
         alunoDao.inserir(novoAluno);
     }
     
