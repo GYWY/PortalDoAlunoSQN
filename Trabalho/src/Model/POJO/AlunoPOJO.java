@@ -49,7 +49,12 @@ public class AlunoPOJO extends PessoaPOJO {
     public void setNotaFinal(NotaPOJO notaFinal) {
         this.notaFinal = notaFinal;
     }
+
+    @Override
+    public String toString() {
+        return ("Id: " + id + "\nFalta: " + falta);
+    }
     
-       
+    
     
 }
