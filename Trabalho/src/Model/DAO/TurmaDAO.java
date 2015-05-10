@@ -53,7 +53,7 @@ public class TurmaDAO implements GenericoDAO{
     }
 
     @Override
-    public ArrayList<Object> listar(Object objeto) {
+    public ArrayList<Object> listar() {
          return (ArrayList<Object>)(Object)listaDeTurmas;
     }
 

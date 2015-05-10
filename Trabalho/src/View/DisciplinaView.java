@@ -40,7 +40,7 @@ public class DisciplinaView {
     
     public void listarDisciplina() {
         System.out.println("\n **************** DISCIPLINAS ****************");
-        for (Iterator<Object> it = this.disciplinaDao.listar(lista).iterator(); it.hasNext();) {
+        for (Iterator<Object> it = this.disciplinaDao.listar().iterator(); it.hasNext();) {
             Object disciplinaL = it.next();
             System.out.println(disciplinaL);
         }
