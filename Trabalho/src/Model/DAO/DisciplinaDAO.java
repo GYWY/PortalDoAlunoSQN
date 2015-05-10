@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class DisciplinaDAO implements GenericoDAO{
     
-    private ArrayList<DisciplinaPOJO> listaDeDisciplinas = new ArrayList<>();
+    private ArrayList<DisciplinaPOJO> listaDisciplina = new ArrayList<>();
     private static DisciplinaDAO instancia = null;
     
     public static synchronized DisciplinaDAO getInstancia() {
@@ -14,28 +14,30 @@ public class DisciplinaDAO implements GenericoDAO{
         }
         return instancia;
     }
-    
+
     @Override
     public void inserir(Object objeto) {
+        
          DisciplinaPOJO disciplina = (DisciplinaPOJO) objeto;
-         int contador = listaDeDisciplinas.size();
+         
+         int contador = listaDisciplina.size();
          contador++;
-         disciplina.setId(contador); //não tem id
-         listaDeDisciplinas.add(disciplina);
+         disciplina.setId(contador);
+         listaDisciplina.add(disciplina);
     }
 
     @Override
     public Object buscar(Object objeto) {
         if(objeto instanceof String){
             String nome = (String) objeto;
-            for(DisciplinaPOJO disciplina : listaDeDisciplinas){
+            for(DisciplinaPOJO disciplina : listaDisciplina){
                 if(disciplina.getNome().contains(nome))
                     return disciplina;
             }
         }
         else if(objeto instanceof Integer){
             Integer id =(Integer) objeto;
-            for(DisciplinaPOJO disciplina : listaDeDisciplinas){
+            for(DisciplinaPOJO disciplina : listaDisciplina){
                 if(disciplina.getId().equals(objeto)){ //ver id
                     return disciplina;
                 }
@@ -53,7 +55,7 @@ public class DisciplinaDAO implements GenericoDAO{
     public boolean remover(Object objeto) {
         DisciplinaPOJO disciplina = (DisciplinaPOJO) buscar(objeto);
         if(disciplina != null){
-            listaDeDisciplinas.remove(listaDeDisciplinas.indexOf(disciplina));
+            listaDisciplina.remove(listaDisciplina.indexOf(disciplina));
             return true;
         }
         return false;    
@@ -61,7 +63,7 @@ public class DisciplinaDAO implements GenericoDAO{
 
     @Override
     public ArrayList<Object> listar(Object objeto) {
-        return (ArrayList<Object>)(Object)listaDeDisciplinas;
+        return (ArrayList<Object>)(Object)listaDisciplina;
     }
 
     @Override

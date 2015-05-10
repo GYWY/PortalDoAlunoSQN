@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class DisciplinaView {
     
-    private static Scanner leitor = new Scanner(System.in);
     private ArrayList<DisciplinaPOJO> lista = new ArrayList<>();
-    private DisciplinaDAO disciplinaDao;
+    private DisciplinaDAO disciplinaDao = new DisciplinaDAO();
     private DisciplinaPOJO novaDisciplina;
     
     public void cadastrar() {
+        Scanner leitor = new Scanner(System.in);
         novaDisciplina = new DisciplinaPOJO();
         System.out.println("\n **************** CADASTRO DISCIPLINA ***************");
         System.out.println("\n DISCIPLINA: ");
@@ -22,23 +22,24 @@ public class DisciplinaView {
         novaDisciplina.setEmenta(leitor.nextLine());
         System.out.println("\n CARGA HORÁRIA: ");
         novaDisciplina.setCargaHoraria(leitor.nextInt());
-        this.disciplinaDao.inserir(novaDisciplina);
+        disciplinaDao.inserir(novaDisciplina);
     }
     
     public void buscarDisciplina() {
+        Scanner leitor = new Scanner(System.in);
         System.out.println("\n **************** PESQUISA DISCIPLINA ****************");
         System.out.println("\n ENTRE COM O NOME DA DISCIPLINA: ");
         Object pesquisa = leitor.nextLine();
         if(disciplinaDao.buscar(pesquisa) == null) {
             System.out.println("DISCIPLINA NÃO ENCONTRADA");
         }
-        else {
-            novaDisciplina = (DisciplinaPOJO) disciplinaDao.buscar(pesquisa);
+        else if(novaDisciplina == (DisciplinaPOJO) disciplinaDao.buscar(pesquisa)){
             System.out.println(novaDisciplina);
         }
     }
     
     public void listarDisciplina() {
+        System.out.println("\n **************** DISCIPLINAS ****************");
         for (Iterator<Object> it = this.disciplinaDao.listar(lista).iterator(); it.hasNext();) {
             Object disciplinaL = it.next();
             System.out.println(disciplinaL);
@@ -48,6 +49,9 @@ public class DisciplinaView {
     public static void main(String[] args) {
         DisciplinaView asd = new DisciplinaView();
         asd.cadastrar();
+        asd.cadastrar();
+        asd.listarDisciplina();
+        asd.buscarDisciplina();
     }
     
 }

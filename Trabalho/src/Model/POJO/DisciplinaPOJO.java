@@ -11,17 +11,6 @@ public class DisciplinaPOJO {
     private Integer cargaHoraria;
     private ArrayList<ProfessorPOJO> listaProfessores;
     private ArrayList<TurmaPOJO> listaTurmas;
-
-    //Construtor
-    public DisciplinaPOJO() {
-        listaProfessores = new ArrayList<>();
-        listaTurmas = new ArrayList<>();
-    }
-    public DisciplinaPOJO(String nome, String ementa, Integer cargaHoraria) {
-        this.nome = nome;
-        this.ementa = ementa;
-        this.cargaHoraria = cargaHoraria;
-    }
     
     //Getters e Setters
     public String getNome() {

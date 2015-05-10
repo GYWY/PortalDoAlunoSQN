@@ -8,12 +8,15 @@ public class ProfessorPOJO extends PessoaPOJO {
     private ArrayList<TurmaPOJO> listaTurmasMinistradas;
     private ArrayList<DisciplinaPOJO> listaDisciplinas;
     
-    public ProfessorPOJO(String nome, String cpf,String departamento, Integer idProfessor) {
+    public ProfessorPOJO(String nome, String cpf) {
         super(nome, cpf);
-        this.idProfessor=idProfessor;
-        this.departamento = departamento;     
         listaTurmasMinistradas = new ArrayList<>();
         listaDisciplinas = new ArrayList<>();
+    }
+    
+    public ProfessorPOJO(String nome, String cpf, String departamento) {
+        super(nome, cpf);
+        this.departamento = departamento;     
     }
 
     public Integer getIdProfessor() {
