@@ -6,11 +6,6 @@ public class PessoaPOJO {
     private String nome;
     private String cpf;
     
-    public PessoaPOJO(String nome,String cpf){
-        this.nome = nome;
-        this.cpf = cpf;
-    }
-    
     @Override
     public boolean equals(Object objeto){
         if(this == objeto){

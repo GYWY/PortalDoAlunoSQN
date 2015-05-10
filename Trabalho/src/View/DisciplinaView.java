@@ -46,12 +46,4 @@ public class DisciplinaView {
         }
     }
     
-    public static void main(String[] args) {
-        DisciplinaView asd = new DisciplinaView();
-        asd.cadastrar();
-        asd.cadastrar();
-        asd.listarDisciplina();
-        asd.buscarDisciplina();
-    }
-    
 }

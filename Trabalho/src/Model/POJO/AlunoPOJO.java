@@ -8,18 +8,6 @@ public class AlunoPOJO extends PessoaPOJO {
     private NotaPOJO notaFinal;
     private ArrayList<TurmaPOJO> listaTurmasMatriculadas;
     private ArrayList<AtividadePOJO> listaAtividadesRealizadas;
-    
-    public AlunoPOJO(String nome, String cpf) {
-        super(nome,cpf);
-    }
-    public AlunoPOJO(String nome, String cpf, Integer id){
-        super(nome,cpf);
-        this.id = id;
-        this.falta = falta;
-        this.notaFinal = notaFinal;
-        this.listaTurmasMatriculadas = new ArrayList<TurmaPOJO>();
-        this.listaAtividadesRealizadas = new ArrayList<AtividadePOJO>();
-    }
 
     public ArrayList<TurmaPOJO> getListaTurmasMatriculadas() {
         return listaTurmasMatriculadas;

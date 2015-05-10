@@ -8,22 +8,23 @@ import java.util.Scanner;
 
 public class AlunoView {
     
-    private static Scanner leitor = new Scanner(System.in);
     private ArrayList<AlunoPOJO> lista = new ArrayList<>();
-    private AlunoPOJO aluno;
-    private AlunoDAO alunoDao;
+    private AlunoDAO alunoDao = new AlunoDAO();
+    private AlunoPOJO novoAluno;
     
     void cadastrar(){
-        System.out.println("\n **************** CADASTRO ***************");
-        System.out.println("\n ALUNO: ");
-        String nome = leitor.nextLine();
+        Scanner leitor = new Scanner(System.in);
+        novoAluno = new AlunoPOJO();
+        System.out.println("\n **************** CADASTRO ALUNO ***************");
+        System.out.println("\n NOME DO ALUNO: ");
+        novoAluno.setNome(leitor.nextLine());
         System.out.println("\n CPF: ");
-        String cpf = leitor.nextLine();
-        aluno= new AlunoPOJO(nome, cpf);
-        this.alunoDao.inserir(nome);
+        novoAluno.setCpf(leitor.nextLine());
+        alunoDao.inserir(novoAluno);
     }
     
     public void listarAluno(){
+        System.out.println("\n **************** ALUNOS ****************");
         for (Iterator<Object> it = this.alunoDao.listar(lista).iterator(); it.hasNext();) {
             Object aluno = it.next();
             System.out.println(aluno);
@@ -31,16 +32,21 @@ public class AlunoView {
     }
     
     public void buscarAluno(){
+        Scanner leitor = new Scanner(System.in);
         System.out.println("\n **************** PESQUISA ****************");
         System.out.println("\n ENTRE COM O NOME OU MATRICULA: ");
         Object pesquisa = leitor.nextLine();
         if(alunoDao.buscar(pesquisa) == null){
             System.out.println("ALUNO NÃO ENCONTRADO");
         }
-        else{
-            aluno=(AlunoPOJO) alunoDao.buscar(pesquisa);
-            System.out.println(aluno);
+        else if(novoAluno == (AlunoPOJO) alunoDao.buscar(pesquisa)) {
+            System.out.println(novoAluno);
         }
+    }
+ 
+    public static void main(String[] args) {
+        AlunoView asd = new AlunoView();
+        asd.cadastrar();
     }
     
 }
