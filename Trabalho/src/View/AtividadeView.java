@@ -46,18 +46,10 @@ public class AtividadeView {
     
     public void listarAtividade() {
         System.out.println("\n **************** ATIVIDADES ****************");
-        this.lista = (ArrayList<AtividadePOJO>) this.atividadeDao.listar(lista).iterator();
+        this.lista = (ArrayList<AtividadePOJO>) this.atividadeDao.listar().iterator();
         for (int i = 0;i<this.lista.size();i++) {
             System.out.println(this.lista.get(i));
         }
     }
     
-    public static void main(String[] args) {
-        AtividadeView asd = new AtividadeView();
-        asd.cadastrarAtividade();
-        asd.cadastrarAtividade();
-        asd.listarAtividade();
-        asd.buscarAtividade();
-    }
-        
 }

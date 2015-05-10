@@ -25,7 +25,7 @@ public class AlunoView {
     
     public void listarAluno(){
         System.out.println("\n **************** ALUNOS ****************");
-        for (Iterator<Object> it = this.alunoDao.listar(lista).iterator(); it.hasNext();) {
+        for (Iterator<Object> it = this.alunoDao.listar().iterator(); it.hasNext();) {
             Object aluno = it.next();
             System.out.println(aluno);
         }             
