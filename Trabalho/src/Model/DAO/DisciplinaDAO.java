@@ -4,7 +4,8 @@ import Model.POJO.DisciplinaPOJO;
 import java.util.ArrayList;
 
 public class DisciplinaDAO implements GenericoDAO{
-    ArrayList<DisciplinaPOJO> listaDeDisciplinas = new ArrayList<>();
+    
+    private ArrayList<DisciplinaPOJO> listaDeDisciplinas = new ArrayList<>();
     private static DisciplinaDAO instancia = null;
     
     public static synchronized DisciplinaDAO getInstancia() {

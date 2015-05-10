@@ -6,22 +6,6 @@ public class FaltaPOJO {
     private AlunoPOJO aluno;
     private TurmaPOJO turma;
 
-    public void setAluno(AlunoPOJO aluno) {
-        this.aluno = aluno;
-    }
-
-    public void setTurma(TurmaPOJO turma) {
-        this.turma = turma;
-    }
-
-    public AlunoPOJO getAluno() {
-        return aluno;
-    }
-
-    public TurmaPOJO getTurma() {
-        return turma;
-    }
-
     //Construtor
     public FaltaPOJO(Integer faltas, TurmaPOJO turma, AlunoPOJO aluno) {
         this.faltas = faltas;
@@ -35,6 +19,18 @@ public class FaltaPOJO {
     }
     public void setFaltas(Integer faltas) {
         this.faltas = faltas;
+    }
+    public AlunoPOJO getAluno() {
+        return aluno;
+    }
+    public void setAluno(AlunoPOJO aluno) {
+        this.aluno = aluno;
+    }
+    public TurmaPOJO getTurma() {
+        return turma;
+    }
+    public void setTurma(TurmaPOJO turma) {
+        this.turma = turma;
     }
        
     //toString
