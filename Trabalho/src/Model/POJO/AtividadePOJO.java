@@ -5,7 +5,7 @@ public class AtividadePOJO {
     private String nome;
     private String tipo;
     private String data;
-    private Float valor;
+    private Double valor;
     private Integer id;
     private AlunoPOJO aluno; 
     private NotaPOJO nota;
@@ -45,6 +45,7 @@ public class AtividadePOJO {
     
     //construtor
 
+    /*
     public AtividadePOJO(String nome, String tipo, String data, Float valor, AlunoPOJO aluno, NotaPOJO nota) {
         this.nome = nome;
         this.tipo = tipo;
@@ -53,7 +54,7 @@ public class AtividadePOJO {
         this.aluno = aluno;
         this.nota = nota;
     }
-   
+   */
 
     //gets e setters
     public String getNome() {
@@ -80,11 +81,11 @@ public class AtividadePOJO {
         this.data = data;
     }
 
-    public Float getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(Float valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
