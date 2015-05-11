@@ -87,6 +87,8 @@ public class TurmaPOJO {
         this.idTurma = idTurma;
     }
     
+    
+    
     @Override
     public boolean equals(Object obj) {
         if(this == obj)
