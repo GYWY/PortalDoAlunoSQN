@@ -50,6 +50,10 @@ public class DisciplinaPOJO {
         this.id = id;
     }
     
+    public void adicionarTurma(TurmaPOJO turma){
+        this.listaTurmas.add(turma);
+    }
+    
     //toString
     @Override
     public String toString() {
