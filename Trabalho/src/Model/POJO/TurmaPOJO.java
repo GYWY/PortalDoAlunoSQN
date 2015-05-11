@@ -10,11 +10,19 @@ public class TurmaPOJO {
     private String local;
     private String horario;
     private Integer vaga;
-    private ArrayList<ProfessorPOJO> listaProfessores;
+    private ProfessorPOJO professor;
     private DisciplinaPOJO disciplina;
     private ArrayList<AlunoPOJO> listaAlunos;
     private ArrayList<AtividadePOJO> listaDeAtividade;
 
+    public ProfessorPOJO getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(ProfessorPOJO professor) {
+        this.professor = professor;
+    }
+    
     public Long getAno() {
         return ano;
     }
@@ -53,14 +61,6 @@ public class TurmaPOJO {
 
     public void setVaga(Integer vaga) {
         this.vaga = vaga;
-    }
-
-    public ArrayList<ProfessorPOJO> getListaProfessores() {
-        return listaProfessores;
-    }
-
-    public void setListaProfessores(ArrayList<ProfessorPOJO> listaProfessores) {
-        this.listaProfessores = listaProfessores;
     }
 
     public DisciplinaPOJO getDisciplina() {
