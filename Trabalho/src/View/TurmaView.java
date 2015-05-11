@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class TurmaView {
     
     private ArrayList<TurmaPOJO> lista = new ArrayList<>();
-    private TurmaDAO turmaDao = new TurmaDAO();
     private TurmaPOJO novaTurma;
     
     void cadastrar(){
@@ -26,13 +25,13 @@ public class TurmaView {
         novaTurma.setHorario(leitor.nextLine());
         System.out.println("qUANTIDADE DE VAGAS: ");
         novaTurma.setVaga(Integer.parseInt(leitor.nextLine()));
-        turmaDao.inserir(novaTurma);
+        TurmaDAO.getInstancia().inserir(novaTurma);
         System.out.println("ID da Turma: " + novaTurma.getIdTurma());
     }
     
     public void listarAluno(){
         System.out.println("\n **************** TURMAS ****************");
-        for (Iterator<Object> it = this.turmaDao.listar().iterator(); it.hasNext();) {
+        for (Iterator<Object> it = TurmaDAO.getInstancia().listar().iterator(); it.hasNext();) {
             Object turma = it.next();
             System.out.println(turma);
         }             
@@ -43,10 +42,10 @@ public class TurmaView {
         System.out.println("\n **************** PESQUISA ****************");
         System.out.println("ENTRE COM O NOME OU MATRICULA: ");
         Object pesquisa = leitor.nextLine();
-        if(turmaDao.buscar(pesquisa) == null){
+        if(TurmaDAO.getInstancia().buscar(pesquisa) == null){
             System.out.println("ALUNO NÃO ENCONTRADO");
         }
-        else if(novaTurma == (TurmaPOJO) turmaDao.buscar(pesquisa)) {
+        else if(novaTurma == (TurmaPOJO) TurmaDAO.getInstancia().buscar(pesquisa)) {
             System.out.println(novaTurma);
         }
     }

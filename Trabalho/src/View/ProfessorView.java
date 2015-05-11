@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProfessorView{
-    ProfessorDAO professorDao = new ProfessorDAO();
     
     private void tratarDisciplinaInexistente(String nomeDaDisciplina, DisciplinaDAO disciplinaDAO){
         
@@ -49,7 +48,7 @@ public class ProfessorView{
         ProfessorPOJO professor = new ProfessorPOJO();
         
         this.lerDados(professor);
-        this.professorDao.inserir(professor);
+        ProfessorDAO.getInstancia().inserir(professor);
     }
     
     private void imprimirBusca(ProfessorPOJO professor){
@@ -66,12 +65,12 @@ public class ProfessorView{
         ProfessorPOJO professor;
         System.out.println("\n **************** PESQUISA ****************");
         System.out.println("ENTRE COM O NOME DO PROFESSOR: ");
-        professor = (ProfessorPOJO) this.professorDao.buscar(leitor.nextLine());
+        professor = (ProfessorPOJO) ProfessorDAO.getInstancia().buscar(leitor.nextLine());
         this.imprimirBusca(professor);
     }
     
     public void listarProfessores() {
-        for (Object professor : this.professorDao.listar()) {
+        for (Object professor : ProfessorDAO.getInstancia().listar()) {
             System.out.println(professor);
         }
     }

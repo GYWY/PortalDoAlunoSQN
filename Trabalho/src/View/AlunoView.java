@@ -12,7 +12,6 @@ import java.util.Scanner;
 public class AlunoView {
     
     private ArrayList<AlunoPOJO> lista = new ArrayList<>();
-    private AlunoDAO alunoDao = new AlunoDAO();
     private AlunoPOJO novoAluno;
     
     public void cadastrarAluno(){
@@ -23,7 +22,7 @@ public class AlunoView {
         novoAluno.setNome(leitor.nextLine());
         System.out.println("\n CPF: ");
         novoAluno.setCpf(leitor.nextLine());
-        alunoDao.inserir(novoAluno);
+        AlunoDAO.getInstancia().inserir(novoAluno);
     }
     
     public void cadastrarFalta() {
@@ -32,17 +31,17 @@ public class AlunoView {
         novoAluno = new AlunoPOJO();
         System.out.println("\n **************** CADASTRO DE FALTAS ***************");
         System.out.println("NOME DO ALUNO: ");
-        novoAluno = (AlunoPOJO) alunoDao.buscar(leitor.nextLine());
+        novoAluno = (AlunoPOJO) AlunoDAO.getInstancia().buscar(leitor.nextLine());
         System.out.println("TURMA: ");
         falta.setTurma((TurmaPOJO) TurmaDAO.getInstancia().buscar(Integer.parseInt(leitor.nextLine())));
         System.out.println("NÚMERO DE FALTAS: ");
         falta.setFaltas(leitor.nextInt());
-        alunoDao.inserir(novoAluno);
+        AlunoDAO.getInstancia().inserir(novoAluno);
     }
     
     public void listarAluno(){
         System.out.println("\n **************** ALUNOS ****************");
-        for (Iterator<Object> it = this.alunoDao.listar().iterator(); it.hasNext();) {
+        for (Iterator<Object> it = AlunoDAO.getInstancia().listar().iterator(); it.hasNext();) {
             Object aluno = it.next();
             System.out.println(aluno);
         }             
@@ -53,10 +52,10 @@ public class AlunoView {
         System.out.println("\n **************** PESQUISA ****************");
         System.out.println("ENTRE COM O NOME OU MATRICULA: ");
         Object pesquisa = leitor.nextLine();
-        if(alunoDao.buscar(pesquisa) == null){
+        if(AlunoDAO.getInstancia().buscar(pesquisa) == null){
             System.out.println("ALUNO NÃO ENCONTRADO");
         }
-        else if(novoAluno == (AlunoPOJO) alunoDao.buscar(pesquisa)) {
+        else if(novoAluno == (AlunoPOJO) AlunoDAO.getInstancia().buscar(pesquisa)) {
             System.out.println(novoAluno);
         }
     }

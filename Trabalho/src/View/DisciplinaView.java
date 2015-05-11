@@ -12,7 +12,6 @@ import java.util.Scanner;
 public class DisciplinaView {
     
     private ArrayList<DisciplinaPOJO> lista = new ArrayList<>();
-    private DisciplinaDAO disciplinaDao = new DisciplinaDAO();
     private DisciplinaPOJO novaDisciplina;
     
     private void certificarQueOProfessorExiste(String nomeDoProfessor){
@@ -67,7 +66,7 @@ public class DisciplinaView {
         novaDisciplina.setEmenta(leitor.nextLine());
         System.out.println("\n CARGA HORÁRIA: ");
         novaDisciplina.setCargaHoraria(Integer.parseInt(leitor.nextLine()));
-        disciplinaDao.inserir(novaDisciplina);
+        DisciplinaDAO.getInstancia().inserir(novaDisciplina);
     }
     
     public void buscarDisciplina() {
@@ -75,17 +74,17 @@ public class DisciplinaView {
         System.out.println("\n **************** PESQUISA DISCIPLINA ****************");
         System.out.println("\n ENTRE COM O NOME DA DISCIPLINA: ");
         Object pesquisa = leitor.nextLine();
-        if(disciplinaDao.buscar(pesquisa) == null) {
+        if(DisciplinaDAO.getInstancia().buscar(pesquisa) == null) {
             System.out.println("DISCIPLINA NÃO ENCONTRADA");
         }
-        else if(novaDisciplina == (DisciplinaPOJO) disciplinaDao.buscar(pesquisa)){
+        else if(novaDisciplina == (DisciplinaPOJO) DisciplinaDAO.getInstancia().buscar(pesquisa)){
             System.out.println(novaDisciplina);
         }
     }
     
     public void listarDisciplina() {
         System.out.println("\n **************** DISCIPLINAS ****************");
-        for (Iterator<Object> it = this.disciplinaDao.listar().iterator(); it.hasNext();) {
+        for (Iterator<Object> it = DisciplinaDAO.getInstancia().listar().iterator(); it.hasNext();) {
             Object disciplinaL = it.next();
             System.out.println(disciplinaL);
         }
