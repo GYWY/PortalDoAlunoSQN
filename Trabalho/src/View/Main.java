@@ -11,6 +11,8 @@ public class Main {
         System.out.println("3- CADASTRAR DISCIPLINA");
         System.out.println("4- CADASTRAR ATIVIDADE");
         System.out.println("5- CADASTRAR TURMA");
+        System.out.println("6- CADASTRAR FALTA");
+        System.out.println("7- CADASTRAR NOTA");
     }
 
     public static void main(String[] args) {
@@ -53,6 +55,10 @@ public class Main {
                 }
                 case 6: {
                     aluno.cadastrarFalta();
+                    break;
+                }
+                case 7: {
+                    atividade.cadastrarNota();
                     break;
                 }
             }
