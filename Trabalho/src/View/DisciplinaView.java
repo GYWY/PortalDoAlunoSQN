@@ -16,10 +16,9 @@ public class DisciplinaView {
     private DisciplinaPOJO novaDisciplina;
     
     private void certificarQueOProfessorExiste(String nomeDoProfessor){
-        ProfessorDAO professorDAO = new ProfessorDAO();
         Scanner leitor = new Scanner(System.in);
         
-        while(professorDAO.buscar(nomeDoProfessor) == null){
+        while(ProfessorDAO.getInstancia().buscar(nomeDoProfessor) == null){
             System.out.println("Professor não cadastrado. Digite novamente:   ");
             nomeDoProfessor = leitor.nextLine();
         }
