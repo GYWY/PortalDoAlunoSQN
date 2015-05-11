@@ -42,7 +42,7 @@ public class Main {
                 }
 
                 case 3: {
-                    disciplina.cadastrar();
+                    disciplina.cadastrarDisciplina();
                     break;
                 }
                 case 4: {
