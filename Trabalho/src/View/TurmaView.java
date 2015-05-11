@@ -16,15 +16,15 @@ public class TurmaView {
         Scanner leitor = new Scanner(System.in);
         novaTurma = new TurmaPOJO();
         System.out.println("\n **************** CADASTRO TURMA ***************");
-        System.out.println("\n ANO: ");
+        System.out.println("ANO: ");
         novaTurma.setAno(Long.parseLong(leitor.nextLine()));
-        System.out.println("\n PERíODO: ");
+        System.out.println("PERíODO: ");
         novaTurma.setPeriodo(Integer.parseInt(leitor.nextLine()));
-        System.out.println("\n LOCAL: ");
+        System.out.println("LOCAL: ");
         novaTurma.setLocal(leitor.nextLine());
-        System.out.println("\n HORÁRIO: ");
+        System.out.println("HORÁRIO: ");
         novaTurma.setHorario(leitor.nextLine());
-        System.out.println("\n VAGA: ");
+        System.out.println("qUANTIDADE DE VAGAS: ");
         novaTurma.setVaga(Integer.parseInt(leitor.nextLine()));
         turmaDao.inserir(novaTurma);
         System.out.println("ID da Turma: " + novaTurma.getIdTurma());
@@ -41,7 +41,7 @@ public class TurmaView {
     public void buscarAluno(){
         Scanner leitor = new Scanner(System.in);
         System.out.println("\n **************** PESQUISA ****************");
-        System.out.println("\n ENTRE COM O NOME OU MATRICULA: ");
+        System.out.println("ENTRE COM O NOME OU MATRICULA: ");
         Object pesquisa = leitor.nextLine();
         if(turmaDao.buscar(pesquisa) == null){
             System.out.println("ALUNO NÃO ENCONTRADO");

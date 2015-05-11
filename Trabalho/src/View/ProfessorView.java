@@ -13,14 +13,14 @@ public class ProfessorView{
     private void tratarDisciplinaInexistente(String nomeDaDisciplina, DisciplinaDAO disciplinaDAO){
         
         while(disciplinaDAO.buscar(nomeDaDisciplina) == null){
-                System.out.println("A disciplina não está cadastrada. Digite novamente");
+                System.out.println("A DISCIPLINA NÃO ESTÁ CADASTRADA. DIGITE NOVAMENTE!");
         }
     }
     
     private void cadastrarDisciplinasElegiveis(ProfessorPOJO professor){
         Scanner leitor = new Scanner(System.in);
         String nomeDaDisciplina;
-        System.out.println("Digite o nome da disciplina ou 0 caso contrário:  ");
+        System.out.println("NOME DA DISCIPLINA OU 0 CASO CONTRÁRIO:  ");
         DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
         
         do{
@@ -33,14 +33,14 @@ public class ProfessorView{
     
     private void lerDados(ProfessorPOJO professor){
         Scanner leitor = new Scanner(System.in);
-        
-        System.out.println("Digite o nome do professor:    ");
+        System.out.println("\n **************** CADASTRO PROFESSOR ***************");
+        System.out.println("NOME PROFESSOR: ");
         professor.setNome(leitor.nextLine());
         
-        System.out.println("Digite o C.P.F. do professor:    ");
+        System.out.println("CPF: ");
         professor.setCpf(leitor.nextLine());
         
-        System.out.println("Digite o departamento o qual o professor pertence::    ");
+        System.out.println("DEPARTAMENTO: ");
         professor.setDepartamento(leitor.nextLine());
     }
     
@@ -54,7 +54,7 @@ public class ProfessorView{
     
     private void imprimirBusca(ProfessorPOJO professor){
         if(professor == null){
-            System.out.println("Professor não encontrado!!");
+            System.out.println("PROFESSOR NÃO ENCONTRADO!!");
         }
         else{
             System.out.println(professor);
@@ -64,8 +64,8 @@ public class ProfessorView{
     public void buscar(){
         Scanner leitor = new Scanner(System.in);
         ProfessorPOJO professor;
-        
-        System.out.println("Digite o nome do professor procurado:   ");
+        System.out.println("\n **************** PESQUISA ****************");
+        System.out.println("ENTRE COM O NOME DO PROFESSOR: ");
         professor = (ProfessorPOJO) this.professorDao.buscar(leitor.nextLine());
         this.imprimirBusca(professor);
     }

@@ -30,11 +30,12 @@ public class AlunoView {
         Scanner leitor = new Scanner(System.in);
         FaltaPOJO falta = new FaltaPOJO();
         novoAluno = new AlunoPOJO();
+        System.out.println("\n **************** CADASTRO DE FALTAS ***************");
         System.out.println("NOME DO ALUNO: ");
         novoAluno = (AlunoPOJO) alunoDao.buscar(leitor.nextLine());
-        System.out.println("\nTURMA: ");
+        System.out.println("TURMA: ");
         falta.setTurma((TurmaPOJO) TurmaDAO.getInstancia().buscar(Integer.parseInt(leitor.nextLine())));
-        System.out.println("\nNÚMERO DE FALTAS: ");
+        System.out.println("NÚMERO DE FALTAS: ");
         falta.setFaltas(leitor.nextInt());
         alunoDao.inserir(novoAluno);
     }
@@ -50,7 +51,7 @@ public class AlunoView {
     public void buscarAluno(){
         Scanner leitor = new Scanner(System.in);
         System.out.println("\n **************** PESQUISA ****************");
-        System.out.println("\n ENTRE COM O NOME OU MATRICULA: ");
+        System.out.println("ENTRE COM O NOME OU MATRICULA: ");
         Object pesquisa = leitor.nextLine();
         if(alunoDao.buscar(pesquisa) == null){
             System.out.println("ALUNO NÃO ENCONTRADO");

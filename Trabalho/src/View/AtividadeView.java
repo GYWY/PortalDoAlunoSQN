@@ -20,13 +20,13 @@ public class AtividadeView {
         Scanner leitor = new Scanner(System.in);
         novaAtividade = new AtividadePOJO();
         System.out.println("\n **************** CADASTRO DE ATIVIDADES ***************");
-        System.out.println("digite o nome do aluno: ");
+        System.out.println("NOME DO ALUNO ");
         AlunoDAO.getInstancia().buscar(leitor.nextLine());
-        System.out.println("digite o tipo da atividade: ");
+        System.out.println("TIPO DA ATIVIDADE: ");
         novaAtividade.setTipo(leitor.nextLine());
-        System.out.println("digite a data no formato dd/mm/aa: ");
+        System.out.println("DATA (FORMATO: dd/mm/aa): ");
         novaAtividade.setData(leitor.nextLine());
-        System.out.println("Digite o valor: ");
+        System.out.println("VALOR: ");
         novaAtividade.setValor(Double.parseDouble(leitor.nextLine()));
         atividadeDao.inserir(novaAtividade);
         
@@ -36,11 +36,12 @@ public class AtividadeView {
         Scanner leitor = new Scanner(System.in);
         NotaPOJO nota = new NotaPOJO();
         novaAtividade = new AtividadePOJO();
+        System.out.println("\n **************** CADASTRO DE NOTAS ***************");
         System.out.println("NOME DO ALUNO: ");
         novaAtividade = (AtividadePOJO) atividadeDao.buscar(leitor.nextLine());
-        System.out.println("\nCÓDIGO DA ATIVIDADE: ");
+        System.out.println("CÓDIGO DA ATIVIDADE: ");
         nota.setAtividade((AtividadePOJO) AtividadeDAO.getInstancia().buscar(Integer.parseInt(leitor.nextLine())));
-        System.out.println("\nNOTA: ");
+        System.out.println("NOTA: ");
         nota.setNota(Double.parseDouble(leitor.nextLine()));
         atividadeDao.inserir(novaAtividade);
     }
@@ -49,7 +50,7 @@ public class AtividadeView {
         
         Scanner leitor = new Scanner(System.in);
         System.out.println("\n **************** PESQUISA ATIVIDADE ****************");
-        System.out.println("\n ENTRE COM O TIPO: ");
+        System.out.println("ENTRE COM O TIPO: ");
         Object pesquisa = leitor.nextLine();
         if(atividadeDao.buscar(pesquisa) == null) {
             System.out.println("ATIVIDADE NÃO ENCONTRADA");
