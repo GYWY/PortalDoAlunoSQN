@@ -7,13 +7,10 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class TurmaView {
-    
-    private ArrayList<Turma> lista = new ArrayList<>();
-    private Turma novaTurma;
-    
+
     void cadastrar(){
         Scanner leitor = new Scanner(System.in);
-        novaTurma = new Turma();
+        Turma novaTurma = new Turma();
         System.out.println("\n **************** CADASTRO TURMA ***************");
         System.out.println("ANO: ");
         novaTurma.setAno(Long.parseLong(leitor.nextLine()));
@@ -38,6 +35,7 @@ public class TurmaView {
     }
     
     public void buscarAluno(){
+        Turma novaTurma = new Turma();
         Scanner leitor = new Scanner(System.in);
         System.out.println("\n **************** PESQUISA ****************");
         System.out.println("ENTRE COM O NOME OU MATRICULA: ");

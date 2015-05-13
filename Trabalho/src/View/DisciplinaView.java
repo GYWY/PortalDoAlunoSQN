@@ -11,17 +11,12 @@ import java.util.Scanner;
 
 public class DisciplinaView {
     
-    private ArrayList<Disciplina> lista = new ArrayList<>();
-    private Disciplina novaDisciplina;
-    
     private void certificarQueOProfessorExiste(String nomeDoProfessor){
         Scanner leitor = new Scanner(System.in);
-        
         while(ProfessorDAO.getInstancia().buscar(nomeDoProfessor) == null){
             System.out.println("Professor não cadastrado. Digite novamente:   ");
             nomeDoProfessor = leitor.nextLine();
-        }
-        
+        } 
     }
     
     private void cadastrarProfessorNaTurma(Turma turma){
@@ -58,7 +53,7 @@ public class DisciplinaView {
     
     public void cadastrarDisciplina() {
         Scanner leitor = new Scanner(System.in);
-        novaDisciplina = new Disciplina();
+        Disciplina novaDisciplina = new Disciplina();
         System.out.println("\n **************** CADASTRO DISCIPLINA ***************");
         System.out.println("\n DISCIPLINA: ");
         novaDisciplina.setNome(leitor.nextLine());
@@ -70,6 +65,7 @@ public class DisciplinaView {
     }
     
     public void buscarDisciplina() {
+        Disciplina novaDisciplina = new Disciplina();
         Scanner leitor = new Scanner(System.in);
         System.out.println("\n **************** PESQUISA DISCIPLINA ****************");
         System.out.println("\n ENTRE COM O NOME DA DISCIPLINA: ");

@@ -10,14 +10,10 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class AtividadeView {
-    
-    private ArrayList<Atividade> lista = new ArrayList<>();
-    private Atividade novaAtividade;
-   
-    
+
     public void cadastrarAtividade(){
         Scanner leitor = new Scanner(System.in);
-        novaAtividade = new Atividade();
+        Atividade novaAtividade = new Atividade();
         System.out.println("\n **************** CADASTRO DE ATIVIDADES ***************");
         System.out.println("NOME DO ALUNO ");
         AlunoDAO.getInstancia().buscar(leitor.nextLine());
@@ -34,7 +30,7 @@ public class AtividadeView {
     public void cadastrarNota() {
         Scanner leitor = new Scanner(System.in);
         Nota nota = new Nota();
-        novaAtividade = new Atividade();
+        Atividade novaAtividade = new Atividade();
         System.out.println("\n **************** CADASTRO DE NOTAS ***************");
         System.out.println("NOME DO ALUNO: ");
         novaAtividade = (Atividade) AtividadeDAO.getInstancia().buscar(leitor.nextLine());
@@ -46,7 +42,7 @@ public class AtividadeView {
     }
     
     public void buscarAtividade() {
-        
+        Atividade novaAtividade = new Atividade();
         Scanner leitor = new Scanner(System.in);
         System.out.println("\n **************** PESQUISA ATIVIDADE ****************");
         System.out.println("ENTRE COM O TIPO: ");
@@ -60,11 +56,11 @@ public class AtividadeView {
     }
     
     public void listarAtividade() {
-        System.out.println("\n **************** ATIVIDADES ****************");
-        this.lista = (ArrayList<Atividade>) AtividadeDAO.getInstancia().listar().iterator();
-        for (int i = 0;i<this.lista.size();i++) {
-            System.out.println(this.lista.get(i));
-        }
+        System.out.println("\n **************** ALUNOS ****************");
+        for (Iterator<Object> it = AtividadeDAO.getInstancia().listar().iterator(); it.hasNext();) {
+            Object atividade = it.next();
+            System.out.println(atividade);
+        }     
     }
     
 }
