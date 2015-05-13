@@ -8,9 +8,8 @@ public interface GenericoDAO {
     
     void inserir(Object objeto);
     Object buscar(Object objeto);
-    boolean alterar(Object objeto, Object busca);
+    boolean alterar(Object objeto);
     boolean remover(Object objeto);
     ArrayList<Object> listar();
-    void salvarArquivo();
-    void carregarArquivo();
+    
 }

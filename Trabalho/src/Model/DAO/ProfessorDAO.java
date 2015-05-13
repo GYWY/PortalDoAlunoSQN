@@ -48,7 +48,7 @@ public class ProfessorDAO implements GenericoDAO{
     }
 
     @Override
-    public boolean alterar(Object objeto, Object busca) {
+    public boolean alterar(Object objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -67,12 +67,10 @@ public class ProfessorDAO implements GenericoDAO{
          return (ArrayList<Object>)(Object)listaDeProfessores;        
     }
 
-    @Override
     public void salvarArquivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
     public void carregarArquivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
