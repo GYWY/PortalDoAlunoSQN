@@ -1,6 +1,7 @@
 package View;
 
 import Model.DAO.DisciplinaDAO;
+import Model.DAO.GenericoDAO;
 import Model.DAO.ProfessorDAO;
 import Model.POJO.Disciplina;
 import Model.POJO.Professor;
@@ -12,8 +13,11 @@ import java.util.Scanner;
 public class DisciplinaView {
     
     private void certificarQueOProfessorExiste(String nomeDoProfessor){
+        GenericoDAO disciplina = DisciplinaDAO.getInstancia();
+        GenericoDAO professor = ProfessorDAO.getInstancia();
+        
         Scanner leitor = new Scanner(System.in);
-        while(ProfessorDAO.getInstancia().buscar(nomeDoProfessor) == null){
+        while(professor.buscar(nomeDoProfessor) == null){
             System.out.println("Professor não cadastrado. Digite novamente:   ");
             nomeDoProfessor = leitor.nextLine();
         } 
@@ -54,6 +58,8 @@ public class DisciplinaView {
     public void cadastrarDisciplina() {
         Scanner leitor = new Scanner(System.in);
         Disciplina novaDisciplina = new Disciplina();
+        GenericoDAO disciplina = DisciplinaDAO.getInstancia();
+        
         System.out.println("\n **************** CADASTRO DISCIPLINA ***************");
         System.out.println("\n DISCIPLINA: ");
         novaDisciplina.setNome(leitor.nextLine());
@@ -61,28 +67,32 @@ public class DisciplinaView {
         novaDisciplina.setEmenta(leitor.nextLine());
         System.out.println("\n CARGA HORÁRIA: ");
         novaDisciplina.setCargaHoraria(Integer.parseInt(leitor.nextLine()));
-        DisciplinaDAO.getInstancia().inserir(novaDisciplina);
+        disciplina.inserir(novaDisciplina);
     }
     
     public void buscarDisciplina() {
         Disciplina novaDisciplina = new Disciplina();
         Scanner leitor = new Scanner(System.in);
+        GenericoDAO disciplina = DisciplinaDAO.getInstancia();
+        
         System.out.println("\n **************** PESQUISA DISCIPLINA ****************");
         System.out.println("\n ENTRE COM O NOME DA DISCIPLINA: ");
         Object pesquisa = leitor.nextLine();
-        if(DisciplinaDAO.getInstancia().buscar(pesquisa) == null) {
+        if(disciplina.buscar(pesquisa) == null) {
             System.out.println("DISCIPLINA NÃO ENCONTRADA");
         }
-        else if(novaDisciplina == (Disciplina) DisciplinaDAO.getInstancia().buscar(pesquisa)){
+        else if(novaDisciplina == (Disciplina) disciplina.buscar(pesquisa)){
             System.out.println(novaDisciplina);
         }
     }
     
     public void listarDisciplina() {
+        GenericoDAO disciplina = DisciplinaDAO.getInstancia();
+        
         System.out.println("\n **************** DISCIPLINAS ****************");
-        for (Iterator<Object> it = DisciplinaDAO.getInstancia().listar().iterator(); it.hasNext();) {
-            Object disciplinaL = it.next();
-            System.out.println(disciplinaL);
+        for (Iterator<Object> it = disciplina.listar().iterator(); it.hasNext();) {
+            Object disciplinaLista = it.next();
+            System.out.println(disciplinaLista);
         }
     }
     

@@ -2,6 +2,7 @@
 package View;
 
 import Model.DAO.DisciplinaDAO;
+import Model.DAO.GenericoDAO;
 import Model.DAO.ProfessorDAO;
 import Model.POJO.Professor;
 import java.util.ArrayList;
@@ -46,9 +47,10 @@ public class ProfessorView{
     public void cadastrar(){
         Scanner leitor = new Scanner(System.in);
         Professor professor = new Professor();
+        GenericoDAO professorDao = ProfessorDAO.getInstancia();
         
         this.lerDados(professor);
-        ProfessorDAO.getInstancia().inserir(professor);
+        professorDao.inserir(professor);
     }
     
     private void imprimirBusca(Professor professor){
@@ -63,14 +65,18 @@ public class ProfessorView{
     public void buscar(){
         Scanner leitor = new Scanner(System.in);
         Professor professor;
+        GenericoDAO professorDao = ProfessorDAO.getInstancia();
+        
         System.out.println("\n **************** PESQUISA ****************");
         System.out.println("ENTRE COM O NOME DO PROFESSOR: ");
-        professor = (Professor) ProfessorDAO.getInstancia().buscar(leitor.nextLine());
+        professor = (Professor) professorDao.buscar(leitor.nextLine());
         this.imprimirBusca(professor);
     }
     
     public void listarProfessores() {
-        for (Object professor : ProfessorDAO.getInstancia().listar()) {
+        GenericoDAO professorDao = ProfessorDAO.getInstancia();
+        
+        for (Object professor : professorDao.listar()) {
             System.out.println(professor);
         }
     }

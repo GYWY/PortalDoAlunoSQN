@@ -1,5 +1,6 @@
 package View;
 
+import Model.DAO.GenericoDAO;
 import Model.DAO.TurmaDAO;
 import Model.POJO.Turma;
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ public class TurmaView {
     void cadastrar(){
         Scanner leitor = new Scanner(System.in);
         Turma novaTurma = new Turma();
+        GenericoDAO turma = TurmaDAO.getInstancia();
+        
         System.out.println("\n **************** CADASTRO TURMA ***************");
         System.out.println("ANO: ");
         novaTurma.setAno(Long.parseLong(leitor.nextLine()));
@@ -22,28 +25,32 @@ public class TurmaView {
         novaTurma.setHorario(leitor.nextLine());
         System.out.println("qUANTIDADE DE VAGAS: ");
         novaTurma.setVaga(Integer.parseInt(leitor.nextLine()));
-        TurmaDAO.getInstancia().inserir(novaTurma);
+        turma.inserir(novaTurma);
         System.out.println("ID da Turma: " + novaTurma.getIdTurma());
     }
     
     public void listarAluno(){
+        GenericoDAO turma = TurmaDAO.getInstancia();
+        
         System.out.println("\n **************** TURMAS ****************");
-        for (Iterator<Object> it = TurmaDAO.getInstancia().listar().iterator(); it.hasNext();) {
-            Object turma = it.next();
-            System.out.println(turma);
+        for (Iterator<Object> it = turma.listar().iterator(); it.hasNext();) {
+            Object turmaLista = it.next();
+            System.out.println(turmaLista);
         }             
     }
     
     public void buscarAluno(){
         Turma novaTurma = new Turma();
         Scanner leitor = new Scanner(System.in);
+        GenericoDAO turma = TurmaDAO.getInstancia();
+        
         System.out.println("\n **************** PESQUISA ****************");
         System.out.println("ENTRE COM O NOME OU MATRICULA: ");
         Object pesquisa = leitor.nextLine();
-        if(TurmaDAO.getInstancia().buscar(pesquisa) == null){
+        if(turma.buscar(pesquisa) == null){
             System.out.println("ALUNO NÃO ENCONTRADO");
         }
-        else if(novaTurma == (Turma) TurmaDAO.getInstancia().buscar(pesquisa)) {
+        else if(novaTurma == (Turma) turma.buscar(pesquisa)) {
             System.out.println(novaTurma);
         }
     }
