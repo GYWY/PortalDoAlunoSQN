@@ -2,17 +2,17 @@ package View;
 
 import Model.DAO.DisciplinaDAO;
 import Model.DAO.ProfessorDAO;
-import Model.POJO.DisciplinaPOJO;
-import Model.POJO.ProfessorPOJO;
-import Model.POJO.TurmaPOJO;
+import Model.POJO.Disciplina;
+import Model.POJO.Professor;
+import Model.POJO.Turma;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class DisciplinaView {
     
-    private ArrayList<DisciplinaPOJO> lista = new ArrayList<>();
-    private DisciplinaPOJO novaDisciplina;
+    private ArrayList<Disciplina> lista = new ArrayList<>();
+    private Disciplina novaDisciplina;
     
     private void certificarQueOProfessorExiste(String nomeDoProfessor){
         Scanner leitor = new Scanner(System.in);
@@ -24,16 +24,16 @@ public class DisciplinaView {
         
     }
     
-    private void cadastrarProfessorNaTurma(TurmaPOJO turma){
+    private void cadastrarProfessorNaTurma(Turma turma){
         Scanner leitor = new Scanner(System.in);
-        ProfessorPOJO professor = new ProfessorPOJO();
+        Professor professor = new Professor();
         
         System.out.println("Digite o nome do professor que irá ministrar a disciplina:   ");
         this.certificarQueOProfessorExiste(leitor.nextLine());
         turma.setProfessor(professor);
     }
     
-    private void lerDadosDaTurma(TurmaPOJO turma){
+    private void lerDadosDaTurma(Turma turma){
         Scanner leitor = new Scanner(System.in);
         
         System.out.println("Digite o periodo da turma:   ");
@@ -49,8 +49,8 @@ public class DisciplinaView {
         this.cadastrarProfessorNaTurma(turma);
     }
     
-    public void cadastrarTurmaNaDisciplina(DisciplinaPOJO disciplina){
-        TurmaPOJO turma = new TurmaPOJO();
+    public void cadastrarTurmaNaDisciplina(Disciplina disciplina){
+        Turma turma = new Turma();
         
         this.lerDadosDaTurma(turma);
         disciplina.adicionarTurma(turma);
@@ -58,7 +58,7 @@ public class DisciplinaView {
     
     public void cadastrarDisciplina() {
         Scanner leitor = new Scanner(System.in);
-        novaDisciplina = new DisciplinaPOJO();
+        novaDisciplina = new Disciplina();
         System.out.println("\n **************** CADASTRO DISCIPLINA ***************");
         System.out.println("\n DISCIPLINA: ");
         novaDisciplina.setNome(leitor.nextLine());
@@ -77,7 +77,7 @@ public class DisciplinaView {
         if(DisciplinaDAO.getInstancia().buscar(pesquisa) == null) {
             System.out.println("DISCIPLINA NÃO ENCONTRADA");
         }
-        else if(novaDisciplina == (DisciplinaPOJO) DisciplinaDAO.getInstancia().buscar(pesquisa)){
+        else if(novaDisciplina == (Disciplina) DisciplinaDAO.getInstancia().buscar(pesquisa)){
             System.out.println(novaDisciplina);
         }
     }

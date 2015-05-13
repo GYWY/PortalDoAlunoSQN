@@ -1,25 +1,25 @@
 package Model.POJO;
 
-public class AtividadePOJO {
+public class Atividade {
     //atributos
     private String nome;
     private String tipo;
     private String data;
     private Double valor;
     private Integer id;
-    private AlunoPOJO aluno; 
-    private NotaPOJO nota;
-    private TurmaPOJO turma;
+    private Aluno aluno; 
+    private Nota nota;
+    private Turma turma;
 
-    public AlunoPOJO getAluno() {
+    public Aluno getAluno() {
         return aluno;
     }
 
-    public NotaPOJO getNota() {
+    public Nota getNota() {
         return nota;
     }
 
-    public TurmaPOJO getTurma() {
+    public Turma getTurma() {
         return turma;
     }
 
@@ -31,15 +31,15 @@ public class AtividadePOJO {
         this.id = id;
     }
 
-    public void setAluno(AlunoPOJO aluno) {
+    public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
 
-    public void setNota(NotaPOJO nota) {
+    public void setNota(Nota nota) {
         this.nota = nota;
     }
 
-    public void setTurma(TurmaPOJO turma) {
+    public void setTurma(Turma turma) {
         this.turma = turma;
     }
 

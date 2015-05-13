@@ -2,13 +2,13 @@
 
 package Model.DAO;
 
-import Model.POJO.AtividadePOJO;
+import Model.POJO.Atividade;
 import java.util.ArrayList;
 
 
 public class AtividadeDAO implements GenericoDAO{
     
-    ArrayList<AtividadePOJO> listaDeAtividades = new ArrayList<>();
+    ArrayList<Atividade> listaDeAtividades = new ArrayList<>();
     private static AtividadeDAO instancia = null;
     
     public static synchronized AtividadeDAO getInstancia() {
@@ -20,7 +20,7 @@ public class AtividadeDAO implements GenericoDAO{
 
     @Override
     public void inserir(Object objeto) {
-        AtividadePOJO atividade = (AtividadePOJO) objeto;
+        Atividade atividade = (Atividade) objeto;
          int contador = listaDeAtividades.size();
          contador++;
          atividade.setId(contador);
@@ -33,7 +33,7 @@ public class AtividadeDAO implements GenericoDAO{
    
         if(objeto instanceof String){
             String tipo = (String) objeto;
-            for(AtividadePOJO atividade : listaDeAtividades){
+            for(Atividade atividade : listaDeAtividades){
                 if(atividade.getTipo().contains(tipo))
                     return atividade;
             }            
@@ -45,8 +45,8 @@ public class AtividadeDAO implements GenericoDAO{
 
     @Override
        public boolean alterar(Object objeto, Object busca) {
-        AtividadePOJO atividade = (AtividadePOJO) buscar(objeto);
-        AtividadePOJO altera = (AtividadePOJO) objeto;
+        Atividade atividade = (Atividade) buscar(objeto);
+        Atividade altera = (Atividade) objeto;
         if(atividade != null){
             int indice = listaDeAtividades.indexOf(atividade);
             listaDeAtividades.add(indice, altera);

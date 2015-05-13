@@ -2,26 +2,26 @@ package Model.POJO;
 
 import java.util.ArrayList;
 
-public class AlunoPOJO extends PessoaPOJO {
+public class Aluno extends Pessoa {
     private Integer id;
-    private FaltaPOJO falta;
-    private NotaPOJO notaFinal;
-    private ArrayList<TurmaPOJO> listaTurmasMatriculadas;
-    private ArrayList<AtividadePOJO> listaAtividadesRealizadas;
+    private Falta falta;
+    private Nota notaFinal;
+    private ArrayList<Turma> listaTurmasMatriculadas;
+    private ArrayList<Atividade> listaAtividadesRealizadas;
 
-    public ArrayList<TurmaPOJO> getListaTurmasMatriculadas() {
+    public ArrayList<Turma> getListaTurmasMatriculadas() {
         return listaTurmasMatriculadas;
     }
 
-    public void setListaTurmasMatriculadas(ArrayList<TurmaPOJO> listaTurmasMatriculadas) {
+    public void setListaTurmasMatriculadas(ArrayList<Turma> listaTurmasMatriculadas) {
         this.listaTurmasMatriculadas = listaTurmasMatriculadas;
     }
 
-    public ArrayList<AtividadePOJO> getListaAtividadesRealizadas() {
+    public ArrayList<Atividade> getListaAtividadesRealizadas() {
         return listaAtividadesRealizadas;
     }
 
-    public void setListaAtividadesRealizadas(ArrayList<AtividadePOJO> listaAtividadesRealizadas) {
+    public void setListaAtividadesRealizadas(ArrayList<Atividade> listaAtividadesRealizadas) {
         this.listaAtividadesRealizadas = listaAtividadesRealizadas;
     }
 
@@ -33,20 +33,20 @@ public class AlunoPOJO extends PessoaPOJO {
         this.id = id;
     }
 
-    public FaltaPOJO getFalta() {
+    public Falta getFalta() {
         return falta;
     }
 
-    public void setFalta(FaltaPOJO falta) {
+    public void setFalta(Falta falta) {
         this.falta = falta;
     }
 
    
-    public NotaPOJO getNotaFinal() {
+    public Nota getNotaFinal() {
         return notaFinal;
     }
 
-    public void setNotaFinal(NotaPOJO notaFinal) {
+    public void setNotaFinal(Nota notaFinal) {
         this.notaFinal = notaFinal;
     }
 

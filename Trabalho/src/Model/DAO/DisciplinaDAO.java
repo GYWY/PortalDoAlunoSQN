@@ -1,11 +1,11 @@
 package Model.DAO;
 
-import Model.POJO.DisciplinaPOJO;
+import Model.POJO.Disciplina;
 import java.util.ArrayList;
 
 public class DisciplinaDAO implements GenericoDAO{
     
-    private ArrayList<DisciplinaPOJO> listaDisciplina = new ArrayList<>();
+    private ArrayList<Disciplina> listaDisciplina = new ArrayList<>();
     private static DisciplinaDAO instancia = null;
     
     public static synchronized DisciplinaDAO getInstancia() {
@@ -18,7 +18,7 @@ public class DisciplinaDAO implements GenericoDAO{
     @Override
     public void inserir(Object objeto) {
         
-         DisciplinaPOJO disciplina = (DisciplinaPOJO) objeto;
+         Disciplina disciplina = (Disciplina) objeto;
          
          int contador = listaDisciplina.size();
          contador++;
@@ -30,14 +30,14 @@ public class DisciplinaDAO implements GenericoDAO{
     public Object buscar(Object objeto) {
         if(objeto instanceof String){
             String nome = (String) objeto;
-            for(DisciplinaPOJO disciplina : listaDisciplina){
+            for(Disciplina disciplina : listaDisciplina){
                 if(disciplina.getNome().contains(nome))
                     return disciplina;
             }
         }
         else if(objeto instanceof Integer){
             Integer id =(Integer) objeto;
-            for(DisciplinaPOJO disciplina : listaDisciplina){
+            for(Disciplina disciplina : listaDisciplina){
                 if(disciplina.getId().equals(objeto)){ //ver id
                     return disciplina;
                 }
@@ -53,7 +53,7 @@ public class DisciplinaDAO implements GenericoDAO{
 
     @Override
     public boolean remover(Object objeto) {
-        DisciplinaPOJO disciplina = (DisciplinaPOJO) buscar(objeto);
+        Disciplina disciplina = (Disciplina) buscar(objeto);
         if(disciplina != null){
             listaDisciplina.remove(listaDisciplina.indexOf(disciplina));
             return true;

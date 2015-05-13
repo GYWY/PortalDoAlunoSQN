@@ -1,19 +1,19 @@
 package View;
 
 import Model.DAO.TurmaDAO;
-import Model.POJO.TurmaPOJO;
+import Model.POJO.Turma;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class TurmaView {
     
-    private ArrayList<TurmaPOJO> lista = new ArrayList<>();
-    private TurmaPOJO novaTurma;
+    private ArrayList<Turma> lista = new ArrayList<>();
+    private Turma novaTurma;
     
     void cadastrar(){
         Scanner leitor = new Scanner(System.in);
-        novaTurma = new TurmaPOJO();
+        novaTurma = new Turma();
         System.out.println("\n **************** CADASTRO TURMA ***************");
         System.out.println("ANO: ");
         novaTurma.setAno(Long.parseLong(leitor.nextLine()));
@@ -45,7 +45,7 @@ public class TurmaView {
         if(TurmaDAO.getInstancia().buscar(pesquisa) == null){
             System.out.println("ALUNO NÃO ENCONTRADO");
         }
-        else if(novaTurma == (TurmaPOJO) TurmaDAO.getInstancia().buscar(pesquisa)) {
+        else if(novaTurma == (Turma) TurmaDAO.getInstancia().buscar(pesquisa)) {
             System.out.println(novaTurma);
         }
     }

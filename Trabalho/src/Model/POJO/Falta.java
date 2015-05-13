@@ -1,10 +1,10 @@
 package Model.POJO;
 
-public class FaltaPOJO {
+public class Falta {
     //Atributos
     private Integer faltas;
-    private AlunoPOJO aluno;
-    private TurmaPOJO turma;
+    private Aluno aluno;
+    private Turma turma;
 
     //Getters e Setters
     public Integer getFaltas() {
@@ -13,16 +13,16 @@ public class FaltaPOJO {
     public void setFaltas(Integer faltas) {
         this.faltas = faltas;
     }
-    public AlunoPOJO getAluno() {
+    public Aluno getAluno() {
         return aluno;
     }
-    public void setAluno(AlunoPOJO aluno) {
+    public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
-    public TurmaPOJO getTurma() {
+    public Turma getTurma() {
         return turma;
     }
-    public void setTurma(TurmaPOJO turma) {
+    public void setTurma(Turma turma) {
         this.turma = turma;
     }
        

@@ -2,21 +2,21 @@ package View;
 
 import Model.DAO.AlunoDAO;
 import Model.DAO.TurmaDAO;
-import Model.POJO.AlunoPOJO;
-import Model.POJO.FaltaPOJO;
-import Model.POJO.TurmaPOJO;
+import Model.POJO.Aluno;
+import Model.POJO.Falta;
+import Model.POJO.Turma;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class AlunoView {
     
-    private ArrayList<AlunoPOJO> lista = new ArrayList<>();
-    private AlunoPOJO novoAluno;
+    private ArrayList<Aluno> lista = new ArrayList<>();
+    private Aluno novoAluno;
     
     public void cadastrarAluno(){
         Scanner leitor = new Scanner(System.in);
-        novoAluno = new AlunoPOJO();
+        novoAluno = new Aluno();
         System.out.println("\n **************** CADASTRO ALUNO ***************");
         System.out.println("\n NOME DO ALUNO: ");
         novoAluno.setNome(leitor.nextLine());
@@ -27,13 +27,13 @@ public class AlunoView {
     
     public void cadastrarFalta() {
         Scanner leitor = new Scanner(System.in);
-        FaltaPOJO falta = new FaltaPOJO();
-        novoAluno = new AlunoPOJO();
+        Falta falta = new Falta();
+        novoAluno = new Aluno();
         System.out.println("\n **************** CADASTRO DE FALTAS ***************");
         System.out.println("NOME DO ALUNO: ");
-        novoAluno = (AlunoPOJO) AlunoDAO.getInstancia().buscar(leitor.nextLine());
+        novoAluno = (Aluno) AlunoDAO.getInstancia().buscar(leitor.nextLine());
         System.out.println("TURMA: ");
-        falta.setTurma((TurmaPOJO) TurmaDAO.getInstancia().buscar(Integer.parseInt(leitor.nextLine())));
+        falta.setTurma((Turma) TurmaDAO.getInstancia().buscar(Integer.parseInt(leitor.nextLine())));
         System.out.println("NÚMERO DE FALTAS: ");
         falta.setFaltas(leitor.nextInt());
         AlunoDAO.getInstancia().inserir(novoAluno);
@@ -55,7 +55,7 @@ public class AlunoView {
         if(AlunoDAO.getInstancia().buscar(pesquisa) == null){
             System.out.println("ALUNO NÃO ENCONTRADO");
         }
-        else if(novoAluno == (AlunoPOJO) AlunoDAO.getInstancia().buscar(pesquisa)) {
+        else if(novoAluno == (Aluno) AlunoDAO.getInstancia().buscar(pesquisa)) {
             System.out.println(novoAluno);
         }
     }

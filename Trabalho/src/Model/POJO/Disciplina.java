@@ -3,14 +3,14 @@ package Model.POJO;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class DisciplinaPOJO {
+public class Disciplina {
     //Atributos
     private Integer id;
     private String nome;
     private String ementa;
     private Integer cargaHoraria;
-    private ArrayList<ProfessorPOJO> listaProfessores;
-    private ArrayList<TurmaPOJO> listaTurmas;
+    private ArrayList<Professor> listaProfessores;
+    private ArrayList<Turma> listaTurmas;
     
     //Getters e Setters
     public String getNome() {
@@ -31,16 +31,16 @@ public class DisciplinaPOJO {
     public void setCargaHoraria(Integer cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
     }
-    public ArrayList<ProfessorPOJO> getListaProfessores() {
+    public ArrayList<Professor> getListaProfessores() {
         return listaProfessores;
     }
-    public void setListaProfessores(ArrayList<ProfessorPOJO> listaProfessores) {
+    public void setListaProfessores(ArrayList<Professor> listaProfessores) {
         this.listaProfessores = listaProfessores;
     }
-    public ArrayList<TurmaPOJO> getListaTurmas() {
+    public ArrayList<Turma> getListaTurmas() {
         return listaTurmas;
     }
-    public void setListaTurmas(ArrayList<TurmaPOJO> listaTurmas) {
+    public void setListaTurmas(ArrayList<Turma> listaTurmas) {
         this.listaTurmas = listaTurmas;
     }
     public Integer getId() {
@@ -50,7 +50,7 @@ public class DisciplinaPOJO {
         this.id = id;
     }
     
-    public void adicionarTurma(TurmaPOJO turma){
+    public void adicionarTurma(Turma turma){
         this.listaTurmas.add(turma);
     }
     
@@ -65,9 +65,9 @@ public class DisciplinaPOJO {
     public boolean equals(Object obj) {
         if(this == obj)
             return true;
-        if(!(obj instanceof DisciplinaPOJO))
+        if(!(obj instanceof Disciplina))
             return false;
-        DisciplinaPOJO disciplina = (DisciplinaPOJO)obj;
+        Disciplina disciplina = (Disciplina)obj;
         return this.nome.equals(disciplina.getNome());
     }
     @Override

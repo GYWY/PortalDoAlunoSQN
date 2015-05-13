@@ -1,12 +1,12 @@
 package Model.DAO;
 
-import Model.POJO.TurmaPOJO;
+import Model.POJO.Turma;
 import java.util.ArrayList;
 
 
 public class TurmaDAO implements GenericoDAO{
 
-    private ArrayList<TurmaPOJO> listaDeTurmas = new ArrayList<>();
+    private ArrayList<Turma> listaDeTurmas = new ArrayList<>();
     private static TurmaDAO instancia = null;
     
     public static synchronized TurmaDAO getInstancia() {
@@ -18,7 +18,7 @@ public class TurmaDAO implements GenericoDAO{
       
     @Override
     public void inserir(Object objeto) {
-         TurmaPOJO turma = (TurmaPOJO) objeto;
+         Turma turma = (Turma) objeto;
          int contador = listaDeTurmas.size();
          contador++;
          turma.setIdTurma(contador);
@@ -28,7 +28,7 @@ public class TurmaDAO implements GenericoDAO{
     @Override
     public Object buscar(Object objeto) {
         Integer id = (Integer) objeto;
-        for(TurmaPOJO turma : listaDeTurmas){
+        for(Turma turma : listaDeTurmas){
             if(turma.getIdTurma().equals(objeto)){
                 return turma;
             }
@@ -44,7 +44,7 @@ public class TurmaDAO implements GenericoDAO{
 
     @Override
     public boolean remover(Object objeto) {
-        TurmaPOJO turma = (TurmaPOJO) buscar(objeto);
+        Turma turma = (Turma) buscar(objeto);
         if(turma != null){
             listaDeTurmas.remove(listaDeTurmas.indexOf(turma));
             return true;

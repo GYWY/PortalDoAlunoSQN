@@ -2,22 +2,22 @@
 package View;
 
 import Model.DAO.AtividadeDAO;
-import Model.POJO.AtividadePOJO;
+import Model.POJO.Atividade;
 import Model.DAO.AlunoDAO;
-import Model.POJO.NotaPOJO;
+import Model.POJO.Nota;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class AtividadeView {
     
-    private ArrayList<AtividadePOJO> lista = new ArrayList<>();
-    private AtividadePOJO novaAtividade;
+    private ArrayList<Atividade> lista = new ArrayList<>();
+    private Atividade novaAtividade;
    
     
     public void cadastrarAtividade(){
         Scanner leitor = new Scanner(System.in);
-        novaAtividade = new AtividadePOJO();
+        novaAtividade = new Atividade();
         System.out.println("\n **************** CADASTRO DE ATIVIDADES ***************");
         System.out.println("NOME DO ALUNO ");
         AlunoDAO.getInstancia().buscar(leitor.nextLine());
@@ -33,13 +33,13 @@ public class AtividadeView {
     
     public void cadastrarNota() {
         Scanner leitor = new Scanner(System.in);
-        NotaPOJO nota = new NotaPOJO();
-        novaAtividade = new AtividadePOJO();
+        Nota nota = new Nota();
+        novaAtividade = new Atividade();
         System.out.println("\n **************** CADASTRO DE NOTAS ***************");
         System.out.println("NOME DO ALUNO: ");
-        novaAtividade = (AtividadePOJO) AtividadeDAO.getInstancia().buscar(leitor.nextLine());
+        novaAtividade = (Atividade) AtividadeDAO.getInstancia().buscar(leitor.nextLine());
         System.out.println("CÓDIGO DA ATIVIDADE: ");
-        nota.setAtividade((AtividadePOJO) AtividadeDAO.getInstancia().buscar(Integer.parseInt(leitor.nextLine())));
+        nota.setAtividade((Atividade) AtividadeDAO.getInstancia().buscar(Integer.parseInt(leitor.nextLine())));
         System.out.println("NOTA: ");
         nota.setNota(Double.parseDouble(leitor.nextLine()));
         AtividadeDAO.getInstancia().inserir(novaAtividade);
@@ -54,14 +54,14 @@ public class AtividadeView {
         if(AtividadeDAO.getInstancia().buscar(pesquisa) == null) {
             System.out.println("ATIVIDADE NÃO ENCONTRADA");
         }
-        else if(novaAtividade == (AtividadePOJO) AtividadeDAO.getInstancia().buscar(pesquisa)){
+        else if(novaAtividade == (Atividade) AtividadeDAO.getInstancia().buscar(pesquisa)){
             System.out.println(novaAtividade);
         }
     }
     
     public void listarAtividade() {
         System.out.println("\n **************** ATIVIDADES ****************");
-        this.lista = (ArrayList<AtividadePOJO>) AtividadeDAO.getInstancia().listar().iterator();
+        this.lista = (ArrayList<Atividade>) AtividadeDAO.getInstancia().listar().iterator();
         for (int i = 0;i<this.lista.size();i++) {
             System.out.println(this.lista.get(i));
         }

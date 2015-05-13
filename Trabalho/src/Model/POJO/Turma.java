@@ -2,7 +2,7 @@ package Model.POJO;
 
 import java.util.ArrayList;
 
-public class TurmaPOJO {
+public class Turma {
     
     private Integer idTurma;
     private Long ano;
@@ -10,16 +10,16 @@ public class TurmaPOJO {
     private String local;
     private String horario;
     private Integer vaga;
-    private ProfessorPOJO professor;
-    private DisciplinaPOJO disciplina;
-    private ArrayList<AlunoPOJO> listaAlunos;
-    private ArrayList<AtividadePOJO> listaDeAtividade;
+    private Professor professor;
+    private Disciplina disciplina;
+    private ArrayList<Aluno> listaAlunos;
+    private ArrayList<Atividade> listaDeAtividade;
 
-    public ProfessorPOJO getProfessor() {
+    public Professor getProfessor() {
         return professor;
     }
 
-    public void setProfessor(ProfessorPOJO professor) {
+    public void setProfessor(Professor professor) {
         this.professor = professor;
     }
     
@@ -63,19 +63,19 @@ public class TurmaPOJO {
         this.vaga = vaga;
     }
 
-    public DisciplinaPOJO getDisciplina() {
+    public Disciplina getDisciplina() {
         return disciplina;
     }
 
-    public void setDisciplina(DisciplinaPOJO disciplina) {
+    public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
 
-    public ArrayList<AlunoPOJO> getListaAlunos() {
+    public ArrayList<Aluno> getListaAlunos() {
         return listaAlunos;
     }
 
-    public void setListaAlunos(ArrayList<AlunoPOJO> listaAlunos) {
+    public void setListaAlunos(ArrayList<Aluno> listaAlunos) {
         this.listaAlunos = listaAlunos;
     }
 
@@ -93,9 +93,9 @@ public class TurmaPOJO {
     public boolean equals(Object obj) {
         if(this == obj)
             return true;
-        if(!(obj instanceof TurmaPOJO))
+        if(!(obj instanceof Turma))
             return false;
-        TurmaPOJO turma = (TurmaPOJO)obj;
+        Turma turma = (Turma)obj;
         return this.horario.equals(turma.getHorario());
     }
     

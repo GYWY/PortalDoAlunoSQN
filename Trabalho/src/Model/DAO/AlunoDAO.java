@@ -1,13 +1,13 @@
 
 package Model.DAO;
 
-import Model.POJO.AlunoPOJO;
+import Model.POJO.Aluno;
 import java.util.ArrayList;
 
 
 public class AlunoDAO implements GenericoDAO{
 
-    private ArrayList<AlunoPOJO> listaDeAlunos = new ArrayList<>();
+    private ArrayList<Aluno> listaDeAlunos = new ArrayList<>();
     private static AlunoDAO instancia = null;
     
     public static synchronized AlunoDAO getInstancia() {
@@ -19,7 +19,7 @@ public class AlunoDAO implements GenericoDAO{
     
     @Override
     public void inserir(Object objeto) {
-         AlunoPOJO aluno = (AlunoPOJO) objeto;
+         Aluno aluno = (Aluno) objeto;
          int contador = listaDeAlunos.size();
          contador++;
          aluno.setId(contador);
@@ -30,14 +30,14 @@ public class AlunoDAO implements GenericoDAO{
     public Object buscar(Object objeto) {
         if(objeto instanceof String){
             String nome = (String) objeto;
-            for(AlunoPOJO aluno : listaDeAlunos){
+            for(Aluno aluno : listaDeAlunos){
                 if(aluno.getNome().contains(nome))
                     return aluno;
             }            
         }
         else if(objeto instanceof Integer){
             Integer id =(Integer) objeto;
-            for(AlunoPOJO aluno : listaDeAlunos){
+            for(Aluno aluno : listaDeAlunos){
                 if(aluno.getId().equals(objeto)){
                     return aluno;
                 }
@@ -53,7 +53,7 @@ public class AlunoDAO implements GenericoDAO{
 
     @Override
     public boolean remover(Object objeto) {
-        AlunoPOJO aluno = (AlunoPOJO) buscar(objeto);
+        Aluno aluno = (Aluno) buscar(objeto);
         if(aluno != null){
             listaDeAlunos.remove(listaDeAlunos.indexOf(aluno));
             return true;

@@ -3,7 +3,7 @@ package View;
 
 import Model.DAO.DisciplinaDAO;
 import Model.DAO.ProfessorDAO;
-import Model.POJO.ProfessorPOJO;
+import Model.POJO.Professor;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -16,7 +16,7 @@ public class ProfessorView{
         }
     }
     
-    private void cadastrarDisciplinasElegiveis(ProfessorPOJO professor){
+    private void cadastrarDisciplinasElegiveis(Professor professor){
         Scanner leitor = new Scanner(System.in);
         String nomeDaDisciplina;
         System.out.println("NOME DA DISCIPLINA OU 0 CASO CONTRÁRIO:  ");
@@ -30,7 +30,7 @@ public class ProfessorView{
         }while(nomeDaDisciplina.equals("0"));
     }
     
-    private void lerDados(ProfessorPOJO professor){
+    private void lerDados(Professor professor){
         Scanner leitor = new Scanner(System.in);
         System.out.println("\n **************** CADASTRO PROFESSOR ***************");
         System.out.println("NOME PROFESSOR: ");
@@ -45,13 +45,13 @@ public class ProfessorView{
     
     public void cadastrar(){
         Scanner leitor = new Scanner(System.in);
-        ProfessorPOJO professor = new ProfessorPOJO();
+        Professor professor = new Professor();
         
         this.lerDados(professor);
         ProfessorDAO.getInstancia().inserir(professor);
     }
     
-    private void imprimirBusca(ProfessorPOJO professor){
+    private void imprimirBusca(Professor professor){
         if(professor == null){
             System.out.println("PROFESSOR NÃO ENCONTRADO!!");
         }
@@ -62,10 +62,10 @@ public class ProfessorView{
     
     public void buscar(){
         Scanner leitor = new Scanner(System.in);
-        ProfessorPOJO professor;
+        Professor professor;
         System.out.println("\n **************** PESQUISA ****************");
         System.out.println("ENTRE COM O NOME DO PROFESSOR: ");
-        professor = (ProfessorPOJO) ProfessorDAO.getInstancia().buscar(leitor.nextLine());
+        professor = (Professor) ProfessorDAO.getInstancia().buscar(leitor.nextLine());
         this.imprimirBusca(professor);
     }
     

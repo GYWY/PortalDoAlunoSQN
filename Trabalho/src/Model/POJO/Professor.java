@@ -2,13 +2,13 @@ package Model.POJO;
 
 import java.util.ArrayList;
 
-public class ProfessorPOJO extends PessoaPOJO {
+public class Professor extends Pessoa {
     private Integer idProfessor;
     private String departamento;
-    private ArrayList<TurmaPOJO> listaTurmasMinistradas;
-    private ArrayList<DisciplinaPOJO> listaDisciplinas;
+    private ArrayList<Turma> listaTurmasMinistradas;
+    private ArrayList<Disciplina> listaDisciplinas;
     
-    public ProfessorPOJO(){
+    public Professor(){
         this.listaTurmasMinistradas = new ArrayList<>();
         this.listaDisciplinas = new ArrayList<>();
     }
@@ -21,11 +21,11 @@ public class ProfessorPOJO extends PessoaPOJO {
         this.idProfessor = idProfessor;
     }
 
-    public ArrayList<DisciplinaPOJO> getListaDisciplinas() {
+    public ArrayList<Disciplina> getListaDisciplinas() {
         return listaDisciplinas;
     }
 
-    public void setListaDisciplinas(ArrayList<DisciplinaPOJO> listaDisciplinas) {
+    public void setListaDisciplinas(ArrayList<Disciplina> listaDisciplinas) {
         this.listaDisciplinas = listaDisciplinas;
     }
     
@@ -37,23 +37,23 @@ public class ProfessorPOJO extends PessoaPOJO {
         this.departamento = departamento;
     }
 
-    public ArrayList<TurmaPOJO> getListaTurmasMinistradas() {
+    public ArrayList<Turma> getListaTurmasMinistradas() {
         return listaTurmasMinistradas;
     }
 
-    public void setListaTurmasMinistradas(ArrayList<TurmaPOJO> listaTurmasMinistradas) {
+    public void setListaTurmasMinistradas(ArrayList<Turma> listaTurmasMinistradas) {
         this.listaTurmasMinistradas = listaTurmasMinistradas;
     }
     
     public void adicionarDisciplina(Object disciplina){
         if(disciplina instanceof String){
-            DisciplinaPOJO novaDisciplina = new DisciplinaPOJO();
+            Disciplina novaDisciplina = new Disciplina();
             
             novaDisciplina.setNome((String) disciplina);
-            this.listaDisciplinas.add((DisciplinaPOJO) novaDisciplina);
+            this.listaDisciplinas.add((Disciplina) novaDisciplina);
         }
         else{
-            this.listaDisciplinas.add((DisciplinaPOJO) disciplina);
+            this.listaDisciplinas.add((Disciplina) disciplina);
         }    
     }
 }

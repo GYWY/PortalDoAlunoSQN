@@ -2,7 +2,7 @@ package Model.POJO;
 
 import java.util.Objects;
 
-public class PessoaPOJO {
+public class Pessoa {
     private String nome;
     private String cpf;
     
@@ -11,11 +11,11 @@ public class PessoaPOJO {
         if(this == objeto){
             return true;
         }
-        else if(!(objeto instanceof PessoaPOJO)){
+        else if(!(objeto instanceof Pessoa)){
             return false;
         }
         else{
-            PessoaPOJO pessoa = (PessoaPOJO) objeto;
+            Pessoa pessoa = (Pessoa) objeto;
             return this.cpf.equals(pessoa.getCpf());
         }
     }

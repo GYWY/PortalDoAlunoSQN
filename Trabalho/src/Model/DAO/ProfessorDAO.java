@@ -1,14 +1,14 @@
 
 package Model.DAO;
 
-import Model.POJO.AlunoPOJO;
-import Model.POJO.ProfessorPOJO;
+import Model.POJO.Aluno;
+import Model.POJO.Professor;
 import java.util.ArrayList;
 
 
 public class ProfessorDAO implements GenericoDAO{
 
-    ArrayList<ProfessorPOJO> listaDeProfessores = new ArrayList<>();
+    ArrayList<Professor> listaDeProfessores = new ArrayList<>();
     private static ProfessorDAO instancia = null;
     
     public static synchronized ProfessorDAO getInstancia() {
@@ -19,7 +19,7 @@ public class ProfessorDAO implements GenericoDAO{
     }
     @Override
     public void inserir(Object objeto) {
-        ProfessorPOJO professor = (ProfessorPOJO) objeto;
+        Professor professor = (Professor) objeto;
          int contador = listaDeProfessores.size();
          contador++;
          professor.setIdProfessor(contador);
@@ -30,7 +30,7 @@ public class ProfessorDAO implements GenericoDAO{
     public Object buscar(Object objeto) {
         if(objeto instanceof String){
             String nome = (String) objeto;
-            for(ProfessorPOJO professor : listaDeProfessores){
+            for(Professor professor : listaDeProfessores){
                 if(professor.getNome().contains(nome))
                     return professor;
             }            
@@ -38,7 +38,7 @@ public class ProfessorDAO implements GenericoDAO{
         else if(objeto instanceof Integer){
             Integer id =(Integer) objeto;
             
-            for(ProfessorPOJO professor : listaDeProfessores){
+            for(Professor professor : listaDeProfessores){
                 if(professor.getIdProfessor().equals(objeto)){
                     return professor;
                 }
@@ -54,7 +54,7 @@ public class ProfessorDAO implements GenericoDAO{
 
     @Override
     public boolean remover(Object objeto) {
-       ProfessorPOJO professor = (ProfessorPOJO) buscar(objeto);
+       Professor professor = (Professor) buscar(objeto);
         if(professor != null){
             listaDeProfessores.remove(listaDeProfessores.indexOf(professor));
             return true;

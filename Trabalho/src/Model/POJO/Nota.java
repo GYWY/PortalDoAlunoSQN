@@ -1,23 +1,23 @@
 package Model.POJO;
 
-public class NotaPOJO {
+public class Nota {
     private Double nota;
-    private AlunoPOJO aluno;
-    private AtividadePOJO atividade;
+    private Aluno aluno;
+    private Atividade atividade;
 
-    public AlunoPOJO getAluno() {
+    public Aluno getAluno() {
         return aluno;
     }
 
-    public AtividadePOJO getAtividade() {
+    public Atividade getAtividade() {
         return atividade;
     }
 
-    public void setAluno(AlunoPOJO aluno) {
+    public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
 
-    public void setAtividade(AtividadePOJO atividade) {
+    public void setAtividade(Atividade atividade) {
         this.atividade = atividade;
     }
     
