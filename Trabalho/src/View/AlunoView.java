@@ -33,13 +33,26 @@ public class AlunoView {
         GenericoDAO turma = TurmaDAO.getInstancia();
         
         System.out.println("\n **************** CADASTRO DE FALTAS ***************");
+        System.out.println("TURMA: ");
+        Turma turmaFalta = (Turma) turma.buscar(Integer.parseInt(leitor.nextLine()));     
+        if(turmaFalta == null) {
+            System.out.println("TURMA NÃO CADASTRADA");
+            cadastrarFalta();
+        }
+        falta.setTurma(turmaFalta);
+        
         System.out.println("NOME DO ALUNO: ");
         novoAluno = (Aluno) aluno.buscar(leitor.nextLine());
-        System.out.println("TURMA: ");
-        falta.setTurma((Turma) turma.buscar(Integer.parseInt(leitor.nextLine())));
+        if(novoAluno == null) {
+            System.out.println("ALUNO NÃO CADASTRADO");
+            cadastrarFalta();
+        }
+        falta.setAluno(novoAluno);
+        
         System.out.println("NÚMERO DE FALTAS: ");
-        falta.setFaltas(leitor.nextInt());
-        aluno.inserir(novoAluno);
+        falta.setFaltas(Integer.parseInt(leitor.nextLine()));
+        aluno.inserir(falta);
+        turma.inserir(falta);
     }
     
     public void listarAluno(){

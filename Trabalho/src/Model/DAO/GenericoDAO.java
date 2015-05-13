@@ -3,7 +3,6 @@ package Model.DAO;
 
 import java.util.ArrayList;
 
-
 public interface GenericoDAO {
     
     void inserir(Object objeto);
