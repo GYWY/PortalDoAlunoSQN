@@ -6,7 +6,6 @@ import Model.DAO.TurmaDAO;
 import Model.POJO.Aluno;
 import Model.POJO.Falta;
 import Model.POJO.Turma;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -17,7 +16,7 @@ public class AlunoView {
         GenericoDAO aluno = AlunoDAO.getInstancia();
         Aluno novoAluno = new Aluno();
         
-        System.out.println("\n **************** CADASTRO ALUNO ***************");
+        System.out.println("\n\t CADASTRO ALUNO ");
         System.out.println("\n NOME DO ALUNO: ");
         novoAluno.setNome(leitor.nextLine());
         System.out.println("\n CPF: ");
@@ -28,37 +27,36 @@ public class AlunoView {
     public void cadastrarFalta() {
         Scanner leitor = new Scanner(System.in);
         Falta falta = new Falta();
-        Aluno novoAluno = new Aluno();
         GenericoDAO aluno = AlunoDAO.getInstancia();
         GenericoDAO turma = TurmaDAO.getInstancia();
         
-        System.out.println("\n **************** CADASTRO DE FALTAS ***************");
-        System.out.println("TURMA: ");
+        System.out.println("\n\t CADASTRO DE FALTAS ");
+        System.out.println("\n ID DA TURMA: ");
         Turma turmaFalta = (Turma) turma.buscar(Integer.parseInt(leitor.nextLine()));     
         if(turmaFalta == null) {
-            System.out.println("TURMA NÃO CADASTRADA");
+            System.out.println("\n TURMA NÃO CADASTRADA");
             cadastrarFalta();
         }
         falta.setTurma(turmaFalta);
         
-        System.out.println("NOME DO ALUNO: ");
-        novoAluno = (Aluno) aluno.buscar(leitor.nextLine());
+        System.out.println("\n NOME DO ALUNO: ");
+        Aluno novoAluno = (Aluno) aluno.buscar(leitor.nextLine());
         if(novoAluno == null) {
-            System.out.println("ALUNO NÃO CADASTRADO");
+            System.out.println("\n ALUNO NÃO CADASTRADO");
             cadastrarFalta();
         }
         falta.setAluno(novoAluno);
         
-        System.out.println("NÚMERO DE FALTAS: ");
+        System.out.println("\n NÚMERO DE FALTAS: ");
         falta.setFaltas(Integer.parseInt(leitor.nextLine()));
-        aluno.inserir(falta);
-        turma.inserir(falta);
+        novoAluno.setFalta(falta);
+
     }
     
     public void listarAluno(){
         GenericoDAO aluno = AlunoDAO.getInstancia();
         
-        System.out.println("\n **************** ALUNOS ****************");
+        System.out.println("\n\t LISTA DE ALUNOS ");
         for (Iterator<Object> it = aluno.listar().iterator(); it.hasNext();) {
             Object alunoLista = it.next();
             System.out.println(alunoLista);
@@ -70,8 +68,8 @@ public class AlunoView {
         Aluno novoAluno = new Aluno();
         GenericoDAO aluno = AlunoDAO.getInstancia();
         
-        System.out.println("\n **************** PESQUISA ****************");
-        System.out.println("ENTRE COM O NOME OU MATRICULA: ");
+        System.out.println("\n\t PESQUISAR ALUNO ");
+        System.out.println("\n ENTRE COM O NOME OU ID: ");
         Object pesquisa = leitor.nextLine();
         if(aluno.buscar(pesquisa) == null){
             System.out.println("ALUNO NÃO ENCONTRADO");

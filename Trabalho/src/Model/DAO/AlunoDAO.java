@@ -2,8 +2,12 @@
 package Model.DAO;
 
 import Model.POJO.Aluno;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
-
+import java.io.IOException;
+import java.util.Scanner;
 
 public class AlunoDAO implements GenericoDAO{
 
@@ -66,12 +70,30 @@ public class AlunoDAO implements GenericoDAO{
         return (ArrayList<Object>)(Object)listaDeAlunos;
     }
 
-    private void salvarArquivo() { 
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void salvarArquivo() throws IOException { 
+        
     }
 
     private void carregarArquivo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void buscarTodos(Object objeto) throws FileNotFoundException, IOException {
+        if(listaDeAlunos.isEmpty()) {
+            FileReader arquivo = new FileReader("D:\\Arquivos\\Aluno.txt");
+            BufferedReader lerArquivo = new BufferedReader(arquivo);
+            Aluno addAluno = new Aluno();
+            Scanner leitor = new Scanner(arquivo);
+            
+            while(lerArquivo.ready()) {
+                addAluno.setNome(lerArquivo.readLine());
+                addAluno.setCpf(lerArquivo.readLine());
+                System.out.println(addAluno.getNome());
+            }
+            
+            lerArquivo.close();
+            arquivo.close();    
+        }
     }
     
 }

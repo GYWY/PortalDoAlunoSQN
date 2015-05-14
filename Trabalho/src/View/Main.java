@@ -1,5 +1,7 @@
 package View;
 
+import Model.DAO.AlunoDAO;
+import Model.DAO.GenericoDAO;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -37,7 +39,7 @@ public class Main {
         System.out.println("OPÇÃO: ");
     }
     
-    private void menuAdministrador() {
+    private void menuAdministrador() throws IOException {
         int escolha;
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
@@ -61,6 +63,7 @@ public class Main {
                     professor.cadastrarProfessor();
                     break;
                 case 4:
+                    aluno.listarAluno();
                     aluno.cadastrarAluno();
                     break;
                 case 5:
@@ -74,7 +77,7 @@ public class Main {
         } while(escolha != 6);
     }
     
-    private void menuProfessor() {
+    private void menuProfessor() throws IOException {
     int escolha;
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
@@ -115,22 +118,29 @@ public class Main {
             }
         } while(escolha != 6);
     }
+    
+    private void carregarAquivos() throws IOException {
+        AlunoDAO aluno = AlunoDAO.getInstancia();
+        aluno.buscarTodos(aluno);
+    }
 
     public static void main(String[] args) throws IOException {
         int escolha;
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
         
+        main.carregarAquivos();
+        
         do{
             main.imprimirMenuEntrada();
             escolha = Integer.parseInt(leitor.nextLine());
-            System.out.println("\n 1****************************************************************************** \n");
+            System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
-                    main.menuAdministrador();
+                    main.menuProfessor();
                     break;
                 case 2:
-                    main.menuProfessor();
+                    main.menuAdministrador();
                     break;
                 case 3:
                     break;

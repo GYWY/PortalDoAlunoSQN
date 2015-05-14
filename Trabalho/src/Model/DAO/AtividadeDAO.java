@@ -3,6 +3,8 @@
 package Model.DAO;
 
 import Model.POJO.Atividade;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -70,6 +72,10 @@ public class AtividadeDAO implements GenericoDAO{
     }
 
     public void carregarArquivo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void buscarTodos(Object objeto) throws FileNotFoundException, IOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
