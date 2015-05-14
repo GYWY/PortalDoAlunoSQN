@@ -46,18 +46,6 @@ public class AtividadeDAO implements GenericoDAO{
     }
 
     @Override
-       public boolean alterar(Object objeto) {
-        Atividade atividade = (Atividade) buscar(objeto);
-        Atividade altera = (Atividade) objeto;
-        if(atividade != null){
-            int indice = listaDeAtividades.indexOf(atividade);
-            listaDeAtividades.add(indice, altera);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public boolean remover(Object objeto) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

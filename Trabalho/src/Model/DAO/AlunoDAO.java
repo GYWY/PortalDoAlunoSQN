@@ -13,6 +13,7 @@ public class AlunoDAO implements GenericoDAO{
 
     private ArrayList<Aluno> listaDeAlunos = new ArrayList<>();
     private static AlunoDAO instancia = null;
+    private Integer ultimoID = 0;
     
     public static synchronized AlunoDAO getInstancia() {
         if(instancia == null){
@@ -23,11 +24,10 @@ public class AlunoDAO implements GenericoDAO{
     
     @Override
     public void inserir(Object objeto) {
-         Aluno aluno = (Aluno) objeto;
-         int contador = listaDeAlunos.size();
-         contador++;
-         aluno.setId(contador);
-         listaDeAlunos.add(aluno);
+        Aluno aluno = (Aluno) objeto;
+        ultimoID++;
+        aluno.setId(ultimoID);
+        listaDeAlunos.add(aluno);
     }
 
     @Override
@@ -51,11 +51,6 @@ public class AlunoDAO implements GenericoDAO{
     }
 
     @Override
-    public boolean alterar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public boolean remover(Object objeto) {
         Aluno aluno = (Aluno) buscar(objeto);
         if(aluno != null){
@@ -74,26 +69,30 @@ public class AlunoDAO implements GenericoDAO{
         
     }
 
-    private void carregarArquivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void buscarTodos(Object objeto) throws FileNotFoundException, IOException {
-        if(listaDeAlunos.isEmpty()) {
+    private void carregarArquivo() throws FileNotFoundException, IOException {
             FileReader arquivo = new FileReader("D:\\Arquivos\\Aluno.txt");
             BufferedReader lerArquivo = new BufferedReader(arquivo);
             Aluno addAluno = new Aluno();
             Scanner leitor = new Scanner(arquivo);
             
+            ultimoID = Integer.parseInt(lerArquivo.readLine());
+            
             while(lerArquivo.ready()) {
+                addAluno.setId(lerArquivo.readLine());
                 addAluno.setNome(lerArquivo.readLine());
                 addAluno.setCpf(lerArquivo.readLine());
+                System.out.println(addAluno.getId());
                 System.out.println(addAluno.getNome());
+                System.out.println(addAluno.getCpf());
             }
             
             lerArquivo.close();
-            arquivo.close();    
-        }
+            arquivo.close();  
+    }
+
+    public void buscarTodos(Object objeto) throws IOException {
+        if(listaDeAlunos.isEmpty())
+            carregarArquivo();
     }
     
 }

@@ -55,6 +55,4 @@ public class Aluno extends Pessoa {
         return ("Id: " + id + "\nFalta: " + falta);
     }
     
-    
-    
 }

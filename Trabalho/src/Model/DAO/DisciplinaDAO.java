@@ -49,11 +49,6 @@ public class DisciplinaDAO implements GenericoDAO{
     }
 
     @Override
-    public boolean alterar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public boolean remover(Object objeto) {
         Disciplina disciplina = (Disciplina) buscar(objeto);
         if(disciplina != null){

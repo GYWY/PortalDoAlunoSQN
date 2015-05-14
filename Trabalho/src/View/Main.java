@@ -40,7 +40,9 @@ public class Main {
     }
     
     private void menuAdministrador() throws IOException {
-        int escolha;
+        Integer escolha = 0;
+        Integer flag; 
+        
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
         DisciplinaView disciplina = new DisciplinaView();
@@ -50,7 +52,15 @@ public class Main {
         
         do {
             main.imprimirMenuAdministrador();
-            escolha = Integer.parseInt(leitor.nextLine());
+            do{
+                try{
+                    escolha = Integer.parseInt(leitor.nextLine()); 
+                    flag = 1;
+                } catch (Exception e){
+                    System.out.println("OPÇÃO INVÁLIDA. TENTE NOVAMENTE.");
+                    flag = 0;
+                }
+            } while(flag == 0);
             System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
@@ -78,7 +88,8 @@ public class Main {
     }
     
     private void menuProfessor() throws IOException {
-    int escolha;
+        Integer escolha = 0;
+        Integer flag;
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
         AtividadeView atividade = new AtividadeView();
@@ -89,7 +100,15 @@ public class Main {
         
         do {
             main.imprimirMenuProfessor();
-            escolha = Integer.parseInt(leitor.nextLine());
+            do{
+                try{
+                    escolha = Integer.parseInt(leitor.nextLine()); 
+                    flag = 1;
+                } catch (Exception e){
+                    System.out.println("OPÇÃO INVÁLIDA. TENTE NOVAMENTE.");
+                    flag = 0;
+                }
+            } while(flag == 0);
             System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
@@ -125,7 +144,8 @@ public class Main {
     }
 
     public static void main(String[] args) throws IOException {
-        int escolha;
+        Integer escolha = 0;
+        Integer flag;
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
         
@@ -133,7 +153,15 @@ public class Main {
         
         do{
             main.imprimirMenuEntrada();
-            escolha = Integer.parseInt(leitor.nextLine());
+            do{
+                try{
+                    escolha = Integer.parseInt(leitor.nextLine()); 
+                    flag = 1;
+                } catch (Exception e){
+                    System.out.println("OPÇÃO INVÁLIDA. TENTE NOVAMENTE. \n\n OPÇÃO: ");
+                    flag = 0;
+                }
+            } while(flag == 0);
             System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
