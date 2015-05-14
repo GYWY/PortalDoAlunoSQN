@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class TurmaView {
 
-    void cadastrar(){
+    void cadastrarTurma(){
         Scanner leitor = new Scanner(System.in);
         Turma novaTurma = new Turma();
         GenericoDAO turma = TurmaDAO.getInstancia();

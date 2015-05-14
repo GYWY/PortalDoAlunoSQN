@@ -44,7 +44,7 @@ public class ProfessorView{
         professor.setDepartamento(leitor.nextLine());
     }
     
-    public void cadastrar(){
+    public void cadastrarProfessor(){
         Scanner leitor = new Scanner(System.in);
         Professor professor = new Professor();
         GenericoDAO professorDao = ProfessorDAO.getInstancia();
@@ -79,5 +79,9 @@ public class ProfessorView{
         for (Object professor : professorDao.listar()) {
             System.out.println(professor);
         }
+    }
+
+    void listarHistorico() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

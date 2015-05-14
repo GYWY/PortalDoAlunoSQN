@@ -95,5 +95,13 @@ public class DisciplinaView {
             System.out.println(disciplinaLista);
         }
     }
+
+    void listarTurmas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void listarHistoricoTurmas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

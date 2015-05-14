@@ -1,67 +1,143 @@
 package View;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
 
-    private void imprimirMenu() {
-        System.out.println("BEM VINDO AO PORTAL DO ALUNO! \n ESCOLHA A OPÇÃO QUE LHE FOR ULTIL.");
-        System.out.println("1- CADASTRAR ALUNO");
-        System.out.println("2- CADASTRAR PROFESSOR");
-        System.out.println("3- CADASTRAR DISCIPLINA");
-        System.out.println("4- CADASTRAR ATIVIDADE");
-        System.out.println("5- CADASTRAR TURMA");
-        System.out.println("6- CADASTRAR FALTA");
-        System.out.println("7- CADASTRAR NOTA");
+    private void imprimirMenuEntrada() {
+        System.out.println("BEM VINDO AO PORTAL DA FACULDADE! \n\n\t O QUE VOCÊ É?");
+        System.out.println("1- PROFESSOR");
+        System.out.println("2- ADMINISTRADOR");
+        System.out.println("3- SAIR \n");
+        System.out.println("OPÇÃO: ");
     }
 
-    public static void main(String[] args) {
+    private void imprimirMenuAdministrador() {
+        System.out.println("BEM VINDO AO SISTEMA PRINCIPAL! \n\n\t ESCOLHA A OPÇÃO QUE LHE FOR ÚTIL.");
+        System.out.println("1- CADASTRAR DISCIPLINA");
+        System.out.println("2- CADASTRAR TURMA");
+        System.out.println("3- CADASTRAR PROFESSOR");
+        System.out.println("4- CADASTRAR ALUNO");
+        System.out.println("5- CONSULTAR TURMAS DE UMA DISCIPLINA");
+        System.out.println("6- SAIR \n");
+        System.out.println("OPÇÃO: ");
+    }
+    
+    private void imprimirMenuProfessor() {
+        System.out.println("BEM VINDO AO PORTAL DO PROFESSOR! \n\n\t ESCOLHA A OPÇÃO QUE LHE FOR ÚTIL.");
+        System.out.println("1- CADASTRAR ATIVIDADE");
+        System.out.println("2- LANÇAR NOTA");
+        System.out.println("3- LANÇAR FALTA");
+        System.out.println("4- CONSULTAR TURMAS DE UMA DISCIPLINA");
+        System.out.println("5- CONSULTAR ALUNO DE UMA DISCIPLINA");
+        System.out.println("6- CONSULTAR HISTÓRICO DE UMA DISCIPLINA");
+        System.out.println("7- CONSULTAR HISTÓRICO DE UM PROFESSOR");
+        System.out.println("8- SAIR \n");
+        System.out.println("OPÇÃO: ");
+    }
+    
+    private void menuAdministrador() {
         int escolha;
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
-        AlunoView aluno = new AlunoView();
-        ProfessorView professor = new ProfessorView();
         DisciplinaView disciplina = new DisciplinaView();
-        AtividadeView atividade = new AtividadeView();
         TurmaView turma = new TurmaView();
+        ProfessorView professor = new ProfessorView();
+        AlunoView aluno = new AlunoView();
         
-        escolha = leitor.nextInt();
-        while(escolha != 0){
-            main.imprimirMenu();
-            escolha = leitor.nextInt();
-            
-            switch (escolha) {
-                case 1: {
-                    aluno.cadastrarAluno();
-                    break;
-                }
-
-                case 2: {
-                    professor.cadastrar();
-                    break;
-                }
-
-                case 3: {
+        do {
+            main.imprimirMenuAdministrador();
+            escolha = Integer.parseInt(leitor.nextLine());
+            System.out.println("\n ****************************************************************************** \n");
+            switch(escolha) {
+                case 1:
                     disciplina.cadastrarDisciplina();
                     break;
-                }
-                case 4: {
+                case 2:
+                    turma.cadastrarTurma();
+                    break;
+                case 3:
+                    professor.cadastrarProfessor();
+                    break;
+                case 4:
+                    aluno.cadastrarAluno();
+                    break;
+                case 5:
+                    disciplina.listarTurmas();
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("\n\t ENTRADA INVÁLIDA \n");                  
+            }
+        } while(escolha != 6);
+    }
+    
+    private void menuProfessor() {
+    int escolha;
+        Main main = new Main();
+        Scanner leitor = new Scanner(System.in);
+        AtividadeView atividade = new AtividadeView();
+        AlunoView aluno = new AlunoView();
+        DisciplinaView disciplina = new DisciplinaView();
+        TurmaView turma = new TurmaView();
+        ProfessorView professor = new ProfessorView();
+        
+        do {
+            main.imprimirMenuProfessor();
+            escolha = Integer.parseInt(leitor.nextLine());
+            System.out.println("\n ****************************************************************************** \n");
+            switch(escolha) {
+                case 1:
                     atividade.cadastrarAtividade();
                     break;
-                }
-                case 5: {
-                    turma.cadastrar();
-                    break;
-                }
-                case 6: {
-                    aluno.cadastrarFalta();
-                    break;
-                }
-                case 7: {
+                case 2:
                     atividade.cadastrarNota();
                     break;
-                }
+                case 3:
+                    aluno.cadastrarFalta();
+                    break;
+                case 4:
+                    disciplina.listarTurmas();
+                    break;
+                case 5:
+                    turma.listarAluno();
+                    break;
+                case 6:
+                    disciplina.listarHistoricoTurmas();
+                    break;
+                case 7:
+                    professor.listarHistorico();
+                    break;
+                default:
+                    System.out.println("\n\t ENTRADA INVÁLIDA \n");                  
             }
-        }
+        } while(escolha != 6);
     }
+
+    public static void main(String[] args) throws IOException {
+        int escolha;
+        Main main = new Main();
+        Scanner leitor = new Scanner(System.in);
+        
+        do{
+            main.imprimirMenuEntrada();
+            escolha = Integer.parseInt(leitor.nextLine());
+            System.out.println("\n 1****************************************************************************** \n");
+            switch(escolha) {
+                case 1:
+                    main.menuAdministrador();
+                    break;
+                case 2:
+                    main.menuProfessor();
+                    break;
+                case 3:
+                    break;
+                default:
+                    System.out.println("\n\t ENTRADA INVÁLIDA \n");
+            }
+        } while(escolha != 3);
+    }
+
 }
