@@ -138,10 +138,10 @@ public class Main {
         } while(escolha != 6);
     }
     
-    private void carregarAquivos() throws IOException {
-        AlunoDAO aluno = AlunoDAO.getInstancia();
-        aluno.buscarTodos(aluno);
-    }
+//    private void carregarAquivos() throws IOException {
+//        AlunoDAO aluno = AlunoDAO.getInstancia();
+//        aluno.buscarTodos(aluno);
+//    }
 
     public static void main(String[] args) throws IOException {
         Integer escolha = 0;
@@ -149,7 +149,7 @@ public class Main {
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
         
-        main.carregarAquivos();
+        //main.carregarAquivos();
         
         do{
             main.imprimirMenuEntrada();
