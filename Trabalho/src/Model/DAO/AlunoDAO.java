@@ -27,6 +27,8 @@ public class AlunoDAO implements GenericoDAO{
         return instancia;
     }
     
+    private AlunoDAO(){}
+    
     @Override
     public void inserir(Object objeto) {
         Aluno aluno = (Aluno) objeto;
@@ -80,15 +82,15 @@ public class AlunoDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Aluno aluno : listaDeAlunos){
-            dados = aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n";//aluno.getNotaFinal().getNota()+"\n"+aluno.getFalta().getFaltas()+"\n";
-            dados += aluno.getListaAtividadesRealizadas().size()+"\n";
+            dados = dados + aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n";//aluno.getNotaFinal().getNota()+"\n"+aluno.getFalta().getFaltas()+"\n";
+            /*dados += aluno.getListaAtividadesRealizadas().size()+"\n";
             for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
                 dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";
-            }
+            }*/
             //dados += aluno.getListaTurmasMatriculadas().size()+"\n";
-            for(Turma turma : aluno.getListaTurmasMatriculadas()){
+            /*for(Turma turma : aluno.getListaTurmasMatriculadas()){
                 dados += turma.getIdTurma()+"\n"+turma.getAno()+"\n"+turma.getHorario()+"\n"+turma.getLocal()+"\n"+turma.getPeriodo()+"\n"+turma.getProfessor()+"\n"+turma.getVaga()+"\n"+turma.getDisciplina()+"\n";
-            }       
+            } */      
         }
         fp.write(dados.getBytes());
         fp.close();
