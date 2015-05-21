@@ -5,8 +5,10 @@ import Model.POJO.Disciplina;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,6 +16,7 @@ public class DisciplinaDAO implements GenericoDAO{
     
     private ArrayList<Disciplina> listaDisciplina = new ArrayList<>();
     private static DisciplinaDAO instancia = null;
+    private Integer ultimoID = 0;
     
     public static synchronized DisciplinaDAO getInstancia() {
         if(instancia == null){
@@ -77,7 +80,7 @@ public class DisciplinaDAO implements GenericoDAO{
 
     private void salvarArquivo() throws IOException {
         
-        File arquivo = new File("/home/wennya/Trabalho/Disciplina.txt");
+        File arquivo = new File("Disciplina.txt");
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Disciplina disciplina : listaDisciplina){
@@ -87,12 +90,32 @@ public class DisciplinaDAO implements GenericoDAO{
         fp.close();
     }
 
-    public void carregarArquivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void carregarArquivo() throws FileNotFoundException, IOException {
+        Scanner scan = new Scanner(new FileReader("Disciplina.txt"));
+        
+        while(scan.hasNext()) {
+            Disciplina addDisciplina = new Disciplina();
+            ultimoID = scan.nextInt();
+            addDisciplina.setId(ultimoID);
+            addDisciplina.setNome(scan.next());
+            addDisciplina.setEmenta(scan.next());
+            addDisciplina.setCargaHoraria(ultimoID);
+            listaDisciplina.add(addDisciplina);
+            scan.next();
+            System.out.println(addDisciplina.getNome());
+        }
+        
+    scan.close();
+        
     }
     
-    public void buscarTodos(Object objeto) throws FileNotFoundException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
+    public boolean buscarTodos(Object objeto) throws IOException, FileNotFoundException, ClassNotFoundException {
+        if(listaDisciplina.isEmpty()) {
+            carregarArquivo(); 
+            return true;
+        }
+        else 
+            return false;
+    }
 }
