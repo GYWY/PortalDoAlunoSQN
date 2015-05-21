@@ -1,9 +1,13 @@
 package Model.DAO;
 
 import Model.POJO.Turma;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class TurmaDAO implements GenericoDAO{
@@ -25,6 +29,11 @@ public class TurmaDAO implements GenericoDAO{
          contador++;
          turma.setIdTurma(contador);
          listaDeTurmas.add(turma);
+        try {
+            salvarArquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(TurmaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -54,8 +63,16 @@ public class TurmaDAO implements GenericoDAO{
          return (ArrayList<Object>)(Object)listaDeTurmas;
     }
 
-    public void salvarArquivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void salvarArquivo() throws IOException {
+        
+        File arquivo = new File("/home/wennya/Trabalho/Turma.txt");
+        FileOutputStream fp = new FileOutputStream(arquivo);
+        String dados = "";
+        for(Turma turma : listaDeTurmas){
+            dados += turma.getIdTurma()+"\n"+turma.getLocal()+"\n"+turma.getAno()+"\n"+turma.getPeriodo()+"\n"+turma.getHorario()+"\n"+turma.getVaga()+"\n\n";     
+        }
+        fp.write(dados.getBytes());
+        fp.close();
     }
 
     public void carregarArquivo() {

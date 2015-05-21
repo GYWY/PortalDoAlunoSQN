@@ -1,9 +1,14 @@
 package Model.DAO;
 
+import Model.POJO.Aluno;
 import Model.POJO.Disciplina;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DisciplinaDAO implements GenericoDAO{
     
@@ -26,6 +31,13 @@ public class DisciplinaDAO implements GenericoDAO{
          contador++;
          disciplina.setId(contador);
          listaDisciplina.add(disciplina);
+         try {
+            
+            salvarArquivo();
+            System.out.printf("Numero de elementos do array: "+listaDisciplina.size());
+        } catch (IOException ex) {
+            Logger.getLogger(DisciplinaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -63,9 +75,16 @@ public class DisciplinaDAO implements GenericoDAO{
         return (ArrayList<Object>)(Object)listaDisciplina;
     }
 
-    public void salvarArquivo() {
+    private void salvarArquivo() throws IOException {
         
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        File arquivo = new File("/home/wennya/Trabalho/Disciplina.txt");
+        FileOutputStream fp = new FileOutputStream(arquivo);
+        String dados = "";
+        for(Disciplina disciplina : listaDisciplina){
+            dados += disciplina.getId()+"\n"+disciplina.getNome()+"\n"+disciplina.getEmenta()+"\n"+disciplina.getCargaHoraria()+"\n"+"\n\n";       
+        }
+        fp.write(dados.getBytes());
+        fp.close();
     }
 
     public void carregarArquivo() {
