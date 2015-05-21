@@ -39,17 +39,10 @@ public class AlunoDAO implements GenericoDAO{
         aluno.setId(ultimoID);
         listaDeAlunos.add(aluno);
         try {
-            
             salvarArquivo();
-            System.out.printf("Numero de elementos do array: "+listaDeAlunos.size());
         } catch (IOException ex) {
             Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        try {
-//            carregarArquivo();
-//        } catch (IOException ex) {
-//            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
-//        }
     }
 
     @Override
@@ -88,12 +81,11 @@ public class AlunoDAO implements GenericoDAO{
     }
     
     private void salvarArquivo() throws IOException {
-        
-        File arquivo = new File("/home/wennya/Trabalho/Aluno.txt");
+        File arquivo = new File("D:\\GoogleDrive\\Faculdade\\5º Período\\Programação III\\Trabalho\\PortalDoAlunoSQN\\Trabalho\\src\\Arquivos\\Alunos.txt");
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Aluno aluno : listaDeAlunos){
-            dados += aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n\n";//aluno.getNotaFinal().getNota()+"\n"+aluno.getFalta().getFaltas()+"\n";
+            dados += aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n#";
             /*dados += aluno.getListaAtividadesRealizadas().size()+"\n";
             for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
                 dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";
@@ -110,46 +102,27 @@ public class AlunoDAO implements GenericoDAO{
     
 
     private void carregarArquivo() throws FileNotFoundException, IOException {
-//            FileReader arquivo = new FileReader("/home/wennya/Trabalho/Aluno.txt");
-//            BufferedReader lerArquivo = new BufferedReader(arquivo);
-//            Aluno addAluno = new Aluno();
-//            Scanner leitor = new Scanner(arquivo);
-//            
-//            ultimoID = Integer.parseInt(lerArquivo.readLine());
-//            
-//            while(lerArquivo.ready()) {
-//                addAluno.setId(lerArquivo.read());
-//                addAluno.setNome(lerArquivo.readLine());
-//                addAluno.setCpf(lerArquivo.readLine());
-//                listaDeAlunos.add(addAluno);
-//            }
-//            
-//            lerArquivo.close();
-//            arquivo.close();  
+        Scanner scan = new Scanner(new FileReader("D:\\GoogleDrive\\Faculdade\\5º Período\\Programação III\\Trabalho\\PortalDoAlunoSQN\\Trabalho\\src\\Arquivos\\Alunos.txt"));
         
-        FileInputStream arquivo = new FileInputStream("/home/wennya/Trabalho/Aluno.txt");
-        InputStreamReader lerArquivo = new InputStreamReader(arquivo);
-        BufferedReader lerDado = new BufferedReader(lerArquivo);
-        Aluno addAluno = new Aluno();
-        
-        while(lerDado.ready()) {
-            addAluno.setId(lerDado.read());
-            addAluno.setNome(lerDado.readLine());
-            addAluno.setCpf(lerDado.readLine());
+        while(scan.hasNext()) {
+            Aluno addAluno = new Aluno();
+            ultimoID = scan.nextInt();
+            addAluno.setId(ultimoID);
+            addAluno.setNome(scan.next());
+            addAluno.setCpf(scan.next());
             listaDeAlunos.add(addAluno);
+            scan.next();
             System.out.println(addAluno.getNome());
         }
         
-        lerDado.close();
-        lerArquivo.close();
-        arquivo.close();
+    scan.close();
         
     }
 
     public boolean buscarTodos(Object objeto) throws IOException, FileNotFoundException, ClassNotFoundException {
         if(listaDeAlunos.isEmpty()) {
-             carregarArquivo();
-             return true;
+            carregarArquivo(); 
+            return true;
         }
         else 
             return false;

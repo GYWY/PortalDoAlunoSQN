@@ -40,7 +40,7 @@ public class Main {
         System.out.println("OPÇÃO: ");
     }
     
-    private void menuAdministrador() throws IOException {
+    private void menuAdministrador() throws IOException, FileNotFoundException, ClassNotFoundException {
         Integer escolha = 0;
         Integer flag; 
         
@@ -74,7 +74,12 @@ public class Main {
                     professor.cadastrarProfessor();
                     break;
                 case 4:
-                    aluno.listarAluno();
+                    try{
+                        AlunoDAO.getInstancia().buscarTodos(aluno);
+                        aluno.listarAluno();
+                    } catch(IOException e){
+                        System.out.println("\tLISTA DE ALUNOS VAZIA");
+                    }
                     aluno.cadastrarAluno();
                     break;
                 case 5:
@@ -138,7 +143,7 @@ public class Main {
             }
         } while(escolha != 6);
     }
-
+    
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
         Integer escolha = 0;
         Integer flag;
