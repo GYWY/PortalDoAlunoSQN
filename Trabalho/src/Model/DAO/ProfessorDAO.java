@@ -1,13 +1,14 @@
 
 package Model.DAO;
 
-import Model.POJO.Aluno;
 import Model.POJO.Professor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,6 +17,7 @@ public class ProfessorDAO implements GenericoDAO{
 
     ArrayList<Professor> listaDeProfessores = new ArrayList<>();
     private static ProfessorDAO instancia = null;
+    private Integer ultimoID = 0;
     
     public static synchronized ProfessorDAO getInstancia() {
         if(instancia == null){
@@ -75,25 +77,46 @@ public class ProfessorDAO implements GenericoDAO{
 
    private void salvarArquivo() throws IOException {
         
-        File arquivo = new File("/home/wennya/Trabalho/Professor.txt");
+        File arquivo = new File("Professor.txt");
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Professor professor : listaDeProfessores){
-            dados += professor.getIdProfessor()+"\n"+professor.getNome()+"\n"+professor.getCpf()+"\n"+professor.getDepartamento()+"\n\n";     
+            dados += "\n"+professor.getIdProfessor()+"\n"+professor.getNome()
+                    +"\n"+professor.getCpf()+"\n"+professor.getDepartamento()+"\n#";     
         }
         fp.write(dados.getBytes());
         fp.close();
     }
     
 
-    public void carregarArquivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void carregarArquivo() throws FileNotFoundException {
+        Scanner scan = new Scanner(new FileReader("Professor.txt"));
+        
+        while(scan.hasNext()) {
+            Professor addProfessor = new Professor();
+            ultimoID = scan.nextInt();
+            addProfessor.setIdProfessor(ultimoID);
+            addProfessor.setNome(scan.next());
+            addProfessor.setCpf(scan.next());
+            addProfessor.setDepartamento(scan.next());
+            scan.next();
+            System.out.println(addProfessor.getNome());
+        }
+                
+        scan.close();    
     }
 
-    public void buscarTodos(Object objeto) throws FileNotFoundException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public boolean buscarTodos(Object objeto) throws FileNotFoundException {
+        if(listaDeProfessores.isEmpty()) {
+            carregarArquivo(); 
+            return true;
+        }
+        else 
+            return false;
     }
-
-    
-    
 }
+
+    
+    
+

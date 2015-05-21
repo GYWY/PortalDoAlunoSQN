@@ -143,7 +143,7 @@ public class Main {
                 default:
                     System.out.println("\n\t ENTRADA INVÁLIDA \n");                  
             }
-        } while(escolha != 6);
+        } while(escolha != 8);
     }
     
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {

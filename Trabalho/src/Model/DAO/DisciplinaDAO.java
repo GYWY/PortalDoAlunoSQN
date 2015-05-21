@@ -84,7 +84,7 @@ public class DisciplinaDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Disciplina disciplina : listaDisciplina){
-            dados += disciplina.getId()+"\n"+disciplina.getNome()+"\n"+disciplina.getEmenta()+"\n"+disciplina.getCargaHoraria()+"\n"+"\n\n";       
+            dados += "\n"+disciplina.getId()+"\n"+disciplina.getNome()+"\n"+disciplina.getEmenta()+"\n"+disciplina.getCargaHoraria()+"\n#";       
         }
         fp.write(dados.getBytes());
         fp.close();
@@ -110,6 +110,7 @@ public class DisciplinaDAO implements GenericoDAO{
     }
     
     
+    @Override
     public boolean buscarTodos(Object objeto) throws IOException, FileNotFoundException, ClassNotFoundException {
         if(listaDisciplina.isEmpty()) {
             carregarArquivo(); 

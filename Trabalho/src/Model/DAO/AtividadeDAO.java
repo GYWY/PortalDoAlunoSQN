@@ -78,15 +78,8 @@ public class AtividadeDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Atividade atividade : listaDeAtividades){
-            dados += "/n"+atividade.getId()+atividade.getNome()+"/n"+atividade.getData()+"/n"+atividade.getTipo()+"/n"+atividade.getValor()+"#";
-            /*dados += aluno.getListaAtividadesRealizadas().size()+"\n";
-            for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
-                dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";
-            }*/
-            //dados += aluno.getListaTurmasMatriculadas().size()+"\n";
-            /*for(Turma turma : aluno.getListaTurmasMatriculadas()){
-                dados += turma.getIdTurma()+"\n"+turma.getAno()+"\n"+turma.getHorario()+"\n"+turma.getLocal()+"\n"+turma.getPeriodo()+"\n"+turma.getProfessor()+"\n"+turma.getVaga()+"\n"+turma.getDisciplina()+"\n";
-            } */      
+            dados += "\n"+atividade.getId()+atividade.getNome()
+                    +"\n"+atividade.getData()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n#";
         }
         fp.write(dados.getBytes());
         fp.close();
@@ -110,6 +103,7 @@ public class AtividadeDAO implements GenericoDAO{
     scan.close();    
     }
 
+    @Override
     public boolean buscarTodos(Object objeto) throws FileNotFoundException, IOException {
         if(listaDeAtividades.isEmpty()) {
             carregarArquivo(); 

@@ -113,6 +113,8 @@ public class AlunoDAO implements GenericoDAO{
         
     }
 
+    
+    @Override
     public boolean buscarTodos(Object objeto) throws IOException, FileNotFoundException, ClassNotFoundException {
         if(listaDeAlunos.isEmpty()) {
             carregarArquivo(); 

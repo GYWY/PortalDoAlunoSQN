@@ -11,4 +11,5 @@ public interface GenericoDAO {
     Object buscar(Object objeto);
     boolean remover(Object objeto);
     ArrayList<Object> listar();
+    boolean buscarTodos(Object objeto)throws IOException, FileNotFoundException, ClassNotFoundException;
 }
