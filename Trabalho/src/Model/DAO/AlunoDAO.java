@@ -1,15 +1,17 @@
 package Model.DAO;
 
 import Model.POJO.Aluno;
-import Model.POJO.Atividade;
-import Model.POJO.Turma;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +37,11 @@ public class AlunoDAO implements GenericoDAO{
         ultimoID++;
         aluno.setId(ultimoID);
         listaDeAlunos.add(aluno);
+        try {
+            carregarArquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             salvarArquivo();
         } catch (IOException ex) {
@@ -78,6 +85,20 @@ public class AlunoDAO implements GenericoDAO{
     }
     
     private void salvarArquivo() throws IOException {
+//        File novoArquivo = new File("/home/wennya/Trabalho/Aluno.txt");
+//        FileWriter arquivo = new FileWriter(novoArquivo, true);
+//        BufferedWriter escreverArquivo = new BufferedWriter(arquivo);
+//        for(Aluno aluno : listaDeAlunos) {
+//            escreverArquivo.write(aluno.getId());
+//            escreverArquivo.newLine();
+//            escreverArquivo.write(aluno.getNome());
+//            escreverArquivo.newLine();
+//            escreverArquivo.write(aluno.getCpf());
+//            escreverArquivo.newLine();
+//        }
+//        escreverArquivo.close();
+//        arquivo.close();
+        
         File arquivo = new File("/home/wennya/Trabalho/Aluno.txt");
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
@@ -113,29 +134,49 @@ public class AlunoDAO implements GenericoDAO{
 //    }
 
     private void carregarArquivo() throws FileNotFoundException, IOException {
-            FileReader arquivo = new FileReader("/home/wennya/Trabalho/Aluno.txt");
-            BufferedReader lerArquivo = new BufferedReader(arquivo);
-            Aluno addAluno = new Aluno();
-            Scanner leitor = new Scanner(arquivo);
-            
-            ultimoID = Integer.parseInt(lerArquivo.readLine());
-            
-            while(lerArquivo.ready()) {
-                addAluno.setId(lerArquivo.read());
-                addAluno.setNome(lerArquivo.readLine());
-                addAluno.setCpf(lerArquivo.readLine());
-                System.out.println(addAluno.getId());
-                System.out.println(addAluno.getNome());
-                System.out.println(addAluno.getCpf());
-            }
-            
-            lerArquivo.close();
-            arquivo.close();  
+//            FileReader arquivo = new FileReader("/home/wennya/Trabalho/Aluno.txt");
+//            BufferedReader lerArquivo = new BufferedReader(arquivo);
+//            Aluno addAluno = new Aluno();
+//            Scanner leitor = new Scanner(arquivo);
+//            
+//            ultimoID = Integer.parseInt(lerArquivo.readLine());
+//            
+//            while(lerArquivo.ready()) {
+//                addAluno.setId(lerArquivo.read());
+//                addAluno.setNome(lerArquivo.readLine());
+//                addAluno.setCpf(lerArquivo.readLine());
+//                listaDeAlunos.add(addAluno);
+//            }
+//            
+//            lerArquivo.close();
+//            arquivo.close();  
+        
+        FileInputStream arquivo = new FileInputStream("/home/wennya/Trabalho/Aluno.txt");
+        InputStreamReader lerArquivo = new InputStreamReader(arquivo);
+        BufferedReader lerDado = new BufferedReader(lerArquivo);
+        Aluno addAluno = new Aluno();
+        
+        while(lerDado.ready()) {
+            addAluno.setId(lerDado.read());
+            addAluno.setNome(lerDado.readLine());
+            addAluno.setCpf(lerDado.readLine());
+            listaDeAlunos.add(addAluno);
+            System.out.println(addAluno.getNome());
+        }
+        
+        lerDado.close();
+        lerArquivo.close();
+        arquivo.close();
+        
     }
 
-//    public void buscarTodos(Object objeto) throws IOException, FileNotFoundException, ClassNotFoundException {
-//        if(listaDeAlunos.isEmpty())
-//            //carregarArquivo();
-//    }
-//    
+    public boolean buscarTodos(Object objeto) throws IOException, FileNotFoundException, ClassNotFoundException {
+        if(listaDeAlunos.isEmpty()) {
+             carregarArquivo();
+             return true;
+        }
+        else 
+            return false;
+    }
+    
 }

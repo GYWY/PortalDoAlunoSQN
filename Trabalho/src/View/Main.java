@@ -2,6 +2,7 @@ package View;
 
 import Model.DAO.AlunoDAO;
 import Model.DAO.GenericoDAO;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -137,19 +138,12 @@ public class Main {
             }
         } while(escolha != 6);
     }
-    
-//    private void carregarAquivos() throws IOException {
-//        AlunoDAO aluno = AlunoDAO.getInstancia();
-//        aluno.buscarTodos(aluno);
-//    }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
         Integer escolha = 0;
         Integer flag;
         Main main = new Main();
         Scanner leitor = new Scanner(System.in);
-        
-        //main.carregarAquivos();
         
         do{
             main.imprimirMenuEntrada();
