@@ -138,6 +138,8 @@ public class Main {
                 case 7:
                     professor.listarHistorico();
                     break;
+                case 8:
+                    break;
                 default:
                     System.out.println("\n\t ENTRADA INVÁLIDA \n");                  
             }

@@ -6,8 +6,10 @@ import Model.POJO.Atividade;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,6 +18,7 @@ public class AtividadeDAO implements GenericoDAO{
     
     ArrayList<Atividade> listaDeAtividades = new ArrayList<>();
     private static AtividadeDAO instancia = null;
+    private Integer ultimoID = 0;
     
     public static synchronized AtividadeDAO getInstancia() {
         if(instancia == null){
@@ -55,7 +58,13 @@ public class AtividadeDAO implements GenericoDAO{
 
     @Override
     public boolean remover(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Atividade atividade = (Atividade) buscar(objeto);
+        if(atividade != null){
+            listaDeAtividades.remove(listaDeAtividades.indexOf(atividade));
+            return true;
+        }
+        return false;        
     }
 
     @Override
@@ -65,11 +74,11 @@ public class AtividadeDAO implements GenericoDAO{
     
     public void salvarArquivo() throws FileNotFoundException, IOException {
         File arquivo;
-        arquivo = new File("C:\\Users\\Reis\\Documents\\NetBeansProjects\\PortalDoAlunoSQN\\Aluno.txt");
+        arquivo = new File("Atividade.txt");
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Atividade atividade : listaDeAtividades){
-            dados += atividade.getId()+"#"+atividade.getNome()+"#"+atividade.getData()+"#"+atividade.getTipo();//aluno.getNotaFinal().getNota()+"\n"+aluno.getFalta().getFaltas()+"\n";
+            dados += "/n"+atividade.getId()+atividade.getNome()+"/n"+atividade.getData()+"/n"+atividade.getTipo()+"/n"+atividade.getValor()+"#";
             /*dados += aluno.getListaAtividadesRealizadas().size()+"\n";
             for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
                 dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";
@@ -83,12 +92,31 @@ public class AtividadeDAO implements GenericoDAO{
         fp.close();
     }
 
-    public void carregarArquivo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void carregarArquivo() throws FileNotFoundException {
+       Scanner scan = new Scanner(new FileReader("Atividade.txt"));
+        
+        while(scan.hasNext()) {
+            Atividade addAtividade = new Atividade();
+            ultimoID = scan.nextInt();
+            addAtividade.setId(ultimoID);
+            addAtividade.setNome(scan.next());
+            addAtividade.setData(scan.next());
+            addAtividade.setTipo(scan.next());
+            addAtividade.setValor(scan.nextDouble());
+            scan.next();
+            System.out.println(addAtividade.getNome());
+        }
+                
+    scan.close();    
     }
 
-    public void buscarTodos(Object objeto) throws FileNotFoundException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean buscarTodos(Object objeto) throws FileNotFoundException, IOException {
+        if(listaDeAtividades.isEmpty()) {
+            carregarArquivo(); 
+            return true;
+        }
+        else 
+            return false;
     }
     
 }
