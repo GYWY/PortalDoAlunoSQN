@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class AlunoDAO implements GenericoDAO{
 
@@ -38,15 +39,17 @@ public class AlunoDAO implements GenericoDAO{
         aluno.setId(ultimoID);
         listaDeAlunos.add(aluno);
         try {
-            carregarArquivo();
-        } catch (IOException ex) {
-            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
+            
             salvarArquivo();
+            System.out.printf("Numero de elementos do array: "+listaDeAlunos.size());
         } catch (IOException ex) {
             Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+//        try {
+//            carregarArquivo();
+//        } catch (IOException ex) {
+//            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     @Override
@@ -85,25 +88,12 @@ public class AlunoDAO implements GenericoDAO{
     }
     
     private void salvarArquivo() throws IOException {
-//        File novoArquivo = new File("/home/wennya/Trabalho/Aluno.txt");
-//        FileWriter arquivo = new FileWriter(novoArquivo, true);
-//        BufferedWriter escreverArquivo = new BufferedWriter(arquivo);
-//        for(Aluno aluno : listaDeAlunos) {
-//            escreverArquivo.write(aluno.getId());
-//            escreverArquivo.newLine();
-//            escreverArquivo.write(aluno.getNome());
-//            escreverArquivo.newLine();
-//            escreverArquivo.write(aluno.getCpf());
-//            escreverArquivo.newLine();
-//        }
-//        escreverArquivo.close();
-//        arquivo.close();
         
         File arquivo = new File("/home/wennya/Trabalho/Aluno.txt");
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Aluno aluno : listaDeAlunos){
-            dados = dados + aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n";//aluno.getNotaFinal().getNota()+"\n"+aluno.getFalta().getFaltas()+"\n";
+            dados += aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n\n";//aluno.getNotaFinal().getNota()+"\n"+aluno.getFalta().getFaltas()+"\n";
             /*dados += aluno.getListaAtividadesRealizadas().size()+"\n";
             for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
                 dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";
@@ -118,20 +108,6 @@ public class AlunoDAO implements GenericoDAO{
     }
     
     
-//    private void salvarArquivo() throws IOException { 
-//        FileOutputStream arquivo = new FileOutputStream("/home/wennya/Trabalho/Aluno.bin");
-//        ObjectOutputStream classe = new ObjectOutputStream(arquivo);
-//        classe.writeObject(AlunoDAO.this);
-//        classe.close();
-//        arquivo.close();        
-//    }
-//
-//    private AlunoDAO carregarArquivo()throws FileNotFoundException, IOException, ClassNotFoundException{
-//        FileInputStream arquivo = new FileInputStream("/home/wennya/Trabalho/Aluno.bin");
-//        ObjectInputStream classe = new ObjectInputStream(arquivo);
-//        AlunoDAO aluno = (AlunoDAO) classe.readObject();
-//        return aluno;
-//    }
 
     private void carregarArquivo() throws FileNotFoundException, IOException {
 //            FileReader arquivo = new FileReader("/home/wennya/Trabalho/Aluno.txt");
