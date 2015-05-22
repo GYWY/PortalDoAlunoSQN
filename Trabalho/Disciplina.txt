@@ -1,0 +1,41 @@
+
+1
+Prog1
+(a decidir)
+60
+#
+2
+Prog2
+(a decidir)
+60
+#
+3
+Prog3
+(a decidir)
+60
+#
+4
+Eletronica Basica 1
+(a decidir)
+90
+#
+5
+Eletromagnetismo 1
+(a decidir)
+75
+#
+6
+Laboratorio Programacao 2
+(a decidir)
+15
+#
+7
+Laboratorio Programacao 3
+(a decidir)
+15
+#
+8
+Algoritmos
+(a decidir)
+15
+#
