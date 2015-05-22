@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.POJO.Disciplina;
 import Model.POJO.Turma;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -75,17 +76,18 @@ public class TurmaDAO implements GenericoDAO{
         for(Turma turma : listaDeTurmas){
             dados += turma.getIdTurma()+"\n"+turma.getLocal()
                     +"\n"+turma.getAno()+"\n"+turma.getPeriodo()+"\n"
-                    +turma.getHorario()+"\n"+turma.getVaga()+"\n#\n";     
+                    +turma.getHorario()+"\n"+turma.getVaga()+"\n"+turma.getDisciplina().getId()+"\n#\n";
         }
         fp.write(dados.getBytes());
         fp.close();
     }
 
     private void carregarArquivo() throws FileNotFoundException {
-                Scanner scan = new Scanner(new FileReader("Professor.txt"));
+        Scanner scan = new Scanner(new FileReader("Turma.txt"));
         
         while(scan.hasNext()) {
             Turma addTurma = new Turma();
+            GenericoDAO disciplina = DisciplinaDAO.getInstancia();
             ultimoID = Integer.parseInt(scan.nextLine());
             addTurma.setIdTurma(ultimoID);
             addTurma.setLocal(scan.nextLine());
@@ -93,8 +95,10 @@ public class TurmaDAO implements GenericoDAO{
             addTurma.setPeriodo(Integer.parseInt(scan.nextLine()));
             addTurma.setHorario(scan.nextLine());
             addTurma.setVaga(Integer.parseInt(scan.nextLine()));
+            Integer idDisciplina = Integer.parseInt(scan.nextLine());
+            addTurma.setDisciplina((Disciplina) disciplina.buscar(idDisciplina));
+            addTurma.getDisciplina().adicionarTurma(addTurma);
             scan.nextLine();
-            System.out.println(addTurma.getDisciplina());
         }
                 
         scan.close();    
@@ -103,7 +107,7 @@ public class TurmaDAO implements GenericoDAO{
     @Override
     public boolean buscarTodos(Object objeto) throws IOException, FileNotFoundException, ClassNotFoundException {
         if(listaDeTurmas.isEmpty()) {
-            carregarArquivo(); 
+            carregarArquivo();
             return true;
         }
         else 

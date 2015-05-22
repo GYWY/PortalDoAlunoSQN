@@ -16,12 +16,12 @@ public class TurmaView {
         GenericoDAO turma = TurmaDAO.getInstancia();
         
         System.out.println("\n **************** CADASTRO TURMA ***************");
+        System.out.println("LOCAL: ");
+        novaTurma.setLocal(leitor.nextLine());
         System.out.println("ANO: ");
         novaTurma.setAno(Long.parseLong(leitor.nextLine()));
         System.out.println("PERíODO: ");
         novaTurma.setPeriodo(Integer.parseInt(leitor.nextLine()));
-        System.out.println("LOCAL: ");
-        novaTurma.setLocal(leitor.nextLine());
         System.out.println("HORÁRIO: ");
         novaTurma.setHorario(leitor.nextLine());
         System.out.println("QUANTIDADE DE VAGAS: ");
@@ -31,7 +31,7 @@ public class TurmaView {
         Disciplina disciplina = (Disciplina) DisciplinaDAO.getInstancia().buscar(nomeDisciplina);
         novaTurma.setDisciplina(disciplina);
         turma.inserir(novaTurma);
-        disciplina.setListaTurmas(novaTurma);
+        disciplina.adicionarTurma(novaTurma);
     }
     
     public void listarAluno(){
