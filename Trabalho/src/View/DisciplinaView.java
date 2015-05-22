@@ -61,7 +61,12 @@ public class DisciplinaView {
         
         System.out.println("\n **************** CADASTRO DISCIPLINA ***************");
         System.out.println("\n DISCIPLINA: ");
-        novaDisciplina.setNome(leitor.nextLine());
+        String nomeDisciplina = leitor.nextLine();
+        if(!(disciplina.buscar(nomeDisciplina) == null)){
+            System.out.println("\nDISCIPLINA JÁ FOI CADASTRADA\n\n");
+            return;
+        }
+        novaDisciplina.setNome(nomeDisciplina);
         System.out.println("\n EMENTA: ");
         novaDisciplina.setEmenta(leitor.nextLine());
         System.out.println("\n CARGA HORÁRIA: ");
