@@ -100,12 +100,12 @@ public class AlunoDAO implements GenericoDAO{
         
         while(scan.hasNext()) {
             Aluno addAluno = new Aluno();
-            ultimoID = scan.nextInt();
+            ultimoID = Integer.parseInt(scan.nextLine());
             addAluno.setId(ultimoID);
-            addAluno.setNome(scan.next());
-            addAluno.setCpf(scan.next());
+            addAluno.setNome(scan.nextLine());
+            addAluno.setCpf(scan.nextLine());
             listaDeAlunos.add(addAluno);
-            scan.next();
+            scan.nextLine();
             System.out.println(addAluno.getNome());
         }
         

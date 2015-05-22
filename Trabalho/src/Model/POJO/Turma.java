@@ -15,6 +15,11 @@ public class Turma {
     private ArrayList<Aluno> listaAlunos;
     private ArrayList<Atividade> listaDeAtividade;
 
+    public Turma(){
+        this.listaAlunos = new ArrayList<Aluno>();
+        this.listaDeAtividade = new ArrayList<Atividade>();
+    }
+    
     public Professor getProfessor() {
         return professor;
     }

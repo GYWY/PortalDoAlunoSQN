@@ -9,6 +9,11 @@ public class Aluno extends Pessoa {
     private ArrayList<Turma> listaTurmasMatriculadas;
     private ArrayList<Atividade> listaAtividadesRealizadas;
 
+    public Aluno(){
+        this.listaAtividadesRealizadas = new ArrayList<Atividade>();
+        this.listaTurmasMatriculadas = new ArrayList<Turma>();
+    }
+    
     public ArrayList<Turma> getListaTurmasMatriculadas() {
         return listaTurmasMatriculadas;
     }

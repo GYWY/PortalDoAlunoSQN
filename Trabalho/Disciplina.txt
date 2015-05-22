@@ -1,41 +1,40 @@
-
 1
-Prog1
-(a decidir)
+PROG1
+(A DECIDIR)
 60
 #
 2
-Prog2
-(a decidir)
-60
-#
-3
-Prog3
-(a decidir)
-60
-#
-4
-Eletronica Basica 1
-(a decidir)
+PROG2
+(A DECIDIR)
 90
 #
-5
-Eletromagnetismo 1
-(a decidir)
+3
+PROG3
+(A DECIDIR)
+90
+#
+4
+BASICA
+(A DECIDIR)
 75
 #
+5
+MAG
+(A DECIDIR)
+90
+#
 6
-Laboratorio Programacao 2
-(a decidir)
-15
+LABPROG2
+(A DECIDIR)
+60
 #
 7
-Laboratorio Programacao 3
-(a decidir)
-15
+LABPROG3
+(A DECIDIR)
+60
 #
 8
-Algoritmos
-(a decidir)
-15
+ALGORITMOS
+(A DECIDIR)
+75
 #

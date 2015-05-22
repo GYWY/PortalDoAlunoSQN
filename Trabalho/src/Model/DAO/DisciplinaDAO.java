@@ -95,14 +95,13 @@ public class DisciplinaDAO implements GenericoDAO{
         
         while(scan.hasNext()) {
             Disciplina addDisciplina = new Disciplina();
-            ultimoID = scan.nextInt();
+            ultimoID = Integer.parseInt(scan.nextLine());
             addDisciplina.setId(ultimoID);
-            addDisciplina.setNome(scan.next());
-            addDisciplina.setEmenta(scan.next());
-            addDisciplina.setCargaHoraria(ultimoID);
+            addDisciplina.setNome(scan.nextLine());
+            addDisciplina.setEmenta(scan.nextLine());
+            addDisciplina.setCargaHoraria(Integer.parseInt(scan.nextLine()));
             listaDisciplina.add(addDisciplina);
-            scan.next();
-            System.out.println(addDisciplina.getNome());
+            scan.nextLine();
         }
         
     scan.close();

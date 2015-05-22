@@ -86,14 +86,14 @@ public class TurmaDAO implements GenericoDAO{
         
         while(scan.hasNext()) {
             Turma addTurma = new Turma();
-            ultimoID = scan.nextInt();
+            ultimoID = Integer.parseInt(scan.nextLine());
             addTurma.setIdTurma(ultimoID);
-            addTurma.setLocal(scan.next());
-            addTurma.setAno(scan.nextLong());
-            addTurma.setPeriodo(scan.nextInt());
-            addTurma.setHorario(scan.next());
-            addTurma.setVaga(scan.nextInt());
-            scan.next();
+            addTurma.setLocal(scan.nextLine());
+            addTurma.setAno(Long.parseLong(scan.nextLine()));
+            addTurma.setPeriodo(Integer.parseInt(scan.nextLine()));
+            addTurma.setHorario(scan.nextLine());
+            addTurma.setVaga(Integer.parseInt(scan.nextLine()));
+            scan.nextLine();
             System.out.println(addTurma.getDisciplina());
         }
                 

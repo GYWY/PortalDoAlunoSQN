@@ -94,12 +94,12 @@ public class ProfessorDAO implements GenericoDAO{
         
         while(scan.hasNext()) {
             Professor addProfessor = new Professor();
-            ultimoID = scan.nextInt();
+            ultimoID = Integer.parseInt(scan.nextLine());
             addProfessor.setIdProfessor(ultimoID);
-            addProfessor.setNome(scan.next());
-            addProfessor.setCpf(scan.next());
-            addProfessor.setDepartamento(scan.next());
-            scan.next();
+            addProfessor.setNome(scan.nextLine());
+            addProfessor.setCpf(scan.nextLine());
+            addProfessor.setDepartamento(scan.nextLine());
+            scan.nextLine();
             System.out.println(addProfessor.getNome());
         }
                 

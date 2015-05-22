@@ -3,12 +3,13 @@ package View;
 import Model.DAO.AlunoDAO;
 import Model.DAO.AtividadeDAO;
 import Model.DAO.DisciplinaDAO;
-import Model.DAO.GenericoDAO;
 import Model.DAO.ProfessorDAO;
 import Model.DAO.TurmaDAO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Main {
 
@@ -48,7 +49,7 @@ public class Main {
         Integer escolha = 0;
         Integer flag; 
         
-        Main main = new Main();
+        Main menu = new Main();
         Scanner leitor = new Scanner(System.in);
         DisciplinaView disciplina = new DisciplinaView();
         TurmaView turma = new TurmaView();
@@ -56,7 +57,7 @@ public class Main {
         AlunoView aluno = new AlunoView();
         
         do {
-            main.imprimirMenuAdministrador();
+            menu.imprimirMenuAdministrador();
             do{
                 try{
                     escolha = Integer.parseInt(leitor.nextLine()); 
@@ -119,7 +120,7 @@ public class Main {
     private void menuProfessor() throws IOException, FileNotFoundException, ClassNotFoundException {
         Integer escolha = 0;
         Integer flag;
-        Main main = new Main();
+        Main menu = new Main();
         Scanner leitor = new Scanner(System.in);
         AtividadeView atividade = new AtividadeView();
         AlunoView aluno = new AlunoView();
@@ -128,7 +129,7 @@ public class Main {
         ProfessorView professor = new ProfessorView();
         
         do {
-            main.imprimirMenuProfessor();
+            menu.imprimirMenuProfessor();
             do{
                 try{
                     escolha = Integer.parseInt(leitor.nextLine()); 
@@ -207,11 +208,13 @@ public class Main {
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
         Integer escolha = 0;
         Integer flag;
-        Main main = new Main();
+        Main menu = new Main();
         Scanner leitor = new Scanner(System.in);
         
+        menu.buscarTodos();
+        
         do{
-            main.imprimirMenuEntrada();
+            menu.imprimirMenuEntrada();
             do{
                 try{
                     escolha = Integer.parseInt(leitor.nextLine()); 
@@ -224,10 +227,10 @@ public class Main {
             System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
-                    main.menuProfessor();
+                    menu.menuProfessor();
                     break;
                 case 2:
-                    main.menuAdministrador();
+                    menu.menuAdministrador();
                     break;
                 case 3:
                     break;
@@ -237,4 +240,21 @@ public class Main {
         } while(escolha != 3);
     }
 
+    private void buscarTodos() throws IOException, FileNotFoundException, ClassNotFoundException{
+        AlunoView aluno = new AlunoView();
+        AtividadeView atividade = new AtividadeView();
+        DisciplinaView disciplina = new DisciplinaView();
+        ProfessorView professor = new ProfessorView();
+        TurmaView turma = new TurmaView();
+        try{
+            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+            AlunoDAO.getInstancia().buscarTodos(aluno);
+            AtividadeDAO.getInstancia().buscarTodos(atividade);
+            ProfessorDAO.getInstancia().buscarTodos(professor);
+            TurmaDAO.getInstancia().buscarTodos(turma);
+        } catch(IOException e){
+
+        }
+    }
+    
 }

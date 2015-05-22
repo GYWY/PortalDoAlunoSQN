@@ -90,13 +90,13 @@ public class AtividadeDAO implements GenericoDAO{
         
         while(scan.hasNext()) {
             Atividade addAtividade = new Atividade();
-            ultimoID = scan.nextInt();
+            ultimoID = Integer.parseInt(scan.nextLine());
             addAtividade.setId(ultimoID);
-            addAtividade.setNome(scan.next());
-            addAtividade.setData(scan.next());
-            addAtividade.setTipo(scan.next());
-            addAtividade.setValor(scan.nextDouble());
-            scan.next();
+            addAtividade.setNome(scan.nextLine());
+            addAtividade.setData(scan.nextLine());
+            addAtividade.setTipo(scan.nextLine());
+            addAtividade.setValor(Double.parseDouble(scan.nextLine()));
+            scan.nextLine();
             System.out.println(addAtividade.getNome());
         }
                 

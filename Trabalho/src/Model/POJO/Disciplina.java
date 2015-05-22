@@ -11,6 +11,11 @@ public class Disciplina {
     private Integer cargaHoraria;
     private ArrayList<Professor> listaProfessores;
     private ArrayList<Turma> listaTurmas;
+
+    public Disciplina() {
+        this.listaProfessores = new ArrayList<Professor>();
+        this.listaTurmas = new ArrayList<Turma>();
+    }
     
     //Getters e Setters
     public String getNome() {
@@ -40,8 +45,8 @@ public class Disciplina {
     public ArrayList<Turma> getListaTurmas() {
         return listaTurmas;
     }
-    public void setListaTurmas(ArrayList<Turma> listaTurmas) {
-        this.listaTurmas = listaTurmas;
+    public void setListaTurmas(Turma turma) {
+        this.listaTurmas.add(turma);
     }
     public Integer getId() {
         return id;

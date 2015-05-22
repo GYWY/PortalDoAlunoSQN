@@ -1,9 +1,10 @@
 package View;
 
+import Model.DAO.DisciplinaDAO;
 import Model.DAO.GenericoDAO;
 import Model.DAO.TurmaDAO;
+import Model.POJO.Disciplina;
 import Model.POJO.Turma;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -23,10 +24,14 @@ public class TurmaView {
         novaTurma.setLocal(leitor.nextLine());
         System.out.println("HORÁRIO: ");
         novaTurma.setHorario(leitor.nextLine());
-        System.out.println("qUANTIDADE DE VAGAS: ");
+        System.out.println("QUANTIDADE DE VAGAS: ");
         novaTurma.setVaga(Integer.parseInt(leitor.nextLine()));
+        System.out.println("DISCIPLINA: ");
+        String nomeDisciplina = leitor.nextLine();
+        Disciplina disciplina = (Disciplina) DisciplinaDAO.getInstancia().buscar(nomeDisciplina);
+        novaTurma.setDisciplina(disciplina);
         turma.inserir(novaTurma);
-        System.out.println("ID da Turma: " + novaTurma.getIdTurma());
+        disciplina.setListaTurmas(novaTurma);
     }
     
     public void listarAluno(){
