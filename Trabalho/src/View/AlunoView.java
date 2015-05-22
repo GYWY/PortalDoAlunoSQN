@@ -18,7 +18,12 @@ public class AlunoView {
         
         System.out.println("\n\t CADASTRO ALUNO ");
         System.out.println("\n NOME DO ALUNO: ");
-        novoAluno.setNome(leitor.nextLine());
+        String nomeAluno = leitor.nextLine();
+        if(!(aluno.buscar(nomeAluno)== null)){
+            System.out.println("\nALUNO JÁ CADASTRADO\n\n");
+            return;
+        }
+        novoAluno.setNome(nomeAluno);
         System.out.println("\n CPF: ");
         novoAluno.setCpf(leitor.nextLine());
         aluno.inserir(novoAluno);

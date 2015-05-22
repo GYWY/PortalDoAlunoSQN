@@ -33,10 +33,16 @@ public class ProfessorView{
     
     private void lerDados(Professor professor){
         Scanner leitor = new Scanner(System.in);
+        GenericoDAO professorDao = ProfessorDAO.getInstancia();
         System.out.println("\n **************** CADASTRO PROFESSOR ***************");
         System.out.println("NOME PROFESSOR: ");
-        professor.setNome(leitor.nextLine());
-        
+        String nomeProfessor = leitor.nextLine();
+        if(!(professorDao.buscar(nomeProfessor)== null)){
+            System.out.println("\nPROFESSOR JÁ CADASTRADO\n\n");
+            return;
+        }
+        professor.setNome(nomeProfessor);
+  
         System.out.println("CPF: ");
         professor.setCpf(leitor.nextLine());
         
