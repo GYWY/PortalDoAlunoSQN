@@ -19,7 +19,8 @@ public class AtividadeView {
         
         System.out.println("\n **************** CADASTRO DE ATIVIDADES ***************");
         System.out.println("NOME DO ALUNO ");
-        AlunoDAO.getInstancia().buscar(leitor.nextLine());
+        //AlunoDAO.getInstancia().buscar(leitor.nextLine());
+        novaAtividade.setNome(leitor.nextLine());
         System.out.println("TIPO DA ATIVIDADE: ");
         novaAtividade.setTipo(leitor.nextLine());
         System.out.println("DATA (FORMATO: dd/mm/aa): ");

@@ -30,7 +30,7 @@ public class AtividadeDAO implements GenericoDAO{
     @Override
     public void inserir(Object objeto) {
         Atividade atividade = (Atividade) objeto;
-         int contador = listaDeAtividades.size();
+         Integer contador = listaDeAtividades.size();
          contador++;
          atividade.setId(contador);
          listaDeAtividades.add(atividade);
@@ -78,8 +78,8 @@ public class AtividadeDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Atividade atividade : listaDeAtividades){
-            dados += "\n"+atividade.getId()+atividade.getNome()
-                    +"\n"+atividade.getData()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n#";
+            dados += atividade.getId()+"\n"+atividade.getNome()
+                    +"\n"+atividade.getData()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n#\n";
         }
         fp.write(dados.getBytes());
         fp.close();
