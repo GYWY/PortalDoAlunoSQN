@@ -14,6 +14,7 @@ public class TurmaView {
         Scanner leitor = new Scanner(System.in);
         Turma novaTurma = new Turma();
         GenericoDAO turma = TurmaDAO.getInstancia();
+        GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         
         System.out.println("\n **************** CADASTRO TURMA ***************");
         System.out.println("LOCAL: ");
@@ -26,10 +27,15 @@ public class TurmaView {
         novaTurma.setHorario(leitor.nextLine());
         System.out.println("QUANTIDADE DE VAGAS: ");
         novaTurma.setVaga(Integer.parseInt(leitor.nextLine()));
-        System.out.println("DISCIPLINA: ");
+        System.out.println("DISCIPLINA: ");        
         String nomeDisciplina = leitor.nextLine();
-        Disciplina disciplina = (Disciplina) DisciplinaDAO.getInstancia().buscar(nomeDisciplina);
+        Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
+        if(!(disciplina==null)){
+            System.out.println("\n\nDISCIPLINA NÃO CADASTRADA\nNAO FOI POSSIVEL O CADASTRO DA TURMA!\n\n");
+            return;
+        }
         novaTurma.setDisciplina(disciplina);
+              
         turma.inserir(novaTurma);
         disciplina.adicionarTurma(novaTurma);
     }

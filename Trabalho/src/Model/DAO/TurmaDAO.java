@@ -49,8 +49,7 @@ public class TurmaDAO implements GenericoDAO{
                 return turma;
             }
         }
-
-        return null; 
+        return null;
     }
 
     @Override
