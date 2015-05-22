@@ -6,7 +6,6 @@ import Model.DAO.ProfessorDAO;
 import Model.POJO.Disciplina;
 import Model.POJO.Professor;
 import Model.POJO.Turma;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 

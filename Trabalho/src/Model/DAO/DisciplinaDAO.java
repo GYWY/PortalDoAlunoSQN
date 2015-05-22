@@ -1,6 +1,5 @@
 package Model.DAO;
 
-import Model.POJO.Aluno;
 import Model.POJO.Disciplina;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -84,7 +83,8 @@ public class DisciplinaDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Disciplina disciplina : listaDisciplina){
-            dados += "\n"+disciplina.getId()+"\n"+disciplina.getNome()+"\n"+disciplina.getEmenta()+"\n"+disciplina.getCargaHoraria()+"\n#";       
+            dados += disciplina.getId()+"\n"+disciplina.getNome()+"\n"+disciplina.getEmenta()
+                    +"\n"+disciplina.getCargaHoraria()+"\n#\n";       
         }
         fp.write(dados.getBytes());
         fp.close();

@@ -79,7 +79,7 @@ public class AlunoDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Aluno aluno : listaDeAlunos){
-            dados += "\n"+aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n#";
+            dados += aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n#\n";
             /*dados += aluno.getListaAtividadesRealizadas().size()+"\n";
             for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
                 dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";

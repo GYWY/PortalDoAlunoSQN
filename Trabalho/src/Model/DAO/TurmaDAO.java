@@ -73,9 +73,9 @@ public class TurmaDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Turma turma : listaDeTurmas){
-            dados += "\n"+turma.getIdTurma()+"\n"+turma.getLocal()
+            dados += turma.getIdTurma()+"\n"+turma.getLocal()
                     +"\n"+turma.getAno()+"\n"+turma.getPeriodo()+"\n"
-                    +turma.getHorario()+"\n"+turma.getVaga()+"\n#";     
+                    +turma.getHorario()+"\n"+turma.getVaga()+"\n#\n";     
         }
         fp.write(dados.getBytes());
         fp.close();

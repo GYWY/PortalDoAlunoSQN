@@ -81,8 +81,8 @@ public class ProfessorDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Professor professor : listaDeProfessores){
-            dados += "\n"+professor.getIdProfessor()+"\n"+professor.getNome()
-                    +"\n"+professor.getCpf()+"\n"+professor.getDepartamento()+"\n#";     
+            dados += professor.getIdProfessor()+"\n"+professor.getNome()
+                    +"\n"+professor.getCpf()+"\n"+professor.getDepartamento()+"\n#\n";     
         }
         fp.write(dados.getBytes());
         fp.close();

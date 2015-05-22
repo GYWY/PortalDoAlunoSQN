@@ -1,7 +1,11 @@
 package View;
 
 import Model.DAO.AlunoDAO;
+import Model.DAO.AtividadeDAO;
+import Model.DAO.DisciplinaDAO;
 import Model.DAO.GenericoDAO;
+import Model.DAO.ProfessorDAO;
+import Model.DAO.TurmaDAO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
@@ -65,25 +69,44 @@ public class Main {
             System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
+                    try{
+                        DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ DISCIPLINA CADASTRADA");
+                    }
                     disciplina.cadastrarDisciplina();
                     break;
                 case 2:
+                    try{
+                        TurmaDAO.getInstancia().buscarTodos(turma);
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ TURMA CADASTRADA");
+                    }
                     turma.cadastrarTurma();
                     break;
                 case 3:
+                    try{
+                        ProfessorDAO.getInstancia().buscarTodos(professor);
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ PROFESSOR CADASTRADO");
+                    }
                     professor.cadastrarProfessor();
                     break;
                 case 4:
                     try{
                         AlunoDAO.getInstancia().buscarTodos(aluno);
-                        aluno.listarAluno();
                     } catch(IOException e){
-                        System.out.println("\tLISTA DE ALUNOS VAZIA");
+                        System.out.println("\tNÃO HÁ ALUNO CADASTRADO");
                     }
                     aluno.cadastrarAluno();
                     break;
                 case 5:
-                    disciplina.listarTurmas();
+                    try{
+                        DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                        disciplina.listarTurmas();
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ DISCIPLINA CADASTRADA");
+                    }
                     break;
                 case 6:
                     break;
@@ -93,7 +116,7 @@ public class Main {
         } while(escolha != 6);
     }
     
-    private void menuProfessor() throws IOException {
+    private void menuProfessor() throws IOException, FileNotFoundException, ClassNotFoundException {
         Integer escolha = 0;
         Integer flag;
         Main main = new Main();
@@ -118,25 +141,60 @@ public class Main {
             System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
+                    try{
+                        AtividadeDAO.getInstancia().buscarTodos(atividade);
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ ATIVIDADE CADASTRADA");
+                    }
                     atividade.cadastrarAtividade();
                     break;
                 case 2:
+                    try{
+                        AtividadeDAO.getInstancia().buscarTodos(atividade);
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ ATIVIDADE CADASTRADA");
+                    }
                     atividade.cadastrarNota();
                     break;
                 case 3:
+                    try{
+                        AlunoDAO.getInstancia().buscarTodos(aluno);
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ ALUNO CADASTRADO");
+                    }
                     aluno.cadastrarFalta();
                     break;
                 case 4:
-                    disciplina.listarTurmas();
+                    try{
+                        DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                        disciplina.listarTurmas();
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ DISCIPLINA CADASTRADA");
+                    }
                     break;
                 case 5:
-                    turma.listarAluno();
+                    try{
+                        TurmaDAO.getInstancia().buscarTodos(turma);
+                        turma.listarAluno();
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ TURMA CADASTRADA");
+                    }
                     break;
                 case 6:
-                    disciplina.listarHistoricoTurmas();
+                    try{
+                        DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                        disciplina.listarHistoricoTurmas();
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ DISCIPLINA CADASTRADA");
+                    }
                     break;
                 case 7:
-                    professor.listarHistorico();
+                    try{
+                        ProfessorDAO.getInstancia().buscarTodos(professor);
+                        professor.listarHistorico();
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ PROFESSOR CADASTRADO");
+                    }
                     break;
                 case 8:
                     break;
