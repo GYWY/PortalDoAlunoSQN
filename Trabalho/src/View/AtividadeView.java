@@ -5,7 +5,6 @@ import Model.DAO.AtividadeDAO;
 import Model.POJO.Atividade;
 import Model.DAO.AlunoDAO;
 import Model.DAO.GenericoDAO;
-import Model.POJO.Aluno;
 import Model.POJO.Nota;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,13 +16,11 @@ public class AtividadeView {
         Scanner leitor = new Scanner(System.in);
         Atividade novaAtividade = new Atividade();
         GenericoDAO atividade = AtividadeDAO.getInstancia();
-        String nomeAluno;
         
         System.out.println("\n **************** CADASTRO DE ATIVIDADES ***************");
-        System.out.println("NOME DA ATIVIDADE ");
-        nomeAluno = leitor.nextLine();
-        Aluno aluno = (Aluno) AlunoDAO.getInstancia().buscar(nomeAluno);
-        novaAtividade.setNome(nomeAluno);
+        System.out.println("NOME DO ALUNO ");
+        //AlunoDAO.getInstancia().buscar(leitor.nextLine());
+        novaAtividade.setNome(leitor.nextLine());
         System.out.println("TIPO DA ATIVIDADE: ");
         novaAtividade.setTipo(leitor.nextLine());
         System.out.println("DATA (FORMATO: dd/mm/aa): ");
@@ -31,8 +28,7 @@ public class AtividadeView {
         System.out.println("VALOR: ");
         novaAtividade.setValor(Double.parseDouble(leitor.nextLine()));
         atividade.inserir(novaAtividade);
-        aluno.getListaAtividadesRealizadas().add(novaAtividade);
-
+        
     }
     
     public void cadastrarNota() {
