@@ -34,4 +34,7 @@ public class Professor extends Pessoa {
     public void setListaTurmasMinistradas(ArrayList<Turma> listaTurmasMinistradas) {
         this.listaTurmasMinistradas = listaTurmasMinistradas;
     }
+    public void adicionarTurma(Turma turma) {
+        this.listaTurmasMinistradas.add(turma);        
+    }
 }
