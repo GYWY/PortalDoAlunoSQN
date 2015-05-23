@@ -18,7 +18,11 @@ public class AtividadeView {
         GenericoDAO atividade = AtividadeDAO.getInstancia();
         
         System.out.println("\n **************** CADASTRO DE ATIVIDADES ***************");
-        System.out.println("NOME DO ALUNO ");
+        System.out.println("NOME DA ALUNO ATIVIDADE: ");
+        novaAtividade.setNome(leitor.nextLine());
+//        nomeAluno = leitor.nextLine();
+//        Aluno aluno = (Aluno) AlunoDAO.getInstancia().buscar(nomeAluno);
+//        novaAtividade.setNome(nomeAluno);
         //AlunoDAO.getInstancia().buscar(leitor.nextLine());
         novaAtividade.setNome(leitor.nextLine());
         System.out.println("TIPO DA ATIVIDADE: ");
@@ -28,6 +32,7 @@ public class AtividadeView {
         System.out.println("VALOR: ");
         novaAtividade.setValor(Double.parseDouble(leitor.nextLine()));
         atividade.inserir(novaAtividade);
+        //aluno.getListaAtividadesRealizadas().add(novaAtividade);
         
     }
     
