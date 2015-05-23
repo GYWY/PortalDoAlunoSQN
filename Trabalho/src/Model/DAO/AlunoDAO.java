@@ -1,6 +1,8 @@
 package Model.DAO;
 
 import Model.POJO.Aluno;
+import Model.POJO.Atividade;
+import Model.POJO.Turma;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -79,28 +81,12 @@ public class AlunoDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Aluno aluno : listaDeAlunos){
-            dados += aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n#\n";
-            /*if(!(aluno.getListaAtividadesRealizadas().isEmpty())){
-                for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
-                    dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";
-                }
-            }
-            else{
-                dados +="0"+"\n"+"0"+"\n#\n";
-            }
-            /*dados += aluno.getListaAtividadesRealizadas().size()+"\n";
-            for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
-                dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";
-            }*/
-            //dados += aluno.getListaTurmasMatriculadas().size()+"\n";
-            /*for(Turma turma : aluno.getListaTurmasMatriculadas()){
-                dados += turma.getIdTurma()+"\n"+turma.getAno()+"\n"+turma.getHorario()+"\n"+turma.getLocal()+"\n"+turma.getPeriodo()+"\n"+turma.getProfessor()+"\n"+turma.getVaga()+"\n"+turma.getDisciplina()+"\n";
-            } */      
-        }
+            dados += aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n";
+
         fp.write(dados.getBytes());
         fp.close();
+        }
     }
-    
     
 
     private void carregarArquivo() throws FileNotFoundException, IOException {
