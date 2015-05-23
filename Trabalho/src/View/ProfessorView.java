@@ -1,36 +1,12 @@
 
 package View;
 
-import Model.DAO.DisciplinaDAO;
 import Model.DAO.GenericoDAO;
 import Model.DAO.ProfessorDAO;
 import Model.POJO.Professor;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProfessorView{
-    
-    private void tratarDisciplinaInexistente(String nomeDaDisciplina, DisciplinaDAO disciplinaDAO){
-        
-        while(disciplinaDAO.buscar(nomeDaDisciplina) == null){
-                System.out.println("A DISCIPLINA NÃO ESTÁ CADASTRADA. DIGITE NOVAMENTE!");
-        }
-    }
-    
-    private void cadastrarDisciplinasElegiveis(Professor professor){
-        Scanner leitor = new Scanner(System.in);
-        String nomeDaDisciplina;
-        System.out.println("NOME DA DISCIPLINA OU 0 CASO CONTRÁRIO:  ");
-        DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
-        
-        do{
-            nomeDaDisciplina = leitor.nextLine();
-            
-            this.tratarDisciplinaInexistente(nomeDaDisciplina, disciplinaDAO);
-            professor.adicionarDisciplina(nomeDaDisciplina);
-        }while(nomeDaDisciplina.equals("0"));
-    }
-    
     private void lerDados(Professor professor){
         Scanner leitor = new Scanner(System.in);
         GenericoDAO professorDao = ProfessorDAO.getInstancia();
@@ -82,9 +58,9 @@ public class ProfessorView{
     public void listarProfessores() {
         GenericoDAO professorDao = ProfessorDAO.getInstancia();
         
-        for (Object professor : professorDao.listar()) {
+        professorDao.listar().stream().forEach((professor) -> {
             System.out.println(professor);
-        }
+        });
     }
 
     void listarHistorico() {
