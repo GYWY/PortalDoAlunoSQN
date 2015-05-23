@@ -18,7 +18,7 @@ public class AtividadeView {
         GenericoDAO atividade = AtividadeDAO.getInstancia();
         
         System.out.println("\n **************** CADASTRO DE ATIVIDADES ***************");
-        System.out.println("NOME DA ALUNO ATIVIDADE: ");
+        System.out.println("NOME DA ATIVIDADE: ");
         novaAtividade.setNome(leitor.nextLine());
 //        nomeAluno = leitor.nextLine();
 //        Aluno aluno = (Aluno) AlunoDAO.getInstancia().buscar(nomeAluno);
@@ -45,6 +45,10 @@ public class AtividadeView {
         System.out.println("\n **************** CADASTRO DE NOTAS ***************");
         System.out.println("NOME DO ALUNO: ");
         novaAtividade = (Atividade) atividade.buscar(leitor.nextLine());
+        if(novaAtividade == null){
+            System.out.println("\nNÃO FOI POSSIVEL EFETUAR O CADASTRO\nALUNO NÃO CADASTRADO\n\n");
+            return;
+        }
         System.out.println("CÓDIGO DA ATIVIDADE: ");
         nota.setAtividade((Atividade) atividade.buscar(Integer.parseInt(leitor.nextLine())));
         System.out.println("NOTA: ");
