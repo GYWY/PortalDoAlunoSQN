@@ -2,8 +2,10 @@ package View;
 
 import Model.DAO.DisciplinaDAO;
 import Model.DAO.GenericoDAO;
+import Model.DAO.ProfessorDAO;
 import Model.DAO.TurmaDAO;
 import Model.POJO.Disciplina;
+import Model.POJO.Professor;
 import Model.POJO.Turma;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -15,6 +17,7 @@ public class TurmaView {
         Turma novaTurma = new Turma();
         GenericoDAO turma = TurmaDAO.getInstancia();
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
+        GenericoDAO professorDao = ProfessorDAO.getInstancia();
         
         System.out.println("\n **************** CADASTRO TURMA ***************");
         System.out.println("LOCAL: ");
@@ -30,14 +33,22 @@ public class TurmaView {
         System.out.println("DISCIPLINA: ");        
         String nomeDisciplina = leitor.nextLine();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
-        if(!(disciplina==null)){
+        if(disciplina==null){
             System.out.println("\n\nDISCIPLINA NÃO CADASTRADA\nNAO FOI POSSIVEL O CADASTRO DA TURMA!\n\n");
             return;
         }
         novaTurma.setDisciplina(disciplina);
-              
+        System.out.println("PROFESSOR: ");
+        String nomeProfessor = leitor.nextLine();
+        Professor professor = (Professor) professorDao.buscar(nomeProfessor);
+        if(professor==null){
+            System.out.println("\n\nPROFESSOR NÃO CADASTRADO\nNÃO FOI POSSIVEL O CADASTRO DA TURMA!\n\n");
+            return;
+        }
+        novaTurma.setProfessor(professor);
         turma.inserir(novaTurma);
         disciplina.adicionarTurma(novaTurma);
+        professor.adicionarTurma(novaTurma);
     }
     
     public void listarAluno(){
