@@ -100,7 +100,7 @@ public class TurmaDAO implements GenericoDAO{
             addTurma.getDisciplina().adicionarTurma(addTurma);
             scan.nextLine();
         }
-                
+        
         scan.close();    
     }
 

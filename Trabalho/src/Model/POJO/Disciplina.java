@@ -9,11 +9,9 @@ public class Disciplina {
     private String nome;
     private String ementa;
     private Integer cargaHoraria;
-    private ArrayList<Professor> listaProfessores;
     private ArrayList<Turma> listaTurmas;
 
     public Disciplina() {
-        this.listaProfessores = new ArrayList<Professor>();
         this.listaTurmas = new ArrayList<Turma>();
     }
     
@@ -35,13 +33,7 @@ public class Disciplina {
     }
     public void setCargaHoraria(Integer cargaHoraria) {
         this.cargaHoraria = cargaHoraria;
-    }
-    public ArrayList<Professor> getListaProfessores() {
-        return listaProfessores;
-    }
-    public void setListaProfessores(ArrayList<Professor> listaProfessores) {
-        this.listaProfessores = listaProfessores;
-    }
+    } 
     public ArrayList<Turma> getListaTurmas() {
         return listaTurmas;
     }
