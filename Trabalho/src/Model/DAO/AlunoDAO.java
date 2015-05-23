@@ -80,6 +80,14 @@ public class AlunoDAO implements GenericoDAO{
         String dados = "";
         for(Aluno aluno : listaDeAlunos){
             dados += aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n#\n";
+            /*if(!(aluno.getListaAtividadesRealizadas().isEmpty())){
+                for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
+                    dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";
+                }
+            }
+            else{
+                dados +="0"+"\n"+"0"+"\n#\n";
+            }
             /*dados += aluno.getListaAtividadesRealizadas().size()+"\n";
             for(Atividade atividade : aluno.getListaAtividadesRealizadas()){
                 dados += atividade.getId()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n";
@@ -105,7 +113,7 @@ public class AlunoDAO implements GenericoDAO{
             addAluno.setNome(scan.nextLine());
             addAluno.setCpf(scan.nextLine());
             listaDeAlunos.add(addAluno);
-            scan.nextLine();
+            scan.next();
             System.out.println(addAluno.getNome());
         }
         
