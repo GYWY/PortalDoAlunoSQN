@@ -62,16 +62,6 @@ public class AlunoDAO implements GenericoDAO{
     }
 
     @Override
-    public boolean remover(Object objeto) {
-        Aluno aluno = (Aluno) buscar(objeto);
-        if(aluno != null){
-            listaDeAlunos.remove(listaDeAlunos.indexOf(aluno));
-            return true;
-        }
-        return false;    
-    }
-
-    @Override
     public ArrayList<Object> listar() {
         return (ArrayList<Object>)(Object)listaDeAlunos;
     }

@@ -57,17 +57,6 @@ public class AtividadeDAO implements GenericoDAO{
     }
 
     @Override
-    public boolean remover(Object objeto) {
-        
-        Atividade atividade = (Atividade) buscar(objeto);
-        if(atividade != null){
-            listaDeAtividades.remove(listaDeAtividades.indexOf(atividade));
-            return true;
-        }
-        return false;        
-    }
-
-    @Override
     public ArrayList<Object> listar() {
         return (ArrayList<Object>)(Object)listaDeAtividades;
     }

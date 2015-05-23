@@ -61,16 +61,6 @@ public class ProfessorDAO implements GenericoDAO{
     }
 
     @Override
-    public boolean remover(Object objeto) {
-       Professor professor = (Professor) buscar(objeto);
-        if(professor != null){
-            listaDeProfessores.remove(listaDeProfessores.indexOf(professor));
-            return true;
-        }
-        return false;  
-    }
-
-    @Override
     public ArrayList<Object> listar() {
          return (ArrayList<Object>)(Object)listaDeProfessores;        
     }
@@ -99,8 +89,8 @@ public class ProfessorDAO implements GenericoDAO{
             addProfessor.setNome(scan.nextLine());
             addProfessor.setCpf(scan.nextLine());
             addProfessor.setDepartamento(scan.nextLine());
+            listaDeProfessores.add(addProfessor);
             scan.nextLine();
-            System.out.println(addProfessor.getNome());
         }
                 
         scan.close();    

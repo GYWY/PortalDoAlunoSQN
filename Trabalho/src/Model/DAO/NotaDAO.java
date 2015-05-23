@@ -18,11 +18,6 @@ public class NotaDAO implements GenericoDAO{
     }
 
     @Override
-    public boolean remover(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public ArrayList<Object> listar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

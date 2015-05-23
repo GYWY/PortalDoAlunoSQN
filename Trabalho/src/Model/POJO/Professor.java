@@ -8,7 +8,7 @@ public class Professor extends Pessoa {
     private ArrayList<Turma> listaTurmasMinistradas;
     
     public Professor(){
-        this.listaTurmasMinistradas = new ArrayList<>();
+        this.listaTurmasMinistradas = new ArrayList<Turma>();
     }
     
     public Integer getIdProfessor() {

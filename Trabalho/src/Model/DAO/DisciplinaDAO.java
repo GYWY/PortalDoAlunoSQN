@@ -63,16 +63,6 @@ public class DisciplinaDAO implements GenericoDAO{
     }
 
     @Override
-    public boolean remover(Object objeto) {
-        Disciplina disciplina = (Disciplina) buscar(objeto);
-        if(disciplina != null){
-            listaDisciplina.remove(listaDisciplina.indexOf(disciplina));
-            return true;
-        }
-        return false;    
-    }
-
-    @Override
     public ArrayList<Object> listar() {
         return (ArrayList<Object>)(Object)listaDisciplina;
     }

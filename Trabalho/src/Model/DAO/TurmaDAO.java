@@ -63,17 +63,7 @@ public class TurmaDAO implements GenericoDAO{
         }
         return null;
     }
-
-    @Override
-    public boolean remover(Object objeto) {
-        Turma turma = (Turma) buscar(objeto);
-        if(turma != null){
-            listaDeTurmas.remove(listaDeTurmas.indexOf(turma));
-            return true;
-        }
-        return false;   
-    }
-
+    
     @Override
     public ArrayList<Object> listar() {
          return (ArrayList<Object>)(Object)listaDeTurmas;

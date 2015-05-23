@@ -18,10 +18,8 @@ public class ProfessorView{
             return;
         }
         professor.setNome(nomeProfessor);
-  
         System.out.println("CPF: ");
         professor.setCpf(leitor.nextLine());
-        
         System.out.println("DEPARTAMENTO: ");
         professor.setDepartamento(leitor.nextLine());
     }

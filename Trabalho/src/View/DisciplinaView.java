@@ -60,11 +60,11 @@ public class DisciplinaView {
         String nomeDisciplina = leitor.nextLine();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
         ArrayList<Turma> listaTurma = disciplina.getListaTurmas();
-        listaTurma.stream().forEach((turma) -> {
-            turma.toString();
-        });
-            
-            
+        for(Turma turma : listaTurma){
+            System.out.println(turma.getIdTurma());
+            System.out.println(turma.getDisciplina());
+            System.out.println(turma.getProfessor());
+        }
     }
 
     void listarHistoricoTurmas() {

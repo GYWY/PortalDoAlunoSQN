@@ -246,10 +246,10 @@ public class Main {
         TurmaView turma = new TurmaView();
         try{
             DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+            ProfessorDAO.getInstancia().buscarTodos(professor);
+            TurmaDAO.getInstancia().buscarTodos(turma); 
             //AlunoDAO.getInstancia().buscarTodos(aluno);
             //AtividadeDAO.getInstancia().buscarTodos(atividade);
-            //ProfessorDAO.getInstancia().buscarTodos(professor);
-            TurmaDAO.getInstancia().buscarTodos(turma);
             System.out.println("CARREGADO");
         } catch(IOException e){
             System.out.println("ERRO");

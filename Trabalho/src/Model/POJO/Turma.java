@@ -13,9 +13,11 @@ public class Turma {
     private Professor professor;
     private Disciplina disciplina;
     private ArrayList<Atividade> listaDeAtividade;
+    private ArrayList<Falta> listaDeFalta;
 
     public Turma(){
         this.listaDeAtividade = new ArrayList<Atividade>();
+        this.listaDeFalta = new ArrayList<Falta>();
     }
     
     public Professor getProfessor() {
@@ -103,4 +105,20 @@ public class Turma {
     public String toString() {
         return ("Turma ID: " + idTurma + "\nAno: " + ano + "\nPeríodo: " + periodo + "\nLocal: " + local + "\nHorário: " + horario + "\nVagas: " + vaga);
     } 
+
+    public ArrayList<Atividade> getListaDeAtividade() {
+        return listaDeAtividade;
+    }
+
+    public void setListaDeAtividade(ArrayList<Atividade> listaDeAtividade) {
+        this.listaDeAtividade = listaDeAtividade;
+    }
+
+    public ArrayList<Falta> getListaDeFalta() {
+        return listaDeFalta;
+    }
+
+    public void setListaDeFalta(ArrayList<Falta> listaDeFalta) {
+        this.listaDeFalta = listaDeFalta;
+    }
 }
