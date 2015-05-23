@@ -102,9 +102,11 @@ public class DisciplinaView {
         }
     }
 
-    public void listarTurmas(String nomeDisciplina) {
+    public void listarTurmas() {
+        Scanner leitor = new Scanner(System.in);
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
-        
+        System.out.println("DISCIPLINA: ");
+        String nomeDisciplina = leitor.nextLine();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
         ArrayList<Turma> listaTurma = disciplina.getListaTurmas();
         for(Turma turma : listaTurma){
