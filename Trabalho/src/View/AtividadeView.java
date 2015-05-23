@@ -31,7 +31,7 @@ public class AtividadeView {
         novaAtividade.setData(leitor.nextLine());
         System.out.println("VALOR: ");
         novaAtividade.setValor(Double.parseDouble(leitor.nextLine()));
-            atividade.inserir(novaAtividade);
+        atividade.inserir(novaAtividade);
         //aluno.getListaAtividadesRealizadas().add(novaAtividade);
         
     }

@@ -1,7 +1,6 @@
 package Model.DAO;
 
 import Model.POJO.Disciplina;
-import Model.POJO.Professor;
 import Model.POJO.Turma;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,21 +43,10 @@ public class TurmaDAO implements GenericoDAO{
 
     @Override
     public Object buscar(Object objeto) {
-        
-        if(objeto instanceof String){
-            String nome = (String) objeto;
-            for(Turma turma : listaDeTurmas){
-                if(turma.getDisciplina().equals(nome))
-                    return turma;
-            }            
-        }
-        else if(objeto instanceof Integer){
-            Integer id =(Integer) objeto;
-            
-            for(Turma turma : listaDeTurmas){
-                if(turma.getIdTurma().equals(objeto)){
-                    return turma;
-                }
+        Integer id = (Integer) objeto;
+        for(Turma turma : listaDeTurmas){
+            if(turma.getIdTurma().equals(objeto)){
+                return turma;
             }
         }
         return null;
@@ -87,8 +75,7 @@ public class TurmaDAO implements GenericoDAO{
         for(Turma turma : listaDeTurmas){
             dados += turma.getIdTurma()+"\n"+turma.getLocal()
                     +"\n"+turma.getAno()+"\n"+turma.getPeriodo()+"\n"
-                    +turma.getHorario()+"\n"+turma.getVaga()+"\n"+turma.getDisciplina().getId()
-                    +"\n"+turma.getProfessor().getIdProfessor()+"\n#\n";
+                    +turma.getHorario()+"\n"+turma.getVaga()+"\n"+turma.getDisciplina().getId()+"\n#\n";
         }
         fp.write(dados.getBytes());
         fp.close();
@@ -100,8 +87,6 @@ public class TurmaDAO implements GenericoDAO{
         while(scan.hasNext()) {
             Turma addTurma = new Turma();
             GenericoDAO disciplina = DisciplinaDAO.getInstancia();
-            GenericoDAO professor = ProfessorDAO.getInstancia();
-                    
             ultimoID = Integer.parseInt(scan.nextLine());
             addTurma.setIdTurma(ultimoID);
             addTurma.setLocal(scan.nextLine());
@@ -112,9 +97,6 @@ public class TurmaDAO implements GenericoDAO{
             Integer idDisciplina = Integer.parseInt(scan.nextLine());
             addTurma.setDisciplina((Disciplina) disciplina.buscar(idDisciplina));
             addTurma.getDisciplina().adicionarTurma(addTurma);
-            Integer idProfessor = Integer.parseInt(scan.nextLine());
-            addTurma.setProfessor((Professor) professor.buscar(idProfessor));
-            addTurma.getProfessor().adicionarTurma(addTurma);
             scan.nextLine();
         }
         
