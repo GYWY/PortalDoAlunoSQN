@@ -6,29 +6,7 @@ public class Aluno extends Pessoa {
     private Integer id;
     private Falta falta;
     private Nota notaFinal;
-    private ArrayList<Turma> listaTurmasMatriculadas;
-    private ArrayList<Atividade> listaAtividadesRealizadas;
-
-    public Aluno(){
-        this.listaAtividadesRealizadas = new ArrayList<Atividade>();
-        this.listaTurmasMatriculadas = new ArrayList<Turma>();
-    }
-    
-    public ArrayList<Turma> getListaTurmasMatriculadas() {
-        return listaTurmasMatriculadas;
-    }
-
-    public void setListaTurmasMatriculadas(ArrayList<Turma> listaTurmasMatriculadas) {
-        this.listaTurmasMatriculadas = listaTurmasMatriculadas;
-    }
-
-    public ArrayList<Atividade> getListaAtividadesRealizadas() {
-        return listaAtividadesRealizadas;
-    }
-
-    public void setListaAtividadesRealizadas(ArrayList<Atividade> listaAtividadesRealizadas) {
-        this.listaAtividadesRealizadas = listaAtividadesRealizadas;
-    }
+   
 
     public Integer getId() {
         return id;

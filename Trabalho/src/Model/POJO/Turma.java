@@ -12,11 +12,9 @@ public class Turma {
     private Integer vaga;
     private Professor professor;
     private Disciplina disciplina;
-    private ArrayList<Aluno> listaAlunos;
     private ArrayList<Atividade> listaDeAtividade;
 
     public Turma(){
-        this.listaAlunos = new ArrayList<Aluno>();
         this.listaDeAtividade = new ArrayList<Atividade>();
     }
     
@@ -75,15 +73,7 @@ public class Turma {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
-
-    public ArrayList<Aluno> getListaAlunos() {
-        return listaAlunos;
-    }
-
-    public void setListaAlunos(ArrayList<Aluno> listaAlunos) {
-        this.listaAlunos = listaAlunos;
-    }
-
+    
     public Integer getIdTurma() {
         return idTurma;
     }

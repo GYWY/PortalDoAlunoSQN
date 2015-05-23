@@ -6,14 +6,10 @@ public class Atividade {
     private String tipo;
     private String data;
     private Double valor;
-    private Integer id;
-    private Aluno aluno; 
+    private Integer id; 
     private Nota nota;
     private Turma turma;
 
-    public Aluno getAluno() {
-        return aluno;
-    }
 
     public Nota getNota() {
         return nota;
@@ -29,10 +25,6 @@ public class Atividade {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
     }
 
     public void setNota(Nota nota) {
