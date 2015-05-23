@@ -3,9 +3,11 @@ package View;
 import Model.DAO.DisciplinaDAO;
 import Model.DAO.GenericoDAO;
 import Model.DAO.ProfessorDAO;
+import Model.DAO.TurmaDAO;
 import Model.POJO.Disciplina;
 import Model.POJO.Professor;
 import Model.POJO.Turma;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -93,15 +95,23 @@ public class DisciplinaView {
     public void listarDisciplina() {
         GenericoDAO disciplina = DisciplinaDAO.getInstancia();
         
-        System.out.println("\n **************** DISCIPLINAS ****************");
+        System.out.println("\n **************** DISCIPLINAS **************** ");
         for (Iterator<Object> it = disciplina.listar().iterator(); it.hasNext();) {
             Object disciplinaLista = it.next();
-            System.out.println(disciplinaLista);
+            disciplinaLista.toString();
         }
     }
 
-    void listarTurmas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void listarTurmas(String nomeDisciplina) {
+        GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
+        
+        Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
+        ArrayList<Turma> listaTurma = disciplina.getListaTurmas();
+        for(Turma turma : listaTurma){
+            turma.toString();
+        }
+            
+            
     }
 
     void listarHistoricoTurmas() {
