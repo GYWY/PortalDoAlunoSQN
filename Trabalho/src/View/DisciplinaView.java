@@ -7,8 +7,7 @@ import Model.POJO.Turma;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DisciplinaView {
-    
+public class DisciplinaView {    
     public void cadastrarDisciplina() {
         Scanner leitor = new Scanner(System.in);
         Disciplina novaDisciplina = new Disciplina();
