@@ -82,10 +82,8 @@ public class DisciplinaView {
         System.out.println("DISCIPLINA: ");
         String nomeDisciplina = leitor.nextLine();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
-        if(nomeDisciplina == disciplina.getNome()){
-            for (int i = 0; i < disciplina.getListaTurmas().size(); i++) {  
-            System.out.println(disciplina.getListaTurmas().get(i));  
-            }
+        if(nomeDisciplina.equals(disciplina.getNome())){  
+            System.out.println(disciplina.getListaTurmas().size());  
         }
     }
     
