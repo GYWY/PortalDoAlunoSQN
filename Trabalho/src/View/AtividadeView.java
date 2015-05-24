@@ -1,10 +1,13 @@
 
 package View;
 
+import Model.DAO.AlunoDAO;
 import Model.DAO.AtividadeDAO;
 import Model.POJO.Atividade;
 import Model.DAO.GenericoDAO;
+import Model.DAO.NotaDAO;
 import Model.DAO.TurmaDAO;
+import Model.POJO.Aluno;
 import Model.POJO.Nota;
 import Model.POJO.Turma;
 import java.util.Iterator;
@@ -58,6 +61,35 @@ public class AtividadeView {
         System.out.println("NOTA: ");
         nota.setNota(Double.parseDouble(leitor.nextLine()));
         atividade.inserir(novaAtividade);
+    }
+  
+    public void situacaoNotaAluno(){
+        Scanner leitor = new Scanner(System.in);
+        GenericoDAO notas = NotaDAO.getInstancia();
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        
+        System.out.println("ALUNO: ");
+        String nomeAluno = leitor.nextLine();
+        System.out.println("ATIVIDADE: ");
+        String nomeAtividade = leitor.nextLine();
+        Aluno aluno = (Aluno) alunoDao.buscar(nomeAluno);
+        Double valorTotal = 0.0;
+        Double notaFinal = 0.0;
+        for(Nota nota : aluno.getListaNotas()){
+            if(nomeAtividade.equals(nota.getAtividade().getNome())){
+                notaFinal += nota.getNota();
+            }
+        }
+        for(Nota nota : aluno.getListaNotas()){
+            if(nomeAtividade.equals(nota.getAtividade().getValor())){
+                valorTotal +=nota.getAtividade().getValor();
+            }
+        }
+        if((valorTotal*0.6)<=notaFinal){
+            System.out.println("APROVADO POR NOTA");
+        }
+        else
+           System.out.println("REPROVADO POR NOTA");
     }
     
     public void buscarAtividade() {

@@ -1,5 +1,6 @@
 package Model.DAO;
 
+import Model.POJO.Aluno;
 import Model.POJO.Nota;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,6 +13,7 @@ import java.util.Scanner;
 public class NotaDAO implements GenericoDAO{
     
     ArrayList<Nota> listaNotas = new ArrayList<>();
+    private ArrayList<Aluno> listaDeAlunos = new ArrayList<>();
     private static NotaDAO instancia = null;
     private Integer ultimoID = 0;
 
@@ -78,7 +80,7 @@ public class NotaDAO implements GenericoDAO{
         scan.close();
         
     }
-
+    
     @Override
     public boolean buscarTodos(Object objeto) throws IOException, FileNotFoundException, ClassNotFoundException {
        if(listaNotas.isEmpty()) {
