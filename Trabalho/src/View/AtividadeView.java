@@ -46,21 +46,32 @@ public class AtividadeView {
     public void cadastrarNota() {
         Scanner leitor = new Scanner(System.in);
         Nota nota = new Nota();
-        Atividade novaAtividade = new Atividade();
-        GenericoDAO atividade = AtividadeDAO.getInstancia();
+        GenericoDAO notaDao = NotaDAO.getInstancia();
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
         
-        System.out.println("\n **************** CADASTRO DE NOTAS ***************");
-        System.out.println("NOME DO ALUNO: ");
-        novaAtividade = (Atividade) atividade.buscar(leitor.nextLine());
-        if(novaAtividade == null){
-            System.out.println("\nNÃO FOI POSSIVEL EFETUAR O CADASTRO\nALUNO NÃO CADASTRADO\n\n");
+        System.out.println("\n\t CADASTRO NOTA \n");
+        System.out.println("\n ALUNO: ");
+        String nomeAluno = leitor.nextLine();
+        Aluno aluno = (Aluno) alunoDao.buscar(nomeAluno);
+        if(aluno == null){
+            System.out.println("\n ALUNO NÃO CADASTRADO \n\n");
             return;
         }
-        System.out.println("CÓDIGO DA ATIVIDADE: ");
-        nota.setAtividade((Atividade) atividade.buscar(Integer.parseInt(leitor.nextLine())));
-        System.out.println("NOTA: ");
+        nota.setAluno(aluno);
+        System.out.println("\n\t ATIVIDADE: ");
+        String nomeAtividade = leitor.nextLine();
+        Atividade atividade = (Atividade) atividadeDao.buscar(nomeAtividade);
+        if(atividade == null){
+            System.out.println("\n ATIVIDADE NÃO CADASTRADA \n\n");
+            return;
+        }
+        nota.setAtividade(atividade);
+        System.out.println("\n NOTA: ");
         nota.setNota(Double.parseDouble(leitor.nextLine()));
-        atividade.inserir(novaAtividade);
+        notaDao.inserir(nota);
+        aluno.getListaNotas().add(nota);
+        atividade.getListaNotas().add(nota);
     }
   
     public void situacaoNotaAluno(){
