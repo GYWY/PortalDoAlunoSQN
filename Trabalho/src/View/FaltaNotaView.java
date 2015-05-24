@@ -105,23 +105,23 @@ public class FaltaNotaView {
             System.out.println("\n ALUNO REPROVADO POR FALTA");
             return;
         }
+        for(Nota nota : aluno.getListaNotas()){
+            for(Turma turma : disciplina.getListaTurmas()){
+                if(turma.getListaDeAtividade().contains(nota.getAtividade()))
+                    notaFinal += nota.getNota();
+            }
+        }
+        for(Nota nota : aluno.getListaNotas()){
+            for(Turma turma : disciplina.getListaTurmas()){
+                if(turma.getListaDeAtividade().contains(nota.getAtividade()))
+                    valorTotal += nota.getAtividade().getValor();
+            }
+        }
+        if((valorTotal*0.6)<=notaFinal){
+            System.out.println("APROVADO POR NOTA");
+        }
         else
-            System.out.println("\nhahahaha\n\n");
-//        for(Nota nota : aluno.getListaNotas()){
-//            if(nomeAtividade.equals(nota.getAtividade().getNome())){
-//                notaFinal += nota.getNota();
-//            }
-//        }
-//        for(Nota nota : aluno.getListaNotas()){
-//            if(nomeAtividade.equals(nota.getAtividade().getValor())){
-//                valorTotal +=nota.getAtividade().getValor();
-//            }
-//        }
-//        if((valorTotal*0.6)<=notaFinal){
-//            System.out.println("APROVADO POR NOTA");
-//        }
-//        else
-//           System.out.println("REPROVADO POR NOTA");
+           System.out.println("REPROVADO POR NOTA");
     }
     
 }
