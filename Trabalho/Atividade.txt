@@ -15,7 +15,7 @@ TRABALHO
 3
 P1
 ..
-PROBA
+PROVA
 2.5
 4
 #

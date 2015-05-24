@@ -3,6 +3,8 @@ package View;
 import Model.DAO.AlunoDAO;
 import Model.DAO.AtividadeDAO;
 import Model.DAO.DisciplinaDAO;
+import Model.DAO.FaltaDAO;
+import Model.DAO.NotaDAO;
 import Model.DAO.ProfessorDAO;
 import Model.DAO.TurmaDAO;
 import java.io.FileNotFoundException;
@@ -151,6 +153,7 @@ public class Main {
                 case 2:
                     try{
                         AtividadeDAO.getInstancia().buscarTodos(atividade);
+                        AlunoDAO.getInstancia().buscarTodos(aluno);
                     } catch(IOException e){
                         System.out.println("\tNÃO HÁ ATIVIDADE CADASTRADA");
                     }
@@ -159,6 +162,7 @@ public class Main {
                 case 3:
                     try{
                         AlunoDAO.getInstancia().buscarTodos(aluno);
+                        TurmaDAO.getInstancia().buscarTodos(turma);
                     } catch(IOException e){
                         System.out.println("\tNÃO HÁ ALUNO CADASTRADO");
                     }
@@ -174,11 +178,12 @@ public class Main {
                     break;
                 case 5:
                     try{
-                        TurmaDAO.getInstancia().buscarTodos(turma);
-                        turma.listarAluno();
+                        DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                        AlunoDAO.getInstancia().buscarTodos(aluno);
                     } catch(IOException e){
                         System.out.println("\tNÃO HÁ TURMA CADASTRADA");
                     }
+                    faltaNota.situacaoNotaAluno();
                     break;
                 case 6:
                     try{
@@ -245,12 +250,15 @@ public class Main {
         DisciplinaView disciplina = new DisciplinaView();
         ProfessorView professor = new ProfessorView();
         TurmaView turma = new TurmaView();
+        FaltaNotaView faltaNota = new FaltaNotaView();
         try{
             DisciplinaDAO.getInstancia().buscarTodos(disciplina);
             ProfessorDAO.getInstancia().buscarTodos(professor);
             TurmaDAO.getInstancia().buscarTodos(turma); 
             AlunoDAO.getInstancia().buscarTodos(aluno);
             AtividadeDAO.getInstancia().buscarTodos(atividade);
+            FaltaDAO.getInstancia().buscarTodos(faltaNota);
+            NotaDAO.getInstancia().buscarTodos(faltaNota);
             System.out.println("CARREGADO");
         } catch(IOException e){
             System.out.println("ERRO");

@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class FaltaDAO implements GenericoDAO {
 
@@ -29,7 +31,12 @@ public class FaltaDAO implements GenericoDAO {
         Falta falta = (Falta) objeto;
         ultimoID++;
         falta.setId(ultimoID);
-        listaFaltas.add(falta);        
+        listaFaltas.add(falta); 
+        try {    
+            salvarArquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(DisciplinaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -73,13 +80,12 @@ public class FaltaDAO implements GenericoDAO {
             addFalta.setId(ultimoID);
             Integer idAluno = Integer.parseInt(scan.nextLine());
             addFalta.setAluno((Aluno) alunoDao.buscar(idAluno));
-            addFalta.getAluno().adicionarFalta(addFalta);
             Integer idTurma = Integer.parseInt(scan.nextLine());
             addFalta.setTurma((Turma) turmaDao.buscar(idTurma));
-            addFalta.getTurma().adicionarFalta(addFalta);
             addFalta.setFaltas(Integer.parseInt(scan.nextLine()));
             listaFaltas.add(addFalta);
-            scan.nextLine();
+            addFalta.getAluno().adicionarFalta(addFalta);
+            addFalta.getTurma().adicionarFalta(addFalta);
         }
         
         scan.close();

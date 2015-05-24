@@ -3,11 +3,14 @@ package View;
 
 import Model.DAO.AlunoDAO;
 import Model.DAO.AtividadeDAO;
+import Model.DAO.DisciplinaDAO;
+import Model.DAO.FaltaDAO;
 import Model.DAO.GenericoDAO;
 import Model.DAO.NotaDAO;
 import Model.DAO.TurmaDAO;
 import Model.POJO.Aluno;
 import Model.POJO.Atividade;
+import Model.POJO.Disciplina;
 import Model.POJO.Falta;
 import Model.POJO.Nota;
 import Model.POJO.Turma;
@@ -49,6 +52,7 @@ public class FaltaNotaView {
     public void cadastrarFalta() {
         Scanner leitor = new Scanner(System.in);
         Falta falta = new Falta();
+        GenericoDAO faltaDao = FaltaDAO.getInstancia();
         GenericoDAO alunoDao = AlunoDAO.getInstancia();
         GenericoDAO turmaDao = TurmaDAO.getInstancia();
         
@@ -71,6 +75,7 @@ public class FaltaNotaView {
         
         System.out.println("\n NÚMERO DE FALTAS: ");
         falta.setFaltas(Integer.parseInt(leitor.nextLine()));
+        faltaDao.inserir(falta);
         turma.adicionarFalta(falta);
         aluno.adicionarFalta(falta);
 
@@ -80,29 +85,43 @@ public class FaltaNotaView {
         Scanner leitor = new Scanner(System.in);
         GenericoDAO notas = NotaDAO.getInstancia();
         GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         
+        System.out.println("DISCIPLINA: ");
+        String nomeDisciplina = leitor.nextLine();
+        Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
         System.out.println("ALUNO: ");
         String nomeAluno = leitor.nextLine();
-        System.out.println("ATIVIDADE: ");
-        String nomeAtividade = leitor.nextLine();
         Aluno aluno = (Aluno) alunoDao.buscar(nomeAluno);
+        Integer faltaFinal = 0;
         Double valorTotal = 0.0;
         Double notaFinal = 0.0;
-        for(Nota nota : aluno.getListaNotas()){
-            if(nomeAtividade.equals(nota.getAtividade().getNome())){
-                notaFinal += nota.getNota();
+        for(Falta falta : aluno.getListaFaltas()){
+            if(disciplina.getListaTurmas().contains(falta.getTurma())){
+                faltaFinal = falta.getFaltas();
             }
         }
-        for(Nota nota : aluno.getListaNotas()){
-            if(nomeAtividade.equals(nota.getAtividade().getValor())){
-                valorTotal +=nota.getAtividade().getValor();
-            }
-        }
-        if((valorTotal*0.6)<=notaFinal){
-            System.out.println("APROVADO POR NOTA");
+        if(faltaFinal > 0.25*disciplina.getCargaHoraria()){
+            System.out.println("\n ALUNO REPROVADO POR FALTA");
+            return;
         }
         else
-           System.out.println("REPROVADO POR NOTA");
+            System.out.println("\nhahahaha\n\n");
+//        for(Nota nota : aluno.getListaNotas()){
+//            if(nomeAtividade.equals(nota.getAtividade().getNome())){
+//                notaFinal += nota.getNota();
+//            }
+//        }
+//        for(Nota nota : aluno.getListaNotas()){
+//            if(nomeAtividade.equals(nota.getAtividade().getValor())){
+//                valorTotal +=nota.getAtividade().getValor();
+//            }
+//        }
+//        if((valorTotal*0.6)<=notaFinal){
+//            System.out.println("APROVADO POR NOTA");
+//        }
+//        else
+//           System.out.println("REPROVADO POR NOTA");
     }
     
 }

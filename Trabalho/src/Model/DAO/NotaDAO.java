@@ -82,12 +82,12 @@ public class NotaDAO implements GenericoDAO{
             addNota.setId(ultimoID);
             Integer idAluno = Integer.parseInt(scan.nextLine());
             addNota.setAluno((Aluno) alunoDao.buscar(idAluno));
-            addNota.getAluno().adicionarNota(addNota);
             Integer idAtividade = Integer.parseInt(scan.nextLine());
             addNota.setAtividade((Atividade) atividadeDao.buscar(idAtividade));
-            addNota.getAtividade().adicionarNota(addNota);
             addNota.setNota(Double.parseDouble(scan.nextLine()));
             listaNotas.add(addNota);
+            addNota.getAluno().adicionarNota(addNota);
+            addNota.getAtividade().adicionarNota(addNota);
             scan.nextLine();
         }
         

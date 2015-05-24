@@ -52,8 +52,15 @@ public class AtividadeDAO implements GenericoDAO{
                     return atividade;
             }            
         }
-        
-        return null;      
+        else if(objeto instanceof Integer){
+            Integer id =(Integer) objeto;
+            for(Atividade atividade : listaDeAtividades){
+                if(atividade.getId().equals(objeto)){ //ver id
+                    return atividade;
+                }
+            }
+        }
+        return null;  
     
     }
 
@@ -90,9 +97,9 @@ public class AtividadeDAO implements GenericoDAO{
             addAtividade.setValor(Double.parseDouble(scan.nextLine()));
             Integer idTurma = Integer.parseInt(scan.nextLine());
             addAtividade.setTurma((Turma) turma.buscar(idTurma));
-            addAtividade.getTurma().adicionarAtividade(addAtividade);
             scan.nextLine();
             listaDeAtividades.add(addAtividade);
+            addAtividade.getTurma().adicionarAtividade(addAtividade);            
         }
                 
     scan.close();    
