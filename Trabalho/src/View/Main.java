@@ -3,7 +3,6 @@ package View;
 import Model.DAO.AlunoDAO;
 import Model.DAO.AtividadeDAO;
 import Model.DAO.DisciplinaDAO;
-import Model.DAO.FaltaDAO;
 import Model.DAO.ProfessorDAO;
 import Model.DAO.TurmaDAO;
 import java.io.FileNotFoundException;
@@ -151,7 +150,6 @@ public class Main {
                 case 2:
                     try{
                         AtividadeDAO.getInstancia().buscarTodos(atividade);
-                        AlunoDAO.getInstancia().buscarTodos(aluno);
                     } catch(IOException e){
                         System.out.println("\tNÃO HÁ ATIVIDADE CADASTRADA");
                     }
