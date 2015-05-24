@@ -125,6 +125,8 @@ public class Main {
         DisciplinaView disciplina = new DisciplinaView();
         TurmaView turma = new TurmaView();
         ProfessorView professor = new ProfessorView();
+        NotaView nota = new NotaView();
+        FaltaView falta = new FaltaView();
         
         do {
             menu.imprimirMenuProfessor();
@@ -153,7 +155,7 @@ public class Main {
                     } catch(IOException e){
                         System.out.println("\tNÃO HÁ ATIVIDADE CADASTRADA");
                     }
-                    atividade.cadastrarNota();
+                    nota.cadastrarNota();
                     break;
                 case 3:
                     try{
@@ -161,7 +163,7 @@ public class Main {
                     } catch(IOException e){
                         System.out.println("\tNÃO HÁ ALUNO CADASTRADO");
                     }
-                    aluno.cadastrarFalta();
+                    falta.cadastrarFalta();
                     break;
                 case 4:
                     try{
