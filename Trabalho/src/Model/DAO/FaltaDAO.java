@@ -70,6 +70,7 @@ public class FaltaDAO implements GenericoDAO {
             addFalta.getAluno().setNome(scan.nextLine());
             addFalta.getTurma().setIdTurma(scan.nextInt());
             addFalta.setFaltas(scan.nextInt());
+            listaFaltas.add(addFalta);
             scan.nextLine();
         }
         

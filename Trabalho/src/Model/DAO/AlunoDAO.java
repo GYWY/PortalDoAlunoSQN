@@ -1,8 +1,6 @@
 package Model.DAO;
 
 import Model.POJO.Aluno;
-import Model.POJO.Atividade;
-import Model.POJO.Turma;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -71,11 +69,10 @@ public class AlunoDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Aluno aluno : listaDeAlunos){
-            dados += aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n";
-
+            dados += aluno.getId()+"\n"+aluno.getNome()+"\n"+aluno.getCpf()+"\n#\n";
+        }
         fp.write(dados.getBytes());
         fp.close();
-        }
     }
     
 
@@ -89,8 +86,7 @@ public class AlunoDAO implements GenericoDAO{
             addAluno.setNome(scan.nextLine());
             addAluno.setCpf(scan.nextLine());
             listaDeAlunos.add(addAluno);
-            scan.next();
-            System.out.println(addAluno.getNome());
+            scan.nextLine();
         }
         
     scan.close();

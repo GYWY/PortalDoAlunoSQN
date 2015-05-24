@@ -125,4 +125,8 @@ public class Turma {
     public void setListaDeFalta(ArrayList<Falta> listaDeFalta) {
         this.listaDeFalta = listaDeFalta;
     }
+    
+    public void adicionarAtividade(Atividade atividade){
+        this.listaDeAtividade.add(atividade);
+    }
 }

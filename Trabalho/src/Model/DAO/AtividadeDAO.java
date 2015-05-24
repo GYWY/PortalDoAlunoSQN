@@ -3,6 +3,7 @@
 package Model.DAO;
 
 import Model.POJO.Atividade;
+import Model.POJO.Turma;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -68,7 +69,8 @@ public class AtividadeDAO implements GenericoDAO{
         String dados = "";
         for(Atividade atividade : listaDeAtividades){
             dados += atividade.getId()+"\n"+atividade.getNome()
-                    +"\n"+atividade.getData()+"\n"+atividade.getTipo()+"\n"+atividade.getValor()+"\n#\n";
+                    +"\n"+atividade.getData()+"\n"+atividade.getTipo()+"\n"
+                    +atividade.getValor()+"\n"+atividade.getTurma().getIdTurma()+"\n#\n";
         }
         fp.write(dados.getBytes());
         fp.close();
@@ -76,7 +78,8 @@ public class AtividadeDAO implements GenericoDAO{
 
     public void carregarArquivo() throws FileNotFoundException {
        Scanner scan = new Scanner(new FileReader("Atividade.txt"));
-        
+       GenericoDAO turma = TurmaDAO.getInstancia();
+       
         while(scan.hasNext()) {
             Atividade addAtividade = new Atividade();
             ultimoID = Integer.parseInt(scan.nextLine());
@@ -85,8 +88,11 @@ public class AtividadeDAO implements GenericoDAO{
             addAtividade.setData(scan.nextLine());
             addAtividade.setTipo(scan.nextLine());
             addAtividade.setValor(Double.parseDouble(scan.nextLine()));
+            Integer idTurma = Integer.parseInt(scan.nextLine());
+            addAtividade.setTurma((Turma) turma.buscar(idTurma));
+            addAtividade.getTurma().adicionarAtividade(addAtividade);
             scan.nextLine();
-            System.out.println(addAtividade.getNome());
+            listaDeAtividades.add(addAtividade);
         }
                 
     scan.close();    

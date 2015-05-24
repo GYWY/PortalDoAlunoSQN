@@ -248,8 +248,8 @@ public class Main {
             DisciplinaDAO.getInstancia().buscarTodos(disciplina);
             ProfessorDAO.getInstancia().buscarTodos(professor);
             TurmaDAO.getInstancia().buscarTodos(turma); 
-            //AlunoDAO.getInstancia().buscarTodos(aluno);
-            //AtividadeDAO.getInstancia().buscarTodos(atividade);
+            AlunoDAO.getInstancia().buscarTodos(aluno);
+            AtividadeDAO.getInstancia().buscarTodos(atividade);
             System.out.println("CARREGADO");
         } catch(IOException e){
             System.out.println("ERRO");

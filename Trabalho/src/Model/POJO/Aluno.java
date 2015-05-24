@@ -1,7 +1,5 @@
 package Model.POJO;
 
-import java.util.ArrayList;
-
 public class Aluno extends Pessoa {
     private Integer id;
     private Falta falta;

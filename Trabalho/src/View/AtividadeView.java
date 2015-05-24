@@ -3,10 +3,10 @@ package View;
 
 import Model.DAO.AtividadeDAO;
 import Model.POJO.Atividade;
-import Model.DAO.AlunoDAO;
 import Model.DAO.GenericoDAO;
+import Model.DAO.TurmaDAO;
 import Model.POJO.Nota;
-import java.util.ArrayList;
+import Model.POJO.Turma;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -15,15 +15,11 @@ public class AtividadeView {
     public void cadastrarAtividade(){
         Scanner leitor = new Scanner(System.in);
         Atividade novaAtividade = new Atividade();
-        GenericoDAO atividade = AtividadeDAO.getInstancia();
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
+        GenericoDAO turmaDao = TurmaDAO.getInstancia();
         
         System.out.println("\n **************** CADASTRO DE ATIVIDADES ***************");
         System.out.println("NOME DA ATIVIDADE: ");
-        novaAtividade.setNome(leitor.nextLine());
-//        nomeAluno = leitor.nextLine();
-//        Aluno aluno = (Aluno) AlunoDAO.getInstancia().buscar(nomeAluno);
-//        novaAtividade.setNome(nomeAluno);
-        //AlunoDAO.getInstancia().buscar(leitor.nextLine());
         novaAtividade.setNome(leitor.nextLine());
         System.out.println("TIPO DA ATIVIDADE: ");
         novaAtividade.setTipo(leitor.nextLine());
@@ -31,9 +27,17 @@ public class AtividadeView {
         novaAtividade.setData(leitor.nextLine());
         System.out.println("VALOR: ");
         novaAtividade.setValor(Double.parseDouble(leitor.nextLine()));
-        atividade.inserir(novaAtividade);
-        //aluno.getListaAtividadesRealizadas().add(novaAtividade);
-        
+        System.out.println("TURMA: ");
+        Integer idTurma = Integer.parseInt(leitor.nextLine());
+        Turma turma = (Turma) turmaDao.buscar(idTurma);
+        if(turma == null){
+            System.out.println("\nTURMA NÃO CADASTRADA\n"
+                    + "NÃO FOI POSSÍVEL O CADASTRO DA ATIVIDADE\n\n");
+            return;
+        }
+        novaAtividade.setTurma(turma);
+        atividadeDao.inserir(novaAtividade);
+        turma.getListaDeAtividade().add(novaAtividade);
     }
     
     public void cadastrarNota() {
