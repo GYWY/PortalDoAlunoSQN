@@ -1,9 +1,11 @@
 
 package View;
 
+import Model.DAO.DisciplinaDAO;
 import Model.DAO.GenericoDAO;
 import Model.DAO.ProfessorDAO;
 import Model.POJO.Professor;
+import Model.POJO.Turma;
 import java.util.Scanner;
 
 public class ProfessorView{
@@ -62,6 +64,22 @@ public class ProfessorView{
     }
 
     void listarHistorico() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Scanner leitor = new Scanner(System.in);
+        GenericoDAO professorDao = ProfessorDAO.getInstancia();
+        GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
+        
+        System.out.println("Professor: ");
+        String nomeProfessor = leitor.nextLine();
+        Professor professor = (Professor) professorDao.buscar(nomeProfessor);
+        Integer contador=0;
+        String disciplina = professor.getListaTurmasMinistradas().get(0).getDisciplina().getNome();
+        if(disciplina!=null){
+            contador = 1;
+            for(Turma turma : professor.getListaTurmasMinistradas()){
+                if(!disciplina.equals(turma.getDisciplina().getNome()))
+                    contador++;
+            }
+        }
+        System.out.println(contador+"\n");
     }
 }

@@ -49,6 +49,7 @@ public class TurmaView {
         turma.inserir(novaTurma);
         disciplina.adicionarTurma(novaTurma);
         professor.adicionarTurma(novaTurma);
+        
     }
     
     public void listarAluno(){
