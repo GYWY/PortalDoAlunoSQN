@@ -3,6 +3,7 @@ package View;
 import Model.DAO.AlunoDAO;
 import Model.DAO.AtividadeDAO;
 import Model.DAO.DisciplinaDAO;
+import Model.DAO.NotaDAO;
 import Model.DAO.ProfessorDAO;
 import Model.DAO.TurmaDAO;
 import java.io.FileNotFoundException;

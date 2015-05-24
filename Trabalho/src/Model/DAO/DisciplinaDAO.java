@@ -33,10 +33,8 @@ public class DisciplinaDAO implements GenericoDAO{
          contador++;
          disciplina.setId(contador);
          listaDisciplina.add(disciplina);
-         try {
-            
+         try {            
             salvarArquivo();
-            System.out.printf("Numero de elementos do array: "+listaDisciplina.size());
         } catch (IOException ex) {
             Logger.getLogger(DisciplinaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

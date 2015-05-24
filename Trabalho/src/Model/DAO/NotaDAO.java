@@ -1,6 +1,7 @@
 package Model.DAO;
 
 import Model.POJO.Aluno;
+import Model.POJO.Atividade;
 import Model.POJO.Nota;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,6 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class NotaDAO implements GenericoDAO{
     
@@ -30,7 +33,12 @@ public class NotaDAO implements GenericoDAO{
         Nota nota = (Nota) objeto;
         ultimoID++;
         nota.setId(ultimoID);
-        listaNotas.add(nota);        
+        listaNotas.add(nota);
+        try {    
+            salvarArquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(DisciplinaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -57,7 +65,7 @@ public class NotaDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Nota nota : listaNotas){
-            dados += nota.getId()+"\n"+nota.getAluno()+"\n"+nota.getAtividade()+"\n"+nota.getNota()+"\n#\n";
+            dados += nota.getId()+"\n"+nota.getAluno().getId()+"\n"+nota.getAtividade().getId()+"\n"+nota.getNota()+"\n#\n";
         }
         fp.write(dados.getBytes());
         fp.close();
@@ -65,16 +73,24 @@ public class NotaDAO implements GenericoDAO{
     
     private void carregarArquivo() throws FileNotFoundException, IOException {
         Scanner scan = new Scanner(new FileReader("Nota.txt"));
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
         
         while(scan.hasNext()) {
             Nota addNota = new Nota();
             ultimoID = Integer.parseInt(scan.nextLine());
             addNota.setId(ultimoID);
-            addNota.getAluno().setNome(scan.nextLine());
-            addNota.getAtividade().setNome(scan.nextLine());
-            addNota.setNota(scan.nextDouble());
+            Integer idAluno = Integer.parseInt(scan.nextLine());
+            addNota.setAluno((Aluno) alunoDao.buscar(idAluno));
+            addNota.getAluno().adicionarNota(addNota);
+            Integer idAtividade = Integer.parseInt(scan.nextLine());
+            addNota.setAtividade((Atividade) atividadeDao.buscar(idAtividade));
+            addNota.getAtividade().adicionarNota(addNota);
+            addNota.setNota(Double.parseDouble(scan.nextLine()));
             listaNotas.add(addNota);
             scan.nextLine();
+            System.out.println(addNota.getAluno().getListaNotas());
+            System.out.println("asd");
         }
         
         scan.close();
