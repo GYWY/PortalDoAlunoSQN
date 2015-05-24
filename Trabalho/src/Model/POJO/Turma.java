@@ -131,7 +131,6 @@ public class Turma {
     public String toString() {
         return ("Turma ID: " + idTurma + "\nAno: " + ano + "\nPeríodo: " + periodo + "\nLocal: " + local + "\nHorário: " + horario + "\nVagas: " + vaga);
     } 
-
     
     public void adicionarAtividade(Atividade atividade){
         this.listaDeAtividade.add(atividade);

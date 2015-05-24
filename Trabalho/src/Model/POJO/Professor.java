@@ -37,4 +37,10 @@ public class Professor extends Pessoa {
     public void adicionarTurma(Turma turma) {
         this.listaTurmasMinistradas.add(turma);        
     }
+
+    @Override
+    public String toString() {
+        return "Professor{" + "idProfessor=" + idProfessor + ", departamento=" + departamento + ", listaTurmasMinistradas=" + listaTurmasMinistradas + '}';
+    }
+    
 }

@@ -61,7 +61,10 @@ public class Nota {
         }
         return true;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Nota{" + "id=" + id + ", nota=" + nota + ", aluno=" + aluno + ", atividade=" + atividade + '}';
+    }      
     
 }
