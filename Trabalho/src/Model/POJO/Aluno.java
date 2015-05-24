@@ -1,9 +1,11 @@
 package Model.POJO;
 
+import java.util.ArrayList;
+
 public class Aluno extends Pessoa {
     private Integer id;
-    private Falta falta;
-    private Nota notaFinal;
+    private ArrayList<Falta> listaFaltas;
+    private ArrayList<Nota> listaNotas;
    
 
     public Integer getId() {
@@ -14,26 +16,25 @@ public class Aluno extends Pessoa {
         this.id = id;
     }
 
-    public Falta getFalta() {
-        return falta;
+    public ArrayList<Falta> getListaFaltas() {
+        return listaFaltas;
     }
 
-    public void setFalta(Falta falta) {
-        this.falta = falta;
+    public void setListaFaltas(ArrayList<Falta> listaFaltas) {
+        this.listaFaltas = listaFaltas;
     }
 
-   
-    public Nota getNotaFinal() {
-        return notaFinal;
+    public ArrayList<Nota> getListaNotas() {
+        return listaNotas;
     }
 
-    public void setNotaFinal(Nota notaFinal) {
-        this.notaFinal = notaFinal;
+    public void setListaNotas(ArrayList<Nota> listaNotas) {
+        this.listaNotas = listaNotas;
     }
 
     @Override
     public String toString() {
-        return ("Id: " + id + "\nFalta: " + falta);
+        return "Aluno{" + "id=" + id + ", listaFaltas=" + listaFaltas + ", listaNotas=" + listaNotas + '}';
     }
     
 }
