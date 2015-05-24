@@ -15,20 +15,16 @@ public class Turma {
     private Disciplina disciplina;
     private ArrayList<Atividade> listaDeAtividade;
     private ArrayList<Falta> listaDeFalta;
+    private ArrayList<Aluno> listaDeAluno;
 
-    public Turma(){
-        this.listaDeAtividade = new ArrayList<Atividade>();
-        this.listaDeFalta = new ArrayList<Falta>();
-    }
-    
-    public Professor getProfessor() {
-        return professor;
+    public Integer getIdTurma() {
+        return idTurma;
     }
 
-    public void setProfessor(Professor professor) {
-        this.professor = professor;
+    public void setIdTurma(Integer idTurma) {
+        this.idTurma = idTurma;
     }
-    
+
     public Long getAno() {
         return ano;
     }
@@ -69,6 +65,14 @@ public class Turma {
         this.vaga = vaga;
     }
 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
     public Disciplina getDisciplina() {
         return disciplina;
     }
@@ -76,14 +80,24 @@ public class Turma {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
-    
-    public Integer getIdTurma() {
-        return idTurma;
+
+    public ArrayList<Atividade> getListaDeAtividade() {
+        return listaDeAtividade;
     }
 
-    public void setIdTurma(Integer idTurma) {
-        this.idTurma = idTurma;
-    }   
+    public void setListaDeAtividade(ArrayList<Atividade> listaDeAtividade) {
+        this.listaDeAtividade = listaDeAtividade;
+    }
+
+    public ArrayList<Falta> getListaDeFalta() {
+        return listaDeFalta;
+    }
+
+    public void setListaDeFalta(ArrayList<Falta> listaDeFalta) {
+        this.listaDeFalta = listaDeFalta;
+    }
+
+        
     
      @Override
     public int hashCode() {
@@ -110,21 +124,6 @@ public class Turma {
         return ("Turma ID: " + idTurma + "\nAno: " + ano + "\nPeríodo: " + periodo + "\nLocal: " + local + "\nHorário: " + horario + "\nVagas: " + vaga);
     } 
 
-    public ArrayList<Atividade> getListaDeAtividade() {
-        return listaDeAtividade;
-    }
-
-    public void setListaDeAtividade(ArrayList<Atividade> listaDeAtividade) {
-        this.listaDeAtividade = listaDeAtividade;
-    }
-
-    public ArrayList<Falta> getListaDeFalta() {
-        return listaDeFalta;
-    }
-
-    public void setListaDeFalta(ArrayList<Falta> listaDeFalta) {
-        this.listaDeFalta = listaDeFalta;
-    }
     
     public void adicionarAtividade(Atividade atividade){
         this.listaDeAtividade.add(atividade);
