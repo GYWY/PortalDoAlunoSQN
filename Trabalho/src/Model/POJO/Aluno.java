@@ -44,15 +44,6 @@ public class Aluno extends Pessoa {
     }
     
     /**
-     * Método para alterar o ID do Aluno
-     *
-     * @param listaFaltas - Lista de Faltas atribuido ao Aluno
-     */
-    public void setListaFaltas(ArrayList<Falta> listaFaltas) {
-        this.listaFaltas = listaFaltas;
-    }
-    
-    /**
      * Método para retornar a Lista de Faltas
      *
      * @return ArrayList - lista - Lista de Faltas
@@ -61,21 +52,14 @@ public class Aluno extends Pessoa {
         return listaNotas;
     }
     
-    /**
-     * Método para alterar o Lista de Notas do Aluno
-     *
-     * @param listaNotas -  Lista de Notas atribuido ao Aluno
-     */
-    public void setListaNotas(ArrayList<Nota> listaNotas) {
-        this.listaNotas = listaNotas;
-    }
+  
     
     /**
      * O metodo adiciona uma nota
      *
      * @param nota recebe um nota como parametro para adicionar na lista de notas
      */
-    public void adicionarNota(Nota nota) {
+    public void setListaNota(Nota nota) {
         this.listaNotas.add(nota);        
     }
 
@@ -84,7 +68,7 @@ public class Aluno extends Pessoa {
      *
      * @param falta recebe uma falta como parametro para adicionar na lista de fatas
      */
-    public void adicionarFalta(Falta falta) {
+    public void setListaFalta(Falta falta) {
         this.listaFaltas.add(falta);        
     }
     
