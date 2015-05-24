@@ -7,8 +7,10 @@ package Model.DAO;
 
 
 import Model.POJO.Aluno;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -68,7 +70,14 @@ public class AlunoDAOTest {
     //teste de arquivo vazio
     public void testarBuscarTodos() throws IOException, FileNotFoundException, ClassNotFoundException{
         AlunoDAO alunoDao = AlunoDAO.getInstancia();
+        File arquivo = new File("Alunos.txt");
+        Scanner leitor = new Scanner(arquivo);
         
-        assertEquals(alunoDao.buscarTodos(null),false);
+        if(arquivo.exists()){
+            assertEquals(alunoDao.buscarTodos(null),false);
+        }
+        else{
+            assertEquals(alunoDao.buscarTodos(null),true);
+        }
     }
 }
