@@ -28,29 +28,28 @@ public class AlunoView {
     }
     
     public void listarAluno(){
-        GenericoDAO aluno = AlunoDAO.getInstancia();
         
-        System.out.println("\n **************** ALUNOS ****************");
-        for (Iterator<Object> it = aluno.listar().iterator(); it.hasNext();) {
-            Object alunoLista = it.next();
-            System.out.println(alunoLista);
-        }              
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        System.out.println("\n\t\t DISCIPLINAS \n");
+        for (Iterator<Object> it = alunoDao.listar().iterator(); it.hasNext();) {
+            Object listaAluno = it.next();
+            System.out.println(listaAluno.toString());
+        }
     }
     
     public void buscarAluno(){
+        Aluno novaAluno = new Aluno();
         Scanner leitor = new Scanner(System.in);
-        Aluno novoAluno = new Aluno();
         GenericoDAO aluno = AlunoDAO.getInstancia();
-        
-        System.out.println("\n\t PESQUISAR ALUNO ");
-        System.out.println("\n ENTRE COM O NOME OU ID: ");
-        Object pesquisa = leitor.nextLine();
-        if(aluno.buscar(pesquisa) == null){
-            System.out.println("ALUNO NÃO ENCONTRADO");
+        System.out.println("\n\t\t PESQUISA DISCIPLINA \n");
+        System.out.println("\n DISCIPLINA: ");
+        Object pesquisa = leitor.nextLine().toUpperCase();
+        novaAluno = (Aluno) aluno.buscar(pesquisa);
+        if(novaAluno == null) {
+            System.out.println("\n\t\t DISCIPLINA NÃO ENCONTRADA \n");
         }
-        else if(novoAluno == (Aluno) aluno.buscar(pesquisa)) {
-            System.out.println(novoAluno);
-        }
+        else
+            System.out.println("\n"+novaAluno);
     }
     
 }
