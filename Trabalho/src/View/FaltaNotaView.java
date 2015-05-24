@@ -44,8 +44,8 @@ public class FaltaNotaView {
         System.out.println("\n NOTA: ");
         nota.setNota(Double.parseDouble(leitor.nextLine()));
         notaDao.inserir(nota);
-        aluno.adicionarNota(nota);
-        atividade.adicionarNota(nota);
+        aluno.setListaNota(nota);
+        atividade.setListaNota(nota);
     }
 
     public void cadastrarFalta() {
@@ -76,7 +76,7 @@ public class FaltaNotaView {
         falta.setFaltas(Integer.parseInt(leitor.nextLine()));
         faltaDao.inserir(falta);
         turma.adicionarFalta(falta);
-        aluno.adicionarFalta(falta);
+        aluno.setListaFalta(falta);
 
     }
         
