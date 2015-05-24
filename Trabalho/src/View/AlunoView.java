@@ -54,7 +54,7 @@ public class AlunoView {
         
         System.out.println("\n NÚMERO DE FALTAS: ");
         falta.setFaltas(Integer.parseInt(leitor.nextLine()));
-        novoAluno.getListaFaltas().add(falta);
+        novoAluno.setFalta(falta);
 
     }
     
