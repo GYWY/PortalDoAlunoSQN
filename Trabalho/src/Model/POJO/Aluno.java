@@ -40,6 +40,10 @@ public class Aluno extends Pessoa {
         this.listaNotas.add(nota);        
     }
     
+    public void adicionarFalta(Falta falta) {
+        this.listaFaltas.add(falta);        
+    }
+    
     @Override
     public String toString() {
         return "Aluno{" + "id=" + id + ", listaFaltas=" + listaFaltas + ", listaNotas=" + listaNotas + '}';

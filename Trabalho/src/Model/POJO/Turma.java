@@ -103,7 +103,9 @@ public class Turma {
         this.listaDeFalta = listaDeFalta;
     }
 
-        
+    public void adicionarFalta(Falta falta) {
+        this.listaDeFalta.add(falta);        
+    }   
     
      @Override
     public int hashCode() {
