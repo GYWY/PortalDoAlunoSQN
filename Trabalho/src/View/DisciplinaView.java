@@ -75,7 +75,18 @@ public class DisciplinaView {
     }
 
     void listarHistoricoTurmas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Scanner leitor = new Scanner(System.in);
+        GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
+        
+        System.out.println("DISCIPLINA: ");
+        String nomeDisciplina = leitor.nextLine();
+        Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
+        if(nomeDisciplina == disciplina.getNome()){
+            for (int i = 0; i < disciplina.getListaTurmas().size(); i++) {  
+            System.out.println(disciplina.getListaTurmas().get(i));  
+            }
+        }
     }
     
 }
