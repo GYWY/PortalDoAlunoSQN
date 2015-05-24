@@ -3,44 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Model.DAO;
 
+import Model.POJO.Aluno;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import static jdk.nashorn.internal.objects.NativeRegExp.test;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author Guilherme
+ * @author linhares
  */
 public class AlunoTeste {
-    
-    public AlunoTeste() {
+    public void testarBusca(){    
+        AlunoDAO alunoDao = AlunoDAO.getInstancia();
+        
+        assertEquals(null,alunoDao.buscar(""));
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    public void testarInsercao(){
+        AlunoDAO alunoDao = AlunoDAO.getInstancia();
+        Aluno aluno = new Aluno();
+        
+        aluno.setNome("Teste");
+        alunoDao.inserir(aluno);
+        assertEquals(alunoDao.buscar(aluno),aluno);
     }
     
-    @AfterClass
-    public static void tearDownClass() {
+    public void testarBuscarTodos() throws IOException, FileNotFoundException, ClassNotFoundException{
+        AlunoDAO alunoDao = AlunoDAO.getInstancia();
+        
+        assertEquals(alunoDao.buscarTodos(null),true);
     }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
