@@ -3,6 +3,7 @@ package View;
 import Model.DAO.AlunoDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Aluno;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -29,11 +30,11 @@ public class AlunoView {
     public void listarAluno(){
         GenericoDAO aluno = AlunoDAO.getInstancia();
         
-        System.out.println("\n\t LISTA DE ALUNOS ");
+        System.out.println("\n **************** ALUNOS ****************");
         for (Iterator<Object> it = aluno.listar().iterator(); it.hasNext();) {
             Object alunoLista = it.next();
             System.out.println(alunoLista);
-        }             
+        }              
     }
     
     public void buscarAluno(){
