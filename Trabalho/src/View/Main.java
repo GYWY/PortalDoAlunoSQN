@@ -3,7 +3,6 @@ package View;
 import Model.DAO.AlunoDAO;
 import Model.DAO.AtividadeDAO;
 import Model.DAO.DisciplinaDAO;
-import Model.DAO.NotaDAO;
 import Model.DAO.ProfessorDAO;
 import Model.DAO.TurmaDAO;
 import java.io.FileNotFoundException;
@@ -126,8 +125,7 @@ public class Main {
         DisciplinaView disciplina = new DisciplinaView();
         TurmaView turma = new TurmaView();
         ProfessorView professor = new ProfessorView();
-        NotaView nota = new NotaView();
-        FaltaView falta = new FaltaView();
+        FaltaNotaView faltaNota = new FaltaNotaView();
         
         do {
             menu.imprimirMenuProfessor();
@@ -156,7 +154,7 @@ public class Main {
                     } catch(IOException e){
                         System.out.println("\tNÃO HÁ ATIVIDADE CADASTRADA");
                     }
-                    nota.cadastrarNota();
+                    faltaNota.cadastrarNota();
                     break;
                 case 3:
                     try{
@@ -164,7 +162,7 @@ public class Main {
                     } catch(IOException e){
                         System.out.println("\tNÃO HÁ ALUNO CADASTRADO");
                     }
-                    falta.cadastrarFalta();
+                    faltaNota.cadastrarFalta();
                     break;
                 case 4:
                     try{

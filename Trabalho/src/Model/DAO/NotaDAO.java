@@ -89,8 +89,6 @@ public class NotaDAO implements GenericoDAO{
             addNota.setNota(Double.parseDouble(scan.nextLine()));
             listaNotas.add(addNota);
             scan.nextLine();
-            System.out.println(addNota.getAluno().getListaNotas());
-            System.out.println("asd");
         }
         
         scan.close();

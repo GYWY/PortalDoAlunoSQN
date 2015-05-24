@@ -1,6 +1,8 @@
 package Model.DAO;
 
+import Model.POJO.Aluno;
 import Model.POJO.Falta;
+import Model.POJO.Turma;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -54,7 +56,7 @@ public class FaltaDAO implements GenericoDAO {
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Falta falta : listaFaltas){
-            dados += falta.getId()+"\n"+falta.getAluno()+"\n"+falta.getTurma()+"\n"+falta.getFaltas();
+            dados += falta.getId()+"\n"+falta.getAluno().getId()+"\n"+falta.getTurma().getIdTurma()+"\n"+falta.getFaltas();
         }
         fp.write(dados.getBytes());
         fp.close();
@@ -62,14 +64,20 @@ public class FaltaDAO implements GenericoDAO {
     
     private void carregarArquivo() throws FileNotFoundException, IOException {
         Scanner scan = new Scanner(new FileReader("Falta.txt"));
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        GenericoDAO turmaDao = TurmaDAO.getInstancia();
         
         while(scan.hasNext()) {
             Falta addFalta = new Falta();
             ultimoID = Integer.parseInt(scan.nextLine());
             addFalta.setId(ultimoID);
-            addFalta.getAluno().setNome(scan.nextLine());
-            addFalta.getTurma().setIdTurma(scan.nextInt());
-            addFalta.setFaltas(scan.nextInt());
+            Integer idAluno = Integer.parseInt(scan.nextLine());
+            addFalta.setAluno((Aluno) alunoDao.buscar(idAluno));
+            addFalta.getAluno().adicionarFalta(addFalta);
+            Integer idTurma = Integer.parseInt(scan.nextLine());
+            addFalta.setTurma((Turma) turmaDao.buscar(idTurma));
+            addFalta.getTurma().adicionarFalta(addFalta);
+            addFalta.setFaltas(Integer.parseInt(scan.nextLine()));
             listaFaltas.add(addFalta);
             scan.nextLine();
         }
