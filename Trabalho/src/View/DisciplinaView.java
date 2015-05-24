@@ -5,6 +5,7 @@ import Model.DAO.GenericoDAO;
 import Model.POJO.Disciplina;
 import Model.POJO.Turma;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class DisciplinaView {    
@@ -13,16 +14,17 @@ public class DisciplinaView {
         Disciplina novaDisciplina = new Disciplina();
         GenericoDAO disciplina = DisciplinaDAO.getInstancia();
         
-        System.out.println("\n **************** CADASTRO DISCIPLINA ***************");
+        System.out.println("\n\t\t CADASTRO DISCIPLINA \n");
         System.out.println("\n DISCIPLINA: ");
-        String nomeDisciplina = leitor.nextLine();
+        String nomeDisciplina = leitor.nextLine().toUpperCase();
         if(!(disciplina.buscar(nomeDisciplina) == null)){
-            System.out.println("\nDISCIPLINA JÁ FOI CADASTRADA\n\n");
+            System.out.println("\n ****************************************************************************** \n");
+            System.out.println("\n\t DISCIPLINA JÁ ESTÁ CADASTRADA \n");
             return;
         }
         novaDisciplina.setNome(nomeDisciplina);
         System.out.println("\n EMENTA: ");
-        novaDisciplina.setEmenta(leitor.nextLine());
+        novaDisciplina.setEmenta(leitor.nextLine().toUpperCase());
         System.out.println("\n CARGA HORÁRIA: ");
         novaDisciplina.setCargaHoraria(Integer.parseInt(leitor.nextLine()));
         disciplina.inserir(novaDisciplina);
@@ -32,25 +34,24 @@ public class DisciplinaView {
         Disciplina novaDisciplina = new Disciplina();
         Scanner leitor = new Scanner(System.in);
         GenericoDAO disciplina = DisciplinaDAO.getInstancia();
-        
-        System.out.println("\n **************** PESQUISA DISCIPLINA ****************");
-        System.out.println("\n ENTRE COM O NOME DA DISCIPLINA: ");
-        Object pesquisa = leitor.nextLine();
-        if(disciplina.buscar(pesquisa) == null) {
-            System.out.println("DISCIPLINA NÃO ENCONTRADA");
+        System.out.println("\n\t\t PESQUISA DISCIPLINA \n");
+        System.out.println("\n DISCIPLINA: ");
+        Object pesquisa = leitor.nextLine().toUpperCase();
+        novaDisciplina = (Disciplina) disciplina.buscar(pesquisa);
+        if(novaDisciplina == null) {
+            System.out.println("\n\t\t DISCIPLINA NÃO ENCONTRADA \n");
         }
-        else if(novaDisciplina == (Disciplina) disciplina.buscar(pesquisa)){
-            System.out.println(novaDisciplina);
-        }
+        else
+            System.out.println("\n"+novaDisciplina);
     }
     
     public void listarDisciplina() {
-        GenericoDAO disciplina = DisciplinaDAO.getInstancia();
-        
-        System.out.println("\n **************** DISCIPLINAS **************** ");
-        disciplina.listar().stream().forEach((disciplinaLista) -> {
-            disciplinaLista.toString();
-        });
+        GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
+        System.out.println("\n\t\t DISCIPLINAS \n");
+        for (Iterator<Object> it = disciplinaDao.listar().iterator(); it.hasNext();) {
+            Object listaDisciplina = it.next();
+            System.out.println(listaDisciplina.toString());
+        }
     }
 
     public void listarTurmas() {
@@ -74,7 +75,7 @@ public class DisciplinaView {
         }
     }
 
-    void listarHistoricoTurmas() {
+    public void listarHistoricoTurmas() {
         
         Scanner leitor = new Scanner(System.in);
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
@@ -85,6 +86,16 @@ public class DisciplinaView {
         if(nomeDisciplina.equals(disciplina.getNome())){  
             System.out.println(disciplina.getListaTurmas().size());  
         }
+    }
+    
+    public void imprimirMenuDisciplina() {
+        System.out.println("\n ****************************************************************************** \n");
+        System.out.println("\t\t DISCIPLINA \n");
+        System.out.println("1- CADASTRAR DISCIPLINA");
+        System.out.println("2- PESQUISAR DISCIPLINA");
+        System.out.println("3- LISTAR DISCIPLINAS");
+        System.out.println("4- SAIR \n");
+        System.out.println("OPÇÃO:");
     }
     
 }

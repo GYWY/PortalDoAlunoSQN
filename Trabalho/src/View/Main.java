@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Main {
 
     private void imprimirMenuEntrada() {
-        System.out.println("BEM VINDO AO PORTAL DA FACULDADE! \n\n\t O QUE VOCÊ É?");
+        System.out.println("\n\t UNIVERSIDADE FEDERAL DE LUGAR NENHUM \n");
         System.out.println("1- PROFESSOR");
         System.out.println("2- ADMINISTRADOR");
         System.out.println("3- SAIR \n");
@@ -22,8 +22,9 @@ public class Main {
     }
 
     private void imprimirMenuAdministrador() {
-        System.out.println("BEM VINDO AO SISTEMA PRINCIPAL! \n\n\t ESCOLHA A OPÇÃO QUE LHE FOR ÚTIL.");
-        System.out.println("1- CADASTRAR DISCIPLINA");
+        System.out.println("\n ****************************************************************************** \n");
+        System.out.println("\t\t BEM VINDO AO SISTEMA PRINCIPAL! \n");
+        System.out.println("1- DISCIPLINA");
         System.out.println("2- CADASTRAR TURMA");
         System.out.println("3- CADASTRAR PROFESSOR");
         System.out.println("4- CADASTRAR ALUNO");
@@ -33,7 +34,8 @@ public class Main {
     }
     
     private void imprimirMenuProfessor() {
-        System.out.println("BEM VINDO AO PORTAL DO PROFESSOR! \n\n\t ESCOLHA A OPÇÃO QUE LHE FOR ÚTIL.");
+        System.out.println("\n ****************************************************************************** \n");
+        System.out.println("\t\t BEM VINDO AO PORTAL DO PROFESSOR! \n");
         System.out.println("1- CADASTRAR ATIVIDADE");
         System.out.println("2- LANÇAR NOTA");
         System.out.println("3- LANÇAR FALTA");
@@ -43,6 +45,69 @@ public class Main {
         System.out.println("7- CONSULTAR HISTÓRICO DE UM PROFESSOR");
         System.out.println("8- SAIR \n");
         System.out.println("OPÇÃO: ");
+    }
+    
+    private void menuDisciplina() throws FileNotFoundException, ClassNotFoundException {
+        Integer escolha = 0;
+        Integer flag;
+        
+        Main menu = new Main();
+        Scanner leitor = new Scanner(System.in);
+        DisciplinaView disciplina = new DisciplinaView();
+        
+        do{
+            disciplina.imprimirMenuDisciplina();
+            do{
+                try{
+                    escolha = Integer.parseInt(leitor.nextLine());
+                    flag = 1;
+                } catch(Exception e){
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");       
+                    flag = 0;
+                    disciplina.imprimirMenuDisciplina();
+                } 
+            } while(flag == 0);
+                switch(escolha) {
+                    case 1:
+                        try{
+                            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                            disciplina.cadastrarDisciplina();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO CADASTRAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 2:
+                        try{
+                            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                            disciplina.buscarDisciplina();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO BUSCAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 3:
+                        try{
+                            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                            disciplina.listarDisciplina();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        System.out.println("\n ****************************************************************************** \n");
+                        System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                        System.out.println("\n ****************************************************************************** \n");       
+                }
+        } while(escolha != 4);
     }
     
     private void menuAdministrador() throws IOException, FileNotFoundException, ClassNotFoundException {
@@ -63,19 +128,16 @@ public class Main {
                     escolha = Integer.parseInt(leitor.nextLine()); 
                     flag = 1;
                 } catch (Exception e){
-                    System.out.println("OPÇÃO INVÁLIDA. TENTE NOVAMENTE.");
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");       
                     flag = 0;
+                    menu.imprimirMenuAdministrador();
                 }
             } while(flag == 0);
-            System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
-                    try{
-                        DisciplinaDAO.getInstancia().buscarTodos(disciplina);
-                    } catch(IOException e){
-                        System.out.println("\tNÃO HÁ DISCIPLINA CADASTRADA");
-                    }
-                    disciplina.cadastrarDisciplina();
+                    menu.menuDisciplina();
                     break;
                 case 2:
                     try{
@@ -112,7 +174,9 @@ public class Main {
                 case 6:
                     break;
                 default:
-                    System.out.println("\n\t ENTRADA INVÁLIDA \n");                  
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");       
             }
         } while(escolha != 6);
     }
@@ -136,11 +200,13 @@ public class Main {
                     escolha = Integer.parseInt(leitor.nextLine()); 
                     flag = 1;
                 } catch (Exception e){
-                    System.out.println("OPÇÃO INVÁLIDA. TENTE NOVAMENTE.");
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");
                     flag = 0;
+                    menu.imprimirMenuProfessor();
                 }
             } while(flag == 0);
-            System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
                     try{
@@ -204,7 +270,9 @@ public class Main {
                 case 8:
                     break;
                 default:
-                    System.out.println("\n\t ENTRADA INVÁLIDA \n");                  
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");       
             }
         } while(escolha != 8);
     }
@@ -224,11 +292,13 @@ public class Main {
                     escolha = Integer.parseInt(leitor.nextLine()); 
                     flag = 1;
                 } catch (Exception e){
-                    System.out.println("OPÇÃO INVÁLIDA. TENTE NOVAMENTE. \n\n OPÇÃO: ");
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");
                     flag = 0;
+                    menu.imprimirMenuEntrada();
                 }
             } while(flag == 0);
-            System.out.println("\n ****************************************************************************** \n");
             switch(escolha) {
                 case 1:
                     menu.menuProfessor();
@@ -239,7 +309,9 @@ public class Main {
                 case 3:
                     break;
                 default:
-                    System.out.println("\n\t ENTRADA INVÁLIDA \n");
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");
             }
         } while(escolha != 3);
     }
@@ -259,9 +331,8 @@ public class Main {
             AtividadeDAO.getInstancia().buscarTodos(atividade);
             FaltaDAO.getInstancia().buscarTodos(faltaNota);
             NotaDAO.getInstancia().buscarTodos(faltaNota);
-            System.out.println("CARREGADO");
         } catch(IOException e){
-            System.out.println("ERRO");
+            System.out.println("\n\t ERRO AO CARREGAR DADOS \n\n");
         }
     }
     

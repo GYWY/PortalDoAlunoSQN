@@ -47,7 +47,7 @@ public class TurmaView {
         }
         novaTurma.setProfessor(professor);
         turma.inserir(novaTurma);
-        disciplina.adicionarTurma(novaTurma);
+        disciplina.setListaTurmas(novaTurma);
         professor.adicionarTurma(novaTurma);
         
     }

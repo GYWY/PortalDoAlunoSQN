@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Disciplina {
-    //Atributos
+
     private Integer id;
     private String nome;
     private String ementa;
@@ -15,7 +15,6 @@ public class Disciplina {
         this.listaTurmas = new ArrayList<Turma>();
     }
     
-    //Getters e Setters
     public String getNome() {
         return nome;
     }
@@ -47,17 +46,11 @@ public class Disciplina {
         this.id = id;
     }
     
-    public void adicionarTurma(Turma turma){
-        this.listaTurmas.add(turma);
-    }
-    
-    //toString
     @Override
     public String toString() {
-        return ("Disciplina: " + nome +"\nCarga Horária: " + cargaHoraria + "\nEmenta: " + ementa);
+        return ("Disciplina: " + nome +"\nCarga Horária: " + cargaHoraria + "\nEmenta: " + ementa + "\n");
     }
     
-    //Equals e HashCode
     @Override
     public boolean equals(Object obj) {
         if(this == obj)
