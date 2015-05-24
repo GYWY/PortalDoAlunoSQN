@@ -6,8 +6,12 @@ public class Aluno extends Pessoa {
     private Integer id;
     private ArrayList<Falta> listaFaltas;
     private ArrayList<Nota> listaNotas;
-   
 
+    public Aluno() {
+        this.listaFaltas = new ArrayList<Falta>();
+        this.listaNotas = new ArrayList<Nota>();
+    }
+    
     public Integer getId() {
         return id;
     }
