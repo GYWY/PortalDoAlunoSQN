@@ -15,15 +15,7 @@ public class Atividade {
     public Atividade() {
         this.listaNotas = new ArrayList<Nota>();
     }
-
-    public ArrayList<Nota> getListaNotas() {
-        return listaNotas;
-    }
-
-    public void setListaNotas(ArrayList<Nota> listaNotas) {
-        this.listaNotas = listaNotas;
-    }
-    
+  
     public Turma getTurma() {
         return turma;
     }
@@ -32,15 +24,10 @@ public class Atividade {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public void setTurma(Turma turma) {
         this.turma = turma;
     }
 
-    //gets e setters
     public String getNome() {
         return nome;
     }
@@ -77,7 +64,7 @@ public class Atividade {
         this.id = id;
     }
 
-    public void adicionarNota(Nota nota) {
+    public void setListaNota(Nota nota) {
         this.listaNotas.add(nota);        
     }
     
