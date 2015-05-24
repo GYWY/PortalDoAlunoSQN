@@ -1,6 +1,7 @@
 package Model.POJO;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Turma {
     
@@ -82,23 +83,26 @@ public class Turma {
 
     public void setIdTurma(Integer idTurma) {
         this.idTurma = idTurma;
-    }
-    
-    
-    
-    @Override
-    public boolean equals(Object obj) {
-        if(this == obj)
-            return true;
-        if(!(obj instanceof Turma))
-            return false;
-        Turma turma = (Turma)obj;
-        return this.horario.equals(turma.getHorario());
-    }
+    }   
     
      @Override
     public int hashCode() {
         return horario.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Turma other = (Turma) obj;
+        if (!Objects.equals(this.disciplina, other.disciplina)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
