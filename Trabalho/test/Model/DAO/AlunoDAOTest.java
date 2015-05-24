@@ -73,11 +73,22 @@ public class AlunoDAOTest {
         File arquivo = new File("Alunos.txt");
         Scanner leitor = new Scanner(arquivo);
         
-        if(arquivo.exists()){
-            assertEquals(alunoDao.buscarTodos(null),false);
+        if(!arquivo.exists()){
+            assertEquals(alunoDao.buscarTodos(null),true);
         }
         else{
-            assertEquals(alunoDao.buscarTodos(null),true);
+            assertEquals(alunoDao.buscarTodos(null),false);
+        }
+    }
+    
+    public void testarGetInstancia(){
+        AlunoDAO alunoDao = AlunoDAO.getInstancia();
+        
+        if(alunoDao == null){
+            fail("Deu ruim na instanciação");
+        }
+        else{
+            assertTrue(true);
         }
     }
 }
