@@ -1,5 +1,7 @@
 package Model.POJO;
 
+import java.util.ArrayList;
+
 public class Atividade {
     //atributos
     private String nome;
@@ -7,14 +9,21 @@ public class Atividade {
     private String data;
     private Double valor;
     private Integer id; 
-    private Nota nota;
+    private ArrayList<Nota> listaNotas;
     private Turma turma;
 
-
-    public Nota getNota() {
-        return nota;
+    public Atividade() {
+        this.listaNotas = new ArrayList<Nota>();
     }
 
+    public ArrayList<Nota> getListaNotas() {
+        return listaNotas;
+    }
+
+    public void setListaNotas(ArrayList<Nota> listaNotas) {
+        this.listaNotas = listaNotas;
+    }
+    
     public Turma getTurma() {
         return turma;
     }
@@ -25,10 +34,6 @@ public class Atividade {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setNota(Nota nota) {
-        this.nota = nota;
     }
 
     public void setTurma(Turma turma) {
