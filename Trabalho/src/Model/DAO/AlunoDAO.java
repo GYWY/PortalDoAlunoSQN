@@ -44,7 +44,7 @@ public class AlunoDAO implements GenericoDAO{
         if(objeto instanceof String){
             String nome = (String) objeto;
             for(Aluno aluno : listaDeAlunos){
-                if(aluno.getNome().contains(nome))
+                if(aluno.getNome().equals(nome))
                     return aluno;
             }            
         }
