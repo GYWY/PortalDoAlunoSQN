@@ -56,14 +56,21 @@ public class DisciplinaView {
     public void listarTurmas() {
         Scanner leitor = new Scanner(System.in);
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
+        
         System.out.println("DISCIPLINA: ");
         String nomeDisciplina = leitor.nextLine();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
         ArrayList<Turma> listaTurma = disciplina.getListaTurmas();
+        System.out.println("ANO: ");
+        Long ano = Long.parseLong(leitor.nextLine());
+        System.out.println("PERÍODO: ");
+        Integer periodo = Integer.parseInt(leitor.nextLine());
         for(Turma turma : listaTurma){
-            System.out.println(turma.getIdTurma());
-            System.out.println(turma.getDisciplina());
-            System.out.println(turma.getProfessor());
+            if(ano.equals(turma.getAno()) && periodo.equals(turma.getPeriodo())){
+                System.out.println(turma.getIdTurma());
+                System.out.println(turma.getDisciplina().getNome());
+                System.out.println(turma.getProfessor().getNome());
+            }
         }
     }
 
