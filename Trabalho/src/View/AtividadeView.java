@@ -70,8 +70,8 @@ public class AtividadeView {
         System.out.println("\n NOTA: ");
         nota.setNota(Double.parseDouble(leitor.nextLine()));
         notaDao.inserir(nota);
-        aluno.getListaNotas().add(nota);
-        atividade.getListaNotas().add(nota);
+        aluno.adicionarNota(nota);
+        atividade.adicionarNota(nota);
     }
   
     public void situacaoNotaAluno(){

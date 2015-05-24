@@ -77,6 +77,10 @@ public class Atividade {
         this.id = id;
     }
 
+    public void adicionarNota(Nota nota) {
+        this.listaNotas.add(nota);        
+    }
+    
     @Override
     public String toString() {
         return ("Nome do aluno: " + nome + "\nTipo da atividade: " + tipo + "\nData: " + data + "\nValor: " + valor + "\nId: " + id);

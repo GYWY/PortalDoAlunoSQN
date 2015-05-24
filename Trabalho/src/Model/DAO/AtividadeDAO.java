@@ -48,7 +48,7 @@ public class AtividadeDAO implements GenericoDAO{
         if(objeto instanceof String){
             String tipo = (String) objeto;
             for(Atividade atividade : listaDeAtividades){
-                if(atividade.getTipo().contains(tipo))
+                if(atividade.getNome().contains(tipo))
                     return atividade;
             }            
         }

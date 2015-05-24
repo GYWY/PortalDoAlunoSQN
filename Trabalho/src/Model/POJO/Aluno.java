@@ -31,7 +31,11 @@ public class Aluno extends Pessoa {
     public void setListaNotas(ArrayList<Nota> listaNotas) {
         this.listaNotas = listaNotas;
     }
-
+    
+    public void adicionarNota(Nota nota) {
+        this.listaNotas.add(nota);        
+    }
+    
     @Override
     public String toString() {
         return "Aluno{" + "id=" + id + ", listaFaltas=" + listaFaltas + ", listaNotas=" + listaNotas + '}';

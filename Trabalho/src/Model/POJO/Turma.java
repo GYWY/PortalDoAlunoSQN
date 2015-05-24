@@ -17,6 +17,12 @@ public class Turma {
     private ArrayList<Falta> listaDeFalta;
     private ArrayList<Aluno> listaDeAluno;
 
+    public Turma() {
+        this.listaDeAtividade = new ArrayList<Atividade>();
+        this.listaDeFalta = new ArrayList<Falta>();
+        this.listaDeAluno = new ArrayList<Aluno>();
+    }
+    
     public Integer getIdTurma() {
         return idTurma;
     }
