@@ -26,7 +26,7 @@ public class FaltaNotaView {
         
         System.out.println("\n\t CADASTRO NOTA \n");
         System.out.println("\n ALUNO: ");
-        String nomeAluno = leitor.nextLine();
+        String nomeAluno = leitor.nextLine().toUpperCase();
         Aluno aluno = (Aluno) alunoDao.buscar(nomeAluno);
         if(aluno == null){
             System.out.println("\n ALUNO NÃO CADASTRADO \n\n");
@@ -34,7 +34,7 @@ public class FaltaNotaView {
         }
         nota.setAluno(aluno);
         System.out.println("\n\t ATIVIDADE: ");
-        String nomeAtividade = leitor.nextLine();
+        String nomeAtividade = leitor.nextLine().toUpperCase();
         Atividade atividade = (Atividade) atividadeDao.buscar(nomeAtividade);
         if(atividade == null){
             System.out.println("\n ATIVIDADE NÃO CADASTRADA \n\n");
@@ -65,7 +65,7 @@ public class FaltaNotaView {
         falta.setTurma(turma);
         
         System.out.println("\n NOME DO ALUNO: ");
-        Aluno aluno = (Aluno) alunoDao.buscar(leitor.nextLine());
+        Aluno aluno = (Aluno) alunoDao.buscar(leitor.nextLine().toUpperCase());
         if(aluno == null) {
             System.out.println("\n ALUNO NÃO CADASTRADO");
             return;
@@ -87,10 +87,10 @@ public class FaltaNotaView {
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         
         System.out.println("DISCIPLINA: ");
-        String nomeDisciplina = leitor.nextLine();
+        String nomeDisciplina = leitor.nextLine().toUpperCase();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
         System.out.println("ALUNO: ");
-        String nomeAluno = leitor.nextLine();
+        String nomeAluno = leitor.nextLine().toUpperCase();
         Aluno aluno = (Aluno) alunoDao.buscar(nomeAluno);
         Integer faltaFinal = 0;
         Double valorTotal = 0.0;
