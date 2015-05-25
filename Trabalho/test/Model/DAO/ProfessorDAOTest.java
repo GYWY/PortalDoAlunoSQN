@@ -44,7 +44,7 @@ public class ProfessorDAOTest {
     }
 
     /**
-     * Test of getInstancia method, of class ProfessorDAO.
+     * Teste da busca dos professores
      */
     
     @Test
@@ -54,6 +54,10 @@ public class ProfessorDAOTest {
         
         assertEquals(null,professorDao.buscar(null));
     }
+    
+    /*Teste de inserção. Com a comparação final sendo realizada através dos nomes
+    *
+    */
     
     @Test
     public void testarInsercao(){
@@ -66,6 +70,10 @@ public class ProfessorDAOTest {
         assertEquals(professorTeste.getNome(), professor.getNome());
     }
     
+    /*
+    *Teste do método listar para exibição dos professores
+    */
+    
     @Test
     public void testarListar(){
         ProfessorDAO professorDao = ProfessorDAO.getInstancia();
@@ -75,6 +83,10 @@ public class ProfessorDAOTest {
         }
         else assertEquals(true,true);
     }
+    
+    /*
+    *TEste do método estático de instanciação
+    */
     
     public void testarGetInstancia(){
         ProfessorDAO professorDao = ProfessorDAO.getInstancia();
@@ -86,6 +98,10 @@ public class ProfessorDAOTest {
             assertTrue(true);
         }
     }
+    
+    /*
+    *Teste do carregamento dos dados dos professores
+    */
     
     @Test
     public void testarBuscarTodos() throws IOException, FileNotFoundException, ClassNotFoundException{
@@ -99,6 +115,4 @@ public class ProfessorDAOTest {
             assertEquals(false , professorDao.buscarTodos(null));
         }
     }
-
-    
 }
