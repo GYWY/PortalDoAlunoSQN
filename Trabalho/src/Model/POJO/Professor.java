@@ -31,16 +31,13 @@ public class Professor extends Pessoa {
         return listaTurmasMinistradas;
     }
 
-    public void setListaTurmasMinistradas(ArrayList<Turma> listaTurmasMinistradas) {
-        this.listaTurmasMinistradas = listaTurmasMinistradas;
-    }
-    public void adicionarTurma(Turma turma) {
+    public void setListaTurmasMinistradas(Turma turma) {
         this.listaTurmasMinistradas.add(turma);        
     }
 
     @Override
-    public String toString() {
-        return "Professor{" + "idProfessor=" + idProfessor + ", departamento=" + departamento + ", listaTurmasMinistradas=" + listaTurmasMinistradas + '}';
+    public String toString() {        
+        return (super.toString()+"\nDepartamento: " + departamento + "\n");
     }
     
 }

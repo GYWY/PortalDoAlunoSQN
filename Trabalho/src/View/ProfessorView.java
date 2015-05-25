@@ -6,6 +6,9 @@ import Model.DAO.GenericoDAO;
 import Model.DAO.ProfessorDAO;
 import Model.POJO.Professor;
 import Model.POJO.Turma;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class ProfessorView{
@@ -14,16 +17,16 @@ public class ProfessorView{
         GenericoDAO professorDao = ProfessorDAO.getInstancia();
         System.out.println("\n **************** CADASTRO PROFESSOR ***************");
         System.out.println("NOME PROFESSOR: ");
-        String nomeProfessor = leitor.nextLine();
+        String nomeProfessor = leitor.nextLine().toUpperCase();
         if(!(professorDao.buscar(nomeProfessor)== null)){
             System.out.println("\nPROFESSOR JÁ CADASTRADO\n\n");
             return;
         }
         professor.setNome(nomeProfessor);
         System.out.println("CPF: ");
-        professor.setCpf(leitor.nextLine());
+        professor.setCpf(leitor.nextLine().toUpperCase());
         System.out.println("DEPARTAMENTO: ");
-        professor.setDepartamento(leitor.nextLine());
+        professor.setDepartamento(leitor.nextLine().toUpperCase());
     }
     
     public void cadastrarProfessor(){
@@ -44,23 +47,28 @@ public class ProfessorView{
         }
     }
     
-    public void buscar(){
+    public void buscarProfessor(){
+        Professor professor = new Professor();
         Scanner leitor = new Scanner(System.in);
-        Professor professor;
         GenericoDAO professorDao = ProfessorDAO.getInstancia();
-        
-        System.out.println("\n **************** PESQUISA ****************");
-        System.out.println("ENTRE COM O NOME DO PROFESSOR: ");
-        professor = (Professor) professorDao.buscar(leitor.nextLine());
-        this.imprimirBusca(professor);
+        System.out.println("\n\t\t PESQUISA PROFESSOR \n");
+        System.out.println("\n PROFESSOR: ");
+        Object pesquisa = leitor.nextLine().toUpperCase();
+        professor = (Professor) professorDao.buscar(pesquisa);
+        if(professor == null) {
+            System.out.println("\n\t\t DISCIPLINA NÃO ENCONTRADA \n");
+        }
+        else
+            System.out.println("\n"+professor);
     }
     
     public void listarProfessores() {
         GenericoDAO professorDao = ProfessorDAO.getInstancia();
-        
-        professorDao.listar().stream().forEach((professor) -> {
-            System.out.println(professor);
-        });
+        System.out.println("\n\t\t PROFESSORES \n");
+        for (Iterator<Object> it = professorDao.listar().iterator(); it.hasNext();) {
+            Object listaProfessor = it.next();
+            System.out.println(listaProfessor.toString());
+        }
     }
 
     void listarHistorico() {
@@ -69,7 +77,7 @@ public class ProfessorView{
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         
         System.out.println("Professor: ");
-        String nomeProfessor = leitor.nextLine();
+        String nomeProfessor = leitor.nextLine().toUpperCase();
         Professor professor = (Professor) professorDao.buscar(nomeProfessor);
         Integer contador=0;
         String disciplina = professor.getListaTurmasMinistradas().get(0).getDisciplina().getNome();
@@ -82,4 +90,75 @@ public class ProfessorView{
         }
         System.out.println(contador+"\n");
     }
+    
+    public void imprimirMenuProfessor() {
+        System.out.println("\n ****************************************************************************** \n");
+        System.out.println("\t\t PROFESSOR \n");
+        System.out.println("1- CADASTRAR PROFESSOR");
+        System.out.println("2- PESQUISAR PROFESSOR");
+        System.out.println("3- LISTAR PROFESSORES");
+        System.out.println("4- SAIR \n");
+        System.out.println("OPÇÃO:");
+    }
+    
+    public void menuProfessor() throws FileNotFoundException, ClassNotFoundException {
+        Integer escolha = 0;
+        Integer flag;
+        Scanner leitor = new Scanner(System.in);
+        ProfessorView professor = new ProfessorView();
+        do{
+            professor.imprimirMenuProfessor();
+            do{
+                try{
+                    escolha = Integer.parseInt(leitor.nextLine());
+                    flag = 1;
+                } catch(Exception e){
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");       
+                    flag = 0;
+                    professor.imprimirMenuProfessor();
+                } 
+            } while(flag == 0);
+                switch(escolha) {
+                    case 1:
+                        try{
+                            ProfessorDAO.getInstancia().buscarTodos(professor);
+                            professor.cadastrarProfessor();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO CADASTRAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 2:
+                        try{
+                            ProfessorDAO.getInstancia().buscarTodos(professor);
+                            professor.buscarProfessor();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO BUSCAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 3:
+                        try{
+                            ProfessorDAO.getInstancia().buscarTodos(professor);
+                            professor.listarProfessores();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        System.out.println("\n ****************************************************************************** \n");
+                        System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                        System.out.println("\n ****************************************************************************** \n");       
+                }
+        } while(escolha != 4);
+    }
+
 }

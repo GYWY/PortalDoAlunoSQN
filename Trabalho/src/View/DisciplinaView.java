@@ -4,6 +4,8 @@ import Model.DAO.DisciplinaDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Disciplina;
 import Model.POJO.Turma;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -31,18 +33,18 @@ public class DisciplinaView {
     }
     
     public void buscarDisciplina() {
-        Disciplina novaDisciplina = new Disciplina();
+        Disciplina disciplina = new Disciplina();
         Scanner leitor = new Scanner(System.in);
-        GenericoDAO disciplina = DisciplinaDAO.getInstancia();
+        GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         System.out.println("\n\t\t PESQUISA DISCIPLINA \n");
         System.out.println("\n DISCIPLINA: ");
         Object pesquisa = leitor.nextLine().toUpperCase();
-        novaDisciplina = (Disciplina) disciplina.buscar(pesquisa);
-        if(novaDisciplina == null) {
+        disciplina = (Disciplina) disciplinaDao.buscar(pesquisa);
+        if(disciplina == null) {
             System.out.println("\n\t\t DISCIPLINA NÃO ENCONTRADA \n");
         }
         else
-            System.out.println("\n"+novaDisciplina);
+            System.out.println("\n"+disciplina);
     }
     
     public void listarDisciplina() {
@@ -96,6 +98,67 @@ public class DisciplinaView {
         System.out.println("3- LISTAR DISCIPLINAS");
         System.out.println("4- SAIR \n");
         System.out.println("OPÇÃO:");
+    }
+    
+    public void menuDisciplina() throws FileNotFoundException, ClassNotFoundException {
+        Integer escolha = 0;
+        Integer flag;
+        Scanner leitor = new Scanner(System.in);
+        DisciplinaView disciplina = new DisciplinaView();
+        
+        do{
+            disciplina.imprimirMenuDisciplina();
+            do{
+                try{
+                    escolha = Integer.parseInt(leitor.nextLine());
+                    flag = 1;
+                } catch(Exception e){
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");       
+                    flag = 0;
+                    disciplina.imprimirMenuDisciplina();
+                } 
+            } while(flag == 0);
+                switch(escolha) {
+                    case 1:
+                        try{
+                            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                            disciplina.cadastrarDisciplina();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO CADASTRAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 2:
+                        try{
+                            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                            disciplina.buscarDisciplina();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO BUSCAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 3:
+                        try{
+                            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                            disciplina.listarDisciplina();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        System.out.println("\n ****************************************************************************** \n");
+                        System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                        System.out.println("\n ****************************************************************************** \n");       
+                }
+        } while(escolha != 4);
     }
     
 }

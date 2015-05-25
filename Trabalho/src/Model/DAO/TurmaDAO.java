@@ -104,7 +104,7 @@ public class TurmaDAO implements GenericoDAO{
             addTurma.getDisciplina().setListaTurmas(addTurma);
             Integer idProfessor = Integer.parseInt(scan.nextLine());
             addTurma.setProfessor((Professor) professor.buscar(idProfessor));
-            addTurma.getProfessor().adicionarTurma(addTurma);
+            addTurma.getProfessor().setListaTurmasMinistradas(addTurma);
             listaDeTurmas.add(addTurma);
             scan.nextLine();
         }

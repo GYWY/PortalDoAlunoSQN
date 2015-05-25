@@ -44,7 +44,7 @@ public class ProfessorDAO implements GenericoDAO{
         if(objeto instanceof String){
             String nome = (String) objeto;
             for(Professor professor : listaDeProfessores){
-                if(professor.getNome().contains(nome))
+                if(professor.getNome().equals(nome))
                     return professor;
             }            
         }
