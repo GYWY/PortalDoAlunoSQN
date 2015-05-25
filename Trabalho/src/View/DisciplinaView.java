@@ -61,7 +61,7 @@ public class DisciplinaView {
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         
         System.out.println("DISCIPLINA: ");
-        String nomeDisciplina = leitor.nextLine();
+        String nomeDisciplina = leitor.nextLine().toUpperCase();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
         ArrayList<Turma> listaTurma = disciplina.getListaTurmas();
         System.out.println("ANO: ");
@@ -83,7 +83,7 @@ public class DisciplinaView {
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         
         System.out.println("DISCIPLINA: ");
-        String nomeDisciplina = leitor.nextLine();
+        String nomeDisciplina = leitor.nextLine().toUpperCase();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
         if(nomeDisciplina.equals(disciplina.getNome())){  
             System.out.println(disciplina.getListaTurmas().size());  
@@ -105,6 +105,7 @@ public class DisciplinaView {
         Integer flag;
         Scanner leitor = new Scanner(System.in);
         DisciplinaView disciplina = new DisciplinaView();
+        GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         
         do{
             disciplina.imprimirMenuDisciplina();
@@ -123,7 +124,7 @@ public class DisciplinaView {
                 switch(escolha) {
                     case 1:
                         try{
-                            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                            disciplinaDao.buscarTodos(disciplina);
                             disciplina.cadastrarDisciplina();
                         } catch(IOException e){
                             System.out.println("\n ****************************************************************************** \n");
@@ -133,7 +134,7 @@ public class DisciplinaView {
                         break;
                     case 2:
                         try{
-                            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                            disciplinaDao.buscarTodos(disciplina);
                             disciplina.buscarDisciplina();
                         } catch(IOException e){
                             System.out.println("\n ****************************************************************************** \n");
@@ -143,7 +144,7 @@ public class DisciplinaView {
                         break;
                     case 3:
                         try{
-                            DisciplinaDAO.getInstancia().buscarTodos(disciplina);
+                            disciplinaDao.buscarTodos(disciplina);
                             disciplina.listarDisciplina();
                         } catch(IOException e){
                             System.out.println("\n ****************************************************************************** \n");
