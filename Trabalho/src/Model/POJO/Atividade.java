@@ -70,7 +70,7 @@ public class Atividade {
     
     @Override
     public String toString() {
-        return ("Nome do aluno: " + nome + "\nTipo da atividade: " + tipo + "\nData: " + data + "\nValor: " + valor + "\nId: " + id);
+        return ("Nome do aluno: " + nome + "\nTipo da atividade: " + tipo + "\nData: " + data + "\nValor: " + valor + "\n");
     }
     
 }

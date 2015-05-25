@@ -76,19 +76,24 @@ public class ProfessorView{
         GenericoDAO professorDao = ProfessorDAO.getInstancia();
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         
-        System.out.println("Professor: ");
+        System.out.println("\n PROFESSOR: ");
         String nomeProfessor = leitor.nextLine().toUpperCase();
         Professor professor = (Professor) professorDao.buscar(nomeProfessor);
         Integer contador=0;
-        String disciplina = professor.getListaTurmasMinistradas().get(0).getDisciplina().getNome();
-        if(disciplina!=null){
-            contador = 1;
+        String disciplina = "";
+        try{ 
+            disciplina = professor.getListaTurmasMinistradas().get(0).getDisciplina().getNome();
+        } catch(Exception e){
+            System.out.println("\n ****************************************************************************** \n");
+            System.out.println("\n\t PROFESSOR OU DISCIPLINA NÃO ESTÁ CADASTRADO(A) \n");
+            return;
+        }
+        contador = 1;
             for(Turma turma : professor.getListaTurmasMinistradas()){
                 if(!disciplina.equals(turma.getDisciplina().getNome()))
                     contador++;
             }
-        }
-        System.out.println(contador+"\n");
+        System.out.println("\n NUMERO DE DISCIPLINAS TOTAL: " + contador + "\n");
     }
     
     public void imprimirMenuProfessor() {
@@ -97,7 +102,8 @@ public class ProfessorView{
         System.out.println("1- CADASTRAR PROFESSOR");
         System.out.println("2- PESQUISAR PROFESSOR");
         System.out.println("3- LISTAR PROFESSORES");
-        System.out.println("4- SAIR \n");
+        System.out.println("4- HISTÓRICO NÚMERO DE DISCIPLINAS DE PROFESSOR");
+        System.out.println("5- SAIR \n");
         System.out.println("OPÇÃO:");
     }
     
@@ -152,13 +158,23 @@ public class ProfessorView{
                         }
                         break;
                     case 4:
+                        try{
+                            ProfessorDAO.getInstancia().buscarTodos(professor);
+                            professor.listarHistorico();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break; 
+                    case 5:
                         break;
                     default:
                         System.out.println("\n ****************************************************************************** \n");
                         System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
                         System.out.println("\n ****************************************************************************** \n");       
                 }
-        } while(escolha != 4);
+        } while(escolha != 5);
     }
 
 }

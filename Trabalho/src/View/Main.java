@@ -35,7 +35,7 @@ public class Main {
     private void imprimirMenuProfessor() {
         System.out.println("\n ****************************************************************************** \n");
         System.out.println("\t\t BEM VINDO AO PORTAL DO PROFESSOR! \n");
-        System.out.println("1- CADASTRAR ATIVIDADE");
+        System.out.println("1- ATIVIDADE");
         System.out.println("2- LANÇAR NOTA");
         System.out.println("3- LANÇAR FALTA");
         System.out.println("4- CONSULTAR TURMAS DE UMA DISCIPLINA");
@@ -122,12 +122,7 @@ public class Main {
             } while(flag == 0);
             switch(escolha) {
                 case 1:
-                    try{
-                        AtividadeDAO.getInstancia().buscarTodos(atividade);
-                    } catch(IOException e){
-                        System.out.println("\tNÃO HÁ ATIVIDADE CADASTRADA");
-                    }
-                    atividade.cadastrarAtividade();
+                    atividade.menuAtividade();
                     break;
                 case 2:
                     try{
