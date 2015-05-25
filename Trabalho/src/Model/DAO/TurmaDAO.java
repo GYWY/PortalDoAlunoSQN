@@ -45,18 +45,10 @@ public class TurmaDAO implements GenericoDAO{
     @Override
     public Object buscar(Object objeto) {
         
-        if(objeto instanceof String){
-            String nome = (String) objeto;
-            for(Turma turma : listaDeTurmas){
-                if(turma.getDisciplina().equals(nome))
-                    return turma;
-            }            
-        }
-        else if(objeto instanceof Integer){
+        if(objeto instanceof Integer){
             Integer id =(Integer) objeto;
-            
             for(Turma turma : listaDeTurmas){
-                if(turma.getIdTurma().equals(objeto)){
+                if(turma.getIdTurma().equals(id)){
                     return turma;
                 }
             }
@@ -75,8 +67,7 @@ public class TurmaDAO implements GenericoDAO{
         FileOutputStream fp = new FileOutputStream(arquivo);
         String dados = "";
         for(Turma turma : listaDeTurmas){
-            dados += turma.getIdTurma()+"\n"+turma.getLocal()
-                    +"\n"+turma.getAno()+"\n"+turma.getPeriodo()+"\n"
+            dados += turma.getIdTurma()+"\n"+turma.getLocal() +"\n"+turma.getAno()+"\n"+turma.getPeriodo()+"\n"
                     +turma.getHorario()+"\n"+turma.getVaga()+"\n"+turma.getDisciplina().getId()
                     +"\n"+turma.getProfessor().getIdProfessor()+"\n#\n";
         }
@@ -94,10 +85,10 @@ public class TurmaDAO implements GenericoDAO{
                     
             ultimoID = Integer.parseInt(scan.nextLine());
             addTurma.setIdTurma(ultimoID);
-            addTurma.setLocal(scan.nextLine());
+            addTurma.setLocal(scan.nextLine().toUpperCase());
             addTurma.setAno(Long.parseLong(scan.nextLine()));
             addTurma.setPeriodo(Integer.parseInt(scan.nextLine()));
-            addTurma.setHorario(scan.nextLine());
+            addTurma.setHorario(scan.nextLine().toUpperCase());
             addTurma.setVaga(Integer.parseInt(scan.nextLine()));
             Integer idDisciplina = Integer.parseInt(scan.nextLine());
             addTurma.setDisciplina((Disciplina) disciplina.buscar(idDisciplina));

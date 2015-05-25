@@ -45,14 +45,14 @@ public class DisciplinaDAO implements GenericoDAO{
         if(objeto instanceof String){
             String nome = (String) objeto;
             for(Disciplina disciplina : listaDisciplina){
-                if(disciplina.getNome().contains(nome))
+                if(disciplina.getNome().equals(nome))
                     return disciplina;
             }
         }
         else if(objeto instanceof Integer){
             Integer id =(Integer) objeto;
             for(Disciplina disciplina : listaDisciplina){
-                if(disciplina.getId().equals(objeto)){ //ver id
+                if(disciplina.getId().equals(id)){
                     return disciplina;
                 }
             }

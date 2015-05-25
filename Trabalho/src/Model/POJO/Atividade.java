@@ -61,7 +61,7 @@ public class Atividade {
     }
 
     public void setId(int contador) {
-        this.id = id;
+        this.id = contador;
     }
 
     public void setListaNota(Nota nota) {

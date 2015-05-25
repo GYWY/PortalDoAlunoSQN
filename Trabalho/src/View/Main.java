@@ -26,9 +26,8 @@ public class Main {
         System.out.println("\t\t BEM VINDO AO SISTEMA PRINCIPAL! \n");
         System.out.println("1- DISCIPLINA");
         System.out.println("2- PROFESSOR");
-        System.out.println("3- CADASTRAR TURMA");
+        System.out.println("3- TURMA");
         System.out.println("4- CADASTRAR ALUNO");
-        System.out.println("5- CONSULTAR TURMAS DE UMA DISCIPLINA");
         System.out.println("6- SAIR \n");
         System.out.println("OPÇÃO: ");
     }
@@ -80,12 +79,7 @@ public class Main {
                     professor.menuProfessor();
                     break;
                 case 3:
-                    try{
-                        TurmaDAO.getInstancia().buscarTodos(turma);
-                    } catch(IOException e){
-                        System.out.println("\tNÃO HÁ TURMA CADASTRADA");
-                    }
-                    turma.cadastrarTurma();
+                    turma.menuTurma();
                     break;
                 case 4:
                     try{

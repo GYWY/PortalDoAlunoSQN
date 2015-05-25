@@ -90,20 +90,12 @@ public class Turma {
     public ArrayList<Atividade> getListaDeAtividade() {
         return listaDeAtividade;
     }
-
-    public void setListaDeAtividade(ArrayList<Atividade> listaDeAtividade) {
-        this.listaDeAtividade = listaDeAtividade;
+    
+    public void setListaDeAtividade(Atividade atividade){
+        this.listaDeAtividade.add(atividade);
     }
 
-    public ArrayList<Falta> getListaDeFalta() {
-        return listaDeFalta;
-    }
-
-    public void setListaDeFalta(ArrayList<Falta> listaDeFalta) {
-        this.listaDeFalta = listaDeFalta;
-    }
-
-    public void adicionarFalta(Falta falta) {
+    public void setListaFalta(Falta falta) {
         this.listaDeFalta.add(falta);        
     }   
     
@@ -129,10 +121,7 @@ public class Turma {
 
     @Override
     public String toString() {
-        return ("Turma ID: " + idTurma + "\nAno: " + ano + "\nPeríodo: " + periodo + "\nLocal: " + local + "\nHorário: " + horario + "\nVagas: " + vaga);
+        return ("Turma ID: " + idTurma + "\nAno: " + ano + "\nPeríodo: " + periodo + "\nLocal: " + local + "\nHorário: " + horario + "\nVagas: " + vaga + "\n");
     } 
-    
-    public void adicionarAtividade(Atividade atividade){
-        this.listaDeAtividade.add(atividade);
-    }
+
 }

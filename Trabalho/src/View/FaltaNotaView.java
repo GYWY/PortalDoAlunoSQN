@@ -75,7 +75,7 @@ public class FaltaNotaView {
         System.out.println("\n NÚMERO DE FALTAS: ");
         falta.setFaltas(Integer.parseInt(leitor.nextLine()));
         faltaDao.inserir(falta);
-        turma.adicionarFalta(falta);
+        turma.setListaFalta(falta);
         aluno.setListaFalta(falta);
 
     }
