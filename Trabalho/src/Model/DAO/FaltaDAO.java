@@ -84,7 +84,7 @@ public class FaltaDAO implements GenericoDAO {
             addFalta.setTurma((Turma) turmaDao.buscar(idTurma));
             addFalta.setFaltas(Integer.parseInt(scan.nextLine()));
             listaFaltas.add(addFalta);
-            addFalta.getAluno().adicionarFalta(addFalta);
+            addFalta.getAluno().setListaFalta(addFalta);
             addFalta.getTurma().adicionarFalta(addFalta);
         }
         

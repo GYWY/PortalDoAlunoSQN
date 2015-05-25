@@ -15,7 +15,7 @@ public class AlunoView {
         
         System.out.println("\n\t CADASTRO ALUNO ");
         System.out.println("\n NOME DO ALUNO: ");
-        String nomeAluno = leitor.nextLine();
+        String nomeAluno = leitor.nextLine().toUpperCase();
         if(!(aluno.buscar(nomeAluno)== null)){
             System.out.println("\nALUNO JÁ CADASTRADO\n\n");
             return;
@@ -27,29 +27,38 @@ public class AlunoView {
     }
     
     public void listarAluno(){
-        GenericoDAO aluno = AlunoDAO.getInstancia();
         
-        System.out.println("\n\t LISTA DE ALUNOS ");
-        for (Iterator<Object> it = aluno.listar().iterator(); it.hasNext();) {
-            Object alunoLista = it.next();
-            System.out.println(alunoLista);
-        }             
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        System.out.println("\n\t\t ALUNOS \n");
+        for (Iterator<Object> it = alunoDao.listar().iterator(); it.hasNext();) {
+            Object listaAluno = it.next();
+            System.out.println(listaAluno.toString());
+        }
     }
     
     public void buscarAluno(){
+        Aluno novaAluno = new Aluno();
         Scanner leitor = new Scanner(System.in);
-        Aluno novoAluno = new Aluno();
         GenericoDAO aluno = AlunoDAO.getInstancia();
-        
-        System.out.println("\n\t PESQUISAR ALUNO ");
-        System.out.println("\n ENTRE COM O NOME OU ID: ");
-        Object pesquisa = leitor.nextLine();
-        if(aluno.buscar(pesquisa) == null){
-            System.out.println("ALUNO NÃO ENCONTRADO");
+        System.out.println("\n\t\t PESQUISA ALUNO \n");
+        System.out.println("\n ALUNO: ");
+        Object pesquisa = leitor.nextLine().toUpperCase();
+        novaAluno = (Aluno) aluno.buscar(pesquisa);
+        if(novaAluno == null) {
+            System.out.println("\n\t\t ALUNO NÃO ENCONTRADA \n");
         }
-        else if(novoAluno == (Aluno) aluno.buscar(pesquisa)) {
-            System.out.println(novoAluno);
-        }
+        else
+            System.out.println("\n"+novaAluno);
+    }
+    
+    public void imprimirMenuAluno() {
+        System.out.println("\n ****************************************************************************** \n");
+        System.out.println("\t\t DISCIPLINA \n");
+        System.out.println("1- CADASTRAR ALUNO");
+        System.out.println("2- PESQUISAR ALUNO");
+        System.out.println("3- LISTAR ALUNOS");
+        System.out.println("4- SAIR \n");
+        System.out.println("OPÇÃO:");
     }
     
 }

@@ -86,8 +86,8 @@ public class NotaDAO implements GenericoDAO{
             addNota.setAtividade((Atividade) atividadeDao.buscar(idAtividade));
             addNota.setNota(Double.parseDouble(scan.nextLine()));
             listaNotas.add(addNota);
-            addNota.getAluno().adicionarNota(addNota);
-            addNota.getAtividade().adicionarNota(addNota);
+            addNota.getAluno().setListaNota(addNota);
+            addNota.getAtividade().setListaNota(addNota);
             scan.nextLine();
         }
         

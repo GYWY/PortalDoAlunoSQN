@@ -7,10 +7,8 @@ package Model.DAO;
 
 
 import Model.POJO.Aluno;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -56,6 +54,16 @@ public class AlunoDAOTest {
     }
     
     @Test
+    public void testarListar(){
+        AlunoDAO alunoDao = AlunoDAO.getInstancia();
+        
+        if(alunoDao.listar() == null){
+            fail("Deu ruim na listagem");
+        }
+        else assertEquals(true,true);
+    }
+    
+    @Test
     public void testarInsercao(){
         AlunoDAO alunoDao = AlunoDAO.getInstancia();
         Aluno aluno = new Aluno();
@@ -66,29 +74,27 @@ public class AlunoDAOTest {
         assertEquals(alunoTeste.getNome(), aluno.getNome());
     }
     
-    @Test
-    //teste de arquivo vazio
-    public void testarBuscarTodos() throws IOException, FileNotFoundException, ClassNotFoundException{
-        AlunoDAO alunoDao = AlunoDAO.getInstancia();
-        File arquivo = new File("Alunos.txt");
-        Scanner leitor = new Scanner(arquivo);
-        
-        if(!arquivo.exists()){
-            assertEquals(alunoDao.buscarTodos(null),true);
-        }
-        else{
-            assertEquals(alunoDao.buscarTodos(null),false);
-        }
-    }
-    
     public void testarGetInstancia(){
         AlunoDAO alunoDao = AlunoDAO.getInstancia();
         
         if(alunoDao == null){
-            fail("Deu ruim na instanciação");
+            assertEquals(true,false);
         }
         else{
-            assertTrue(true);
+            assertEquals(true,true);
+        }
+    }
+    
+    @Test
+    public void testarBuscarTodos() throws IOException, FileNotFoundException, ClassNotFoundException{
+        AlunoDAO alunoDao = AlunoDAO.getInstancia();
+        
+        if((alunoDao.listar() == null) || (alunoDao.listar().isEmpty())){
+            assertEquals(true,alunoDao.buscarTodos(null));
+        }
+        
+        else if(alunoDao.listar().size() > 0){
+            assertEquals(false , alunoDao.buscarTodos(null));
         }
     }
 }
