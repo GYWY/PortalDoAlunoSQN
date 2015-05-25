@@ -38,11 +38,12 @@ public class Main {
         System.out.println("1- ATIVIDADE");
         System.out.println("2- LANÇAR NOTA");
         System.out.println("3- LANÇAR FALTA");
-        System.out.println("4- CONSULTAR TURMAS DE UMA DISCIPLINA");
-        System.out.println("5- CONSULTAR ALUNO DE UMA DISCIPLINA");
-        System.out.println("6- CONSULTAR HISTÓRICO DE UMA DISCIPLINA");
-        System.out.println("7- CONSULTAR HISTÓRICO DE UM PROFESSOR");
-        System.out.println("8- SAIR \n");
+        System.out.println("4- ALTERAR NOTA");
+        System.out.println("5- CONSULTAR TURMAS DE UMA DISCIPLINA");
+        System.out.println("6- CONSULTAR ALUNO DE UMA DISCIPLINA");
+        System.out.println("7- CONSULTAR HISTÓRICO DE UMA DISCIPLINA");
+        System.out.println("8- CONSULTAR HISTÓRICO DE UM PROFESSOR");
+        System.out.println("9- SAIR \n");
         System.out.println("OPÇÃO: ");
     }
     
@@ -144,13 +145,22 @@ public class Main {
                     break;
                 case 4:
                     try{
+                        AtividadeDAO.getInstancia().buscarTodos(atividade);
+                        TurmaDAO.getInstancia().buscarTodos(turma);
+                    } catch(IOException e){
+                        System.out.println("\tNÃO HÁ ALUNO CADASTRADO");
+                    }
+                    faltaNota.alterarNota();
+                    break;
+                case 5:
+                    try{
                         DisciplinaDAO.getInstancia().buscarTodos(disciplina);
                         disciplina.listarTurmas();
                     } catch(IOException e){
                         System.out.println("\tNÃO HÁ DISCIPLINA CADASTRADA");
                     }
                     break;
-                case 5:
+                case 6:
                     try{
                         DisciplinaDAO.getInstancia().buscarTodos(disciplina);
                         AlunoDAO.getInstancia().buscarTodos(aluno);
@@ -159,7 +169,7 @@ public class Main {
                     }
                     faltaNota.situacaoNotaAluno();
                     break;
-                case 6:
+                case 7:
                     try{
                         DisciplinaDAO.getInstancia().buscarTodos(disciplina);
                         disciplina.listarHistoricoTurmas();
@@ -167,7 +177,7 @@ public class Main {
                         System.out.println("\tNÃO HÁ DISCIPLINA CADASTRADA");
                     }
                     break;
-                case 7:
+                case 8:
                     try{
                         ProfessorDAO.getInstancia().buscarTodos(professor);
                         professor.listarHistorico();
@@ -175,14 +185,14 @@ public class Main {
                         System.out.println("\tNÃO HÁ PROFESSOR CADASTRADO");
                     }
                     break;
-                case 8:
+                case 9:
                     break;
                 default:
                     System.out.println("\n ****************************************************************************** \n");
                     System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
                     System.out.println("\n ****************************************************************************** \n");       
             }
-        } while(escolha != 8);
+        } while(escolha != 9);
     }
     
     public static void main(String[] args) throws IOException, FileNotFoundException, ClassNotFoundException {
