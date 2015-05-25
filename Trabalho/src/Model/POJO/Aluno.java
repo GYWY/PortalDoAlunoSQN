@@ -79,7 +79,7 @@ public class Aluno extends Pessoa {
      */
     @Override
     public String toString() {
-        return "Aluno: " + "\nid = " + id + "\nlistaFaltas = " + listaFaltas + "\nlistaNotas = " + listaNotas + '\n';
+        return (super.toString()+"\n");
     }
     
 }

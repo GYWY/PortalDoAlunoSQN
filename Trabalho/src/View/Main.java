@@ -27,8 +27,8 @@ public class Main {
         System.out.println("1- DISCIPLINA");
         System.out.println("2- PROFESSOR");
         System.out.println("3- TURMA");
-        System.out.println("4- CADASTRAR ALUNO");
-        System.out.println("6- SAIR \n");
+        System.out.println("4- ALUNO");
+        System.out.println("5- SAIR \n");
         System.out.println("OPÇÃO: ");
     }
     
@@ -82,29 +82,16 @@ public class Main {
                     turma.menuTurma();
                     break;
                 case 4:
-                    try{
-                        AlunoDAO.getInstancia().buscarTodos(aluno);
-                    } catch(IOException e){
-                        System.out.println("\tNÃO HÁ ALUNO CADASTRADO");
-                    }
-                    aluno.cadastrarAluno();
+                    aluno.menuAluno();
                     break;
                 case 5:
-                    try{
-                        DisciplinaDAO.getInstancia().buscarTodos(disciplina);
-                        disciplina.listarTurmas();
-                    } catch(IOException e){
-                        System.out.println("\tNÃO HÁ DISCIPLINA CADASTRADA");
-                    }
-                    break;
-                case 6:
                     break;
                 default:
                     System.out.println("\n ****************************************************************************** \n");
                     System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
                     System.out.println("\n ****************************************************************************** \n");       
             }
-        } while(escolha != 6);
+        } while(escolha != 5);
     }
     
     private void menuProfessor() throws IOException, FileNotFoundException, ClassNotFoundException {

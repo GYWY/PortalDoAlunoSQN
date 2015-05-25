@@ -3,6 +3,8 @@ package View;
 import Model.DAO.AlunoDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Aluno;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -60,5 +62,66 @@ public class AlunoView {
         System.out.println("4- SAIR \n");
         System.out.println("OPÇÃO:");
     }
-    
+ 
+    public void menuAluno() throws FileNotFoundException, ClassNotFoundException {
+        Integer escolha = 0;
+        Integer flag;
+        Scanner leitor = new Scanner(System.in);
+        AlunoView aluno = new AlunoView();
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        
+        do{
+            aluno.imprimirMenuAluno();
+            do{
+                try{
+                    escolha = Integer.parseInt(leitor.nextLine());
+                    flag = 1;
+                } catch(Exception e){
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");       
+                    flag = 0;
+                    aluno.imprimirMenuAluno();
+                } 
+            } while(flag == 0);
+                switch(escolha) {
+                    case 1:
+                        try{
+                            alunoDao.buscarTodos(aluno);
+                            aluno.cadastrarAluno();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO CADASTRAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 2:
+                        try{
+                            alunoDao.buscarTodos(aluno);
+                            aluno.buscarAluno();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO BUSCAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 3:
+                        try{
+                            alunoDao.buscarTodos(aluno);
+                            aluno.listarAluno();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        System.out.println("\n ****************************************************************************** \n");
+                        System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                        System.out.println("\n ****************************************************************************** \n");       
+                }
+        } while(escolha != 4);
+    }
 }

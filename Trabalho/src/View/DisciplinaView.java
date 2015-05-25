@@ -86,7 +86,7 @@ public class DisciplinaView {
         String nomeDisciplina = leitor.nextLine().toUpperCase();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
         if(nomeDisciplina.equals(disciplina.getNome())){  
-            System.out.println(disciplina.getListaTurmas().size());  
+            System.out.println("\n NÚMERO DE TURMAS TOTAL: " + disciplina.getListaTurmas().size());  
         }
     }
     
@@ -96,7 +96,8 @@ public class DisciplinaView {
         System.out.println("1- CADASTRAR DISCIPLINA");
         System.out.println("2- PESQUISAR DISCIPLINA");
         System.out.println("3- LISTAR DISCIPLINAS");
-        System.out.println("4- SAIR \n");
+        System.out.println("4- HISTÓRICO NÚMERO DE TURMAS DE UMA DISCIPLINA");
+        System.out.println("5- SAIR \n");
         System.out.println("OPÇÃO:");
     }
     
@@ -153,13 +154,23 @@ public class DisciplinaView {
                         }
                         break;
                     case 4:
+                        try{
+                            disciplinaDao.buscarTodos(disciplina);
+                            disciplina.listarHistoricoTurmas();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 5:
                         break;
                     default:
                         System.out.println("\n ****************************************************************************** \n");
                         System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
                         System.out.println("\n ****************************************************************************** \n");       
                 }
-        } while(escolha != 4);
+        } while(escolha != 5);
     }
     
 }
