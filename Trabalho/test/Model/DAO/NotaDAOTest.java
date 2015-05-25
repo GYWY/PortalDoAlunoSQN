@@ -43,11 +43,19 @@ public class NotaDAOTest {
     public void tearDown() {
     }
     
+    /**
+     *Teste da busca pro caso nulo
+     */
+    
     @Test
     public void testarBusca(){  
         NotaDAO notaDao = NotaDAO.getInstancia();   
         assertEquals(null,notaDao.buscar(null));
     }
+    
+    /**
+     *Teste da listagem de todas as nostas do aluno
+     */
     
     @Test
     public void testarListar(){
@@ -58,6 +66,12 @@ public class NotaDAOTest {
         }
         else assertEquals(true,true);
     }
+    
+    /**
+     *Teste de inserção de uma nova nota. O teste é feito seguindo os testes de
+     * inserção anteriores. Desta vez os requisitos são um aluno e uma atividade pré
+     * cadastradas
+     */
     
     @Test
     public void testarInsercao(){
@@ -77,6 +91,10 @@ public class NotaDAOTest {
         assertEquals(notaTeste.getId(), nota.getId());
     }
     
+    /*
+    *Teste do método de instanciação getInstância
+    */
+    
     public void testarGetInstancia(){
         NotaDAO notaDao = NotaDAO.getInstancia();
         
@@ -89,11 +107,12 @@ public class NotaDAOTest {
     }
     
     /**
-     *
+     *Teste do carregamento das notas
      * @throws IOException
      * @throws FileNotFoundException
      * @throws ClassNotFoundException
      */
+    
     @Test
     public void testarBuscarTodos() throws IOException, FileNotFoundException, ClassNotFoundException{
         NotaDAO notaDao = NotaDAO.getInstancia();

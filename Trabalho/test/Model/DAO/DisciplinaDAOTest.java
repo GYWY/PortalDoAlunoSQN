@@ -42,7 +42,7 @@ public class DisciplinaDAOTest {
     }
 
     /**
-     * Test of getInstancia method, of class DisciplinaDAO.
+     * Test da busca, que na prática é testado logo na inserção
      */
     
     @Test
@@ -52,6 +52,10 @@ public class DisciplinaDAOTest {
         
         assertEquals(null,disciplinaDao.buscar(null));
     }
+    
+    /*
+    *Teste da listagem de todas as disciplinas existentes
+    */
     
     @Test
     public void testarListar(){
@@ -63,6 +67,9 @@ public class DisciplinaDAOTest {
         else assertEquals(true,true);
     }
     
+    /**
+     *Segue o mesmo princípio do teste de inserção do AlunoDAO
+     */
     @Test
     public void testarInsercao(){
         DisciplinaDAO disciplinaDao = DisciplinaDAO.getInstancia();
@@ -76,6 +83,10 @@ public class DisciplinaDAOTest {
         assertEquals(disciplinaTeste.getNome(), disciplina.getNome());
     }
     
+    /*
+    *Teste para o getInstância da DisciplinaDAO
+    */
+    
     public void testarGetInstancia(){
         DisciplinaDAO disciplinaDao = DisciplinaDAO.getInstancia();
         
@@ -86,6 +97,10 @@ public class DisciplinaDAOTest {
             assertTrue(true);
         }
     }
+    
+    /*
+    *Teste da busca (carregamento) das Disciplinas
+    */
     
     @Test
     public void testarBuscarTodos() throws IOException, FileNotFoundException, ClassNotFoundException{

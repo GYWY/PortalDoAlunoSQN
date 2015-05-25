@@ -43,7 +43,7 @@ public class AtividadeDAOTest {
     }
 
     /**
-     * Test of getInstancia method, of class AtividadeDAO.
+     * Teste do método getInstancia, da classe AtividadeDAO.
      */
     
     @Test
@@ -58,6 +58,10 @@ public class AtividadeDAOTest {
         }
     }
     
+    /**
+     *Teste do retorno da lista de atividades
+     */
+    @Test
     public void testarListar(){
         AtividadeDAO atividadeDao = AtividadeDAO.getInstancia();
         
@@ -67,13 +71,19 @@ public class AtividadeDAOTest {
         else assertEquals(true,true);
     }
     
+    /**
+     * Teste da inserção na lista. É um teste que cria uma atividade fictícia, 
+     * Utilizando uma turma já cadastrada(Requisito fundamental) para realizar a inserção.
+     * A idéia é, como um novo elemento é sempre adicionado por default na última posição da lista,
+     * comparar o elemento que eu criei com o último elemento da lista. Se os id's forem iguais, a inserção
+     * foi um sucesso. Esta estratégia é utilizada em TODAS as demais classes de teste
+     */
     @Test
     public void testarInsercao(){
         AtividadeDAO atividadeDao = AtividadeDAO.getInstancia();
         TurmaDAO turmaDao = TurmaDAO.getInstancia();
         Atividade atividade = new Atividade();
-        
-        
+            
         atividade.setId((Integer) atividadeDao.listar().get(atividadeDao.listar().size()) + 1);
         atividade.setNome("Teste atividade");
         atividade.setData("Data de teste");
@@ -87,12 +97,22 @@ public class AtividadeDAOTest {
         assertEquals(atividadeTeste.getNome(), atividade.getNome());
     }
     
+    /*
+    Teste da busca em lista. Passo um parâmetro null e o resultado também deve ser null
+    Na prática, a busca é testada no teste de inserção
+    */
+    
     @Test
     public void testarBusca(){
         AtividadeDAO atividadeDao = AtividadeDAO.getInstancia();
         
         assertEquals(null,atividadeDao.buscar(null));
     }
+    
+    /*
+    *Teste da buscaParaTodos (leitura geral). Segue o mesmo princípio da classe 
+    *de testes para aluno
+    */
     
     @Test
     public void testarBuscarTodos() throws IOException{

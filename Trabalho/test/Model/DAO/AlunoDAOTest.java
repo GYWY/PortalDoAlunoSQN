@@ -20,7 +20,12 @@ import static org.junit.Assert.*;
  *
  * @author linhares
  */
+
 public class AlunoDAOTest {
+    
+   /*
+    *métodos padrões
+    */
     
     public AlunoDAOTest() {
     }
@@ -53,6 +58,10 @@ public class AlunoDAOTest {
         assertEquals(null,alunoDao.buscar(null));
     }
     
+    /*
+    *Testar o método de retorno da lista onde estão armazenados os dados
+    */
+    
     @Test
     public void testarListar(){
         AlunoDAO alunoDao = AlunoDAO.getInstancia();
@@ -62,6 +71,11 @@ public class AlunoDAOTest {
         }
         else assertEquals(true,true);
     }
+    
+    /*
+    *Testar inserção na lista de alunos
+    */
+    
     
     @Test
     public void testarInsercao(){
@@ -74,6 +88,10 @@ public class AlunoDAOTest {
         assertEquals(alunoTeste.getNome(), aluno.getNome());
     }
     
+    /*
+    *Testar o método estático de instanciação
+    */
+    
     public void testarGetInstancia(){
         AlunoDAO alunoDao = AlunoDAO.getInstancia();
         
@@ -85,6 +103,14 @@ public class AlunoDAOTest {
         }
     }
     
+    /**
+     *
+     * É um teste cujo objetivo é verificar se a lista de alunos é vazia após a
+     * execução do método
+     * @throws IOException
+     * @throws FileNotFoundException
+     * @throws ClassNotFoundException
+     */
     @Test
     public void testarBuscarTodos() throws IOException, FileNotFoundException, ClassNotFoundException{
         AlunoDAO alunoDao = AlunoDAO.getInstancia();

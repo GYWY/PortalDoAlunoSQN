@@ -55,6 +55,12 @@ public class TurmaDAOTest {
         }
     }
     
+    /**
+     *Método de teste para a inserção de uma nova turma. O método necessita de 
+     * um pre cadastramento de pelo menos uma disciplina e um professor associado a ela.
+     * A comparação final é feita por id
+     */
+    
     @Test
     public void testarInsercao(){
         TurmaDAO turmaDao = TurmaDAO.getInstancia();
@@ -75,6 +81,10 @@ public class TurmaDAOTest {
         assertEquals(turmaTeste.getIdTurma(), turma.getIdTurma());
     }
     
+    /**
+     *TEste da listagem da turma
+     */
+    
     @Test
     public void testarListar(){
         TurmaDAO turmaDao = TurmaDAO.getInstancia();
@@ -85,6 +95,9 @@ public class TurmaDAOTest {
         else assertEquals(true,true);
     }
 
+    /*
+    *Teste da busca da turma
+    */
     
     @Test
     public void testarBusca(){
@@ -94,7 +107,7 @@ public class TurmaDAOTest {
     }
     
     /**
-     * Test of buscarTodos method, of class TurmaDAO.
+     * Teste do carregamento das turmas
      * @throws java.io.IOException
      * @throws java.io.FileNotFoundException
      * @throws java.lang.ClassNotFoundException

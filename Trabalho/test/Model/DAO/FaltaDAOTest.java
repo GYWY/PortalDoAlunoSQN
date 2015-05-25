@@ -44,7 +44,7 @@ public class FaltaDAOTest {
     }
 
     /**
-     * Test of getInstancia method, of class FaltaDAO.
+     * Test do método getInstancia
      */
     
     
@@ -59,6 +59,14 @@ public class FaltaDAOTest {
             assertEquals(true,true);
         }
     }
+    
+    /**
+     *TEste da inserção
+     * Neste caso eu tenho que "cadastrar" um aluno, uma turma e os próprios
+     * atributos da Falta para que o teste possa ocorrer. O teste so será bem
+     * sucedido se já houverem alunos, faltas e turmas pré cadastrados
+     * A comparação é feita seguindo o princípio dos testes anteriores
+     */
     
     @Test
     public void testarInsercao(){
@@ -76,6 +84,10 @@ public class FaltaDAOTest {
         assertEquals(faltaTeste.getId(), falta.getId());
     }
     
+    /*
+    *Teste da listagem total de faltas do aluno
+    */
+    
     @Test
     public void testarListar(){
         FaltaDAO faltaDao = FaltaDAO.getInstancia();
@@ -85,7 +97,10 @@ public class FaltaDAOTest {
         }
         else assertEquals(true,true);
     }
-
+    
+    /*
+    *Teste da busca em lista
+    */
     
     @Test
     public void testarBusca(){
