@@ -123,4 +123,36 @@ public class FaltaNotaView {
            System.out.println("REPROVADO POR NOTA");
     }
     
+   public void alterarNota(){
+        Scanner leitor = new Scanner(System.in);
+        Nota nota = new Nota();
+        GenericoDAO notaDao = NotaDAO.getInstancia();
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
+        
+        System.out.println("\n ALUNO: ");
+        String nomeAluno = leitor.nextLine().toUpperCase();
+        Aluno aluno = (Aluno) alunoDao.buscar(nomeAluno);
+        if(aluno == null){
+            System.out.println("\n ALUNO NÃO CADASTRADO \n\n");
+            return;
+        }
+        System.out.println("\n\t ATIVIDADE: ");
+        String nomeAtividade = leitor.nextLine().toUpperCase();
+        Atividade atividade = (Atividade) atividadeDao.buscar(nomeAtividade);
+        if(atividade == null){
+            System.out.println("\n ATIVIDADE NÃO CADASTRADA \n\n");
+            return;
+        }
+       for(Nota notas : atividade.getListaNotas()){
+           if(notas.getAluno().equals(aluno)){
+               System.out.println("VALOR DA NOTA PARA SER ALTERADA: ");
+               nota.setNota(Double.parseDouble(leitor.nextLine()));
+               notaDao.inserir(nota);
+               aluno.setListaNota(nota);
+               atividade.setListaNota(nota);
+           }
+       }
+   }
+    
 }

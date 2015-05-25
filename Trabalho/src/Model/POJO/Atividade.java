@@ -68,6 +68,14 @@ public class Atividade {
         this.listaNotas.add(nota);        
     }
     
+     public ArrayList<Nota> getListaNotas() {
+        return listaNotas;
+    }
+
+    public void setListaNotas(ArrayList<Nota> listaNotas) {
+        this.listaNotas = listaNotas;
+    }
+    
     @Override
     public String toString() {
         return ("Nome do aluno: " + nome + "\nTipo da atividade: " + tipo + "\nData: " + data + "\nValor: " + valor + "\n");
