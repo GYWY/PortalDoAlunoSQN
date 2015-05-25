@@ -21,17 +21,17 @@ public class TurmaView {
         
         System.out.println("\n **************** CADASTRO TURMA ***************");
         System.out.println("LOCAL: ");
-        novaTurma.setLocal(leitor.nextLine());
+        novaTurma.setLocal(leitor.nextLine().toUpperCase());
         System.out.println("ANO: ");
         novaTurma.setAno(Long.parseLong(leitor.nextLine()));
         System.out.println("PERíODO: ");
         novaTurma.setPeriodo(Integer.parseInt(leitor.nextLine()));
         System.out.println("HORÁRIO: ");
-        novaTurma.setHorario(leitor.nextLine());
+        novaTurma.setHorario(leitor.nextLine().toUpperCase());
         System.out.println("QUANTIDADE DE VAGAS: ");
         novaTurma.setVaga(Integer.parseInt(leitor.nextLine()));
         System.out.println("DISCIPLINA: ");        
-        String nomeDisciplina = leitor.nextLine();
+        String nomeDisciplina = leitor.nextLine().toUpperCase();
         Disciplina disciplina = (Disciplina) disciplinaDao.buscar(nomeDisciplina);
         if(disciplina==null){
             System.out.println("\n\nDISCIPLINA NÃO CADASTRADA\nNAO FOI POSSIVEL O CADASTRO DA TURMA!\n\n");
@@ -39,7 +39,7 @@ public class TurmaView {
         }
         novaTurma.setDisciplina(disciplina);
         System.out.println("PROFESSOR: ");
-        String nomeProfessor = leitor.nextLine();
+        String nomeProfessor = leitor.nextLine().toUpperCase();
         Professor professor = (Professor) professorDao.buscar(nomeProfessor);
         if(professor==null){
             System.out.println("\n\nPROFESSOR NÃO CADASTRADO\nNÃO FOI POSSIVEL O CADASTRO DA TURMA!\n\n");
@@ -52,30 +52,29 @@ public class TurmaView {
         
     }
     
-    public void listarAluno(){
-        GenericoDAO turma = TurmaDAO.getInstancia();
+    public void listarTurma(){
         
-        System.out.println("\n **************** TURMAS ****************");
-        for (Iterator<Object> it = turma.listar().iterator(); it.hasNext();) {
-            Object turmaLista = it.next();
-            System.out.println(turmaLista);
+        GenericoDAO turmaDao = TurmaDAO.getInstancia();
+        System.out.println("\n\t\t TURMAS \n");
+        for (Iterator<Object> it = turmaDao.listar().iterator(); it.hasNext();) {
+            Object listaTurma = it.next();
+            System.out.println(listaTurma.toString());
         }             
     }
     
-    public void buscarAluno(){
+    public void buscarTurma(){
         Turma novaTurma = new Turma();
         Scanner leitor = new Scanner(System.in);
         GenericoDAO turma = TurmaDAO.getInstancia();
         
         System.out.println("\n **************** PESQUISA ****************");
         System.out.println("ENTRE COM O NOME OU MATRICULA: ");
-        Object pesquisa = leitor.nextLine();
-        if(turma.buscar(pesquisa) == null){
-            System.out.println("ALUNO NÃO ENCONTRADO");
+        Object pesquisa = leitor.nextLine().toUpperCase();
+        if(turma == null) {
+            System.out.println("\n\t\t TURMA NÃO ENCONTRADA \n");
         }
-        else if(novaTurma == (Turma) turma.buscar(pesquisa)) {
-            System.out.println(novaTurma);
-        }
+        else
+            System.out.println("\n"+turma);
     }
     
 }
