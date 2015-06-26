@@ -108,8 +108,17 @@ public class ProfessorDAO implements GenericoDAO{
 
     @Override
     public void alterar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(Professor professor : listaDeProfessores){
+            if(professor.equals(objeto))
+                professor = (Professor) objeto;
+        }
+        try {
+            salvarArquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(ProfessorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+   
 }
 
     
