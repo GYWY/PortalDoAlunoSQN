@@ -117,7 +117,15 @@ public class AtividadeDAO implements GenericoDAO{
 
     @Override
     public void alterar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(Atividade atividade : listaDeAtividades){
+            if(atividade.equals(objeto))
+                atividade = (Atividade) objeto;
+        }
+        try {
+            salvarArquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

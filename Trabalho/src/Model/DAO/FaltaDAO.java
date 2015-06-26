@@ -105,7 +105,15 @@ public class FaltaDAO implements GenericoDAO {
 
     @Override
     public void alterar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(Falta falta : listaFaltas){
+            if(falta.equals(objeto))
+                falta = (Falta) objeto;
+        }
+        try {
+            salvarArquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
