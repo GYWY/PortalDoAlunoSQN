@@ -48,7 +48,14 @@ public class AlunoDAO implements GenericoDAO{
                     return aluno;
             }            
         }
-        else if(objeto instanceof Integer){
+        if(objeto instanceof String) {
+            String cpf = (String) objeto;
+            for(Aluno aluno : listaDeAlunos){
+                if(aluno.getCpf().equals(cpf))
+                    return aluno;
+            }
+        }
+        if(objeto instanceof Integer){
             Integer id =(Integer) objeto;
             for(Aluno aluno : listaDeAlunos){
                 if(aluno.getId().equals(objeto)){
@@ -58,7 +65,7 @@ public class AlunoDAO implements GenericoDAO{
         }
         return null;      
     }
-
+    
     @Override
     public ArrayList<Object> listar() {
         return (ArrayList<Object>)(Object)listaDeAlunos;
@@ -102,6 +109,19 @@ public class AlunoDAO implements GenericoDAO{
         }
         else 
             return false;
+    }
+
+    @Override
+    public void alterar(Object objeto) {
+        for(Aluno aluno : listaDeAlunos){
+            if(aluno.equals(objeto))
+                aluno = (Aluno) objeto;
+        }
+        try {
+            salvarArquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

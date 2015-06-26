@@ -118,7 +118,7 @@ public class AtividadeDAOTest {
     public void testarBuscarTodos() throws IOException{
         AtividadeDAO atividadeDao = AtividadeDAO.getInstancia();
         
-        if((atividadeDao.listar() == null) || (atividadeDao.listar().isEmpty())){
+        if((atividadeDao.listar().isEmpty())){
             assertEquals(true,atividadeDao.buscarTodos(null));
         }
         

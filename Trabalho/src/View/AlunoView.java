@@ -53,6 +53,42 @@ public class AlunoView {
             System.out.println("\n"+novaAluno);
     }
     
+    public void alterarNomeAluno() {
+        Scanner leitor = new Scanner(System.in);
+        Aluno aluno = new Aluno();
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        
+        System.out.println("\n CPF: ");
+        String cpf = leitor.nextLine().toUpperCase();
+        aluno = (Aluno) alunoDao.buscar(cpf);
+        if(aluno == null){
+            System.out.println("\n ALUNO NÃO CADASTRADO \n\n");
+            return;
+        }
+        System.out.println("\n NOME ATUAL: " + aluno.getNome());
+        System.out.println("\n NOVO NOME: ");
+        aluno.setNome(leitor.nextLine().toUpperCase());
+        alunoDao.alterar(aluno);
+    }
+    
+    public void alterarCpfAluno() {
+        Scanner leitor = new Scanner(System.in);
+        Aluno aluno = new Aluno();
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        
+        System.out.println("\n NOME: ");
+        String nome = leitor.nextLine().toUpperCase();
+        aluno = (Aluno) alunoDao.buscar(nome);
+        if(aluno == null){
+            System.out.println("\n ALUNO NÃO CADASTRADO \n\n");
+            return;
+        }
+        System.out.println("\n CPF ATUAL: " + aluno.getCpf());
+        System.out.println("\n NOVO CPF: ");
+        aluno.setCpf(leitor.nextLine().toUpperCase());
+        alunoDao.alterar(aluno);
+    }
+    
     public void imprimirMenuAluno() {
         System.out.println("\n ****************************************************************************** \n");
         System.out.println("\t\t DISCIPLINA \n");
@@ -116,12 +152,32 @@ public class AlunoView {
                         }
                         break;
                     case 4:
+                        try{
+                            alunoDao.buscarTodos(aluno);
+                            aluno.alterarNomeAluno();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 5:
+                        try{
+                            alunoDao.buscarTodos(aluno);
+                            aluno.alterarCpfAluno();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 6:
                         break;
                     default:
                         System.out.println("\n ****************************************************************************** \n");
                         System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
                         System.out.println("\n ****************************************************************************** \n");       
                 }
-        } while(escolha != 4);
+        } while(escolha != 6);
     }
 }
