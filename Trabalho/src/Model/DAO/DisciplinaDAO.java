@@ -109,6 +109,14 @@ public class DisciplinaDAO implements GenericoDAO{
 
     @Override
     public void alterar(Object objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for(Disciplina disciplina : listaDisciplina){
+            if(disciplina.equals(objeto))
+                disciplina = (Disciplina) objeto;
+        }
+        try {
+            salvarArquivo();
+        } catch (IOException ex) {
+            Logger.getLogger(AlunoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
