@@ -27,6 +27,7 @@ public class Aluno extends Pessoa implements Serializable {
         this.listaNotas = new ArrayList<Nota>();
     } 
 
+    @Override
     public Long getId() {
         return id;
     }
