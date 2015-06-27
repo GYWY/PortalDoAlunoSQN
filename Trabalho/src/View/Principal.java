@@ -5,6 +5,8 @@
  */
 package View;
 
+import javax.swing.JFrame;
+import View.Professor;
 /**
  *
  * @author Gabriel
@@ -27,23 +29,27 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sair = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
         PROFESSOR = new javax.swing.JButton();
         administrador = new javax.swing.JButton();
-        aluno = new javax.swing.JButton();
-        titulo = new javax.swing.JLabel();
+        sair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(650, 450));
 
-        sair.setText("Sair");
-        sair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sairActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
+        titulo.setFont(new java.awt.Font("Times New Roman", 3, 40)); // NOI18N
+        titulo.setText("PORTAL DO ALUNO SQN");
 
         PROFESSOR.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         PROFESSOR.setText("PROFESSOR");
+        PROFESSOR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PROFESSORActionPerformed(evt);
+            }
+        });
 
         administrador.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         administrador.setText("ADMINISTRADOR");
@@ -53,50 +59,54 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        aluno.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        aluno.setText("ALUNO");
-        aluno.addActionListener(new java.awt.event.ActionListener() {
+        sair.setText("Sair");
+        sair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alunoActionPerformed(evt);
+                sairActionPerformed(evt);
             }
         });
 
-        titulo.setFont(new java.awt.Font("Times New Roman", 3, 40)); // NOI18N
-        titulo.setText("PORTAL DO ALUNO SQN");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(PROFESSOR, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(titulo)))
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(sair))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(PROFESSOR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addComponent(sair))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(sair))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(PROFESSOR, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(aluno, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(titulo)))
-                .addContainerGap(73, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
-                .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PROFESSOR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(aluno, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(166, 166, 166)
-                .addComponent(sair))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -107,12 +117,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_sairActionPerformed
 
     private void administradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administradorActionPerformed
-        // TODO add your handling code here:
+        JFrame administrador = new Administrador();
+        administrador.setVisible(true);
     }//GEN-LAST:event_administradorActionPerformed
 
-    private void alunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alunoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_alunoActionPerformed
+    private void PROFESSORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PROFESSORActionPerformed
+        JFrame professor = new Professor();
+        professor.setVisible(true);
+    }//GEN-LAST:event_PROFESSORActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,7 +164,7 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton PROFESSOR;
     private javax.swing.JButton administrador;
-    private javax.swing.JButton aluno;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton sair;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
