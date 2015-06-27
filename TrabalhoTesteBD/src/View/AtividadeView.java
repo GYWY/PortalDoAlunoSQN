@@ -1,0 +1,149 @@
+
+package View;
+
+import Model.DAO.AtividadeDAO;
+import Model.POJO.Atividade;
+import Model.DAO.GenericoDAO;
+import Model.DAO.TurmaDAO;
+import Model.POJO.Turma;
+import java.io.FileNotFoundException;
+import java.util.Iterator;
+import java.util.Scanner;
+
+public class AtividadeView {
+
+    public void cadastrarAtividade(){
+        Scanner leitor = new Scanner(System.in);
+        Atividade novaAtividade = new Atividade();
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
+        GenericoDAO turmaDao = TurmaDAO.getInstancia();
+        
+        System.out.println("\n\t\t CADASTRO DISCIPLINA \n");
+        System.out.println("\n NOME DA ATIVIDADE: ");
+        novaAtividade.setNome(leitor.nextLine().toUpperCase());
+        System.out.println("\n TIPO DA ATIVIDADE: ");
+        novaAtividade.setTipo(leitor.nextLine().toUpperCase());
+        System.out.println("\n DATA (FORMATO: dd/mm/aa): ");
+        novaAtividade.setData(leitor.nextLine());
+        System.out.println("\n VALOR: ");
+        novaAtividade.setValor(Double.parseDouble(leitor.nextLine()));
+        System.out.println("\n ID DA TURMA: ");
+        Integer idTurma = Integer.parseInt(leitor.nextLine());
+        Turma turma = (Turma) turmaDao.buscar(idTurma);
+        if(turma == null){
+            System.out.println("\n ****************************************************************************** \n");
+            System.out.println("\n\t TURMA NÃO ESTÁ CADASTRADA \n");
+            return;
+        }
+        novaAtividade.setTurma(turma);
+        atividadeDao.inserir(novaAtividade);
+        turma.getListaDeAtividade().add(novaAtividade);
+    }
+    
+    public void buscarAtividade() {
+        Scanner leitor = new Scanner(System.in);
+        Atividade atividade = new Atividade();
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
+        
+        System.out.println("\n\t\t PESQUISA ATIVIDADE \n");
+        System.out.println("\n NOME: ");
+        Object pesquisa = leitor.nextLine().toUpperCase();
+        atividade = (Atividade) atividadeDao.buscar(pesquisa);
+        if(atividade == null) {
+            System.out.println("\n\t\t ATIVIDADE NÃO ENCONTRADA \n");
+        }
+        else
+            System.out.println("\n"+atividade);
+    }
+    
+    public void listarAtividade() {
+        
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
+        
+        System.out.println("\n\t\t ATIVIDADES \n");
+        for (Iterator<Object> it = atividadeDao.listar().iterator(); it.hasNext();) {
+            Object listaAtividade = it.next();
+            System.out.println(listaAtividade.toString());
+        }     
+    }
+    
+    public void alterarAtividade() {
+        Scanner leitor = new Scanner(System.in);
+        Atividade atividade = new Atividade();
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
+        
+        System.out.println("\n NOME: ");
+        String nome = leitor.nextLine().toUpperCase();
+        atividade = (Atividade) atividadeDao.buscar(nome);
+        if(atividade == null){
+            System.out.println("\n ATIVIDADE NÃO CADASTRADA \n\n");
+            return;
+        }
+        System.out.println("\n DADOS ATUAIS: ");
+        System.out.println(atividade.toString());
+        System.out.println("\n NOVO TIPO: ");
+        atividade.setTipo(leitor.nextLine().toUpperCase());
+        System.out.println("\n NOVO DATA: ");
+        atividade.setData(leitor.nextLine().toUpperCase());
+        System.out.println("\n NOVO VALOR: ");
+        Double valor = Double.parseDouble(leitor.nextLine().toUpperCase());
+        atividade.setValor(valor);
+        atividadeDao.alterar(atividade);
+    }
+    
+    public void imprimirMenuAtividade() {
+        System.out.println("\n ****************************************************************************** \n");
+        System.out.println("\t\t DISCIPLINA \n");
+        System.out.println("1- CADASTRAR ATIVIDADE");
+        System.out.println("2- PESQUISAR ATIVIDADE");
+        System.out.println("3- LISTAR ATIVIDADES");
+        System.out.println("4- ALTERAR ATIVIDADE");
+        System.out.println("5- SAIR \n");
+        System.out.println("OPÇÃO:");
+    }
+    
+    public void menuAtividade() throws FileNotFoundException, ClassNotFoundException {
+        Integer escolha = 0;
+        Integer flag;
+        Scanner leitor = new Scanner(System.in);
+        AtividadeView atividade = new AtividadeView();
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
+        
+        do{
+            atividade.imprimirMenuAtividade();
+            do{
+                try{
+                    escolha = Integer.parseInt(leitor.nextLine());
+                    flag = 1;
+                } catch(Exception e){
+                    System.out.println("\n ****************************************************************************** \n");
+                    System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                    System.out.println("\n ****************************************************************************** \n");       
+                    flag = 0;
+                    atividade.imprimirMenuAtividade();
+                } 
+            } while(flag == 0);
+                switch(escolha) {
+                    case 1:
+                        atividade.cadastrarAtividade();
+                        break;
+                    case 2:
+                        atividade.buscarAtividade();
+                        break;
+                    case 3:
+                        atividade.listarAtividade();
+                        break;
+                    case 4:
+                        atividade.alterarAtividade();
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        System.out.println("\n ****************************************************************************** \n");
+                        System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
+                        System.out.println("\n ****************************************************************************** \n");       
+                }
+        } while(escolha != 5);
+    }
+    
+}
