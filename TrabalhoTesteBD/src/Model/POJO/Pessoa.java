@@ -18,9 +18,11 @@ import javax.persistence.Table;
 @DiscriminatorColumn(name="FROM_CLASS", discriminatorType=DiscriminatorType.STRING)
 
 public abstract class Pessoa implements Serializable{
+    
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
+    
     private String nome;
     private String cpf;
     
