@@ -33,8 +33,8 @@ public class AtividadeDAO implements GenericoDAO{
                     return atividade;
             }            
         }
-        else if(objeto instanceof Integer){
-            Integer id =(Integer) objeto;
+        else if(objeto instanceof Long){
+            Long id =(Long) objeto;
             for(Atividade atividade : listaDeAtividades){
                 if(atividade.getId().equals(id)){
                     return atividade;

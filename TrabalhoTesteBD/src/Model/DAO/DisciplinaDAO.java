@@ -30,8 +30,8 @@ public class DisciplinaDAO implements GenericoDAO{
                     return disciplina;
             }
         }
-        else if(objeto instanceof Integer){
-            Integer id =(Integer) objeto;
+        else if(objeto instanceof Long){
+            Long id =(Long) objeto;
             for(Disciplina disciplina : listaDisciplina){
                 if(disciplina.getId().equals(id)){
                     return disciplina;

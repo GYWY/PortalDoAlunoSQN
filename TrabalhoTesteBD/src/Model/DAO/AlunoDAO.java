@@ -41,8 +41,8 @@ public class AlunoDAO implements GenericoDAO{
                     return aluno;
             }
         }
-        if(objeto instanceof Integer){
-            Integer id =(Integer) objeto;
+        if(objeto instanceof Long){
+            Long id =(Long) objeto;
             for(Aluno aluno : listaDeAlunos){
                 if(aluno.getId().equals(objeto)){
                     return aluno;

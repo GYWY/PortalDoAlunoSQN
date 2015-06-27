@@ -36,7 +36,7 @@ public class Atividade implements Serializable {
         return turma;
     }
 
-    public Long Id() {
+    public Long getId() {
         return id;
     }
 

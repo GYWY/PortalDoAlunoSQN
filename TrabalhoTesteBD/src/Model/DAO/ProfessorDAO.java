@@ -31,9 +31,8 @@ public class ProfessorDAO implements GenericoDAO{
                     return professor;
             }            
         }
-        else if(objeto instanceof Integer){
-            Integer id =(Integer) objeto;
-            
+        else if(objeto instanceof Long){
+            Long id =(Long) objeto;
             for(Professor professor : listaDeProfessores){
                 if(professor.getIdProfessor().equals(objeto)){
                     return professor;
