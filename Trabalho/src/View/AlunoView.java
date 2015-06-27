@@ -77,7 +77,8 @@ public class AlunoView {
         System.out.println("1- CADASTRAR ALUNO");
         System.out.println("2- PESQUISAR ALUNO");
         System.out.println("3- LISTAR ALUNOS");
-        System.out.println("4- SAIR \n");
+        System.out.println("4- ALTERAR ALUNO");
+        System.out.println("5- SAIR \n");
         System.out.println("OPÇÃO:");
     }
  

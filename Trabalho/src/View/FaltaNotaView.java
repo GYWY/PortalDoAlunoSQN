@@ -148,7 +148,7 @@ public class FaltaNotaView {
            if(notas.getAluno().equals(aluno)){
                System.out.println("VALOR DA NOTA PARA SER ALTERADA: ");
                nota.setNota(Double.parseDouble(leitor.nextLine()));
-               notaDao.inserir(nota);
+               notaDao.alterar(nota);
                aluno.setListaNota(nota);
                atividade.setListaNota(nota);
            }

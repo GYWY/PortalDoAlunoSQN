@@ -46,7 +46,7 @@ public class TurmaDAO implements GenericoDAO{
     public Object buscar(Object objeto) {
         
         if(objeto instanceof Integer){
-            Integer id =(Integer) objeto;
+            Integer id = (Integer) objeto;
             for(Turma turma : listaDeTurmas){
                 if(turma.getIdTurma().equals(id)){
                     return turma;

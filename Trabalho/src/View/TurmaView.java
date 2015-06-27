@@ -65,13 +65,44 @@ public class TurmaView {
         }            
     }
     
+    public void alterarTurma() {
+        Scanner leitor = new Scanner(System.in);
+        Turma turma = new Turma();
+        GenericoDAO turmaDao = TurmaDAO.getInstancia();
+        
+        System.out.println("\n ID DA TURMA: ");
+        Integer id = Integer.parseInt(leitor.nextLine().toUpperCase());
+        turma = (Turma) turmaDao.buscar(id);
+        if(turma == null){
+            System.out.println("\n TURMA NÃO CADASTRADA \n\n");
+            return;
+        }
+        System.out.println("\n DADOS ATUAIS: ");
+        System.out.println(turma.toString());
+        System.out.println("\n NOVO ANO: ");
+        Long ano = Long.parseLong(leitor.nextLine().toUpperCase());
+        turma.setAno(ano);
+        System.out.println("\n NOVO PERÍODO: ");
+        Integer periodo = Integer.parseInt(leitor.nextLine().toUpperCase());
+        turma.setPeriodo(periodo);
+        System.out.println("\n NOVO LOCAL: ");
+        turma.setLocal(leitor.nextLine().toUpperCase());
+        System.out.println("\n NOVO HORÁRIO: ");
+        turma.setHorario(leitor.nextLine().toUpperCase());
+        System.out.println("\n NOVAS VAGAS: ");
+        Integer vagas = Integer.parseInt(leitor.nextLine().toUpperCase());
+        turma.setVaga(vagas);
+        turmaDao.alterar(turma);
+    }
+    
     public void imprimirMenuTurma() {
         System.out.println("\n ****************************************************************************** \n");
         System.out.println("\t\t TURMA \n");
         System.out.println("1- CADASTRAR TURMA");
         System.out.println("2- LISTAR TURMAS");
         System.out.println("3- LISTAR TURMAS DE UMA DISCIPLINA");
-        System.out.println("4- SAIR \n");
+        System.out.println("4- ALTERAR TURMA");
+        System.out.println("5- SAIR \n");
         System.out.println("OPÇÃO:");
     }
     
@@ -129,12 +160,22 @@ public class TurmaView {
                         }
                         break;
                     case 4:
+                        try{
+                            turmaDao.buscarTodos(turma);
+                            turma.alterarTurma();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 5:
                         break;
                     default:
                         System.out.println("\n ****************************************************************************** \n");
                         System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
                         System.out.println("\n ****************************************************************************** \n");       
                 }
-        } while(escolha != 4);
+        } while(escolha != 5);
     }
 }

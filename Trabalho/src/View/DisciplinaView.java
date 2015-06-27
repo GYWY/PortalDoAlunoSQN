@@ -90,6 +90,28 @@ public class DisciplinaView {
         }
     }
     
+    public void alterarDisciplina() {
+        Scanner leitor = new Scanner(System.in);
+        Disciplina disciplina = new Disciplina();
+        GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
+        
+        System.out.println("\n NOME: ");
+        String nome = leitor.nextLine().toUpperCase();
+        disciplina = (Disciplina) disciplinaDao.buscar(nome);
+        if(disciplina == null){
+            System.out.println("\n DISCIPLINA NÃO CADASTRADA \n\n");
+            return;
+        }
+        System.out.println("\n DADOS ATUAIS: ");
+        System.out.println(disciplina.toString());
+        System.out.println("\n NOVA EMENTA: ");
+        disciplina.setEmenta(leitor.nextLine().toUpperCase());
+        System.out.println("\n NOVO CARGA HORÁRIA: ");
+        Integer cargaHoraria = Integer.parseInt(leitor.nextLine().toUpperCase());
+        disciplina.setCargaHoraria(cargaHoraria);
+        disciplinaDao.alterar(disciplina);
+    }
+    
     public void imprimirMenuDisciplina() {
         System.out.println("\n ****************************************************************************** \n");
         System.out.println("\t\t DISCIPLINA \n");
@@ -97,7 +119,8 @@ public class DisciplinaView {
         System.out.println("2- PESQUISAR DISCIPLINA");
         System.out.println("3- LISTAR DISCIPLINAS");
         System.out.println("4- HISTÓRICO NÚMERO DE TURMAS DE UMA DISCIPLINA");
-        System.out.println("5- SAIR \n");
+        System.out.println("5- ALTERAR DISCIPLINA");
+        System.out.println("6- SAIR \n");
         System.out.println("OPÇÃO:");
     }
     
@@ -164,13 +187,23 @@ public class DisciplinaView {
                         }
                         break;
                     case 5:
+                        try{
+                            disciplinaDao.buscarTodos(disciplina);
+                            disciplina.alterarDisciplina();
+                        } catch(IOException e){
+                            System.out.println("\n ****************************************************************************** \n");
+                            System.out.println("\n\t ERRO AO LISTAR DISCIPLINA! \n");
+                            System.out.println("\n ****************************************************************************** \n");
+                        }
+                        break;
+                    case 6:
                         break;
                     default:
                         System.out.println("\n ****************************************************************************** \n");
                         System.out.println("\n\t ENTRADA INVÁLIDA. TENTE NOVAMENTE \n");
                         System.out.println("\n ****************************************************************************** \n");       
                 }
-        } while(escolha != 5);
+        } while(escolha != 6);
     }
     
 }
