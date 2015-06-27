@@ -15,7 +15,7 @@ public class Atividade implements Serializable {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     
     private String nome;
     private String tipo;
@@ -36,7 +36,7 @@ public class Atividade implements Serializable {
         return turma;
     }
 
-    public Integer getId() {
+    public Long Id() {
         return id;
     }
 
@@ -76,7 +76,7 @@ public class Atividade implements Serializable {
         this.valor = valor;
     }
 
-    public void setId(int contador) {
+    public void setId(Long contador) {
         this.id = contador;
     }
 

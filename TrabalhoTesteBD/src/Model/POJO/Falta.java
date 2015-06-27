@@ -13,7 +13,8 @@ public class Falta implements Serializable {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
+    
     private Integer faltas;
     
     @OneToOne
@@ -22,11 +23,11 @@ public class Falta implements Serializable {
     @OneToOne
     private Turma turma;
     
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {    
+    public void setId(Long id) {    
         this.id = id;
     }
     public Integer getFaltas() {

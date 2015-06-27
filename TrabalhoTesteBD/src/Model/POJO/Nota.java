@@ -14,7 +14,7 @@ public class Nota implements Serializable {
     
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     
     private Double nota;
     
@@ -24,11 +24,11 @@ public class Nota implements Serializable {
     @OneToOne
     private Atividade atividade;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
     
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     

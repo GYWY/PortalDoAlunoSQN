@@ -14,7 +14,7 @@ public class Professor extends Pessoa implements Serializable {
     
     @Id
     @GeneratedValue
-    private Integer idProfessor;
+    private Long idProfessor;
     private String departamento;
     
     @OneToMany
@@ -24,11 +24,11 @@ public class Professor extends Pessoa implements Serializable {
         this.listaTurmasMinistradas = new ArrayList<Turma>();
     }
     
-    public Integer getIdProfessor() {
+    public Long getIdProfessor() {
         return idProfessor;
     }
 
-    public void setIdProfessor(Integer idProfessor) {
+    public void setIdProfessor(Long idProfessor) {
         this.idProfessor = idProfessor;
     }
     

@@ -16,7 +16,7 @@ public class Turma implements Serializable {
     
     @Id
     @GeneratedValue
-    private Integer idTurma;
+    private Long idTurma;
     
     private Long ano;
     private Integer periodo;
@@ -45,11 +45,11 @@ public class Turma implements Serializable {
         this.listaDeAluno = new ArrayList<Aluno>();
     }
     
-    public Integer getIdTurma() {
+    public Long getIdTurma() {
         return idTurma;
     }
 
-    public void setIdTurma(Integer idTurma) {
+    public void setIdTurma(Long idTurma) {
         this.idTurma = idTurma;
     }
 
