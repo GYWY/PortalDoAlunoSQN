@@ -31,7 +31,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
-        PROFESSOR = new javax.swing.JButton();
+        professor = new javax.swing.JButton();
         administrador = new javax.swing.JButton();
         sair = new javax.swing.JButton();
 
@@ -43,11 +43,11 @@ public class Principal extends javax.swing.JFrame {
         titulo.setFont(new java.awt.Font("Times New Roman", 3, 40)); // NOI18N
         titulo.setText("PORTAL DO ALUNO SQN");
 
-        PROFESSOR.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        PROFESSOR.setText("PROFESSOR");
-        PROFESSOR.addActionListener(new java.awt.event.ActionListener() {
+        professor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        professor.setText("PROFESSOR");
+        professor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PROFESSORActionPerformed(evt);
+                professorActionPerformed(evt);
             }
         });
 
@@ -74,13 +74,13 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addComponent(PROFESSOR, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(professor, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
                         .addComponent(titulo)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(sair))
@@ -92,10 +92,11 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PROFESSOR, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(professor, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(administrador, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addComponent(sair))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addComponent(sair)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -121,10 +122,10 @@ public class Principal extends javax.swing.JFrame {
         administrador.setVisible(true);
     }//GEN-LAST:event_administradorActionPerformed
 
-    private void PROFESSORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PROFESSORActionPerformed
+    private void professorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorActionPerformed
         JFrame professor = new Professor();
         professor.setVisible(true);
-    }//GEN-LAST:event_PROFESSORActionPerformed
+    }//GEN-LAST:event_professorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,9 +163,9 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton PROFESSOR;
     private javax.swing.JButton administrador;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton professor;
     private javax.swing.JButton sair;
     private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
