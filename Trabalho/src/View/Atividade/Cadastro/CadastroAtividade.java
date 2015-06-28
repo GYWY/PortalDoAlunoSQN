@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Atividade;
+package View.Atividade.Cadastro;
 
 import Model.DAO.AtividadeDAO;
 import Model.DAO.GenericoDAO;
 import Model.DAO.TurmaDAO;
 import Model.POJO.Atividade;
 import Model.POJO.Turma;
-import java.util.Scanner;
 
 /**
  *

@@ -39,6 +39,7 @@ public class DisciplinaView {
         GenericoDAO disciplinaDao = DisciplinaDAO.getInstancia();
         System.out.println("\n\t\t PESQUISA DISCIPLINA \n");
         System.out.println("\n DISCIPLINA: ");
+        
         Object pesquisa = leitor.nextLine().toUpperCase();
         disciplina = (Disciplina) disciplinaDao.buscar(pesquisa);
         if(disciplina == null) {
