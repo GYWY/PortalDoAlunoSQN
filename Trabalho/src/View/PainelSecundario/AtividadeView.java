@@ -5,6 +5,8 @@
  */
 package View.PainelSecundario;
 
+import View.Atividade.Cadastro.CadastroAtividade;
+import View.Atividade.Pesquisa.PesquisaAtividade;
 import View.PainelPrincipal.ProfessorMenu;
 import javax.swing.JFrame;
 
@@ -47,6 +49,11 @@ public class AtividadeView extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton1.setText("CADASTRAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton2.setText("PESQUISAR");
@@ -134,7 +141,9 @@ public class AtividadeView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        JFrame pesquisa = new PesquisaAtividade();
+        pesquisa.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -150,6 +159,12 @@ public class AtividadeView extends javax.swing.JFrame {
         professor.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFrame atividadeMenu = new CadastroAtividade();
+        atividadeMenu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

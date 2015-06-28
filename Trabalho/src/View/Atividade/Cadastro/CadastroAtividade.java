@@ -10,6 +10,8 @@ import Model.DAO.GenericoDAO;
 import Model.DAO.TurmaDAO;
 import Model.POJO.Atividade;
 import Model.POJO.Turma;
+import View.PainelSecundario.AtividadeView;
+import javax.swing.JFrame;
 
 /**
  *
@@ -73,7 +75,7 @@ public class CadastroAtividade extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("CANCELAR");
+        jButton1.setText("VOLTAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -178,7 +180,9 @@ public class CadastroAtividade extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        JFrame atividadeMenu = new AtividadeView();
+        atividadeMenu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -251,4 +255,8 @@ public class CadastroAtividade extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+
+    private void AtividadeView() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

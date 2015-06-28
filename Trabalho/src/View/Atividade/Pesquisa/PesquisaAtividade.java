@@ -8,6 +8,8 @@ package View.Atividade.Pesquisa;
 import Model.DAO.AtividadeDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Atividade;
+import View.PainelSecundario.AtividadeView;
+import javax.swing.JFrame;
 
 /**
  *
@@ -50,7 +52,12 @@ public class PesquisaAtividade extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("CANCELAR");
+        jButton2.setText("VOLTAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +117,12 @@ public class PesquisaAtividade extends javax.swing.JFrame {
             PainelDeListagem painelDeListagem = new PainelDeListagem(atividade);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFrame menuAtividade = new AtividadeView();
+        menuAtividade.setVisible(true);
+        dispose();        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
