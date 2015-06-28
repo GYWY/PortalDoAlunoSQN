@@ -15,6 +15,7 @@ import Model.POJO.Nota;
 import Model.POJO.Turma;
 import java.util.Scanner;
 
+
 public class FaltaNotaView {
     
         public void cadastrarNota() {
