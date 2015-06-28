@@ -8,7 +8,8 @@ package View.Aluno.Alteracao;
 import Model.DAO.AlunoDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Aluno;
-import java.util.Scanner;
+import View.PainelSecundario.AlunoView;
+import javax.swing.JFrame;
 
 /**
  *
@@ -51,7 +52,12 @@ public class AlteracaoAluno extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("CANCELAR");
+        jButton2.setText("VOLTAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,6 +113,12 @@ public class AlteracaoAluno extends javax.swing.JFrame {
         aluno.setCpf(jTextField1.getText());
         alunoDao.alterar(aluno);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFrame alunoMenu = new AlunoView();
+        alunoMenu.setVisible(true);
+        dispose();      
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

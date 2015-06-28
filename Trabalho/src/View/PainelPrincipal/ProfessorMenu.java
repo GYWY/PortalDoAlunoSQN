@@ -5,7 +5,7 @@
  */
 package View.PainelPrincipal;
 
-import View.PainelSecundario.Atividade;
+import View.PainelSecundario.AtividadeView;
 import View.Principal;
 import javax.swing.JFrame;
 
@@ -149,7 +149,7 @@ public class ProfessorMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFrame atividade = new Atividade();
+        JFrame atividade = new AtividadeView();
         atividade.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

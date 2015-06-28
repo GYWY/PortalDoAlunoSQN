@@ -8,8 +8,9 @@ package View.Aluno.Cadastro;
 import Model.DAO.AlunoDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Aluno;
-import View.AlunoView;
+import View.PainelSecundario.AlunoView;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
@@ -68,7 +69,7 @@ public class CadastroAluno extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("CANCELAR");
+        jButton2.setText("VOLTAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -157,6 +158,9 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFrame alunoMenu = new AlunoView();
+        alunoMenu.setVisible(true);
+        dispose();
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -8,7 +8,9 @@ package View.Aluno.Pesquisa;
 import Model.DAO.AlunoDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Aluno;
+import View.PainelSecundario.AlunoView;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
@@ -50,7 +52,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("CANCELAR");
+        jButton1.setText("VOLTAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -81,7 +83,7 @@ public class TelaInicial extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(54, 54, 54))
         );
@@ -109,7 +111,9 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        JFrame alunoMenu = new AlunoView();
+        alunoMenu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
