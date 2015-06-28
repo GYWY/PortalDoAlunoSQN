@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Cadastro;
+package View.Atividade;
 
 import Model.DAO.AtividadeDAO;
 import Model.DAO.GenericoDAO;
