@@ -9,6 +9,7 @@
     <class>Model.POJO.Nota</class>
     <class>Model.POJO.Professor</class>
     <class>Model.POJO.Turma</class>
+    <class>Model.DAO.Disciplina</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/portal?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

@@ -1,16 +1,15 @@
 package Model.DAO;
 
-import Model.POJO.Atividade;
 import Util.JPAUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-public class AtividadeDAO implements GenericoDAO<Atividade, Long> {
+public class Professor implements GenericoDAO<Professor, Long>{
 
     @Override
-    public void salvar(Atividade objeto) {
+    public void salvar(Professor objeto) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
         EntityTransaction et = JPAUtil.getInstancia().getTransaction(em);
         em.persist(objeto);
@@ -19,7 +18,7 @@ public class AtividadeDAO implements GenericoDAO<Atividade, Long> {
     }
 
     @Override
-    public void alterar(Atividade objeto) {
+    public void alterar(Professor objeto) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
         EntityTransaction et = JPAUtil.getInstancia().getTransaction(em);
         em.refresh(objeto);
@@ -28,7 +27,7 @@ public class AtividadeDAO implements GenericoDAO<Atividade, Long> {
     }
 
     @Override
-    public void remover(Atividade objeto) {
+    public void remover(Professor objeto) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
         EntityTransaction et = JPAUtil.getInstancia().getTransaction(em);
         em.remove(objeto);
@@ -37,40 +36,40 @@ public class AtividadeDAO implements GenericoDAO<Atividade, Long> {
     }
 
     @Override
-    public List<Atividade> buscarTodos() {
+    public List<Professor> buscarTodos() {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
-        Query query = em.createQuery("select a from Atividade a", Atividade.class);
+        Query query = em.createQuery("select a from Professor a", Professor.class);
         List lista = query.getResultList();
         em.close();
         return lista;
     }
 
     @Override
-    public Atividade buscarId(Long id) {
+    public Professor buscarId(Long id) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
-        return em.find(Atividade.class, id);
+        return em.find(Professor.class, id);
     }
     
-    public List<Atividade> buscarNome(String nome) {
+    public List<Professor> buscarNome(String nome) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
-        Query query = em.createQuery("SELECT c FROM Atividade c WHERE c.nome LIKE :nome", Atividade.class)
+        Query query = em.createQuery("SELECT c FROM Professor c WHERE c.nome LIKE :nome", Professor.class)
                 .setParameter("nome", em);
         em.close();
         return query.getResultList();
     }
     
-    public List<Atividade> buscarTipo(String tipo) {
+    public List<Professor> buscarCpf(String cpf) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
-        Query query = em.createQuery("SELECT c FROM Atividade c WHERE c.tipo LIKE :tipo", Atividade.class)
-                .setParameter("tipo", em);
+        Query query = em.createQuery("SELECT c FROM Professor c WHERE c.cpf LIKE :cpf", Professor.class)
+                .setParameter("cpf", em);
         em.close();
         return query.getResultList();
     }
     
-    public List<Atividade> buscarDia(String dia) {
+    public List<Professor> buscarDepartamento(String cpf) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
-        Query query = em.createQuery("SELECT c FROM Atividade c WHERE c.dia LIKE :dia", Atividade.class)
-                .setParameter("tipo", em);
+        Query query = em.createQuery("SELECT c FROM Professor c WHERE c.cpf LIKE :departamento", Professor.class)
+                .setParameter("departamento", em);
         em.close();
         return query.getResultList();
     }

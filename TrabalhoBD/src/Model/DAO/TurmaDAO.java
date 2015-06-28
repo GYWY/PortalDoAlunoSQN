@@ -1,16 +1,16 @@
 package Model.DAO;
 
-import Model.POJO.Aluno;
+import Model.POJO.Turma;
 import Util.JPAUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
-public class AlunoDAO implements GenericoDAO<Aluno, Long>{
+public class TurmaDAO implements GenericoDAO<Turma, Long>{
 
     @Override
-    public void salvar(Aluno objeto) {
+    public void salvar(Turma objeto) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
         EntityTransaction et = JPAUtil.getInstancia().getTransaction(em);
         em.persist(objeto);
@@ -19,7 +19,7 @@ public class AlunoDAO implements GenericoDAO<Aluno, Long>{
     }
 
     @Override
-    public void alterar(Aluno objeto) {
+    public void alterar(Turma objeto) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
         EntityTransaction et = JPAUtil.getInstancia().getTransaction(em);
         em.refresh(objeto);
@@ -28,7 +28,7 @@ public class AlunoDAO implements GenericoDAO<Aluno, Long>{
     }
 
     @Override
-    public void remover(Aluno objeto) {
+    public void remover(Turma objeto) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
         EntityTransaction et = JPAUtil.getInstancia().getTransaction(em);
         em.remove(objeto);
@@ -37,34 +37,18 @@ public class AlunoDAO implements GenericoDAO<Aluno, Long>{
     }
 
     @Override
-    public List<Aluno> buscarTodos() {
+    public List<Turma> buscarTodos() {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
-        Query query = em.createQuery("select a from Aluno a", Aluno.class);
+        Query query = em.createQuery("select a from Turma a", Turma.class);
         List lista = query.getResultList();
         em.close();
         return lista;
     }
 
     @Override
-    public Aluno buscarId(Long id) {
+    public Turma buscarId(Long id) {
         EntityManager em = JPAUtil.getInstancia().getEntityManager();
-        return em.find(Aluno.class, id);
-    }
-    
-    public List<Aluno> buscarNome(String nome) {
-        EntityManager em = JPAUtil.getInstancia().getEntityManager();
-        Query query = em.createQuery("SELECT c FROM Aluno c WHERE c.nome LIKE :nome", Aluno.class)
-                .setParameter("nome", em);
-        em.close();
-        return query.getResultList();
-    }
-    
-    public List<Aluno> buscarCpf(String cpf) {
-        EntityManager em = JPAUtil.getInstancia().getEntityManager();
-        Query query = em.createQuery("SELECT c FROM Aluno c WHERE c.cpf LIKE :cpf", Aluno.class)
-                .setParameter("cpf", em);
-        em.close();
-        return query.getResultList();
+        return em.find(Turma.class, id);
     }
     
 }
