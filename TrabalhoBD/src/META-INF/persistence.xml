@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+    <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="TrabalhoBD-PU" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="TrabalhoBDPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>Model.POJO.Aluno</class>
     <class>Model.POJO.Atividade</class>
@@ -9,13 +9,14 @@
     <class>Model.POJO.Nota</class>
     <class>Model.POJO.Professor</class>
     <class>Model.POJO.Turma</class>
-    <class>Model.DAO.Disciplina</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/portal?zeroDateTimeBehavior=convertToNull"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/portalbd"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
-      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="javax.persistence.jdbc.password" value="mysql"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+      <property name="hibernate.hbm2ddl.auto" value="update"/>
     </properties>
   </persistence-unit>
 </persistence>

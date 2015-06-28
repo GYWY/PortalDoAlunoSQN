@@ -8,7 +8,7 @@ import javax.persistence.Persistence;
 public class JPAUtil {
     
     private static JPAUtil instancia;
-    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("TrabalhoBDPU");
     
     public static JPAUtil getInstancia() {
         if(instancia == null) {
