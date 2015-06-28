@@ -5,6 +5,11 @@
  */
 package View.Cadastro;
 
+import Model.DAO.DisciplinaDAO;
+import Model.DAO.GenericoDAO;
+import Model.POJO.Disciplina;
+import java.util.Scanner;
+
 /**
  *
  * @author linhares
@@ -60,8 +65,18 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         });
 
         jButton1.setText("CANCELAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("CONFIRMAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,6 +147,23 @@ public class CadastroDisciplina extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        Disciplina novaDisciplina = new Disciplina();
+        GenericoDAO disciplina = DisciplinaDAO.getInstancia();
+        
+        novaDisciplina.setNome(jTextField1.getText().toUpperCase());
+        novaDisciplina.setEmenta(jTextField2.getText().toUpperCase());
+        novaDisciplina.setCargaHoraria(Integer.parseInt(jTextField3.getText().toUpperCase()));
+        disciplina.inserir(novaDisciplina);
+        
+        //fazer voltar
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Botão de cancelamento
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

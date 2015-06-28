@@ -5,6 +5,19 @@
  */
 package View.Cadastro;
 
+import Model.DAO.AlunoDAO;
+import Model.DAO.AtividadeDAO;
+import Model.DAO.FaltaDAO;
+import Model.DAO.GenericoDAO;
+import Model.DAO.NotaDAO;
+import Model.DAO.TurmaDAO;
+import Model.POJO.Aluno;
+import Model.POJO.Atividade;
+import Model.POJO.Falta;
+import Model.POJO.Nota;
+import Model.POJO.Turma;
+import java.util.Scanner;
+
 /**
  *
  * @author linhares
@@ -39,9 +52,9 @@ public class CadastroFalta extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("ID da Turma:");
+        jLabel1.setText("Nome do Aluno");
 
-        jLabel2.setText("Nome do Aluno:");
+        jLabel2.setText("ID da Turma");
 
         jLabel3.setText("Quantidade de faltas:");
 
@@ -54,6 +67,11 @@ public class CadastroFalta extends javax.swing.JFrame {
         jButton1.setText("CANCELAR");
 
         jButton2.setText("CONFIRMAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("CADASTRO DA FALTA");
 
@@ -121,6 +139,32 @@ public class CadastroFalta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Falta falta = new Falta();
+        GenericoDAO faltaDao = FaltaDAO.getInstancia();
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        GenericoDAO turmaDao = TurmaDAO.getInstancia();
+        
+        Turma turma = (Turma) turmaDao.buscar(Integer.parseInt(jTextField1.getText()));     
+        if(turma == null) {
+            System.out.println("\n TURMA NÃO CADASTRADA");
+            return;
+        }
+        falta.setTurma(turma);
+        
+        Aluno aluno = (Aluno) alunoDao.buscar(jTextField2.getText().toUpperCase());
+        if(aluno == null) {
+            System.out.println("\n ALUNO NÃO CADASTRADO");
+            return;
+        }
+        falta.setAluno(aluno);
+        
+        falta.setFaltas(Integer.parseInt(jTextField3.getText()));
+        faltaDao.inserir(falta);
+        turma.setListaFalta(falta);
+        aluno.setListaFalta(falta);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -149,10 +193,8 @@ public class CadastroFalta extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CadastroFalta().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new CadastroFalta().setVisible(true);
         });
     }
 

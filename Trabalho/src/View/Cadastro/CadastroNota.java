@@ -5,6 +5,14 @@
  */
 package View.Cadastro;
 
+import Model.DAO.AlunoDAO;
+import Model.DAO.AtividadeDAO;
+import Model.DAO.GenericoDAO;
+import Model.DAO.NotaDAO;
+import Model.POJO.Aluno;
+import Model.POJO.Atividade;
+import Model.POJO.Nota;
+
 /**
  *
  * @author linhares
@@ -54,6 +62,11 @@ public class CadastroNota extends javax.swing.JFrame {
         });
 
         jButton1.setText("CONFIRMAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("CANCELAR");
 
@@ -123,6 +136,35 @@ public class CadastroNota extends javax.swing.JFrame {
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Nota nota = new Nota();
+        GenericoDAO notaDao = NotaDAO.getInstancia();
+        GenericoDAO alunoDao = AlunoDAO.getInstancia();
+        GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
+        
+        String nomeAluno = jTextField1.getText().toUpperCase();
+        Aluno aluno = (Aluno) alunoDao.buscar(nomeAluno);
+        
+        if(aluno == null){
+            System.out.println("\n ALUNO NÃO CADASTRADO \n\n");
+            return;
+        }
+        nota.setAluno(aluno);
+        String nomeAtividade = jTextField2.getText().toUpperCase();
+        Atividade atividade = (Atividade) atividadeDao.buscar(nomeAtividade);
+        
+        if(atividade == null){
+            System.out.println("\n ATIVIDADE NÃO CADASTRADA \n\n");
+            return;
+        }
+        
+        nota.setAtividade(atividade);
+        nota.setNota(Double.parseDouble(jTextField1.getText()));
+        notaDao.inserir(nota);
+        aluno.setListaNota(nota);
+        atividade.setListaNota(nota);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

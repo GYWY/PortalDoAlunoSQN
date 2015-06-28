@@ -5,7 +5,11 @@
  */
 package View.Cadastro;
 
+import Model.DAO.AlunoDAO;
+import Model.DAO.GenericoDAO;
+import Model.POJO.Aluno;
 import View.AlunoView;
+import java.util.Scanner;
 
 /**
  *
@@ -65,6 +69,11 @@ public class CadastroAluno extends javax.swing.JFrame {
         });
 
         jButton2.setText("CANCELAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,8 +140,25 @@ public class CadastroAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Scanner leitor = new Scanner(System.in);
+        GenericoDAO aluno = AlunoDAO.getInstancia();
+        Aluno novoAluno = new Aluno();
+        
+        String nomeAluno = jTextField1.getText().toUpperCase();
+        novoAluno.setNome(nomeAluno);
+        novoAluno.setCpf(jTextField2.getText().toUpperCase());
+        aluno.inserir(novoAluno);
+        
+        //fazer if não null
+        if(!(aluno.buscar(nomeAluno)== null)){
+            System.out.println("\nALUNO JÁ CADASTRADO\n\n");
+        }
+        //fazer voltar
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
