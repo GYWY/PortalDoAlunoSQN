@@ -12,6 +12,8 @@ import Model.DAO.NotaDAO;
 import Model.POJO.Aluno;
 import Model.POJO.Atividade;
 import Model.POJO.Nota;
+import View.PainelPrincipal.ProfessorMenu;
+import javax.swing.JFrame;
 
 /**
  *
@@ -68,7 +70,12 @@ public class CadastroNota extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("CANCELAR");
+        jButton2.setText("VOLTAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,6 +172,12 @@ public class CadastroNota extends javax.swing.JFrame {
         aluno.setListaNota(nota);
         atividade.setListaNota(nota);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFrame professorMenu = new ProfessorMenu();
+        professorMenu.setVisible(true);
+        dispose();        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

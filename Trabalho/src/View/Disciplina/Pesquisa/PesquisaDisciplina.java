@@ -8,6 +8,8 @@ package View.Disciplina.Pesquisa;
 import Model.DAO.DisciplinaDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Disciplina;
+import View.PainelSecundario.DisciplinaView;
+import javax.swing.JFrame;
 
 /**
  *
@@ -48,7 +50,12 @@ public class PesquisaDisciplina extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("CANCELAR");
+        jButton2.setText("VOLTAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Nome:");
 
@@ -108,6 +115,12 @@ public class PesquisaDisciplina extends javax.swing.JFrame {
             View.Disciplina.Pesquisa.PainelDeListagem painelDeListagem = new View.Disciplina.Pesquisa.PainelDeListagem(disciplina);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFrame disciplina = new DisciplinaView();
+        disciplina.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -8,7 +8,9 @@ package View.Disciplina.Cadastro;
 import Model.DAO.DisciplinaDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Disciplina;
+import View.PainelSecundario.DisciplinaView;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
@@ -64,7 +66,7 @@ public class CadastroDisciplina extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("CANCELAR");
+        jButton1.setText("VOLTAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -158,11 +160,12 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         novaDisciplina.setCargaHoraria(Integer.parseInt(jTextField3.getText().toUpperCase()));
         disciplina.inserir(novaDisciplina);
         
-        //fazer voltar
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Botão de cancelamento
+        JFrame disciplinaMenu = new DisciplinaView();
+        disciplinaMenu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

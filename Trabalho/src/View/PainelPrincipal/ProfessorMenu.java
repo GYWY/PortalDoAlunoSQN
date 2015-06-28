@@ -5,6 +5,8 @@
  */
 package View.PainelPrincipal;
 
+import View.Falta.Cadastro.CadastroFalta;
+import View.Nota.CadastroNota;
 import View.PainelSecundario.AtividadeView;
 import View.Principal;
 import javax.swing.JFrame;
@@ -60,9 +62,19 @@ public class ProfessorMenu extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton2.setText("NOTA");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton3.setText("FALTA");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton4.setText("CONSULTAR TURMAS DE UMA DISCIPLINA");
@@ -159,6 +171,18 @@ public class ProfessorMenu extends javax.swing.JFrame {
         principal.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JFrame faltaCadastro = new CadastroFalta();
+        faltaCadastro.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFrame notaCadastro = new CadastroNota();
+        notaCadastro.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

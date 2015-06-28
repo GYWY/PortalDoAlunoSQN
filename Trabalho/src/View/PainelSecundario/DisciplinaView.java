@@ -6,6 +6,8 @@
 package View.PainelSecundario;
 
 import View.PainelPrincipal.AdministradorMenu;
+import View.Disciplina.Cadastro.CadastroDisciplina;
+import View.Disciplina.Pesquisa.PesquisaDisciplina;
 import javax.swing.JFrame;
 
 /**
@@ -49,9 +51,19 @@ public class DisciplinaView extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton1.setText("CADASTRAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton2.setText("PESQUISAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton3.setText("LISTAR");
@@ -140,6 +152,18 @@ public class DisciplinaView extends javax.swing.JFrame {
         adm.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFrame disciplinaCadastro = new CadastroDisciplina();
+        disciplinaCadastro.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFrame disciplinaPesquisa = new PesquisaDisciplina();
+        disciplinaPesquisa.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

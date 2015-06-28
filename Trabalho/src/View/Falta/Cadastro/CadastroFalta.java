@@ -16,7 +16,9 @@ import Model.POJO.Atividade;
 import Model.POJO.Falta;
 import Model.POJO.Nota;
 import Model.POJO.Turma;
+import View.PainelPrincipal.ProfessorMenu;
 import java.util.Scanner;
+import javax.swing.JFrame;
 
 /**
  *
@@ -64,7 +66,12 @@ public class CadastroFalta extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("CANCELAR");
+        jButton1.setText("VOLTAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("CONFIRMAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -164,6 +171,12 @@ public class CadastroFalta extends javax.swing.JFrame {
         turma.setListaFalta(falta);
         aluno.setListaFalta(falta);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFrame professor = new ProfessorMenu();
+        professor.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
