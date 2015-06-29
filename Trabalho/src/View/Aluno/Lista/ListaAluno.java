@@ -9,7 +9,6 @@ import Model.DAO.AlunoDAO;
 import Model.DAO.GenericoDAO;
 import Model.POJO.Aluno;
 import View.PainelSecundario.AlunoView;
-import java.util.Iterator;
 import javax.swing.JFrame;
 
 /**
@@ -116,10 +115,14 @@ public class ListaAluno extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         GenericoDAO alunoDao = AlunoDAO.getInstancia();
         Aluno novoAluno = new Aluno();
-        for (Iterator<Object> it = alunoDao.listar().iterator(); it.hasNext();) {
-            Object listaAluno = it.next();
-            System.out.println(listaAluno.toString());
-        }
+        String todosOsAlunos = null;
+
+        alunoDao.listar().stream().forEach((listaAluno) -> {
+            todosOsAlunos.concat((String) listaAluno.toString());
+            todosOsAlunos.concat("\n");
+        });
+
+        jTextField1.setText(todosOsAlunos);
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
@@ -150,10 +153,8 @@ public class ListaAluno extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ListaAluno().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new ListaAluno().setVisible(true);
         });
     }
 
