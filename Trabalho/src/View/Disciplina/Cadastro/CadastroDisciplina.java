@@ -159,7 +159,9 @@ public class CadastroDisciplina extends javax.swing.JFrame {
         novaDisciplina.setEmenta(jTextField2.getText().toUpperCase());
         novaDisciplina.setCargaHoraria(Integer.parseInt(jTextField3.getText().toUpperCase()));
         disciplina.inserir(novaDisciplina);
-        
+        JFrame disciplinaMenu = new DisciplinaView();
+        disciplinaMenu.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

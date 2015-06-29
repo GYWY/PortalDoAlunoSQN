@@ -153,23 +153,16 @@ public class CadastroFalta extends javax.swing.JFrame {
         GenericoDAO turmaDao = TurmaDAO.getInstancia();
         
         Turma turma = (Turma) turmaDao.buscar(Integer.parseInt(jTextField1.getText()));     
-        if(turma == null) {
-            System.out.println("\n TURMA NÃO CADASTRADA");
-            return;
-        }
         falta.setTurma(turma);
-        
         Aluno aluno = (Aluno) alunoDao.buscar(jTextField2.getText().toUpperCase());
-        if(aluno == null) {
-            System.out.println("\n ALUNO NÃO CADASTRADO");
-            return;
-        }
         falta.setAluno(aluno);
-        
         falta.setFaltas(Integer.parseInt(jTextField3.getText()));
         faltaDao.inserir(falta);
         turma.setListaFalta(falta);
         aluno.setListaFalta(falta);
+        JFrame professor = new ProfessorMenu();
+        professor.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

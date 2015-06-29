@@ -189,6 +189,8 @@ public class CadastroAtividade extends javax.swing.JFrame {
         Atividade novaAtividade = new Atividade();
         GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
         GenericoDAO turmaDao = TurmaDAO.getInstancia();
+        JFrame realizado = new CadastroRealizado();
+        JFrame sair = new AtividadeView();
         
         novaAtividade.setNome(jTextField1.getText().toUpperCase());
         novaAtividade.setTipo(jTextField2.getText().toUpperCase());
@@ -196,15 +198,12 @@ public class CadastroAtividade extends javax.swing.JFrame {
         novaAtividade.setValor(Double.parseDouble(jTextField4.getText()));
         Integer idTurma = Integer.parseInt(jTextField5.getText());
         Turma turma = (Turma) turmaDao.buscar(idTurma);
-        
-        if(turma == null){
-            System.out.println("\n ****************************************************************************** \n");
-            System.out.println("\n\t TURMA NÃO ESTÁ CADASTRADA \n");
-            return;
-        }
         novaAtividade.setTurma(turma);
         atividadeDao.inserir(novaAtividade);
         turma.getListaDeAtividade().add(novaAtividade);
+        realizado.setVisible(true);
+        sair.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -256,7 +255,4 @@ public class CadastroAtividade extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 
-    private void AtividadeView() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

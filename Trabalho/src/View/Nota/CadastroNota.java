@@ -149,28 +149,25 @@ public class CadastroNota extends javax.swing.JFrame {
         GenericoDAO notaDao = NotaDAO.getInstancia();
         GenericoDAO alunoDao = AlunoDAO.getInstancia();
         GenericoDAO atividadeDao = AtividadeDAO.getInstancia();
-        
+        JFrame professorMenu = new ProfessorMenu();
         String nomeAluno = jTextField1.getText().toUpperCase();
         Aluno aluno = (Aluno) alunoDao.buscar(nomeAluno);
         
         if(aluno == null){
-            System.out.println("\n ALUNO NÃO CADASTRADO \n\n");
-            return;
+            
+            professorMenu.setVisible(true);
+            dispose();
         }
         nota.setAluno(aluno);
         String nomeAtividade = jTextField2.getText().toUpperCase();
-        Atividade atividade = (Atividade) atividadeDao.buscar(nomeAtividade);
-        
-        if(atividade == null){
-            System.out.println("\n ATIVIDADE NÃO CADASTRADA \n\n");
-            return;
-        }
-        
+        Atividade atividade = (Atividade) atividadeDao.buscar(nomeAtividade);        
         nota.setAtividade(atividade);
         nota.setNota(Double.parseDouble(jTextField1.getText()));
         notaDao.inserir(nota);
         aluno.setListaNota(nota);
         atividade.setListaNota(nota);
+        professorMenu.setVisible(true);
+        dispose();  
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

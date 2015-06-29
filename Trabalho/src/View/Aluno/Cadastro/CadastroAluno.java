@@ -142,19 +142,27 @@ public class CadastroAluno extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
+       
         GenericoDAO aluno = AlunoDAO.getInstancia();
         Aluno novoAluno = new Aluno();
+        JFrame realizado = new CadastroRealizado();
+        JFrame naoRealizado = new CadastroRealizado();
+        JFrame sair = new AlunoView();
         
         String nomeAluno = jTextField1.getText().toUpperCase();
         novoAluno.setNome(nomeAluno);
-        novoAluno.setCpf(jTextField2.getText().toUpperCase());
-        aluno.inserir(novoAluno);
-        
-        //fazer if não null
         if(!(aluno.buscar(nomeAluno)== null)){
-            System.out.println("\nALUNO JÁ CADASTRADO\n\n");
+            naoRealizado.setVisible(true);
+            JFrame alunoMenu = new AlunoView();
+            alunoMenu.setVisible(true);
+            dispose();
         }
+        novoAluno.setCpf(jTextField2.getText().toUpperCase());
+        aluno.inserir(novoAluno);        
        
+        realizado.setVisible(true);
+        sair.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
