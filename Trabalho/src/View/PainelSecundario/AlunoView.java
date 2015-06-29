@@ -7,6 +7,7 @@ package View.PainelSecundario;
 
 import View.Aluno.Alteracao.AlteracaoAluno;
 import View.Aluno.Cadastro.CadastroAluno;
+import View.Aluno.Lista.ListaAluno;
 import View.Aluno.Pesquisa.TelaInicial;
 import View.PainelPrincipal.AdministradorMenu;
 import javax.swing.JFrame;
@@ -158,7 +159,9 @@ public class AlunoView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        JFrame alunoLista = new ListaAluno();
+        alunoLista.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

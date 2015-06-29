@@ -10,6 +10,7 @@ import Model.DAO.GenericoDAO;
 import Model.POJO.Aluno;
 import View.PainelSecundario.AlunoView;
 import javax.swing.JFrame;
+import View.Aluno.Pesquisa.AlunoNaoEncontrado;
 
 /**
  *
@@ -107,11 +108,16 @@ public class AlteracaoAluno extends javax.swing.JFrame {
         String nome = jTextField1.getText().toUpperCase();
         aluno = (Aluno) alunoDao.buscar(nome);
         if(aluno == null){
-            System.out.println("\n ALUNO NÃO CADASTRADO \n\n");
-            return;
+            AlunoNaoEncontrado alunoNaoEncontrado = new AlunoNaoEncontrado();
+            alunoNaoEncontrado.setVisible(true);
+            dispose();
         }
-        aluno.setCpf(jTextField1.getText());
-        alunoDao.alterar(aluno);
+        else{
+            DadosParaAlteracao dadosParaAlteracao = new DadosParaAlteracao();
+            
+            dadosParaAlteracao.setVisible(true);
+            
+        }    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -146,12 +152,17 @@ public class AlteracaoAluno extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AlteracaoAluno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AlteracaoAluno().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new AlteracaoAluno().setVisible(true);
         });
     }
 
